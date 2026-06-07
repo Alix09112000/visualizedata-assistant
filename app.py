@@ -952,8 +952,8 @@ def main():
         # Stats
         if 'stats' in analytics:
             st.markdown('<div class="section-hd">📋 Statistiques descriptives</div>', unsafe_allow_html=True)
-            st.dataframe(analytics['stats'].style.background_gradient(cmap='Blues', axis=None),
-                        use_container_width=True)
+            st.dataframe(analytics['stats'],
+    use_container_width=True)
 
         # Groupby
         if 'group' in analytics:
