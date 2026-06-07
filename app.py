@@ -1,6 +1,6 @@
 """
-VisualizeData Assistant — v2.0
-Design premium + GPT-4 + Nouveaux modules
+VisualizeData Assistant — v3.0
+Design premium + OpenAI GPT + Data Copilot
 """
 
 import streamlit as st
@@ -15,6 +15,12 @@ import re
 from datetime import datetime
 import warnings
 warnings.filterwarnings('ignore')
+
+# ── OPENAI / GPT ───────────────────────────────────────────────
+try:
+    from openai import OpenAI
+except Exception:
+    OpenAI = None
 
 # ── CONFIG ─────────────────────────────────────────────────────
 st.set_page_config(
@@ -319,7 +325,105 @@ def generate_insights(df, audit, analytics):
     return insights, warnings, errors
 
 
+
+def get_openai_client():
+    """Retourne un client OpenAI si la clé est configurée dans Streamlit Secrets."""
+    if OpenAI is None:
+        return None
+    try:
+        api_key = st.secrets.get("OPENAI_API_KEY", None)
+        if api_key:
+            return OpenAI(api_key=api_key)
+    except Exception:
+        return None
+    return None
+
+
+def build_dataset_context(df, max_rows=25):
+    """Prépare un contexte compact pour GPT sans envoyer tout le fichier."""
+    num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+    cat_cols = df.select_dtypes(include=['object']).columns.tolist()
+
+    context = {
+        "dimensions": {
+            "lignes": int(len(df)),
+            "colonnes": int(len(df.columns))
+        },
+        "colonnes": df.columns.tolist(),
+        "colonnes_numeriques": num_cols,
+        "colonnes_categorielles": cat_cols,
+        "valeurs_manquantes": df.isnull().sum().to_dict(),
+        "apercu": df.head(max_rows).astype(str).to_dict(orient="records")
+    }
+
+    if num_cols:
+        context["statistiques_numeriques"] = df[num_cols].describe().round(3).to_dict()
+
+    return json.dumps(context, ensure_ascii=False)
+
+
+def gpt_ai_response(question, df):
+    """Réponse IA avec OpenAI. Utilise un contexte résumé du dataset."""
+    client = get_openai_client()
+
+    if client is None:
+        return None
+
+    dataset_context = build_dataset_context(df)
+
+    system_prompt = """
+Tu es VisualizeData Assistant, un expert senior en data analytics, business intelligence,
+statistiques appliquées, Power BI, SQL et analyse décisionnelle.
+
+Réponds toujours en français clair et professionnel.
+Tu dois aider l'utilisateur à comprendre ses données, proposer des analyses, expliquer les résultats,
+et suggérer des décisions business.
+
+Règles importantes :
+- Base-toi uniquement sur le contexte du dataset fourni.
+- Si une information n'est pas disponible, dis-le clairement.
+- Ne prétends pas avoir analysé des lignes qui ne sont pas dans le contexte.
+- Pour les questions Power BI, propose des mesures DAX propres.
+- Pour les questions SQL, propose une requête SQL générique.
+- Sois concret, structuré et utile.
+"""
+
+    user_prompt = f"""
+Voici le contexte du dataset chargé dans l'application :
+
+{dataset_context}
+
+Question de l'utilisateur :
+{question}
+"""
+
+    try:
+        response = client.responses.create(
+            model="gpt-4.1-mini",
+            input=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            temperature=0.3,
+            max_output_tokens=1200
+        )
+        return response.output_text
+    except Exception as e:
+        return f"⚠️ GPT est configuré, mais une erreur est survenue : {e}"
+
+
 def ai_response(question, df):
+    """
+    Fonction principale du chat.
+    1) Essaie GPT si la clé OpenAI est disponible.
+    2) Sinon utilise l'ancien moteur local de règles.
+    """
+    gpt_answer = gpt_ai_response(question, df)
+    if gpt_answer:
+        return gpt_answer
+    return local_ai_response(question, df)
+
+def local_ai_response(question, df):
     q = question.lower().strip()
     num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
     cat_cols = df.select_dtypes(include=['object']).columns.tolist()
@@ -548,7 +652,7 @@ def main():
                 <span style="font-size:28px">📊</span>
                 <div>
                     <div class="sidebar-logo-title">VisualizeData</div>
-                    <div class="sidebar-logo-sub">Assistant IA v2.0</div>
+                    <div class="sidebar-logo-sub">Assistant IA v3.0</div>
                 </div>
             </div>
         </div>
@@ -570,6 +674,12 @@ def main():
         if uploaded:
             st.success(f"✅ {uploaded.name[:25]}...")
             st.caption(f"{uploaded.size/1024:.1f} KB")
+
+        st.markdown('<div class="sidebar-section">Statut IA</div>', unsafe_allow_html=True)
+        if get_openai_client() is not None:
+            st.success("GPT activé")
+        else:
+            st.warning("GPT non configuré — mode local")
 
         st.markdown("---")
         st.markdown("""
@@ -621,7 +731,7 @@ def main():
                     <div style="font-family:Outfit,sans-serif;font-size:28px;font-weight:900;color:{score_color}">{score}</div>
                     <div style="font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px">{score_label}</div>
                 </div>
-                <div class="hero-badge">✨ MVP v2.0</div>
+                <div class="hero-badge">✨ GPT v3.0</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -658,7 +768,7 @@ def main():
                     <div class="hero-title">VisualizeData Assistant</div>
                     <div class="hero-sub">Votre analyste de données alimenté par l'IA · Transforming Data Into Decisions</div>
                 </div>
-                <div class="hero-badge">✨ MVP v2.0</div>
+                <div class="hero-badge">✨ GPT v3.0</div>
             </div>
         </div>
         """, unsafe_allow_html=True)
