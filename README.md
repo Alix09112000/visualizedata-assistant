@@ -11,9 +11,9 @@ visualizedata-assistant/
 │   ├── requirements.txt
 │   ├── .python-version
 │   └── .streamlit/
-│       └── config.toml     ← thème Modernist (accent #ec3013, angles à 0)
+│       └── config.toml     ← thème VisualizeData (indigo #4F46E5)
 ├── site/                   ← Site vitrine HTML (Render Static Site)
-│   └── index.html
+│   └── index.html          ← site complet + assistant intégré en iframe
 ├── render.yaml
 ├── .gitignore
 └── README.md
@@ -21,12 +21,13 @@ visualizedata-assistant/
 
 ## Version 2 de l'assistant — ce qui change
 
-**Design (système Modernist)**
-- Typographie Archivo, accent rouge unique `#ec3013`, aucun angle arrondi, filets de 2 px.
-- Thème Plotly `modernist` appliqué à tous les graphiques (axes à filets, palette à plat).
+**Design (identité VisualizeData)**
+- Typographie Sora / Manrope, indigo `#4F46E5` en accent principal, orange `#F97316` réservé aux insights, fonds `#EEF4FF`.
+- Thème Plotly `visualizedata` appliqué à tous les graphiques (indigo en série principale, orange en second).
 - Grille modulaire : bandeau de métriques en cellules séparées, colonnes contrôles / graphique.
 - Écran d'accueil repensé : zone d'import, quatre fonctionnalités, bloc « exemple de sortie ».
-- Thème Streamlit natif dans `.streamlit/config.toml` (couleurs, fond, texte).
+- Thème Streamlit natif dans `.streamlit/config.toml` (couleurs, fond, texte) — l'application et le site partagent la même identité.
+- Le CSS et les blocs HTML sont injectés avec `st.html()` et non `st.markdown(unsafe_allow_html=True)` : Streamlit interrompait le bloc HTML à la première ligne vide, ce qui affichait la feuille de style en texte brut dans la page.
 
 **Analyse**
 - Détection automatique des colonnes de dates (`coerce_dates`).
@@ -47,6 +48,26 @@ visualizedata-assistant/
 **Export**
 - Rapport Markdown téléchargeable (vue d'ensemble, constats, qualité, statistiques, échanges IA).
 - Export CSV du jeu de données dédoublonné.
+
+## Identité de marque
+
+| Usage | Couleur |
+| --- | --- |
+| Bleu marine principal | `#0F172A` |
+| Indigo technologique (accent principal) | `#4F46E5` |
+| Orange d'accent (insight, point clé) | `#F97316` |
+| Bleu très clair / fonds | `#EEF4FF` |
+| Blanc | `#FFFFFF` |
+
+Typographie : **Sora** pour les titres, **Manrope** pour le texte. Signature : *Transformer les données en décisions — Transforming Data Into Decisions.* L'orange reste un accent : insight, progression, point important — jamais une surface.
+
+## Site vitrine — version 2
+
+- Positionnement « partenaire Data & AI pour la décision » : chaîne de valeur Données → Analyse → Visualisation → Insight → Décision → Performance, problèmes traités, 7 services, méthode en 7 étapes, technologies, secteurs.
+- L'assistant IA est présenté comme **Projet 01** de VisualizeData (FormaPro en Projet 02), et non comme le produit principal.
+- La section `#assistant` présente le projet (parcours en 4 étapes + aperçu de l'écran d'analyse) et **ouvre l'application web dans un nouvel onglet** — pas d'iframe.
+- Remplacez l'URL `https://visualizedata-assistant.onrender.com` par l'URL Render réelle : elle apparaît dans le bouton de la barre de navigation et dans les deux liens de la section Assistant.
+- Le logo est un V construit en SVG inline (marine + indigo, point orange) : lisible en favicon et en noir et blanc. À remplacer par le logo final quand il sera dessiné.
 
 ## Déploiement sur Render
 

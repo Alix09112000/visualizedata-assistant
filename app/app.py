@@ -10,168 +10,182 @@ import streamlit as st
 from openai import OpenAI
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Design tokens (design system Modernist)
+# Design tokens — design system Modernist
 # ─────────────────────────────────────────────────────────────────────────────
-BG = "#f3f2f2"
-SURFACE = "#eae9e9"
-TEXT = "#201e1d"
-ACCENT = "#ec3013"
-ACCENT_600 = "#dd2b0f"
-NEUTRAL_400 = "#bab6b6"
-NEUTRAL_600 = "#7d7979"
-DIVIDER = "rgba(32,30,29,.40)"
+NAVY = "#201e1d"
+INDIGO = "#ec3013"
+INDIGO_DARK = "#dd2b0f"
+ORANGE = "#ae1800"
+PALE = "#eae9e9"
+WHITE = "#f3f2f2"
+INK = "#201e1d"
+MUTED = "#7d7979"
+LINE = "#bab6b6"
+RADIUS = "0px"
 
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 MAX_PREVIEW_ROWS = 200
 
 st.set_page_config(
     page_title="VisualizeData Assistant",
-    page_icon="▮",
+    page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Thème Plotly : à plat, un seul accent, pas d'arrondi
+# Thème Plotly — indigo en série principale, orange réservé à l'insight
 # ─────────────────────────────────────────────────────────────────────────────
-pio.templates["modernist"] = go.layout.Template(
+pio.templates["visualizedata"] = go.layout.Template(
     layout=go.Layout(
-        font=dict(family="Archivo, system-ui, sans-serif", size=13, color=TEXT),
-        paper_bgcolor=BG,
-        plot_bgcolor=BG,
-        colorway=[ACCENT, TEXT, NEUTRAL_600, NEUTRAL_400, ACCENT_600, "#9e3526"],
-        margin=dict(l=48, r=24, t=32, b=48),
-        xaxis=dict(showgrid=False, linecolor=DIVIDER, linewidth=2, ticks="outside",
-                   tickcolor=DIVIDER, zeroline=False),
-        yaxis=dict(gridcolor="rgba(32,30,29,.12)", linecolor=DIVIDER, linewidth=2,
-                   zeroline=False),
+        font=dict(family="Archivo, system-ui, sans-serif", size=13, color=INK),
+        title=dict(font=dict(family="Archivo, system-ui, sans-serif", size=17, color=NAVY)),
+        paper_bgcolor=WHITE,
+        plot_bgcolor=WHITE,
+        colorway=[INDIGO, NAVY, "#7d7979", "#bab6b6", "#dd2b0f", "#9e3526"],
+        margin=dict(l=48, r=24, t=36, b=48),
+        xaxis=dict(showgrid=False, linecolor=LINE, linewidth=1, ticks="outside",
+                   tickcolor=LINE, zeroline=False),
+        yaxis=dict(gridcolor=LINE, linecolor=LINE, linewidth=1, zeroline=False),
         bargap=0.08,
-        hoverlabel=dict(bgcolor=TEXT, font=dict(color=BG, family="Archivo")),
+        hoverlabel=dict(bgcolor=NAVY, bordercolor=NAVY,
+                        font=dict(color="#FFFFFF", family="Manrope")),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0,
                     bgcolor="rgba(0,0,0,0)"),
     )
 )
-pio.templates.default = "modernist"
+pio.templates.default = "visualizedata"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# CSS : applique le design system à l'interface Streamlit
+# CSS — applique l'identité VisualizeData à l'interface Streamlit
 # ─────────────────────────────────────────────────────────────────────────────
-st.markdown(
+st.html(
     f"""
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root {{
-  --vd-bg:{BG}; --vd-surface:{SURFACE}; --vd-text:{TEXT};
-  --vd-accent:{ACCENT}; --vd-divider:{DIVIDER};
+  --vd-navy:{NAVY}; --vd-indigo:{INDIGO}; --vd-orange:{ORANGE};
+  --vd-pale:{PALE}; --vd-ink:{INK}; --vd-muted:{MUTED}; --vd-line:{LINE};
+  --vd-r:{RADIUS};
 }}
-html, body, [class*="css"], .stApp {{
+html, body, .stApp, [class*="css"] {{
   font-family:'Archivo', system-ui, sans-serif;
-  background:var(--vd-bg); color:var(--vd-text);
+  background:{WHITE}; color:var(--vd-ink);
 }}
 h1,h2,h3,h4,h5,h6 {{
   font-family:'Archivo', system-ui, sans-serif !important;
-  font-weight:800 !important; letter-spacing:-.015em; line-height:1.12;
+  font-weight:800 !important; letter-spacing:-.02em; line-height:1.16;
+  color:var(--vd-navy);
 }}
 #MainMenu, footer, header [data-testid="stStatusWidget"] {{visibility:hidden}}
-.block-container {{padding-top:2.2rem; padding-bottom:4rem; max-width:1500px}}
-
-/* aucun angle arrondi nulle part */
-.stApp *, .stApp *::before, .stApp *::after {{border-radius:0 !important}}
-
-/* barre latérale : filet vertical fort */
+.block-container {{padding-top:2rem; padding-bottom:4rem; max-width:1500px}}
+/* barre latérale */
 section[data-testid="stSidebar"] {{
-  background:var(--vd-bg); border-right:2px solid var(--vd-divider);
+  background:var(--vd-pale); border-right:1px solid var(--vd-line);
 }}
-section[data-testid="stSidebar"] .block-container {{padding-top:1.6rem}}
-
-/* métriques : cellules de grille séparées par des filets */
+section[data-testid="stSidebar"] .block-container {{padding-top:1.5rem}}
+/* métriques */
 div[data-testid="stMetric"] {{
-  background:var(--vd-bg); padding:16px 20px;
-  border-top:2px solid var(--vd-divider); border-bottom:2px solid var(--vd-divider);
-  border-right:1px solid var(--vd-divider);
+  background:{WHITE}; padding:16px 18px;
+  border:1px solid var(--vd-line); border-radius:var(--vd-r);
 }}
 div[data-testid="stMetricLabel"] p {{
-  font-size:11px !important; letter-spacing:.1em; text-transform:uppercase;
-  color:{NEUTRAL_600} !important;
+  font-size:12px !important; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--vd-muted) !important;
 }}
 div[data-testid="stMetricValue"] {{
-  font-size:34px !important; font-weight:800; line-height:1.05;
+  font-family:'Archivo', sans-serif; font-size:32px !important;
+  font-weight:600; color:var(--vd-navy);
 }}
-
-/* onglets : soulignement accent, libellés à plat */
-.stTabs [data-baseweb="tab-list"] {{
-  gap:4px; border-bottom:2px solid var(--vd-divider);
-}}
+/* onglets */
+.stTabs [data-baseweb="tab-list"] {{gap:6px; border-bottom:1px solid var(--vd-line)}}
 .stTabs [data-baseweb="tab"] {{
-  background:transparent; padding:12px 18px; font-weight:600;
+  background:transparent; padding:11px 16px; font-weight:600; color:var(--vd-muted);
 }}
 .stTabs [aria-selected="true"] {{
-  color:var(--vd-accent) !important;
-  box-shadow:inset 0 -2px 0 0 var(--vd-accent);
+  color:var(--vd-indigo) !important; box-shadow:inset 0 -2px 0 0 var(--vd-indigo);
 }}
 .stTabs [data-baseweb="tab-highlight"] {{background:transparent}}
-
-/* boutons : libellé aligné à gauche, remplissage accent */
+/* boutons */
 .stButton button, .stDownloadButton button, .stFormSubmitButton button {{
-  font-family:'Archivo', sans-serif; font-weight:800; font-size:14px;
-  border:1px solid var(--vd-divider); background:transparent; color:var(--vd-text);
-  justify-content:flex-start; text-align:left; padding:8px 14px;
+  font-family:'Archivo', sans-serif; font-weight:700; font-size:15px;
+  border-radius:var(--vd-r); border:1px solid var(--vd-line);
+  background:{WHITE}; color:var(--vd-navy); padding:10px 18px;
 }}
+.stButton button:hover {{border-color:var(--vd-indigo); color:var(--vd-indigo)}}
 .stButton button[kind="primary"], .stDownloadButton button[kind="primary"],
 .stFormSubmitButton button[kind="primary"] {{
-  background:var(--vd-accent); border-color:var(--vd-accent); color:var(--vd-bg);
+  background:var(--vd-indigo); border-color:var(--vd-indigo); color:{WHITE};
 }}
-.stButton button[kind="primary"]:hover {{background:{ACCENT_600}; border-color:{ACCENT_600}}}
-.stButton button:hover {{background:rgba(32,30,29,.07)}}
-
+.stButton button[kind="primary"]:hover, .stDownloadButton button[kind="primary"]:hover {{
+  background:{INDIGO_DARK}; border-color:{INDIGO_DARK}; color:{WHITE};
+}}
 /* champs */
 .stTextInput input, .stTextArea textarea, .stNumberInput input,
-div[data-baseweb="select"] > div {{
-  background:var(--vd-surface) !important; border:1px solid var(--vd-divider) !important;
-  color:var(--vd-text) !important; font-family:'Archivo', sans-serif;
+div[data-baseweb="select"] > div, .stChatInput textarea {{
+  background:{WHITE} !important; border:1px solid var(--vd-line) !important;
+  border-radius:var(--vd-r) !important; color:var(--vd-ink) !important;
+  font-family:'Archivo', sans-serif;
 }}
-.stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-accent) !important}}
-*:focus-visible {{outline:2px solid var(--vd-accent) !important; outline-offset:2px}}
-::selection {{background:rgba(236,48,19,.3)}}
-
-/* zone d'import */
+.stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-indigo) !important}}
+*:focus-visible {{outline:2px solid var(--vd-indigo) !important; outline-offset:2px}}
+::selection {{background:rgba(79,70,229,.18)}}
+.stSlider [data-baseweb="slider"] div[role="slider"] {{background:var(--vd-indigo)}}
+/* import */
 section[data-testid="stFileUploaderDropzone"] {{
-  background:var(--vd-bg); border:2px dashed var(--vd-divider); padding:28px;
+  background:{WHITE}; border:1.5px dashed #C3D3F5; border-radius:var(--vd-r); padding:22px;
 }}
-
 /* tableaux */
-div[data-testid="stDataFrame"] {{border:1px solid var(--vd-divider)}}
-
-/* filets et blocs maison */
-.vd-rule {{height:2px; background:var(--vd-divider); border:0; margin:26px 0}}
+div[data-testid="stDataFrame"] {{
+  border:1px solid var(--vd-line); border-radius:var(--vd-r); overflow:hidden;
+}}
+/* éléments maison */
+.vd-rule {{height:1px; background:var(--vd-line); border:0; margin:24px 0}}
 .vd-kicker {{
-  font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--vd-accent); margin-bottom:8px;
+  font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--vd-indigo); margin-bottom:10px;
 }}
-.vd-hero {{border-bottom:2px solid var(--vd-divider); padding-bottom:26px; margin-bottom:6px}}
-.vd-hero h1 {{font-size:40px; margin:0 0 8px}}
-.vd-hero p {{color:{NEUTRAL_600}; max-width:62ch; margin:0}}
-.vd-answer {{border-left:2px solid var(--vd-accent); padding:2px 0 2px 16px; margin:4px 0 8px}}
-.vd-poster {{background:var(--vd-accent); color:var(--vd-bg); padding:32px}}
-.vd-poster .q {{font-weight:800; font-size:26px; line-height:1.12; margin:0}}
+.vd-hero {{
+  background:linear-gradient(180deg,var(--vd-pale) 0%,{WHITE} 100%);
+  border:1px solid var(--vd-line); border-radius:0;
+  padding:30px 32px; margin-bottom:22px;
+}}
+.vd-hero h1 {{font-size:34px; margin:0 0 8px}}
+.vd-hero p {{color:var(--vd-muted); max-width:70ch; margin:0}}
+.vd-answer {{
+  background:var(--vd-pale); border:1px solid var(--vd-line);
+  border-left:3px solid var(--vd-indigo); border-radius:var(--vd-r);
+  padding:16px 18px; margin:6px 0 14px;
+}}
+.vd-poster {{
+  background:var(--vd-navy); color:{WHITE};
+  border-radius:0; padding:30px;
+}}
+.vd-poster .q {{
+  font-family:'Archivo', sans-serif; font-weight:600; font-size:24px;
+  line-height:1.2; margin:0;
+}}
+.vd-poster .q em {{font-style:normal; color:var(--vd-orange)}}
 .vd-poster .row {{
-  display:flex; justify-content:space-between; padding:11px 0;
-  border-top:2px solid rgba(243,242,242,.5); font-size:13px;
+  display:flex; justify-content:space-between; padding:12px 0;
+  border-top:1px solid rgba(255,255,255,.16); font-size:14px;
 }}
-.vd-feature {{border-top:2px solid var(--vd-divider); padding:14px 0 0}}
-.vd-feature b {{font-weight:800; display:block; margin-bottom:2px}}
-.vd-feature span {{color:{NEUTRAL_600}; font-size:13px}}
-.vd-bar-label {{display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px}}
-.vd-bar {{height:6px; background:#d7d3d3}}
-.vd-bar > div {{height:100%; background:var(--vd-text)}}
-.vd-bar.alert > div {{background:var(--vd-accent)}}
+.vd-feature {{
+  border:1px solid var(--vd-line); border-radius:var(--vd-r);
+  padding:16px 18px; height:100%;
+}}
+.vd-feature b {{font-family:'Archivo', sans-serif; font-weight:600; display:block; margin-bottom:4px; color:var(--vd-navy)}}
+.vd-feature span {{color:var(--vd-muted); font-size:14px}}
+.vd-bar-label {{display:flex; justify-content:space-between; font-size:14px; margin-bottom:5px}}
+.vd-bar {{height:7px; background:var(--vd-pale); border-radius:0; overflow:hidden}}
+.vd-bar > div {{height:100%; background:var(--vd-indigo)}}
+.vd-bar.alert > div {{background:var(--vd-orange)}}
 .vd-tag {{
-  display:inline-block; font-size:11px; padding:3px 10px; margin-right:6px;
-  background:#fff2ef; color:#7c1405;
+  display:inline-block; font-size:12px; font-weight:700; padding:4px 12px;
+  border-radius:0; background:rgba(79,70,229,.12); color:var(--vd-indigo);
 }}
 </style>
-""",
-    unsafe_allow_html=True,
+"""
 )
 
 
@@ -392,7 +406,7 @@ def markdown_report(df: pd.DataFrame, name: str, insights: list[str], history: l
 with st.sidebar:
     st.markdown("#### VisualizeData")
     st.caption("AI-powered Data Analytics")
-    st.markdown('<hr class="vd-rule" style="margin:14px 0">', unsafe_allow_html=True)
+    st.html('<hr class="vd-rule" style="margin:14px 0">')
 
     uploaded_file = st.file_uploader(
         "Fichier CSV ou Excel", type=["csv", "xlsx", "xls"], label_visibility="collapsed"
@@ -404,37 +418,35 @@ with st.sidebar:
         if len(sheets) > 1:
             sheet_name = st.selectbox("Feuille", sheets)
 
-    st.markdown('<div class="vd-kicker" style="margin-top:20px">Parcours</div>', unsafe_allow_html=True)
+    st.html('<div class="vd-kicker" style="margin-top:20px">Parcours</div>')
     for index, step in enumerate(
         ["Importer un fichier", "Explorer les indicateurs",
          "Visualiser les données", "Interroger avec l'IA"], start=1
     ):
-        st.markdown(
+        st.html(
             f'<div style="display:flex;gap:12px;padding:9px 0;'
-            f'border-bottom:1px solid {DIVIDER};font-size:14px">'
-            f'<span style="font-weight:800;color:{ACCENT}">{index}</span><span>{step}</span></div>',
-            unsafe_allow_html=True,
+            f'border-bottom:1px solid {LINE};font-size:14px">'
+            f'<span style="font-weight:700;color:{INDIGO}">{index}</span><span>{step}</span></div>'
         )
 
-    st.markdown('<div class="vd-kicker" style="margin-top:20px">Assistant IA</div>', unsafe_allow_html=True)
+    st.html('<div class="vd-kicker" style="margin-top:20px">Assistant IA</div>')
     if os.getenv("OPENAI_API_KEY"):
-        st.markdown(f'<span class="vd-tag">{MODEL}</span>', unsafe_allow_html=True)
+        st.html(f'<span class="vd-tag">{MODEL}</span>')
     else:
         st.caption("OPENAI_API_KEY absente — assistant désactivé.")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # En-tête
 # ─────────────────────────────────────────────────────────────────────────────
-st.markdown(
+st.html(
     """
 <div class="vd-hero">
   <div class="vd-kicker">Assistant IA</div>
-  <h1>Transformez vos données en décisions</h1>
+  <h1>Transformer les données en décisions</h1>
   <p>Importez un fichier CSV ou Excel : audit de qualité, statistiques descriptives,
   visualisations et réponses en langage naturel — sans Python ni SQL.</p>
 </div>
-""",
-    unsafe_allow_html=True,
+"""
 )
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -443,11 +455,10 @@ st.markdown(
 if uploaded_file is None:
     left, right = st.columns([1.15, 1], gap="large")
     with left:
-        st.markdown('<div class="vd-kicker" style="margin-top:26px">Pour commencer</div>',
-                    unsafe_allow_html=True)
+        st.html('<div class="vd-kicker" style="margin-top:26px">Pour commencer</div>')
         st.markdown("#### Déposez un fichier dans la barre latérale")
         st.caption("CSV, XLSX ou XLS · séparateur et encodage détectés automatiquement.")
-        st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
+        st.html('<hr class="vd-rule">')
         features = [
             ("Audit rapide", "Manquants, doublons, types, modalités, valeurs extrêmes."),
             ("Statistiques descriptives", "Moyennes, écarts, quantiles par variable."),
@@ -457,24 +468,22 @@ if uploaded_file is None:
         cols = st.columns(2, gap="large")
         for index, (title, description) in enumerate(features):
             with cols[index % 2]:
-                st.markdown(
-                    f'<div class="vd-feature"><b>{title}</b><span>{description}</span></div>',
-                    unsafe_allow_html=True,
+                st.html(
+                    f'<div class="vd-feature"><b>{title}</b><span>{description}</span></div>'
                 )
     with right:
-        st.markdown(
-            """
+        st.html(
+    """
 <div class="vd-poster">
   <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:14px">Exemple de sortie</div>
-  <p class="q">« Le canal revendeur recule de 9 % pendant que le direct progresse. »</p>
+  <p class="q">« Le canal revendeur recule de 9 % pendant que <em>le direct progresse.</em> »</p>
   <div style="margin-top:34px">
     <div class="row"><span style="opacity:.85">Fichiers acceptés</span><span style="font-weight:800">CSV · XLSX · XLS</span></div>
     <div class="row"><span style="opacity:.85">Temps moyen d'analyse</span><span style="font-weight:800">&lt; 5 s</span></div>
     <div class="row"><span style="opacity:.85">Installation</span><span style="font-weight:800">Aucune</span></div>
   </div>
 </div>
-""",
-            unsafe_allow_html=True,
+"""
         )
     st.stop()
 
@@ -506,11 +515,10 @@ if st.session_state.get("vd_file") != (uploaded_file.name, sheet_name):
 
 file_line, action = st.columns([3, 1])
 with file_line:
-    st.markdown(
-        f'<div style="padding:14px 0 0"><b style="font-weight:800">{uploaded_file.name}</b>'
-        f'<span style="color:{NEUTRAL_600}"> · {df.shape[0]:,} lignes · {df.shape[1]} colonnes'
-        f' · complétude {completeness} %</span></div>'.replace(",", " "),
-        unsafe_allow_html=True,
+    st.html(
+        f'<div style="padding:14px 0 0"><b style="font-family:Archivo,sans-serif;font-weight:800;color:{NAVY}">{uploaded_file.name}</b>'
+        f'<span style="color:{MUTED}"> · {df.shape[0]:,} lignes · {df.shape[1]} colonnes'
+        f' · complétude {completeness} %</span></div>'.replace(",", " ")
     )
 with action:
     st.download_button(
@@ -530,8 +538,7 @@ m3.metric("Valeurs manquantes", f"{missing_total:,}".replace(",", " "))
 m4.metric("Doublons", duplicates_total)
 
 if insights:
-    st.markdown('<div class="vd-kicker" style="margin-top:26px">Constats automatiques</div>',
-                unsafe_allow_html=True)
+    st.html('<div class="vd-kicker" style="margin-top:26px">Constats automatiques</div>')
     for note in insights:
         st.markdown(f"- {note}")
 
@@ -575,16 +582,15 @@ with tabs[1]:
         quality = quality_table(df).sort_values("Complétude %")
         for _, row in quality.head(10).iterrows():
             alert = " alert" if row["Complétude %"] < 90 else ""
-            st.markdown(
+            st.html(
                 f'<div class="vd-bar-label"><span>{row["Variable"]}</span>'
-                f'<span style="color:{NEUTRAL_600}">{row["Complétude %"]} %</span></div>'
+                f'<span style="color:{MUTED}">{row["Complétude %"]} %</span></div>'
                 f'<div class="vd-bar{alert}"><div style="width:{row["Complétude %"]}%"></div></div>'
-                '<div style="height:12px"></div>',
-                unsafe_allow_html=True,
+                '<div style="height:12px"></div>'
             )
         outliers = outlier_counts(df)
         if not outliers.empty:
-            st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
+            st.html('<hr class="vd-rule">')
             st.markdown("#### Valeurs extrêmes (méthode IQR)")
             st.dataframe(outliers, use_container_width=True, hide_index=True, height=220)
 
@@ -600,7 +606,7 @@ with tabs[2]:
         )
         correlations = top_correlations(df)
         if not correlations.empty:
-            st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
+            st.html('<hr class="vd-rule">')
             left, right = st.columns([1, 1.3], gap="large")
             with left:
                 st.markdown("#### Corrélations principales")
@@ -609,7 +615,7 @@ with tabs[2]:
                 st.markdown("#### Matrice de corrélation")
                 fig = px.imshow(
                     df[numeric_cols].corr(numeric_only=True).round(2),
-                    color_continuous_scale=["#f3f2f2", "#ff9783", ACCENT],
+                    color_continuous_scale=[WHITE, "#ff9783", INDIGO],
                     aspect="auto", text_auto=True,
                 )
                 fig.update_layout(coloraxis_showscale=False, height=380)
@@ -625,7 +631,7 @@ with tabs[3]:
             options.append("Série temporelle")
         chart_type = st.radio("Type de graphique", options, horizontal=True,
                               label_visibility="collapsed")
-        st.markdown('<hr class="vd-rule" style="margin:14px 0 20px">', unsafe_allow_html=True)
+        st.html('<hr class="vd-rule" style="margin:14px 0 20px">')
         controls, chart = st.columns([1, 2.4], gap="large")
 
         if chart_type == "Histogramme":
@@ -652,7 +658,7 @@ with tabs[3]:
                         df, x=x, y=y,
                         color=None if color == "Aucune" else color,
                         trendline="ols" if trend else None,
-                        trendline_color_override=TEXT,
+                        trendline_color_override=ORANGE,
                         opacity=0.75,
                     )
                     st.plotly_chart(fig, use_container_width=True)
@@ -679,7 +685,7 @@ with tabs[3]:
             )
             with chart:
                 fig = px.line(series, x=date_col, y=value_col, markers=True)
-                fig.update_traces(line_color=ACCENT, line_width=2)
+                fig.update_traces(line_color=INDIGO, line_width=2.5, marker_color=ORANGE)
                 st.plotly_chart(fig, use_container_width=True)
 
 # ── Assistant IA ─────────────────────────────────────────────────────────────
@@ -696,11 +702,11 @@ with tabs[4]:
 
         left, right = st.columns([1.6, 1], gap="large")
         with right:
-            st.markdown('<div class="vd-kicker">Questions suggérées</div>', unsafe_allow_html=True)
+            st.html('<div class="vd-kicker">Questions suggérées</div>')
             for index, suggestion in enumerate(SUGGESTIONS):
                 if st.button(suggestion, key=f"sugg_{index}", use_container_width=True):
                     st.session_state["vd_pending"] = suggestion
-            st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
+            st.html('<hr class="vd-rule">')
             st.caption(
                 f"Modèle {MODEL}. L'assistant ne voit qu'un résumé statistique et "
                 "un échantillon de 12 lignes — aucune donnée brute complète n'est envoyée."
@@ -715,9 +721,8 @@ with tabs[4]:
                 if message["role"] == "user":
                     st.markdown(f"**Question —** {message['content']}")
                 else:
-                    st.markdown(
-                        f'<div class="vd-answer">{message["content"]}</div>',
-                        unsafe_allow_html=True,
+                    st.html(
+                        f'<div class="vd-answer">{message["content"]}</div>'
                     )
 
             question = st.chat_input("Posez une question sur vos données…")
@@ -739,5 +744,5 @@ with tabs[4]:
                     history.pop()
                     st.error(f"Impossible d'obtenir l'analyse IA : {exc}")
 
-st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
-st.caption("VisualizeData Assistant · v2")
+st.html('<hr class="vd-rule">')
+st.caption("VisualizeData Assistant · un projet VisualizeData · Transformer les données en décisions")
