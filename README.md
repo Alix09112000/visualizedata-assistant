@@ -69,6 +69,20 @@ Typographie : **Sora** pour les titres, **Manrope** pour le texte. Signature : *
 - Remplacez l'URL `https://visualizedata-assistant.onrender.com` par l'URL Render réelle : elle apparaît dans le bouton de la barre de navigation et dans les deux liens de la section Assistant.
 - Le logo est un V construit en SVG inline (marine + indigo, point orange) : lisible en favicon et en noir et blanc. À remplacer par le logo final quand il sera dessiné.
 
+## Moteur d'analyse — alternatives à OpenAI
+
+L'onglet Assistant IA fonctionne **sans aucune clé** : le moteur « Analyse locale » rédige la réponse à partir des statistiques calculées sur place (aucune donnée ne quitte l'application). Pour une lecture rédigée, ajoutez la clé d'un fournisseur dans Render → Environment ; le moteur apparaît alors dans la barre latérale.
+
+| Fournisseur | Variable | Modèle par défaut | Remarque |
+| --- | --- | --- | --- |
+| OpenAI | `OPENAI_API_KEY` | gpt-4o-mini | Le plus complet, payant à l'usage |
+| Groq | `GROQ_API_KEY` | llama-3.3-70b-versatile | Palier gratuit généreux, très rapide |
+| Mistral | `MISTRAL_API_KEY` | mistral-small-latest | Hébergement européen, bon français |
+| Google Gemini | `GEMINI_API_KEY` | gemini-2.0-flash | Palier gratuit |
+| OpenRouter | `OPENROUTER_API_KEY` | llama-3.3-70b-instruct | Un compte, plusieurs modèles |
+
+Tous passent par la même bibliothèque `openai` (API compatible) : aucune dépendance supplémentaire.
+
 ## Connexion Google obligatoire
 
 L'application est fermée : aucun écran n'est accessible sans compte Google.

@@ -15,7 +15,10 @@ services:
     runtime: python
     rootDir: app
     buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run app.py --server.address 0.0.0.0 --server.port $PORT
+    startCommand: >-
+      mkdir -p .streamlit &&
+      cp /etc/secrets/secrets.toml .streamlit/secrets.toml &&
+      streamlit run app.py --server.address 0.0.0.0 --server.port $PORT
     envVars:
       - key: OPENAI_API_KEY
         sync: false
