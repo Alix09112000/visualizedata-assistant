@@ -296,16 +296,109 @@ SUGGESTIONS = [
 ]
 
 
-def openai_client() -> OpenAI | None:
-    key = os.getenv("OPENAI_API_KEY")
-    return OpenAI(api_key=key) if key else None
+# Fournisseurs compatibles OpenAI : une seule bibliothèque, plusieurs services.
+PROVIDERS = {
+    "OpenAI": {
+        "env": "OPENAI_API_KEY",
+        "base_url": None,
+        "model": "gpt-4o-mini",
+        "note": "Le plus complet. Payant à l'usage.",
+    },
+    "Groq": {
+        "env": "GROQ_API_KEY",
+        "base_url": "https://api.groq.com/openai/v1",
+        "model": "llama-3.3-70b-versatile",
+        "note": "Palier gratuit généreux, réponses très rapides.",
+    },
+    "Mistral": {
+        "env": "MISTRAL_API_KEY",
+        "base_url": "https://api.mistral.ai/v1",
+        "model": "mistral-small-latest",
+        "note": "Hébergement européen, bon français.",
+    },
+    "Google Gemini": {
+        "env": "GEMINI_API_KEY",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+        "model": "gemini-2.0-flash",
+        "note": "Palier gratuit, bonne tenue sur les tableaux.",
+    },
+    "OpenRouter": {
+        "env": "OPENROUTER_API_KEY",
+        "base_url": "https://openrouter.ai/api/v1",
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "note": "Un seul compte, de nombreux modèles.",
+    },
+}
 
 
-def ask_assistant(client: OpenAI, question: str, summary: str, history: list[dict]):
+def available_providers() -> dict:
+    return {name: cfg for name, cfg in PROVIDERS.items() if os.getenv(cfg["env"])}
+
+
+def make_client(provider: str):
+    cfg = PROVIDERS[provider]
+    kwargs = {"api_key": os.getenv(cfg["env"])}
+    if cfg["base_url"]:
+        kwargs["base_url"] = cfg["base_url"]
+    return OpenAI(**kwargs)
+
+
+def local_answer(df: pd.DataFrame, question: str) -> str:
+    """Analyse sans IA : rédige une réponse à partir des statistiques calculées."""
+    lines = ["**Analyse locale** — calculée sur vos données, sans service externe.", ""]
+    for note in auto_insights(df):
+        lines.append(f"- {note}")
+
+    numeric = df.select_dtypes(include="number")
+    words = question.lower()
+    target = next((c for c in df.columns if str(c).lower() in words), None)
+
+    if target is not None and target in numeric.columns:
+        series = df[target].dropna()
+        lines += [
+            "",
+            f"**{target}** — moyenne {series.mean():,.2f}, médiane {series.median():,.2f}, "
+            f"écart-type {series.std():,.2f}, minimum {series.min():,.2f}, maximum {series.max():,.2f}."
+            .replace(",", " "),
+        ]
+    elif target is not None:
+        counts = df[target].astype(str).value_counts().head(5)
+        lines += ["", f"**{target}** — cinq modalités les plus fréquentes :"]
+        lines += [f"- {k} : {v} occurrences" for k, v in counts.items()]
+    elif not numeric.empty:
+        top = numeric.mean().sort_values(ascending=False).head(3)
+        lines += ["", "Moyennes des principales variables numériques :"]
+        lines += [f"- {k} : {v:,.2f}".replace(",", " ") for k, v in top.items()]
+
+    dates = df.select_dtypes(include="datetime").columns.tolist()
+    if dates and not numeric.empty:
+        col, value = dates[0], numeric.columns[0]
+        monthly = (
+            df[[col, value]].dropna(subset=[col]).set_index(col)[value]
+            .resample("MS").sum()
+        )
+        if len(monthly) >= 2:
+            change = monthly.iloc[-1] - monthly.iloc[-2]
+            sense = "en hausse" if change > 0 else "en baisse"
+            lines += [
+                "",
+                f"Sur **{value}**, le dernier mois est {sense} de "
+                f"{abs(change):,.0f} par rapport au précédent.".replace(",", " "),
+            ]
+
+    lines += [
+        "",
+        "_Pour une lecture rédigée et des recommandations, activez un fournisseur IA "
+        "dans la barre latérale._",
+    ]
+    return "\n".join(lines)
+
+
+def ask_assistant(client: OpenAI, model: str, question: str, summary: str, history: list[dict]):
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     messages += [{"role": m["role"], "content": m["content"]} for m in history[-6:]]
     messages.append({"role": "user", "content": f"QUESTION:\n{question}\n\nDONNÉES RÉSUMÉES:\n{summary}"})
-    return client.chat.completions.create(model=MODEL, messages=messages, temperature=0.2, stream=True)
+    return client.chat.completions.create(model=model, messages=messages, temperature=0.2, stream=True)
 
 
 def markdown_report(df: pd.DataFrame, name: str, insights: list[str], history: list[dict]) -> str:
@@ -378,11 +471,24 @@ with st.sidebar:
             f'<span style="font-weight:700;color:{INDIGO}">{index}</span><span>{step}</span></div>'
         )
 
-    st.html('<div class="vd-kicker" style="margin-top:20px">Assistant IA</div>')
-    if os.getenv("OPENAI_API_KEY"):
-        st.html(f'<span class="vd-tag">{MODEL}</span>')
+    st.html('<div class="vd-kicker" style="margin-top:20px">Moteur d\'analyse</div>')
+    providers = available_providers()
+    engine_options = ["Analyse locale (sans clé)"] + list(providers)
+    engine = st.selectbox("Moteur", engine_options, label_visibility="collapsed")
+    if engine in providers:
+        st.html(f'<span class="vd-tag">{providers[engine]["model"]}</span>')
+        st.caption(providers[engine]["note"])
     else:
-        st.caption("OPENAI_API_KEY absente — assistant désactivé.")
+        st.caption(
+            "Réponses calculées sur place à partir de vos statistiques. "
+            "Aucune donnée ne sort de l'application."
+        )
+        if not providers:
+            st.caption(
+                "Pour des réponses rédigées, ajoutez une clé dans Render → Environment : "
+                "OPENAI_API_KEY, GROQ_API_KEY, MISTRAL_API_KEY, GEMINI_API_KEY "
+                "ou OPENROUTER_API_KEY."
+            )
 
 # ─────────────────────────────────────────────────────────────────────────────
 # En-tête
@@ -639,59 +745,65 @@ with tabs[3]:
 
 # ── Assistant IA ─────────────────────────────────────────────────────────────
 with tabs[4]:
-    client = openai_client()
-    if client is None:
-        st.warning(
-            "Ajoutez `OPENAI_API_KEY` dans les variables d'environnement de Render "
-            "pour activer l'assistant IA."
-        )
-    else:
-        history = st.session_state.setdefault("vd_history", [])
-        summary = build_dataset_summary(df)
+    history = st.session_state.setdefault("vd_history", [])
+    summary = build_dataset_summary(df)
+    use_ai = engine in providers
 
-        left, right = st.columns([1.6, 1], gap="large")
-        with right:
-            st.html('<div class="vd-kicker">Questions suggérées</div>')
-            for index, suggestion in enumerate(SUGGESTIONS):
-                if st.button(suggestion, key=f"sugg_{index}", use_container_width=True):
-                    st.session_state["vd_pending"] = suggestion
-            st.html('<hr class="vd-rule">')
+    left, right = st.columns([1.6, 1], gap="large")
+    with right:
+        st.html('<div class="vd-kicker">Questions suggérées</div>')
+        for index, suggestion in enumerate(SUGGESTIONS):
+            if st.button(suggestion, key=f"sugg_{index}", use_container_width=True):
+                st.session_state["vd_pending"] = suggestion
+        st.html('<hr class="vd-rule">')
+        if use_ai:
             st.caption(
-                f"Modèle {MODEL}. L'assistant ne voit qu'un résumé statistique et "
-                "un échantillon de 12 lignes — aucune donnée brute complète n'est envoyée."
+                f"{engine} · {providers[engine]['model']}. L'assistant ne reçoit qu'un résumé "
+                "statistique et un échantillon de 12 lignes — jamais le fichier complet."
             )
-            if history and st.button("Effacer la conversation"):
-                st.session_state["vd_history"] = []
-                st.rerun()
+        else:
+            st.caption(
+                "Analyse locale : les réponses sont calculées à partir de vos statistiques, "
+                "sans appel externe. Changez de moteur dans la barre latérale pour une "
+                "lecture rédigée."
+            )
+        if history and st.button("Effacer la conversation"):
+            st.session_state["vd_history"] = []
+            st.rerun()
 
-        with left:
-            st.markdown("#### Interroger les données")
-            for message in history:
-                if message["role"] == "user":
-                    st.markdown(f"**Question —** {message['content']}")
-                else:
-                    st.html(
-                        f'<div class="vd-answer">{message["content"]}</div>'
-                    )
+    with left:
+        st.markdown("#### Interroger les données")
+        for message in history:
+            if message["role"] == "user":
+                st.markdown(f"**Question —** {message['content']}")
+            else:
+                st.markdown(message["content"])
 
-            question = st.chat_input("Posez une question sur vos données…")
-            pending = st.session_state.pop("vd_pending", None)
-            question = question or pending
+        question = st.chat_input("Posez une question sur vos données…")
+        pending = st.session_state.pop("vd_pending", None)
+        question = question or pending
 
-            if question:
-                st.markdown(f"**Question —** {question}")
-                history.append({"role": "user", "content": question})
+        if question:
+            st.markdown(f"**Question —** {question}")
+            history.append({"role": "user", "content": question})
+            if use_ai:
                 try:
                     with st.spinner("Analyse en cours…"):
-                        stream = ask_assistant(client, question, summary, history[:-1])
+                        stream = ask_assistant(
+                            make_client(engine), providers[engine]["model"],
+                            question, summary, history[:-1],
+                        )
                         answer = st.write_stream(
-                            chunk.choices[0].delta.content or ""
-                            for chunk in stream
+                            chunk.choices[0].delta.content or "" for chunk in stream
                         )
                     history.append({"role": "assistant", "content": answer})
                 except Exception as exc:
                     history.pop()
-                    st.error(f"Impossible d'obtenir l'analyse IA : {exc}")
+                    st.error(f"Impossible d'obtenir l'analyse via {engine} : {exc}")
+            else:
+                answer = local_answer(df, question)
+                st.markdown(answer)
+                history.append({"role": "assistant", "content": answer})
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-3 · un projet VisualizeData · Transformer les données en décisions")
+st.caption("VisualizeData Assistant · build modernist-4 · connexion Google requise · un projet VisualizeData · Transformer les données en décisions")
