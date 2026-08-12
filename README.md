@@ -1,42 +1,56 @@
-# VisualizeData Assistant
+# VisualizeData
 
-MVP d'un assistant IA spécialisé en analyse de données.
+> Transformez vos données en décisions stratégiques.
 
-## Fonctionnalités
+## Structure du repo
 
-- Import CSV / Excel
-- Aperçu du dataset
-- Audit des valeurs manquantes et doublons
-- Statistiques descriptives
-- Visualisations Plotly
-- Questions en langage naturel avec l'API OpenAI
+```
+visualizedata/
+├── site/               ← Site vitrine HTML (Render Static Site)
+│   └── index.html
+├── app/                ← Assistant IA Streamlit (Render Web Service)
+│   ├── app.py
+│   ├── requirements.txt
+│   └── .python-version
+├── render.yaml         ← Config des 2 services Render
+├── .gitignore
+└── README.md
+```
+
+## Déploiement sur Render
+
+### 1. Pousser sur GitHub
+```bash
+git add .
+git commit -m "feat: site vitrine + assistant IA"
+git push origin main
+```
+
+### 2. Créer les services sur Render
+- Aller sur https://render.com
+- New → Blueprint → sélectionner ce repo
+- Render lit automatiquement `render.yaml` et crée les 2 services
+
+### 3. Configurer la clé OpenAI
+Dans Render > visualizedata-assistant > Environment :
+- `OPENAI_API_KEY` = votre clé OpenAI (ne jamais la mettre dans le code)
+
+### 4. Mettre à jour l'URL dans le site
+Une fois l'assistant déployé, copier son URL Render et remplacer dans `site/index.html` :
+```
+https://visualizedata-assistant.onrender.com
+```
+par votre vraie URL.
 
 ## Lancer localement
 
 ```bash
+cd app
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Déploiement Render
-
-Créez un **Web Service** à partir du dépôt GitHub.
-
-Build Command:
-
-```bash
-pip install -r requirements.txt
-```
-
-Start Command:
-
-```bash
-streamlit run app.py --server.address 0.0.0.0 --server.port $PORT
-```
-
-Ajoutez dans Render > Environment :
-
-- `OPENAI_API_KEY` : votre clé API OpenAI
-- `OPENAI_MODEL` : optionnel, par défaut `gpt-5-mini`
-
-Ne placez jamais votre clé API directement dans le code ou dans GitHub.
+## Stack
+- Python · Streamlit · Pandas · Plotly · OpenAI API
+- Site vitrine : HTML/CSS vanilla
+- Hébergement : Render (Static Site + Web Service)

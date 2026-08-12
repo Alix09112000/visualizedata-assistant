@@ -50,7 +50,6 @@ def load_data(file):
     name = file.name.lower()
     if name.endswith(".csv"):
         raw = file.getvalue()
-        # Try common encodings/separators.
         for encoding in ("utf-8", "latin-1"):
             try:
                 return pd.read_csv(io.BytesIO(raw), encoding=encoding, sep=None, engine="python")
@@ -62,25 +61,20 @@ def load_data(file):
 def build_dataset_summary(df):
     numeric = df.select_dtypes(include="number")
     categorical = df.select_dtypes(exclude="number")
-
     parts = [
         f"Dimensions: {df.shape[0]} lignes x {df.shape[1]} colonnes.",
         "Colonnes: " + ", ".join(map(str, df.columns)),
         "Types:\n" + df.dtypes.astype(str).to_string(),
         "Valeurs manquantes:\n" + df.isna().sum().to_string(),
     ]
-
     if not numeric.empty:
         parts.append("Statistiques numériques:\n" + numeric.describe().round(3).to_string())
-
     if not categorical.empty:
         cat_summary = []
         for col in categorical.columns[:10]:
             vals = df[col].astype(str).value_counts(dropna=False).head(8)
             cat_summary.append(f"{col}:\n{vals.to_string()}")
         parts.append("Principales modalités:\n" + "\n\n".join(cat_summary))
-
-    # Small sample only; avoids sending the whole dataset.
     parts.append("Échantillon:\n" + df.head(12).to_csv(index=False))
     return "\n\n".join(parts)
 
@@ -117,8 +111,7 @@ else:
     with tabs[0]:
         st.subheader("Aperçu du jeu de données")
         st.dataframe(df.head(100), use_container_width=True)
-        st.caption(f"Affichage des 100 premières lignes maximum.")
-
+        st.caption("Affichage des 100 premières lignes maximum.")
         st.subheader("Types de variables")
         types_df = pd.DataFrame({
             "Variable": df.columns.astype(str),
@@ -150,7 +143,6 @@ else:
         st.subheader("Exploration visuelle")
         numeric_cols = df.select_dtypes(include="number").columns.tolist()
         all_cols = df.columns.tolist()
-
         if numeric_cols:
             chart_type = st.selectbox("Type de graphique", ["Histogramme", "Nuage de points", "Boîte à moustaches"])
             if chart_type == "Histogramme":
@@ -179,7 +171,6 @@ else:
     with tabs[4]:
         st.subheader("Interroger les données")
         api_key = os.getenv("OPENAI_API_KEY")
-
         if not api_key:
             st.warning("Ajoutez OPENAI_API_KEY dans les variables d'environnement de Render pour activer l'assistant IA.")
         else:
@@ -195,18 +186,20 @@ else:
                         try:
                             client = OpenAI(api_key=api_key)
                             summary = build_dataset_summary(df)
-                            response = client.responses.create(
-                                model=os.getenv("OPENAI_MODEL", "gpt-5-mini"),
-                                instructions=(
-                                    "Tu es VisualizeData Assistant, un analyste de données professionnel. "
-                                    "Réponds en français, de manière claire et structurée. "
-                                    "Base tes conclusions uniquement sur le résumé statistique et l'échantillon fournis. "
-                                    "Ne prétends jamais avoir calculé une information absente. "
-                                    "Signale les limites de l'analyse lorsque nécessaire."
-                                ),
-                                input=f"QUESTION:\n{question}\n\nDONNÉES RÉSUMÉES:\n{summary}"
+                            response = client.chat.completions.create(
+                                model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+                                messages=[
+                                    {"role": "system", "content": (
+                                        "Tu es VisualizeData Assistant, un analyste de données professionnel. "
+                                        "Réponds en français, de manière claire et structurée. "
+                                        "Base tes conclusions uniquement sur le résumé statistique et l'échantillon fournis. "
+                                        "Ne prétends jamais avoir calculé une information absente. "
+                                        "Signale les limites de l'analyse lorsque nécessaire."
+                                    )},
+                                    {"role": "user", "content": f"QUESTION:\n{question}\n\nDONNÉES RÉSUMÉES:\n{summary}"}
+                                ]
                             )
-                            st.markdown(response.output_text)
+                            st.markdown(response.choices[0].message.content)
                         except Exception as e:
                             st.error(f"Impossible d'obtenir l'analyse IA : {e}")
 
