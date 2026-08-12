@@ -807,4 +807,4 @@ with tabs[4]:
                 history.append({"role": "assistant", "content": answer})
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-5 · un projet VisualizeData · Transformer les données en décisions")
+st.caption("VisualizeData Assistant · build modernist-6 · accès libre · un projet VisualizeData · Transformer les données en décisions")
