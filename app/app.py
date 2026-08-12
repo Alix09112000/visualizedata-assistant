@@ -60,132 +60,7 @@ pio.templates.default = "visualizedata"
 # CSS — applique l'identité VisualizeData à l'interface Streamlit
 # ─────────────────────────────────────────────────────────────────────────────
 st.html(
-    f"""
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root {{
-  --vd-navy:{NAVY}; --vd-indigo:{INDIGO}; --vd-orange:{ORANGE};
-  --vd-pale:{PALE}; --vd-ink:{INK}; --vd-muted:{MUTED}; --vd-line:{LINE};
-  --vd-r:{RADIUS};
-}}
-html, body, .stApp, [class*="css"] {{
-  font-family:'Archivo', system-ui, sans-serif;
-  background:{WHITE}; color:var(--vd-ink);
-}}
-h1,h2,h3,h4,h5,h6 {{
-  font-family:'Archivo', system-ui, sans-serif !important;
-  font-weight:800 !important; letter-spacing:-.02em; line-height:1.16;
-  color:var(--vd-navy);
-}}
-#MainMenu, footer, header [data-testid="stStatusWidget"] {{visibility:hidden}}
-.block-container {{padding-top:2rem; padding-bottom:4rem; max-width:1500px}}
-/* barre latérale */
-section[data-testid="stSidebar"] {{
-  background:var(--vd-pale); border-right:1px solid var(--vd-line);
-}}
-section[data-testid="stSidebar"] .block-container {{padding-top:1.5rem}}
-/* métriques */
-div[data-testid="stMetric"] {{
-  background:{WHITE}; padding:16px 18px;
-  border:1px solid var(--vd-line); border-radius:var(--vd-r);
-}}
-div[data-testid="stMetricLabel"] p {{
-  font-size:12px !important; font-weight:700; letter-spacing:.08em;
-  text-transform:uppercase; color:var(--vd-muted) !important;
-}}
-div[data-testid="stMetricValue"] {{
-  font-family:'Archivo', sans-serif; font-size:32px !important;
-  font-weight:600; color:var(--vd-navy);
-}}
-/* onglets */
-.stTabs [data-baseweb="tab-list"] {{gap:6px; border-bottom:1px solid var(--vd-line)}}
-.stTabs [data-baseweb="tab"] {{
-  background:transparent; padding:11px 16px; font-weight:600; color:var(--vd-muted);
-}}
-.stTabs [aria-selected="true"] {{
-  color:var(--vd-indigo) !important; box-shadow:inset 0 -2px 0 0 var(--vd-indigo);
-}}
-.stTabs [data-baseweb="tab-highlight"] {{background:transparent}}
-/* boutons */
-.stButton button, .stDownloadButton button, .stFormSubmitButton button {{
-  font-family:'Archivo', sans-serif; font-weight:700; font-size:15px;
-  border-radius:var(--vd-r); border:1px solid var(--vd-line);
-  background:{WHITE}; color:var(--vd-navy); padding:10px 18px;
-}}
-.stButton button:hover {{border-color:var(--vd-indigo); color:var(--vd-indigo)}}
-.stButton button[kind="primary"], .stDownloadButton button[kind="primary"],
-.stFormSubmitButton button[kind="primary"] {{
-  background:var(--vd-indigo); border-color:var(--vd-indigo); color:{WHITE};
-}}
-.stButton button[kind="primary"]:hover, .stDownloadButton button[kind="primary"]:hover {{
-  background:{INDIGO_DARK}; border-color:{INDIGO_DARK}; color:{WHITE};
-}}
-/* champs */
-.stTextInput input, .stTextArea textarea, .stNumberInput input,
-div[data-baseweb="select"] > div, .stChatInput textarea {{
-  background:{WHITE} !important; border:1px solid var(--vd-line) !important;
-  border-radius:var(--vd-r) !important; color:var(--vd-ink) !important;
-  font-family:'Archivo', sans-serif;
-}}
-.stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-indigo) !important}}
-*:focus-visible {{outline:2px solid var(--vd-indigo) !important; outline-offset:2px}}
-::selection {{background:rgba(79,70,229,.18)}}
-.stSlider [data-baseweb="slider"] div[role="slider"] {{background:var(--vd-indigo)}}
-/* import */
-section[data-testid="stFileUploaderDropzone"] {{
-  background:{WHITE}; border:1.5px dashed #C3D3F5; border-radius:var(--vd-r); padding:22px;
-}}
-/* tableaux */
-div[data-testid="stDataFrame"] {{
-  border:1px solid var(--vd-line); border-radius:var(--vd-r); overflow:hidden;
-}}
-/* éléments maison */
-.vd-rule {{height:1px; background:var(--vd-line); border:0; margin:24px 0}}
-.vd-kicker {{
-  font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--vd-indigo); margin-bottom:10px;
-}}
-.vd-hero {{
-  background:linear-gradient(180deg,var(--vd-pale) 0%,{WHITE} 100%);
-  border:1px solid var(--vd-line); border-radius:0;
-  padding:30px 32px; margin-bottom:22px;
-}}
-.vd-hero h1 {{font-size:34px; margin:0 0 8px}}
-.vd-hero p {{color:var(--vd-muted); max-width:70ch; margin:0}}
-.vd-answer {{
-  background:var(--vd-pale); border:1px solid var(--vd-line);
-  border-left:3px solid var(--vd-indigo); border-radius:var(--vd-r);
-  padding:16px 18px; margin:6px 0 14px;
-}}
-.vd-poster {{
-  background:var(--vd-navy); color:{WHITE};
-  border-radius:0; padding:30px;
-}}
-.vd-poster .q {{
-  font-family:'Archivo', sans-serif; font-weight:600; font-size:24px;
-  line-height:1.2; margin:0;
-}}
-.vd-poster .q em {{font-style:normal; color:var(--vd-orange)}}
-.vd-poster .row {{
-  display:flex; justify-content:space-between; padding:12px 0;
-  border-top:1px solid rgba(255,255,255,.16); font-size:14px;
-}}
-.vd-feature {{
-  border:1px solid var(--vd-line); border-radius:var(--vd-r);
-  padding:16px 18px; height:100%;
-}}
-.vd-feature b {{font-family:'Archivo', sans-serif; font-weight:600; display:block; margin-bottom:4px; color:var(--vd-navy)}}
-.vd-feature span {{color:var(--vd-muted); font-size:14px}}
-.vd-bar-label {{display:flex; justify-content:space-between; font-size:14px; margin-bottom:5px}}
-.vd-bar {{height:7px; background:var(--vd-pale); border-radius:0; overflow:hidden}}
-.vd-bar > div {{height:100%; background:var(--vd-indigo)}}
-.vd-bar.alert > div {{background:var(--vd-orange)}}
-.vd-tag {{
-  display:inline-block; font-size:12px; font-weight:700; padding:4px 12px;
-  border-radius:0; background:rgba(79,70,229,.12); color:var(--vd-indigo);
-}}
-</style>
-"""
+    f"""<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"> <style> :root {{ --vd-navy:{NAVY}; --vd-indigo:{INDIGO}; --vd-orange:{ORANGE}; --vd-pale:{PALE}; --vd-ink:{INK}; --vd-muted:{MUTED}; --vd-line:{LINE}; --vd-r:{RADIUS}; }} html, body, .stApp, [class*="css"] {{ font-family:'Archivo', system-ui, sans-serif; background:{WHITE}; color:var(--vd-ink); }} h1,h2,h3,h4,h5,h6 {{ font-family:'Archivo', system-ui, sans-serif !important; font-weight:800 !important; letter-spacing:-.02em; line-height:1.16; color:var(--vd-navy); }} #MainMenu, footer, header [data-testid="stStatusWidget"] {{visibility:hidden}} .block-container {{padding-top:2rem; padding-bottom:4rem; max-width:1500px}} section[data-testid="stSidebar"] {{ background:var(--vd-pale); border-right:1px solid var(--vd-line); }} section[data-testid="stSidebar"] .block-container {{padding-top:1.5rem}} div[data-testid="stMetric"] {{ background:{WHITE}; padding:16px 18px; border:1px solid var(--vd-line); border-radius:var(--vd-r); }} div[data-testid="stMetricLabel"] p {{ font-size:12px !important; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--vd-muted) !important; }} div[data-testid="stMetricValue"] {{ font-family:'Archivo', sans-serif; font-size:32px !important; font-weight:600; color:var(--vd-navy); }} .stTabs [data-baseweb="tab-list"] {{gap:6px; border-bottom:1px solid var(--vd-line)}} .stTabs [data-baseweb="tab"] {{ background:transparent; padding:11px 16px; font-weight:600; color:var(--vd-muted); }} .stTabs [aria-selected="true"] {{ color:var(--vd-indigo) !important; box-shadow:inset 0 -2px 0 0 var(--vd-indigo); }} .stTabs [data-baseweb="tab-highlight"] {{background:transparent}} .stButton button, .stDownloadButton button, .stFormSubmitButton button {{ font-family:'Archivo', sans-serif; font-weight:700; font-size:15px; border-radius:var(--vd-r); border:1px solid var(--vd-line); background:{WHITE}; color:var(--vd-navy); padding:10px 18px; }} .stButton button:hover {{border-color:var(--vd-indigo); color:var(--vd-indigo)}} .stButton button[kind="primary"], .stDownloadButton button[kind="primary"], .stFormSubmitButton button[kind="primary"] {{ background:var(--vd-indigo); border-color:var(--vd-indigo); color:{WHITE}; }} .stButton button[kind="primary"]:hover, .stDownloadButton button[kind="primary"]:hover {{ background:{INDIGO_DARK}; border-color:{INDIGO_DARK}; color:{WHITE}; }} .stTextInput input, .stTextArea textarea, .stNumberInput input, div[data-baseweb="select"] > div, .stChatInput textarea {{ background:{WHITE} !important; border:1px solid var(--vd-line) !important; border-radius:var(--vd-r) !important; color:var(--vd-ink) !important; font-family:'Archivo', sans-serif; }} .stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-indigo) !important}} *:focus-visible {{outline:2px solid var(--vd-indigo) !important; outline-offset:2px}} ::selection {{background:rgba(79,70,229,.18)}} .stSlider [data-baseweb="slider"] div[role="slider"] {{background:var(--vd-indigo)}} section[data-testid="stFileUploaderDropzone"] {{ background:{WHITE}; border:1.5px dashed #C3D3F5; border-radius:var(--vd-r); padding:22px; }} div[data-testid="stDataFrame"] {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); overflow:hidden; }} .vd-rule {{height:1px; background:var(--vd-line); border:0; margin:24px 0}} .vd-kicker {{ font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--vd-indigo); margin-bottom:10px; }} .vd-hero {{ background:linear-gradient(180deg,var(--vd-pale) 0%,{WHITE} 100%); border:1px solid var(--vd-line); border-radius:0; padding:30px 32px; margin-bottom:22px; }} .vd-hero h1 {{font-size:34px; margin:0 0 8px}} .vd-hero p {{color:var(--vd-muted); max-width:70ch; margin:0}} .vd-answer {{ background:var(--vd-pale); border:1px solid var(--vd-line); border-left:3px solid var(--vd-indigo); border-radius:var(--vd-r); padding:16px 18px; margin:6px 0 14px; }} .vd-poster {{ background:var(--vd-navy); color:{WHITE}; border-radius:0; padding:30px; }} .vd-poster .q {{ font-family:'Archivo', sans-serif; font-weight:600; font-size:24px; line-height:1.2; margin:0; }} .vd-poster .q em {{font-style:normal; color:var(--vd-orange)}} .vd-poster .row {{ display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid rgba(255,255,255,.16); font-size:14px; }} .vd-feature {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); padding:16px 18px; height:100%; }} .vd-feature b {{font-family:'Archivo', sans-serif; font-weight:600; display:block; margin-bottom:4px; color:var(--vd-navy)}} .vd-feature span {{color:var(--vd-muted); font-size:14px}} .vd-bar-label {{display:flex; justify-content:space-between; font-size:14px; margin-bottom:5px}} .vd-bar {{height:7px; background:var(--vd-pale); border-radius:0; overflow:hidden}} .vd-bar > div {{height:100%; background:var(--vd-indigo)}} .vd-bar.alert > div {{background:var(--vd-orange)}} .vd-tag {{ display:inline-block; font-size:12px; font-weight:700; padding:4px 12px; border-radius:0; background:rgba(79,70,229,.12); color:var(--vd-indigo); }} </style>"""
 )
 
 
@@ -286,7 +161,9 @@ def auto_insights(df: pd.DataFrame) -> list[str]:
         )
     duplicates = int(df.duplicated().sum())
     if duplicates:
-        notes.append(f"{duplicates} lignes strictement identiques ont été détectées.")
+        mot = "ligne" if duplicates == 1 else "lignes"
+        verbe = "a été détectée" if duplicates == 1 else "ont été détectées"
+        notes.append(f"{duplicates} {mot} strictement {'identique' if duplicates == 1 else 'identiques'} {verbe}.")
     outliers = outlier_counts(df)
     if not outliers.empty and outliers.iloc[0]["Valeurs extrêmes"] > 0:
         row = outliers.iloc[0]
@@ -745,4 +622,4 @@ with tabs[4]:
                     st.error(f"Impossible d'obtenir l'analyse IA : {exc}")
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · un projet VisualizeData · Transformer les données en décisions")
+st.caption("VisualizeData Assistant · build modernist-3 · un projet VisualizeData · Transformer les données en décisions")
