@@ -1,207 +1,743 @@
-import os
 import io
+import os
+from datetime import datetime
+
 import pandas as pd
-import streamlit as st
 import plotly.express as px
+import plotly.graph_objects as go
+import plotly.io as pio
+import streamlit as st
 from openai import OpenAI
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Design tokens (design system Modernist)
+# ─────────────────────────────────────────────────────────────────────────────
+BG = "#f3f2f2"
+SURFACE = "#eae9e9"
+TEXT = "#201e1d"
+ACCENT = "#ec3013"
+ACCENT_600 = "#dd2b0f"
+NEUTRAL_400 = "#bab6b6"
+NEUTRAL_600 = "#7d7979"
+DIVIDER = "rgba(32,30,29,.40)"
+
+MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+MAX_PREVIEW_ROWS = 200
 
 st.set_page_config(
     page_title="VisualizeData Assistant",
-    page_icon="📊",
-    layout="wide"
+    page_icon="▮",
+    layout="wide",
+    initial_sidebar_state="expanded",
 )
 
-st.markdown("""
+# ─────────────────────────────────────────────────────────────────────────────
+# Thème Plotly : à plat, un seul accent, pas d'arrondi
+# ─────────────────────────────────────────────────────────────────────────────
+pio.templates["modernist"] = go.layout.Template(
+    layout=go.Layout(
+        font=dict(family="Archivo, system-ui, sans-serif", size=13, color=TEXT),
+        paper_bgcolor=BG,
+        plot_bgcolor=BG,
+        colorway=[ACCENT, TEXT, NEUTRAL_600, NEUTRAL_400, ACCENT_600, "#9e3526"],
+        margin=dict(l=48, r=24, t=32, b=48),
+        xaxis=dict(showgrid=False, linecolor=DIVIDER, linewidth=2, ticks="outside",
+                   tickcolor=DIVIDER, zeroline=False),
+        yaxis=dict(gridcolor="rgba(32,30,29,.12)", linecolor=DIVIDER, linewidth=2,
+                   zeroline=False),
+        bargap=0.08,
+        hoverlabel=dict(bgcolor=TEXT, font=dict(color=BG, family="Archivo")),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0,
+                    bgcolor="rgba(0,0,0,0)"),
+    )
+)
+pio.templates.default = "modernist"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CSS : applique le design system à l'interface Streamlit
+# ─────────────────────────────────────────────────────────────────────────────
+st.markdown(
+    f"""
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-.block-container {padding-top: 2rem; padding-bottom: 3rem;}
-[data-testid="stMetricValue"] {font-size: 1.6rem;}
-.hero {
-    padding: 1.4rem 1.6rem;
-    border: 1px solid rgba(128,128,128,.25);
-    border-radius: 18px;
-    margin-bottom: 1.2rem;
-}
-.small {opacity: .75;}
+:root {{
+  --vd-bg:{BG}; --vd-surface:{SURFACE}; --vd-text:{TEXT};
+  --vd-accent:{ACCENT}; --vd-divider:{DIVIDER};
+}}
+html, body, [class*="css"], .stApp {{
+  font-family:'Archivo', system-ui, sans-serif;
+  background:var(--vd-bg); color:var(--vd-text);
+}}
+h1,h2,h3,h4,h5,h6 {{
+  font-family:'Archivo', system-ui, sans-serif !important;
+  font-weight:800 !important; letter-spacing:-.015em; line-height:1.12;
+}}
+#MainMenu, footer, header [data-testid="stStatusWidget"] {{visibility:hidden}}
+.block-container {{padding-top:2.2rem; padding-bottom:4rem; max-width:1500px}}
+
+/* aucun angle arrondi nulle part */
+.stApp *, .stApp *::before, .stApp *::after {{border-radius:0 !important}}
+
+/* barre latérale : filet vertical fort */
+section[data-testid="stSidebar"] {{
+  background:var(--vd-bg); border-right:2px solid var(--vd-divider);
+}}
+section[data-testid="stSidebar"] .block-container {{padding-top:1.6rem}}
+
+/* métriques : cellules de grille séparées par des filets */
+div[data-testid="stMetric"] {{
+  background:var(--vd-bg); padding:16px 20px;
+  border-top:2px solid var(--vd-divider); border-bottom:2px solid var(--vd-divider);
+  border-right:1px solid var(--vd-divider);
+}}
+div[data-testid="stMetricLabel"] p {{
+  font-size:11px !important; letter-spacing:.1em; text-transform:uppercase;
+  color:{NEUTRAL_600} !important;
+}}
+div[data-testid="stMetricValue"] {{
+  font-size:34px !important; font-weight:800; line-height:1.05;
+}}
+
+/* onglets : soulignement accent, libellés à plat */
+.stTabs [data-baseweb="tab-list"] {{
+  gap:4px; border-bottom:2px solid var(--vd-divider);
+}}
+.stTabs [data-baseweb="tab"] {{
+  background:transparent; padding:12px 18px; font-weight:600;
+}}
+.stTabs [aria-selected="true"] {{
+  color:var(--vd-accent) !important;
+  box-shadow:inset 0 -2px 0 0 var(--vd-accent);
+}}
+.stTabs [data-baseweb="tab-highlight"] {{background:transparent}}
+
+/* boutons : libellé aligné à gauche, remplissage accent */
+.stButton button, .stDownloadButton button, .stFormSubmitButton button {{
+  font-family:'Archivo', sans-serif; font-weight:800; font-size:14px;
+  border:1px solid var(--vd-divider); background:transparent; color:var(--vd-text);
+  justify-content:flex-start; text-align:left; padding:8px 14px;
+}}
+.stButton button[kind="primary"], .stDownloadButton button[kind="primary"],
+.stFormSubmitButton button[kind="primary"] {{
+  background:var(--vd-accent); border-color:var(--vd-accent); color:var(--vd-bg);
+}}
+.stButton button[kind="primary"]:hover {{background:{ACCENT_600}; border-color:{ACCENT_600}}}
+.stButton button:hover {{background:rgba(32,30,29,.07)}}
+
+/* champs */
+.stTextInput input, .stTextArea textarea, .stNumberInput input,
+div[data-baseweb="select"] > div {{
+  background:var(--vd-surface) !important; border:1px solid var(--vd-divider) !important;
+  color:var(--vd-text) !important; font-family:'Archivo', sans-serif;
+}}
+.stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-accent) !important}}
+*:focus-visible {{outline:2px solid var(--vd-accent) !important; outline-offset:2px}}
+::selection {{background:rgba(236,48,19,.3)}}
+
+/* zone d'import */
+section[data-testid="stFileUploaderDropzone"] {{
+  background:var(--vd-bg); border:2px dashed var(--vd-divider); padding:28px;
+}}
+
+/* tableaux */
+div[data-testid="stDataFrame"] {{border:1px solid var(--vd-divider)}}
+
+/* filets et blocs maison */
+.vd-rule {{height:2px; background:var(--vd-divider); border:0; margin:26px 0}}
+.vd-kicker {{
+  font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--vd-accent); margin-bottom:8px;
+}}
+.vd-hero {{border-bottom:2px solid var(--vd-divider); padding-bottom:26px; margin-bottom:6px}}
+.vd-hero h1 {{font-size:40px; margin:0 0 8px}}
+.vd-hero p {{color:{NEUTRAL_600}; max-width:62ch; margin:0}}
+.vd-answer {{border-left:2px solid var(--vd-accent); padding:2px 0 2px 16px; margin:4px 0 8px}}
+.vd-poster {{background:var(--vd-accent); color:var(--vd-bg); padding:32px}}
+.vd-poster .q {{font-weight:800; font-size:26px; line-height:1.12; margin:0}}
+.vd-poster .row {{
+  display:flex; justify-content:space-between; padding:11px 0;
+  border-top:2px solid rgba(243,242,242,.5); font-size:13px;
+}}
+.vd-feature {{border-top:2px solid var(--vd-divider); padding:14px 0 0}}
+.vd-feature b {{font-weight:800; display:block; margin-bottom:2px}}
+.vd-feature span {{color:{NEUTRAL_600}; font-size:13px}}
+.vd-bar-label {{display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px}}
+.vd-bar {{height:6px; background:#d7d3d3}}
+.vd-bar > div {{height:100%; background:var(--vd-text)}}
+.vd-bar.alert > div {{background:var(--vd-accent)}}
+.vd-tag {{
+  display:inline-block; font-size:11px; padding:3px 10px; margin-right:6px;
+  background:#fff2ef; color:#7c1405;
+}}
 </style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="hero">
-  <h1>VisualizeData Assistant</h1>
-  <p class="small">Transformez vos données en analyses, visualisations et décisions intelligentes.</p>
-</div>
-""", unsafe_allow_html=True)
-
-with st.sidebar:
-    st.header("VisualizeData")
-    st.caption("AI-powered Data Analytics")
-    st.divider()
-    st.write("1. Importez un fichier")
-    st.write("2. Explorez les indicateurs")
-    st.write("3. Visualisez les données")
-    st.write("4. Interrogez vos données avec l'IA")
-
-uploaded_file = st.file_uploader(
-    "Importer un fichier CSV ou Excel",
-    type=["csv", "xlsx", "xls"]
+""",
+    unsafe_allow_html=True,
 )
 
-def load_data(file):
-    name = file.name.lower()
-    if name.endswith(".csv"):
-        raw = file.getvalue()
-        for encoding in ("utf-8", "latin-1"):
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Chargement des données
+# ─────────────────────────────────────────────────────────────────────────────
+@st.cache_data(show_spinner=False)
+def load_data(raw: bytes, name: str, sheet: str | None = None) -> pd.DataFrame:
+    lower = name.lower()
+    if lower.endswith(".csv"):
+        last_error: Exception | None = None
+        for encoding in ("utf-8", "utf-8-sig", "latin-1"):
             try:
                 return pd.read_csv(io.BytesIO(raw), encoding=encoding, sep=None, engine="python")
-            except Exception:
-                pass
-        raise ValueError("Impossible de lire ce fichier CSV.")
-    return pd.read_excel(file)
+            except Exception as exc:  # séparateur ou encodage incompatible
+                last_error = exc
+        raise ValueError(f"Impossible de lire ce fichier CSV : {last_error}")
+    return pd.read_excel(io.BytesIO(raw), sheet_name=sheet or 0)
 
-def build_dataset_summary(df):
+
+@st.cache_data(show_spinner=False)
+def excel_sheets(raw: bytes) -> list[str]:
+    return pd.ExcelFile(io.BytesIO(raw)).sheet_names
+
+
+def coerce_dates(df: pd.DataFrame) -> pd.DataFrame:
+    """Convertit en datetime les colonnes texte qui ressemblent à des dates."""
+    out = df.copy()
+    for col in out.select_dtypes(include="object").columns:
+        sample = out[col].dropna().astype(str).head(50)
+        if sample.empty:
+            continue
+        parsed = pd.to_datetime(sample, errors="coerce", format="mixed", dayfirst=False)
+        if parsed.notna().mean() > 0.85:
+            out[col] = pd.to_datetime(out[col], errors="coerce", format="mixed")
+    return out
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Analyse automatique
+# ─────────────────────────────────────────────────────────────────────────────
+def quality_table(df: pd.DataFrame) -> pd.DataFrame:
+    return pd.DataFrame(
+        {
+            "Variable": df.columns.astype(str),
+            "Type": df.dtypes.astype(str).values,
+            "Manquants": [int(df[c].isna().sum()) for c in df.columns],
+            "% manquant": [round(df[c].isna().mean() * 100, 2) for c in df.columns],
+            "Complétude %": [round(df[c].notna().mean() * 100, 1) for c in df.columns],
+            "Uniques": [int(df[c].nunique(dropna=True)) for c in df.columns],
+        }
+    )
+
+
+def outlier_counts(df: pd.DataFrame) -> pd.DataFrame:
+    rows = []
+    for col in df.select_dtypes(include="number").columns:
+        series = df[col].dropna()
+        if series.empty:
+            continue
+        q1, q3 = series.quantile([0.25, 0.75])
+        iqr = q3 - q1
+        if iqr == 0:
+            count = 0
+        else:
+            count = int(((series < q1 - 1.5 * iqr) | (series > q3 + 1.5 * iqr)).sum())
+        rows.append({"Variable": col, "Valeurs extrêmes": count,
+                     "% du total": round(count / max(len(series), 1) * 100, 2)})
+    return pd.DataFrame(rows).sort_values("Valeurs extrêmes", ascending=False)
+
+
+def top_correlations(df: pd.DataFrame, limit: int = 5) -> pd.DataFrame:
     numeric = df.select_dtypes(include="number")
-    categorical = df.select_dtypes(exclude="number")
+    if numeric.shape[1] < 2:
+        return pd.DataFrame()
+    corr = numeric.corr(numeric_only=True).abs()
+    stacked = corr.mask(corr.ge(0.999)).stack().sort_values(ascending=False)
+    seen, rows = set(), []
+    for (a, b), value in stacked.items():
+        key = frozenset((a, b))
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append({"Variable A": a, "Variable B": b, "Corrélation |r|": round(float(value), 3)})
+        if len(rows) == limit:
+            break
+    return pd.DataFrame(rows)
+
+
+def auto_insights(df: pd.DataFrame) -> list[str]:
+    notes: list[str] = []
+    quality = quality_table(df)
+    worst = quality.sort_values("% manquant", ascending=False).iloc[0]
+    if worst["% manquant"] > 5:
+        notes.append(
+            f"**{worst['Variable']}** est incomplète à {worst['% manquant']} % — "
+            "les analyses par cette variable resteront partielles."
+        )
+    duplicates = int(df.duplicated().sum())
+    if duplicates:
+        notes.append(f"{duplicates} lignes strictement identiques ont été détectées.")
+    outliers = outlier_counts(df)
+    if not outliers.empty and outliers.iloc[0]["Valeurs extrêmes"] > 0:
+        row = outliers.iloc[0]
+        notes.append(
+            f"**{row['Variable']}** contient {int(row['Valeurs extrêmes'])} valeurs extrêmes "
+            f"({row['% du total']} % des observations)."
+        )
+    correlations = top_correlations(df, limit=1)
+    if not correlations.empty:
+        row = correlations.iloc[0]
+        notes.append(
+            f"Corrélation la plus forte : **{row['Variable A']}** et **{row['Variable B']}** "
+            f"(|r| = {row['Corrélation |r|']})."
+        )
+    dates = df.select_dtypes(include="datetime").columns.tolist()
+    if dates:
+        series = df[dates[0]].dropna()
+        if not series.empty:
+            notes.append(
+                f"Période couverte par **{dates[0]}** : "
+                f"{series.min():%d/%m/%Y} → {series.max():%d/%m/%Y}."
+            )
+    return notes
+
+
+def build_dataset_summary(df: pd.DataFrame) -> str:
+    numeric = df.select_dtypes(include="number")
+    categorical = df.select_dtypes(exclude=["number", "datetime"])
     parts = [
         f"Dimensions: {df.shape[0]} lignes x {df.shape[1]} colonnes.",
         "Colonnes: " + ", ".join(map(str, df.columns)),
         "Types:\n" + df.dtypes.astype(str).to_string(),
         "Valeurs manquantes:\n" + df.isna().sum().to_string(),
+        f"Lignes dupliquées: {int(df.duplicated().sum())}",
     ]
     if not numeric.empty:
         parts.append("Statistiques numériques:\n" + numeric.describe().round(3).to_string())
+        correlations = top_correlations(df)
+        if not correlations.empty:
+            parts.append("Corrélations principales:\n" + correlations.to_string(index=False))
+        outliers = outlier_counts(df)
+        if not outliers.empty:
+            parts.append("Valeurs extrêmes (IQR):\n" + outliers.head(8).to_string(index=False))
     if not categorical.empty:
-        cat_summary = []
+        blocks = []
         for col in categorical.columns[:10]:
-            vals = df[col].astype(str).value_counts(dropna=False).head(8)
-            cat_summary.append(f"{col}:\n{vals.to_string()}")
-        parts.append("Principales modalités:\n" + "\n\n".join(cat_summary))
+            counts = df[col].astype(str).value_counts(dropna=False).head(8)
+            blocks.append(f"{col}:\n{counts.to_string()}")
+        parts.append("Principales modalités:\n" + "\n\n".join(blocks))
+    for col in df.select_dtypes(include="datetime").columns[:2]:
+        series = df[col].dropna()
+        if not series.empty:
+            parts.append(f"Plage de {col}: {series.min()} → {series.max()}")
     parts.append("Échantillon:\n" + df.head(12).to_csv(index=False))
     return "\n\n".join(parts)
 
+
+SYSTEM_PROMPT = (
+    "Tu es VisualizeData Assistant, un analyste de données professionnel qui conseille "
+    "des dirigeants de PME. Réponds en français, de façon structurée et concise : "
+    "constat, chiffre à l'appui, implication opérationnelle. "
+    "Base tes conclusions uniquement sur le résumé statistique et l'échantillon fournis. "
+    "Ne prétends jamais avoir calculé une information absente et signale les limites "
+    "de l'analyse (données manquantes, échantillon partiel) quand elles pèsent sur la réponse. "
+    "Termine par une seule recommandation actionnable."
+)
+
+SUGGESTIONS = [
+    "Quelles sont les tendances principales et les anomalies à surveiller ?",
+    "Quelles variables expliquent le mieux les écarts observés ?",
+    "Quelles données faudrait-il compléter en priorité ?",
+]
+
+
+def openai_client() -> OpenAI | None:
+    key = os.getenv("OPENAI_API_KEY")
+    return OpenAI(api_key=key) if key else None
+
+
+def ask_assistant(client: OpenAI, question: str, summary: str, history: list[dict]):
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    messages += [{"role": m["role"], "content": m["content"]} for m in history[-6:]]
+    messages.append({"role": "user", "content": f"QUESTION:\n{question}\n\nDONNÉES RÉSUMÉES:\n{summary}"})
+    return client.chat.completions.create(model=MODEL, messages=messages, temperature=0.2, stream=True)
+
+
+def markdown_report(df: pd.DataFrame, name: str, insights: list[str], history: list[dict]) -> str:
+    lines = [
+        f"# VisualizeData — rapport d'analyse",
+        f"Fichier : **{name}** · généré le {datetime.now():%d/%m/%Y à %H:%M}",
+        "",
+        "## Vue d'ensemble",
+        f"- Lignes : {df.shape[0]}",
+        f"- Colonnes : {df.shape[1]}",
+        f"- Valeurs manquantes : {int(df.isna().sum().sum())}",
+        f"- Doublons : {int(df.duplicated().sum())}",
+        "",
+        "## Constats automatiques",
+    ]
+    lines += [f"- {note}" for note in insights] or ["- Aucun signal notable."]
+    lines += ["", "## Qualité des données", quality_table(df).to_markdown(index=False)]
+    numeric = df.select_dtypes(include="number")
+    if not numeric.empty:
+        lines += ["", "## Statistiques descriptives",
+                  numeric.describe().T.round(3).to_markdown()]
+    if history:
+        lines += ["", "## Échanges avec l'assistant"]
+        for message in history:
+            role = "Question" if message["role"] == "user" else "Assistant"
+            lines += [f"**{role} —** {message['content']}", ""]
+    return "\n".join(lines)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Barre latérale
+# ─────────────────────────────────────────────────────────────────────────────
+with st.sidebar:
+    st.markdown("#### VisualizeData")
+    st.caption("AI-powered Data Analytics")
+    st.markdown('<hr class="vd-rule" style="margin:14px 0">', unsafe_allow_html=True)
+
+    uploaded_file = st.file_uploader(
+        "Fichier CSV ou Excel", type=["csv", "xlsx", "xls"], label_visibility="collapsed"
+    )
+
+    sheet_name = None
+    if uploaded_file is not None and not uploaded_file.name.lower().endswith(".csv"):
+        sheets = excel_sheets(uploaded_file.getvalue())
+        if len(sheets) > 1:
+            sheet_name = st.selectbox("Feuille", sheets)
+
+    st.markdown('<div class="vd-kicker" style="margin-top:20px">Parcours</div>', unsafe_allow_html=True)
+    for index, step in enumerate(
+        ["Importer un fichier", "Explorer les indicateurs",
+         "Visualiser les données", "Interroger avec l'IA"], start=1
+    ):
+        st.markdown(
+            f'<div style="display:flex;gap:12px;padding:9px 0;'
+            f'border-bottom:1px solid {DIVIDER};font-size:14px">'
+            f'<span style="font-weight:800;color:{ACCENT}">{index}</span><span>{step}</span></div>',
+            unsafe_allow_html=True,
+        )
+
+    st.markdown('<div class="vd-kicker" style="margin-top:20px">Assistant IA</div>', unsafe_allow_html=True)
+    if os.getenv("OPENAI_API_KEY"):
+        st.markdown(f'<span class="vd-tag">{MODEL}</span>', unsafe_allow_html=True)
+    else:
+        st.caption("OPENAI_API_KEY absente — assistant désactivé.")
+
+# ─────────────────────────────────────────────────────────────────────────────
+# En-tête
+# ─────────────────────────────────────────────────────────────────────────────
+st.markdown(
+    """
+<div class="vd-hero">
+  <div class="vd-kicker">Assistant IA</div>
+  <h1>Transformez vos données en décisions</h1>
+  <p>Importez un fichier CSV ou Excel : audit de qualité, statistiques descriptives,
+  visualisations et réponses en langage naturel — sans Python ni SQL.</p>
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# État d'accueil
+# ─────────────────────────────────────────────────────────────────────────────
 if uploaded_file is None:
-    st.info("Commencez par importer un fichier CSV ou Excel.")
-    st.markdown("### Fonctionnalités de cette version")
-    st.write("• Audit rapide des données")
-    st.write("• Statistiques descriptives")
-    st.write("• Analyse des valeurs manquantes et doublons")
-    st.write("• Visualisations interactives")
-    st.write("• Questions en langage naturel avec OpenAI")
-else:
-    try:
-        df = load_data(uploaded_file)
-    except Exception as e:
-        st.error(f"Erreur de lecture : {e}")
-        st.stop()
+    left, right = st.columns([1.15, 1], gap="large")
+    with left:
+        st.markdown('<div class="vd-kicker" style="margin-top:26px">Pour commencer</div>',
+                    unsafe_allow_html=True)
+        st.markdown("#### Déposez un fichier dans la barre latérale")
+        st.caption("CSV, XLSX ou XLS · séparateur et encodage détectés automatiquement.")
+        st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
+        features = [
+            ("Audit rapide", "Manquants, doublons, types, modalités, valeurs extrêmes."),
+            ("Statistiques descriptives", "Moyennes, écarts, quantiles par variable."),
+            ("Visualisations", "Histogramme, nuage de points, boîte, séries temporelles."),
+            ("Questions en langage naturel", "Conversation suivie, sources rappelées."),
+        ]
+        cols = st.columns(2, gap="large")
+        for index, (title, description) in enumerate(features):
+            with cols[index % 2]:
+                st.markdown(
+                    f'<div class="vd-feature"><b>{title}</b><span>{description}</span></div>',
+                    unsafe_allow_html=True,
+                )
+    with right:
+        st.markdown(
+            """
+<div class="vd-poster">
+  <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:14px">Exemple de sortie</div>
+  <p class="q">« Le canal revendeur recule de 9 % pendant que le direct progresse. »</p>
+  <div style="margin-top:34px">
+    <div class="row"><span style="opacity:.85">Fichiers acceptés</span><span style="font-weight:800">CSV · XLSX · XLS</span></div>
+    <div class="row"><span style="opacity:.85">Temps moyen d'analyse</span><span style="font-weight:800">&lt; 5 s</span></div>
+    <div class="row"><span style="opacity:.85">Installation</span><span style="font-weight:800">Aucune</span></div>
+  </div>
+</div>
+""",
+            unsafe_allow_html=True,
+        )
+    st.stop()
 
-    if df.empty:
-        st.warning("Le fichier ne contient aucune donnée.")
-        st.stop()
+# ─────────────────────────────────────────────────────────────────────────────
+# Lecture du fichier
+# ─────────────────────────────────────────────────────────────────────────────
+try:
+    df = load_data(uploaded_file.getvalue(), uploaded_file.name, sheet_name)
+except Exception as exc:
+    st.error(f"Erreur de lecture : {exc}")
+    st.stop()
 
-    missing = int(df.isna().sum().sum())
-    duplicates = int(df.duplicated().sum())
+if df.empty:
+    st.warning("Le fichier ne contient aucune donnée.")
+    st.stop()
 
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Lignes", f"{df.shape[0]:,}".replace(",", " "))
-    c2.metric("Colonnes", df.shape[1])
-    c3.metric("Valeurs manquantes", missing)
-    c4.metric("Doublons", duplicates)
+df = coerce_dates(df)
+numeric_cols = df.select_dtypes(include="number").columns.tolist()
+date_cols = df.select_dtypes(include="datetime").columns.tolist()
+all_cols = df.columns.tolist()
+missing_total = int(df.isna().sum().sum())
+duplicates_total = int(df.duplicated().sum())
+completeness = round(df.notna().mean().mean() * 100, 1)
+insights = auto_insights(df)
 
-    tabs = st.tabs(["Aperçu", "Qualité", "Statistiques", "Visualisations", "Assistant IA"])
+if st.session_state.get("vd_file") != (uploaded_file.name, sheet_name):
+    st.session_state["vd_file"] = (uploaded_file.name, sheet_name)
+    st.session_state["vd_history"] = []
 
-    with tabs[0]:
-        st.subheader("Aperçu du jeu de données")
-        st.dataframe(df.head(100), use_container_width=True)
-        st.caption("Affichage des 100 premières lignes maximum.")
-        st.subheader("Types de variables")
-        types_df = pd.DataFrame({
-            "Variable": df.columns.astype(str),
-            "Type": df.dtypes.astype(str).values,
-            "Valeurs uniques": [df[c].nunique(dropna=True) for c in df.columns]
-        })
-        st.dataframe(types_df, use_container_width=True, hide_index=True)
+file_line, action = st.columns([3, 1])
+with file_line:
+    st.markdown(
+        f'<div style="padding:14px 0 0"><b style="font-weight:800">{uploaded_file.name}</b>'
+        f'<span style="color:{NEUTRAL_600}"> · {df.shape[0]:,} lignes · {df.shape[1]} colonnes'
+        f' · complétude {completeness} %</span></div>'.replace(",", " "),
+        unsafe_allow_html=True,
+    )
+with action:
+    st.download_button(
+        "Exporter le rapport",
+        data=markdown_report(df, uploaded_file.name, insights,
+                             st.session_state.get("vd_history", [])),
+        file_name=f"rapport_{uploaded_file.name.rsplit('.', 1)[0]}.md",
+        mime="text/markdown",
+        type="primary",
+        use_container_width=True,
+    )
 
-    with tabs[1]:
-        st.subheader("Qualité des données")
-        quality = pd.DataFrame({
-            "Variable": df.columns.astype(str),
-            "Valeurs manquantes": [int(df[c].isna().sum()) for c in df.columns],
-            "% manquant": [round(df[c].isna().mean() * 100, 2) for c in df.columns],
-            "Valeurs uniques": [int(df[c].nunique(dropna=True)) for c in df.columns]
-        })
-        st.dataframe(quality, use_container_width=True, hide_index=True)
-        st.write(f"**Doublons détectés :** {duplicates}")
+m1, m2, m3, m4 = st.columns(4, gap="small")
+m1.metric("Lignes", f"{df.shape[0]:,}".replace(",", " "))
+m2.metric("Colonnes", df.shape[1])
+m3.metric("Valeurs manquantes", f"{missing_total:,}".replace(",", " "))
+m4.metric("Doublons", duplicates_total)
 
-    with tabs[2]:
-        st.subheader("Statistiques descriptives")
-        numeric = df.select_dtypes(include="number")
-        if numeric.empty:
-            st.info("Aucune variable numérique détectée.")
-        else:
-            st.dataframe(numeric.describe().T, use_container_width=True)
+if insights:
+    st.markdown('<div class="vd-kicker" style="margin-top:26px">Constats automatiques</div>',
+                unsafe_allow_html=True)
+    for note in insights:
+        st.markdown(f"- {note}")
 
-    with tabs[3]:
-        st.subheader("Exploration visuelle")
-        numeric_cols = df.select_dtypes(include="number").columns.tolist()
-        all_cols = df.columns.tolist()
-        if numeric_cols:
-            chart_type = st.selectbox("Type de graphique", ["Histogramme", "Nuage de points", "Boîte à moustaches"])
-            if chart_type == "Histogramme":
-                x = st.selectbox("Variable", numeric_cols)
-                fig = px.histogram(df, x=x)
+tabs = st.tabs(["Aperçu", "Qualité", "Statistiques", "Visualisations", "Assistant IA"])
+
+# ── Aperçu ───────────────────────────────────────────────────────────────────
+with tabs[0]:
+    st.markdown("#### Aperçu du jeu de données")
+    st.dataframe(df.head(MAX_PREVIEW_ROWS), use_container_width=True, height=420)
+    st.caption(f"{MAX_PREVIEW_ROWS} premières lignes affichées.")
+
+    left, right = st.columns([1, 1], gap="large")
+    with left:
+        st.markdown("#### Types de variables")
+        st.dataframe(
+            quality_table(df)[["Variable", "Type", "Uniques"]],
+            use_container_width=True, hide_index=True, height=320,
+        )
+    with right:
+        st.markdown("#### Données exportables")
+        st.caption("Le fichier lu, dédoublonné, prêt à être réutilisé.")
+        st.download_button(
+            "Télécharger le CSV nettoyé",
+            data=df.drop_duplicates().to_csv(index=False).encode("utf-8"),
+            file_name=f"{uploaded_file.name.rsplit('.', 1)[0]}_nettoye.csv",
+            mime="text/csv",
+        )
+
+# ── Qualité ──────────────────────────────────────────────────────────────────
+with tabs[1]:
+    left, right = st.columns([1.3, 1], gap="large")
+    with left:
+        st.markdown("#### Qualité des données")
+        st.dataframe(
+            quality_table(df).drop(columns=["Complétude %"]),
+            use_container_width=True, hide_index=True, height=380,
+        )
+        st.markdown(f"**Doublons détectés :** {duplicates_total}")
+    with right:
+        st.markdown("#### Complétude par variable")
+        quality = quality_table(df).sort_values("Complétude %")
+        for _, row in quality.head(10).iterrows():
+            alert = " alert" if row["Complétude %"] < 90 else ""
+            st.markdown(
+                f'<div class="vd-bar-label"><span>{row["Variable"]}</span>'
+                f'<span style="color:{NEUTRAL_600}">{row["Complétude %"]} %</span></div>'
+                f'<div class="vd-bar{alert}"><div style="width:{row["Complétude %"]}%"></div></div>'
+                '<div style="height:12px"></div>',
+                unsafe_allow_html=True,
+            )
+        outliers = outlier_counts(df)
+        if not outliers.empty:
+            st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
+            st.markdown("#### Valeurs extrêmes (méthode IQR)")
+            st.dataframe(outliers, use_container_width=True, hide_index=True, height=220)
+
+# ── Statistiques ─────────────────────────────────────────────────────────────
+with tabs[2]:
+    if not numeric_cols:
+        st.info("Aucune variable numérique détectée.")
+    else:
+        st.markdown("#### Statistiques descriptives")
+        st.dataframe(
+            df[numeric_cols].describe().T.round(3),
+            use_container_width=True, height=340,
+        )
+        correlations = top_correlations(df)
+        if not correlations.empty:
+            st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
+            left, right = st.columns([1, 1.3], gap="large")
+            with left:
+                st.markdown("#### Corrélations principales")
+                st.dataframe(correlations, use_container_width=True, hide_index=True)
+            with right:
+                st.markdown("#### Matrice de corrélation")
+                fig = px.imshow(
+                    df[numeric_cols].corr(numeric_only=True).round(2),
+                    color_continuous_scale=["#f3f2f2", "#ff9783", ACCENT],
+                    aspect="auto", text_auto=True,
+                )
+                fig.update_layout(coloraxis_showscale=False, height=380)
                 st.plotly_chart(fig, use_container_width=True)
-            elif chart_type == "Nuage de points":
-                if len(numeric_cols) < 2:
-                    st.info("Il faut au moins deux variables numériques.")
-                else:
+
+# ── Visualisations ───────────────────────────────────────────────────────────
+with tabs[3]:
+    if not numeric_cols:
+        st.info("Aucune variable numérique détectée pour ces graphiques.")
+    else:
+        options = ["Histogramme", "Nuage de points", "Boîte à moustaches"]
+        if date_cols:
+            options.append("Série temporelle")
+        chart_type = st.radio("Type de graphique", options, horizontal=True,
+                              label_visibility="collapsed")
+        st.markdown('<hr class="vd-rule" style="margin:14px 0 20px">', unsafe_allow_html=True)
+        controls, chart = st.columns([1, 2.4], gap="large")
+
+        if chart_type == "Histogramme":
+            with controls:
+                x = st.selectbox("Variable", numeric_cols)
+                bins = st.slider("Nombre de classes", 10, 100, 30, step=5)
+                split = st.selectbox("Découper par", ["Aucune"] + [c for c in all_cols if c != x])
+            with chart:
+                fig = px.histogram(df, x=x, nbins=bins,
+                                   color=None if split == "Aucune" else split)
+                st.plotly_chart(fig, use_container_width=True)
+
+        elif chart_type == "Nuage de points":
+            if len(numeric_cols) < 2:
+                st.info("Il faut au moins deux variables numériques.")
+            else:
+                with controls:
                     x = st.selectbox("Axe X", numeric_cols, key="scatter_x")
                     y = st.selectbox("Axe Y", numeric_cols, index=1, key="scatter_y")
-                    color_options = ["Aucune"] + all_cols
-                    color = st.selectbox("Couleur", color_options)
-                    fig = px.scatter(df, x=x, y=y, color=None if color == "Aucune" else color)
+                    color = st.selectbox("Couleur", ["Aucune"] + all_cols)
+                    trend = st.checkbox("Ajouter une tendance", value=False)
+                with chart:
+                    fig = px.scatter(
+                        df, x=x, y=y,
+                        color=None if color == "Aucune" else color,
+                        trendline="ols" if trend else None,
+                        trendline_color_override=TEXT,
+                        opacity=0.75,
+                    )
                     st.plotly_chart(fig, use_container_width=True)
-            else:
+
+        elif chart_type == "Boîte à moustaches":
+            with controls:
                 y = st.selectbox("Variable numérique", numeric_cols, key="box_y")
-                category_options = ["Aucune"] + [c for c in all_cols if c != y]
-                x = st.selectbox("Catégorie", category_options)
-                fig = px.box(df, x=None if x == "Aucune" else x, y=y)
+                category = st.selectbox("Catégorie", ["Aucune"] + [c for c in all_cols if c != y])
+            with chart:
+                fig = px.box(df, x=None if category == "Aucune" else category, y=y, points="outliers")
                 st.plotly_chart(fig, use_container_width=True)
-        else:
-            st.info("Aucune variable numérique détectée pour ces graphiques.")
 
-    with tabs[4]:
-        st.subheader("Interroger les données")
-        api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            st.warning("Ajoutez OPENAI_API_KEY dans les variables d'environnement de Render pour activer l'assistant IA.")
         else:
-            question = st.text_area(
-                "Posez une question sur vos données",
-                placeholder="Ex. Quelles sont les tendances principales et les anomalies à surveiller ?"
+            with controls:
+                date_col = st.selectbox("Date", date_cols)
+                value_col = st.selectbox("Mesure", numeric_cols)
+                grain = st.selectbox("Granularité", ["Jour", "Semaine", "Mois", "Trimestre"], index=2)
+                aggregate = st.selectbox("Agrégation", ["Somme", "Moyenne", "Nombre"])
+            rule = {"Jour": "D", "Semaine": "W", "Mois": "MS", "Trimestre": "QS"}[grain]
+            how = {"Somme": "sum", "Moyenne": "mean", "Nombre": "count"}[aggregate]
+            series = (
+                df[[date_col, value_col]].dropna(subset=[date_col])
+                .set_index(date_col)[value_col].resample(rule).agg(how).reset_index()
             )
-            if st.button("Analyser avec l'IA", type="primary"):
-                if not question.strip():
-                    st.warning("Saisissez d'abord une question.")
-                else:
-                    with st.spinner("Analyse en cours..."):
-                        try:
-                            client = OpenAI(api_key=api_key)
-                            summary = build_dataset_summary(df)
-                            response = client.chat.completions.create(
-                                model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
-                                messages=[
-                                    {"role": "system", "content": (
-                                        "Tu es VisualizeData Assistant, un analyste de données professionnel. "
-                                        "Réponds en français, de manière claire et structurée. "
-                                        "Base tes conclusions uniquement sur le résumé statistique et l'échantillon fournis. "
-                                        "Ne prétends jamais avoir calculé une information absente. "
-                                        "Signale les limites de l'analyse lorsque nécessaire."
-                                    )},
-                                    {"role": "user", "content": f"QUESTION:\n{question}\n\nDONNÉES RÉSUMÉES:\n{summary}"}
-                                ]
-                            )
-                            st.markdown(response.choices[0].message.content)
-                        except Exception as e:
-                            st.error(f"Impossible d'obtenir l'analyse IA : {e}")
+            with chart:
+                fig = px.line(series, x=date_col, y=value_col, markers=True)
+                fig.update_traces(line_color=ACCENT, line_width=2)
+                st.plotly_chart(fig, use_container_width=True)
 
-    st.divider()
-    st.caption("VisualizeData Assistant • MVP")
+# ── Assistant IA ─────────────────────────────────────────────────────────────
+with tabs[4]:
+    client = openai_client()
+    if client is None:
+        st.warning(
+            "Ajoutez `OPENAI_API_KEY` dans les variables d'environnement de Render "
+            "pour activer l'assistant IA."
+        )
+    else:
+        history = st.session_state.setdefault("vd_history", [])
+        summary = build_dataset_summary(df)
+
+        left, right = st.columns([1.6, 1], gap="large")
+        with right:
+            st.markdown('<div class="vd-kicker">Questions suggérées</div>', unsafe_allow_html=True)
+            for index, suggestion in enumerate(SUGGESTIONS):
+                if st.button(suggestion, key=f"sugg_{index}", use_container_width=True):
+                    st.session_state["vd_pending"] = suggestion
+            st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
+            st.caption(
+                f"Modèle {MODEL}. L'assistant ne voit qu'un résumé statistique et "
+                "un échantillon de 12 lignes — aucune donnée brute complète n'est envoyée."
+            )
+            if history and st.button("Effacer la conversation"):
+                st.session_state["vd_history"] = []
+                st.rerun()
+
+        with left:
+            st.markdown("#### Interroger les données")
+            for message in history:
+                if message["role"] == "user":
+                    st.markdown(f"**Question —** {message['content']}")
+                else:
+                    st.markdown(
+                        f'<div class="vd-answer">{message["content"]}</div>',
+                        unsafe_allow_html=True,
+                    )
+
+            question = st.chat_input("Posez une question sur vos données…")
+            pending = st.session_state.pop("vd_pending", None)
+            question = question or pending
+
+            if question:
+                st.markdown(f"**Question —** {question}")
+                history.append({"role": "user", "content": question})
+                try:
+                    with st.spinner("Analyse en cours…"):
+                        stream = ask_assistant(client, question, summary, history[:-1])
+                        answer = st.write_stream(
+                            chunk.choices[0].delta.content or ""
+                            for chunk in stream
+                        )
+                    history.append({"role": "assistant", "content": answer})
+                except Exception as exc:
+                    history.pop()
+                    st.error(f"Impossible d'obtenir l'analyse IA : {exc}")
+
+st.markdown('<hr class="vd-rule">', unsafe_allow_html=True)
+st.caption("VisualizeData Assistant · v2")
