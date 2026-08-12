@@ -69,6 +69,17 @@ Typographie : **Sora** pour les titres, **Manrope** pour le texte. Signature : *
 - Remplacez l'URL `https://visualizedata-assistant.onrender.com` par l'URL Render réelle : elle apparaît dans le bouton de la barre de navigation et dans les deux liens de la section Assistant.
 - Le logo est un V construit en SVG inline (marine + indigo, point orange) : lisible en favicon et en noir et blanc. À remplacer par le logo final quand il sera dessiné.
 
+## Connexion Google obligatoire
+
+L'application est fermée : aucun écran n'est accessible sans compte Google.
+
+1. **Google Cloud Console** → APIs & Services → Credentials → *Create OAuth client ID* → type *Web application*.
+2. Dans *Authorized redirect URIs*, ajoutez `https://VOTRE-APP.onrender.com/oauth2callback` (et `http://localhost:8501/oauth2callback` pour le développement local).
+3. Copiez `app/.streamlit/secrets.toml.example` en `app/.streamlit/secrets.toml` et renseignez `client_id`, `client_secret`, `redirect_uri` et un `cookie_secret` aléatoire (`python -c "import secrets;print(secrets.token_hex(32))"`).
+4. Sur Render : le fichier n'est pas commité — ajoutez-le via **Environment → Secret Files**, chemin `/opt/render/project/src/app/.streamlit/secrets.toml`.
+
+Streamlit 1.42 minimum et `Authlib` sont requis (déjà dans `requirements.txt`). Le nom et l'adresse de l'utilisateur apparaissent dans la barre latérale, avec un bouton *Se déconnecter*.
+
 ## Déploiement sur Render
 
 ```bash

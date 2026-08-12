@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VisualizeData — Transformer les données en décisions</title>
-<meta name="description" content="Partenaire Data & AI pour la décision d'entreprise. Business Intelligence, dashboards, analyse, automatisation, IA appliquée pour les PME.">
+<meta name="description" content="Partenaire Data & AI pour la décision d'entreprise. Business Intelligence, dashboards, analyse, automatisation, IA appliquée. PME — Abidjan et Montréal.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' fill='%23201e1d'/%3E%3Cpath d='M8 12 L22 42 L34 18' stroke='%23f3f2f2' stroke-width='6' fill='none'/%3E%3Cpath d='M34 18 L44 10' stroke='%23ec3013' stroke-width='6' fill='none'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -18,50 +18,33 @@ h6{letter-spacing:.16em!important;font-size:11px!important}
 body{overflow-x:hidden}
 .wrap{max-width:1280px;margin:0 auto;padding:0 var(--space-6)}
 .rule{border-bottom:2px solid var(--color-divider)}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
-.brand svg{display:block;flex:none}
-.brand span{font-family:var(--font-heading);font-weight:800;font-size:19px;letter-spacing:-.035em;color:var(--color-text)}
-.brand span em{font-style:normal;color:var(--color-accent)}
-.hero .brand span,.hero .brand span em{color:var(--color-bg)}
 
 /* NAV */
 .site-nav{position:sticky;top:0;z-index:60;background:var(--color-bg);border-bottom:2px solid var(--color-divider)}
 .site-nav .nav{max-width:1280px;margin:0 auto;padding-left:var(--space-6);padding-right:var(--space-6)}
 .site-nav .nav a{font-size:14px}
-.site-nav .nav .btn{margin-left:auto}
+.burger{display:none;background:none;border:1px solid var(--color-divider);padding:9px 11px;cursor:pointer}
+.burger i{display:block;width:18px;height:2px;background:var(--color-text)}
+.burger i+i{margin-top:4px}
 
-/* HERO — poster rouge pleine largeur */
-.hero{background:var(--color-accent);color:var(--color-bg);border-bottom:2px solid var(--color-divider)}
-.hero .wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:0}
-.hero h6{color:var(--color-bg)!important;opacity:.8}
-.hero .lede{color:var(--color-bg);opacity:.92}
-.hero-copy{padding:var(--space-8) var(--space-8) var(--space-8) 0;border-right:2px solid color-mix(in srgb, var(--color-bg) 45%, transparent)}
-.hero h1{font-size:clamp(46px,7vw,104px);line-height:.9;margin:0 0 var(--space-4);max-width:13ch;color:var(--color-bg);letter-spacing:-.05em}
-.hero h1 em{font-style:normal;-webkit-text-stroke:2px var(--color-bg);color:transparent}
+/* HERO */
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:0}
+.hero-copy{padding:var(--space-8) var(--space-8) var(--space-8) 0;border-right:2px solid var(--color-divider)}
+.hero h1{font-size:clamp(42px,5.6vw,78px);line-height:.96;margin:0 0 var(--space-4);max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--color-accent)}
 .hero .lede{font-size:18px;max-width:54ch;margin:0 0 var(--space-6)}
 .actions{display:flex;gap:var(--space-2);flex-wrap:wrap}
 .hero-side{padding:var(--space-8) 0 var(--space-8) var(--space-8);display:flex;flex-direction:column}
 .chain{display:flex;flex-direction:column;margin-top:auto}
-.chain div{display:flex;align-items:center;gap:var(--space-3);padding:12px 0;border-top:1px solid color-mix(in srgb, var(--color-bg) 45%, transparent);font-size:15px;font-weight:600;color:var(--color-bg)}
-.chain div:last-child{border-bottom:1px solid color-mix(in srgb, var(--color-bg) 45%, transparent)}
-.chain .n{font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-bg);opacity:.7;width:18px}
-.hero-side h6{color:var(--color-bg)!important;opacity:.8}
-
-/* BANDE SIGNATURE */
-.ticker{background:var(--color-text);color:var(--color-bg);border-bottom:2px solid var(--color-divider)}
-.ticker div{display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-6);padding:var(--space-3) var(--space-6);max-width:1280px;margin:0 auto;font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
-.ticker span{opacity:.75}
-.ticker span.hi{opacity:1;color:var(--color-accent)}
-
-/* NUMÉROS GÉANTS DE SECTION */
-.sec-head{position:relative}
-.sec-num{font-family:var(--font-heading);font-weight:800;font-size:clamp(48px,7vw,104px);line-height:.8;letter-spacing:-.05em;color:var(--color-neutral-300);margin-bottom:var(--space-3)}
+.chain div{display:flex;align-items:center;gap:var(--space-3);padding:12px 0;border-top:1px solid var(--color-divider);font-size:15px;font-weight:600}
+.chain div:last-child{border-bottom:1px solid var(--color-divider)}
+.chain .n{font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent);width:18px}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid var(--color-divider);background:var(--color-surface)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid var(--color-divider)}
 .stat{padding:var(--space-6);border-right:1px solid var(--color-divider)}
 .stat:last-child{border-right:0}
-.stat .big{font-family:var(--font-heading);font-weight:800;font-size:clamp(44px,5.4vw,76px);line-height:.86;color:var(--color-accent)}
+.stat .big{font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,4.4vw,60px);line-height:.92;color:var(--color-accent)}
 .stat .lbl{font-weight:600;margin-top:var(--space-2);font-size:15px}
 .stat .sub{font-size:13px;color:var(--color-neutral-600);margin-top:2px}
 
@@ -134,12 +117,11 @@ section.band{border-bottom:2px solid var(--color-divider);padding:var(--space-8)
 .chips{display:flex;flex-wrap:wrap;gap:var(--space-2)}
 
 /* POSTER */
-.poster{background:var(--color-text);color:var(--color-bg);border-bottom:2px solid var(--color-divider)}
-.poster em{font-style:normal;color:var(--color-accent)}
+.poster{background:var(--color-accent);color:var(--color-bg);border-bottom:2px solid var(--color-divider)}
 .poster .wrap{padding:var(--space-8) var(--space-6)}
 .poster h2{font-size:clamp(34px,5.2vw,72px);line-height:.98;letter-spacing:-.04em;margin:0 0 var(--space-6);max-width:22ch;color:var(--color-bg)}
 .poster .sig{font-size:15px;opacity:.85;margin:0 0 var(--space-8)}
-.poster .rows2{display:grid;grid-template-columns:repeat(2,1fr)}
+.poster .rows2{display:grid;grid-template-columns:repeat(3,1fr)}
 .poster .row{padding:var(--space-4) var(--space-4) var(--space-4) 0;border-top:2px solid color-mix(in srgb, var(--color-bg) 55%, transparent)}
 .poster .row+.row{padding-left:var(--space-4)}
 .poster .row .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
@@ -167,7 +149,8 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
   .stats,.cells,.courses,.probs,.steps{grid-template-columns:repeat(2,1fr)}
   .stat,.cell,.course,.prob,.step{border-right:0;border-bottom:1px solid var(--color-divider);padding-left:0!important;padding-right:var(--space-4)}
   .sec-head{grid-template-columns:1fr}
-  .site-nav .nav a:not(.btn){display:none}
+  .site-nav .nav a{display:none}
+  .burger{display:block}
 }
 @media(max-width:640px){
   .stats,.cells,.courses,.probs,.steps,.mini,.poster .rows2{grid-template-columns:1fr}
@@ -179,31 +162,26 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
 
 <nav class="site-nav">
   <div class="nav">
-    <a class="brand" href="#top" aria-label="VisualizeData — accueil">
-      <svg width="30" height="30" viewBox="0 0 52 52" aria-hidden="true">
-        <path d="M2 6 L20 46 L36 14" stroke="#201e1d" stroke-width="7" fill="none"></path>
-        <path d="M36 14 L50 2" stroke="#ec3013" stroke-width="7" fill="none"></path>
-      </svg>
-      <span>Visualize<em>Data</em></span>
-    </a>
+    <div class="nav-brand">VisualizeData</div>
     <a href="#services">Services</a>
     <a href="#methode">Méthode</a>
     <a href="#projets">Projets</a>
     <a href="#formapro">FormaPro</a>
     <a href="#contact">Contact</a>
     <a class="btn btn-primary" href="https://visualizedata-assistant.onrender.com" target="_blank" rel="noopener">Ouvrir l'assistant</a>
+    <button class="burger" type="button" aria-label="Menu"><i></i><i></i><i></i></button>
   </div>
 </nav>
 
 <header class="hero rule" id="top">
   <div class="wrap">
     <div class="hero-copy">
-      <h6 style="color:var(--color-accent);margin:0 0 var(--space-4)">Data · BI · IA</h6>
+      <h6 style="color:var(--color-accent);margin:0 0 var(--space-4)">Data · BI · IA — Abidjan &amp; Montréal</h6>
       <h1>Transformer les données en <em>décisions</em></h1>
       <p class="lede">Nous ne montrons pas seulement les données. Nous aidons les entreprises à comprendre ce qu'elles signifient et quoi faire ensuite.</p>
       <div class="actions">
-        <a class="btn btn-invert" href="#contact">Parler de votre projet</a>
-        <a class="btn btn-secondary" href="#projets" style="border-color:var(--color-bg);color:var(--color-bg)">Voir l'assistant IA</a>
+        <a class="btn btn-primary" href="#contact">Parler de votre projet</a>
+        <a class="btn btn-secondary" href="#projets">Voir l'assistant IA</a>
       </div>
     </div>
     <div class="hero-side">
@@ -220,18 +198,6 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
   </div>
 </header>
 
-<div class="ticker" aria-hidden="true">
-  <div>
-    <span>Business Intelligence</span><span class="hi">/</span>
-    <span>Dashboards</span><span class="hi">/</span>
-    <span>Analyse de données</span><span class="hi">/</span>
-    <span>Reporting automatisé</span><span class="hi">/</span>
-    <span>KPI &amp; pilotage</span><span class="hi">/</span>
-    <span>Enquêtes NPS</span><span class="hi">/</span>
-    <span>IA appliquée</span>
-  </div>
-</div>
-
 <div class="stats">
   <div class="stat"><div class="big">3×</div><div class="lbl">Décisions plus rapides</div><div class="sub">Les bons indicateurs, au bon moment</div></div>
   <div class="stat"><div class="big">100 %</div><div class="lbl">Sur mesure PME</div><div class="sub">Adapté à votre réalité</div></div>
@@ -243,7 +209,6 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="sec-num">01</div>
         <h6 style="color:var(--color-accent);margin:0 0 var(--space-3)">Le point de départ</h6>
         <h2>Vos données existent déjà. Elles ne travaillent pas encore pour vous.</h2>
       </div>
@@ -264,7 +229,6 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="sec-num">02</div>
         <h6 style="color:var(--color-accent);margin:0 0 var(--space-3)">Services</h6>
         <h2>Business Intelligence, analyse et IA appliquée</h2>
       </div>
@@ -289,7 +253,6 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="sec-num">03</div>
         <h6 style="color:var(--color-accent);margin:0 0 var(--space-3)">Méthode</h6>
         <h2>Sept étapes, du problème métier à la solution utilisée</h2>
       </div>
@@ -311,7 +274,6 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="sec-num">04</div>
         <h6 style="color:var(--color-accent);margin:0 0 var(--space-3)">Projet 01</h6>
         <h2>VisualizeData Assistant</h2>
       </div>
@@ -359,7 +321,6 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="sec-num">05</div>
         <h6 style="color:var(--color-accent);margin:0 0 var(--space-3)">Projet 02</h6>
         <h2>FormaPro — monter les équipes en compétence</h2>
       </div>
@@ -404,10 +365,11 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
 
 <section class="poster">
   <div class="wrap">
-    <h2>Nous ne montrons pas seulement les données. <em>Nous aidons à décider.</em></h2>
+    <h2>Nous ne montrons pas seulement les données. Nous aidons à décider.</h2>
     <p class="sig">Transformer les données en décisions · Transforming Data Into Decisions</p>
     <div class="rows2">
       <div class="row"><div class="l">Intervention</div><div class="v">Sur site &amp; à distance</div></div>
+      <div class="row"><div class="l">Implantations</div><div class="v">Abidjan · Montréal</div></div>
       <div class="row"><div class="l">Premier échange</div><div class="v">Sans engagement</div></div>
     </div>
     <div class="actions" style="margin-top:var(--space-8)">
@@ -419,7 +381,6 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
 <section id="contact" class="rule">
   <div class="wrap contact">
     <div class="contact-copy">
-      <div class="sec-num">06</div>
       <h6 style="color:var(--color-accent);margin:0 0 var(--space-3)">Contact</h6>
       <h2 style="font-size:clamp(28px,3.4vw,44px);margin:0 0 var(--space-4);max-width:20ch">Construisons votre parcours ensemble</h2>
       <p class="text-muted" style="max-width:48ch;margin:0 0 var(--space-6)">Que ce soit pour transformer les données de votre PME ou former vos équipes, notre équipe est disponible dès aujourd'hui.</p>
@@ -433,9 +394,8 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
       <div class="ctc">
         <div><span class="text-muted">Côte d'Ivoire</span><b>+225 0102786615</b></div>
         <div><span class="text-muted">Côte d'Ivoire</span><b>+225 0759693073</b></div>
-        <div><span class="text-muted">Canada</span><b>+1 514 431 2526</b></div>
+        <div><span class="text-muted">Canada (Montréal)</span><b>+1 514 431 2526</b></div>
         <div><span class="text-muted">E-mail</span><b>contact@visualizedata.ci</b></div>
-        <div><span class="text-muted">E-mail</span><b>mdjoman@upb.ci</b></div>
       </div>
     </div>
   </div>
@@ -443,14 +403,8 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:var(--space-4);
 
 <footer class="site">
   <div class="wrap">
-    <span style="display:flex;align-items:center;gap:10px">
-      <svg width="20" height="20" viewBox="0 0 52 52" aria-hidden="true" style="flex:none">
-        <path d="M2 6 L20 46 L36 14" stroke="#7d7979" stroke-width="7" fill="none"></path>
-        <path d="M36 14 L50 2" stroke="#ec3013" stroke-width="7" fill="none"></path>
-      </svg>
-      VisualizeData — Transformer les données en décisions
-    </span>
-    <span>© 2026</span>
+    <span>VisualizeData — Transformer les données en décisions</span>
+    <span>© 2026 · Abidjan · Montréal</span>
   </div>
 </footer>
 

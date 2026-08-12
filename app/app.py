@@ -23,12 +23,18 @@ MUTED = "#7d7979"
 LINE = "#bab6b6"
 RADIUS = "0px"
 
+MARK = (
+    '<svg width="26" height="26" viewBox="0 0 52 52" aria-hidden="true" style="flex:none">'
+    f'<path d="M2 6 L20 46 L36 14" stroke="{INK}" stroke-width="7" fill="none"></path>'
+    f'<path d="M36 14 L50 2" stroke="{INDIGO}" stroke-width="7" fill="none"></path></svg>'
+)
+
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 MAX_PREVIEW_ROWS = 200
 
 st.set_page_config(
     page_title="VisualizeData Assistant",
-    page_icon="📈",
+    page_icon="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect width='52' height='52' fill='%23201e1d'/%3E%3Cpath d='M8 12 L22 42 L34 18' stroke='%23f3f2f2' stroke-width='6' fill='none'/%3E%3Cpath d='M34 18 L44 10' stroke='%23ec3013' stroke-width='6' fill='none'/%3E%3C/svg%3E",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -62,6 +68,58 @@ pio.templates.default = "visualizedata"
 st.html(
     f"""<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"> <style> :root {{ --vd-navy:{NAVY}; --vd-indigo:{INDIGO}; --vd-orange:{ORANGE}; --vd-pale:{PALE}; --vd-ink:{INK}; --vd-muted:{MUTED}; --vd-line:{LINE}; --vd-r:{RADIUS}; }} html, body, .stApp, [class*="css"] {{ font-family:'Archivo', system-ui, sans-serif; background:{WHITE}; color:var(--vd-ink); }} h1,h2,h3,h4,h5,h6 {{ font-family:'Archivo', system-ui, sans-serif !important; font-weight:800 !important; letter-spacing:-.02em; line-height:1.16; color:var(--vd-navy); }} #MainMenu, footer, header [data-testid="stStatusWidget"] {{visibility:hidden}} .block-container {{padding-top:2rem; padding-bottom:4rem; max-width:1500px}} section[data-testid="stSidebar"] {{ background:var(--vd-pale); border-right:1px solid var(--vd-line); }} section[data-testid="stSidebar"] .block-container {{padding-top:1.5rem}} div[data-testid="stMetric"] {{ background:{WHITE}; padding:16px 18px; border:1px solid var(--vd-line); border-radius:var(--vd-r); }} div[data-testid="stMetricLabel"] p {{ font-size:12px !important; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--vd-muted) !important; }} div[data-testid="stMetricValue"] {{ font-family:'Archivo', sans-serif; font-size:32px !important; font-weight:600; color:var(--vd-navy); }} .stTabs [data-baseweb="tab-list"] {{gap:6px; border-bottom:1px solid var(--vd-line)}} .stTabs [data-baseweb="tab"] {{ background:transparent; padding:11px 16px; font-weight:600; color:var(--vd-muted); }} .stTabs [aria-selected="true"] {{ color:var(--vd-indigo) !important; box-shadow:inset 0 -2px 0 0 var(--vd-indigo); }} .stTabs [data-baseweb="tab-highlight"] {{background:transparent}} .stButton button, .stDownloadButton button, .stFormSubmitButton button {{ font-family:'Archivo', sans-serif; font-weight:700; font-size:15px; border-radius:var(--vd-r); border:1px solid var(--vd-line); background:{WHITE}; color:var(--vd-navy); padding:10px 18px; }} .stButton button:hover {{border-color:var(--vd-indigo); color:var(--vd-indigo)}} .stButton button[kind="primary"], .stDownloadButton button[kind="primary"], .stFormSubmitButton button[kind="primary"] {{ background:var(--vd-indigo); border-color:var(--vd-indigo); color:{WHITE}; }} .stButton button[kind="primary"]:hover, .stDownloadButton button[kind="primary"]:hover {{ background:{INDIGO_DARK}; border-color:{INDIGO_DARK}; color:{WHITE}; }} .stTextInput input, .stTextArea textarea, .stNumberInput input, div[data-baseweb="select"] > div, .stChatInput textarea {{ background:{WHITE} !important; border:1px solid var(--vd-line) !important; border-radius:var(--vd-r) !important; color:var(--vd-ink) !important; font-family:'Archivo', sans-serif; }} .stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-indigo) !important}} *:focus-visible {{outline:2px solid var(--vd-indigo) !important; outline-offset:2px}} ::selection {{background:rgba(79,70,229,.18)}} .stSlider [data-baseweb="slider"] div[role="slider"] {{background:var(--vd-indigo)}} section[data-testid="stFileUploaderDropzone"] {{ background:{WHITE}; border:1.5px dashed #C3D3F5; border-radius:var(--vd-r); padding:22px; }} div[data-testid="stDataFrame"] {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); overflow:hidden; }} .vd-rule {{height:1px; background:var(--vd-line); border:0; margin:24px 0}} .vd-kicker {{ font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--vd-indigo); margin-bottom:10px; }} .vd-hero {{ background:linear-gradient(180deg,var(--vd-pale) 0%,{WHITE} 100%); border:1px solid var(--vd-line); border-radius:0; padding:30px 32px; margin-bottom:22px; }} .vd-hero h1 {{font-size:34px; margin:0 0 8px}} .vd-hero p {{color:var(--vd-muted); max-width:70ch; margin:0}} .vd-answer {{ background:var(--vd-pale); border:1px solid var(--vd-line); border-left:3px solid var(--vd-indigo); border-radius:var(--vd-r); padding:16px 18px; margin:6px 0 14px; }} .vd-poster {{ background:var(--vd-navy); color:{WHITE}; border-radius:0; padding:30px; }} .vd-poster .q {{ font-family:'Archivo', sans-serif; font-weight:600; font-size:24px; line-height:1.2; margin:0; }} .vd-poster .q em {{font-style:normal; color:var(--vd-orange)}} .vd-poster .row {{ display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid rgba(255,255,255,.16); font-size:14px; }} .vd-feature {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); padding:16px 18px; height:100%; }} .vd-feature b {{font-family:'Archivo', sans-serif; font-weight:600; display:block; margin-bottom:4px; color:var(--vd-navy)}} .vd-feature span {{color:var(--vd-muted); font-size:14px}} .vd-bar-label {{display:flex; justify-content:space-between; font-size:14px; margin-bottom:5px}} .vd-bar {{height:7px; background:var(--vd-pale); border-radius:0; overflow:hidden}} .vd-bar > div {{height:100%; background:var(--vd-indigo)}} .vd-bar.alert > div {{background:var(--vd-orange)}} .vd-tag {{ display:inline-block; font-size:12px; font-weight:700; padding:4px 12px; border-radius:0; background:rgba(79,70,229,.12); color:var(--vd-indigo); }} </style>"""
 )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Authentification Google — obligatoire
+# ─────────────────────────────────────────────────────────────────────────────
+def require_google_login() -> None:
+    """Bloque l'application tant que l'utilisateur n'est pas connecté via Google."""
+    try:
+        logged_in = bool(st.user.is_logged_in)
+    except Exception:
+        st.error(
+            "Connexion Google non configurée. Renseignez la section [auth] dans "
+            "`.streamlit/secrets.toml` (voir README), puis relancez l'application."
+        )
+        st.stop()
+        return
+
+    if logged_in:
+        return
+
+    st.html(
+        f"""<div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">{MARK}<span style="font-family:Archivo,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.035em">Visualize<span style="color:{INDIGO}">Data</span></span></div><div class="vd-hero"> <div class="vd-kicker">Accès réservé</div> <h1>Connectez-vous pour analyser vos données</h1> <p>L'assistant s'utilise avec un compte Google. Nous ne lisons que votre nom et votre adresse e-mail : aucun accès à Gmail, Drive ou vos documents.</p> </div>"""
+    )
+
+    left, right = st.columns([1.15, 1], gap="large")
+    with left:
+        st.html('<div class="vd-kicker" style="margin-top:22px">Se connecter</div>')
+        if st.button("Continuer avec Google", type="primary", use_container_width=True):
+            st.login("google")
+        st.caption(
+            "En continuant, vous acceptez que votre nom et votre adresse e-mail servent "
+            "à identifier votre session. Vos fichiers ne sont jamais stockés."
+        )
+        st.html('<hr class="vd-rule">')
+        cols = st.columns(2, gap="large")
+        details = [
+            ("Session privée", "Les fichiers importés restent en mémoire le temps de la session."),
+            ("Aucune installation", "Tout se passe dans le navigateur, sur ordinateur comme sur mobile."),
+            ("Analyse en secondes", "Audit de qualité, statistiques et graphiques dès l'import."),
+            ("Réponses en français", "L'assistant explique les résultats en langage courant."),
+        ]
+        for index, (title, description) in enumerate(details):
+            with cols[index % 2]:
+                st.html(f'<div class="vd-feature"><b>{title}</b><span>{description}</span></div>')
+    with right:
+        st.html(
+            """<div class="vd-poster"> <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:14px">Exemple de sortie</div> <p class="q">« Le canal revendeur recule de 9 % pendant que <em>le direct progresse.</em> »</p> <div style="margin-top:34px"> <div class="row"><span style="opacity:.85">Fichiers acceptés</span><span style="font-weight:800">CSV · XLSX · XLS</span></div> <div class="row"><span style="opacity:.85">Temps moyen d'analyse</span><span style="font-weight:800">&lt; 5 s</span></div> <div class="row"><span style="opacity:.85">Installation</span><span style="font-weight:800">Aucune</span></div> </div> </div>"""
+        )
+    st.stop()
+
+
+require_google_login()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -281,8 +339,22 @@ def markdown_report(df: pd.DataFrame, name: str, insights: list[str], history: l
 # Barre latérale
 # ─────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("#### VisualizeData")
-    st.caption("AI-powered Data Analytics")
+    st.html(
+        f'<div style="display:flex;align-items:center;gap:10px;padding:2px 0 6px">'
+        f'{MARK}'
+        f'<span style="font-family:Archivo,sans-serif;font-weight:800;font-size:18px;letter-spacing:-.035em">'
+        f'Visualize<span style="color:{INDIGO}">Data</span></span></div>'
+        f'<div style="color:{MUTED};font-size:12px">Transformer les données en décisions</div>'
+    )
+
+    user_name = getattr(st.user, "name", None) or getattr(st.user, "email", "Compte Google")
+    user_mail = getattr(st.user, "email", "")
+    st.html(
+        f'<div style="padding:10px 0 2px"><b style="font-family:Archivo,sans-serif;font-weight:800">{user_name}</b>'
+        f'<div style="color:{MUTED};font-size:12px">{user_mail}</div></div>'
+    )
+    if st.button("Se déconnecter", use_container_width=True):
+        st.logout()
     st.html('<hr class="vd-rule" style="margin:14px 0">')
 
     uploaded_file = st.file_uploader(
