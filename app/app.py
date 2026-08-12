@@ -440,14 +440,15 @@ with st.sidebar:
         f'<div style="color:{MUTED};font-size:12px">Transformer les données en décisions</div>'
     )
 
-    user_name = getattr(st.user, "name", None) or getattr(st.user, "email", "Compte Google")
-    user_mail = getattr(st.user, "email", "")
-    st.html(
-        f'<div style="padding:10px 0 2px"><b style="font-family:Archivo,sans-serif;font-weight:800">{user_name}</b>'
-        f'<div style="color:{MUTED};font-size:12px">{user_mail}</div></div>'
-    )
-    if st.button("Se déconnecter", use_container_width=True):
-        st.logout()
+    if AUTH_ENABLED:
+        user_name = getattr(st.user, "name", None) or getattr(st.user, "email", "Compte Google")
+        user_mail = getattr(st.user, "email", "")
+        st.html(
+            f'<div style="padding:10px 0 2px"><b style="font-family:Archivo,sans-serif;font-weight:800">{user_name}</b>'
+            f'<div style="color:{MUTED};font-size:12px">{user_mail}</div></div>'
+        )
+        if st.button("Se déconnecter", use_container_width=True):
+            st.logout()
     st.html('<hr class="vd-rule" style="margin:14px 0">')
 
     uploaded_file = st.file_uploader(
@@ -806,4 +807,4 @@ with tabs[4]:
                 history.append({"role": "assistant", "content": answer})
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-4 · connexion Google requise · un projet VisualizeData · Transformer les données en décisions")
+st.caption("VisualizeData Assistant · build modernist-5 · un projet VisualizeData · Transformer les données en décisions")
