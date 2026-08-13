@@ -85,8 +85,21 @@ pio.templates.default = "visualizedata"
 # CSS — applique l'identité VisualizeData à l'interface Streamlit
 # ─────────────────────────────────────────────────────────────────────────────
 st.html(
-    f"""<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"> <style> :root {{ --vd-navy:{NAVY}; --vd-indigo:{INDIGO}; --vd-orange:{ORANGE}; --vd-pale:{PALE}; --vd-ink:{INK}; --vd-muted:{MUTED}; --vd-line:{LINE}; --vd-r:{RADIUS}; }} html, body, .stApp, [class*="css"] {{ font-family:'Archivo', system-ui, sans-serif; background:{WHITE}; color:var(--vd-ink); }} h1,h2,h3,h4,h5,h6 {{ font-family:'Archivo', system-ui, sans-serif !important; font-weight:800 !important; letter-spacing:-.02em; line-height:1.16; color:var(--vd-navy); }} #MainMenu, footer, header [data-testid="stStatusWidget"] {{visibility:hidden}} .block-container {{padding-top:2rem; padding-bottom:4rem; max-width:1500px}} section[data-testid="stSidebar"] {{ background:var(--vd-pale); border-right:1px solid var(--vd-line); }} section[data-testid="stSidebar"] .block-container {{padding-top:1.5rem}} div[data-testid="stMetric"] {{ background:{WHITE}; padding:16px 18px; border:1px solid var(--vd-line); border-radius:var(--vd-r); }} div[data-testid="stMetricLabel"] p {{ font-size:12px !important; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--vd-muted) !important; }} div[data-testid="stMetricValue"] {{ font-family:'Archivo', sans-serif; font-size:32px !important; font-weight:600; color:var(--vd-navy); }} .stTabs [data-baseweb="tab-list"] {{gap:6px; border-bottom:1px solid var(--vd-line)}} .stTabs [data-baseweb="tab"] {{ background:transparent; padding:11px 16px; font-weight:600; color:var(--vd-muted); }} .stTabs [aria-selected="true"] {{ color:var(--vd-indigo) !important; box-shadow:inset 0 -2px 0 0 var(--vd-indigo); }} .stTabs [data-baseweb="tab-highlight"] {{background:transparent}} .stButton button, .stDownloadButton button, .stFormSubmitButton button {{ font-family:'Archivo', sans-serif; font-weight:700; font-size:15px; border-radius:var(--vd-r); border:1px solid var(--vd-line); background:{WHITE}; color:var(--vd-navy); padding:10px 18px; }} .stButton button:hover {{border-color:var(--vd-indigo); color:var(--vd-indigo)}} .stButton button[kind="primary"], .stDownloadButton button[kind="primary"], .stFormSubmitButton button[kind="primary"] {{ background:var(--vd-indigo); border-color:var(--vd-indigo); color:{WHITE}; }} .stButton button[kind="primary"]:hover, .stDownloadButton button[kind="primary"]:hover {{ background:{INDIGO_DARK}; border-color:{INDIGO_DARK}; color:{WHITE}; }} .stTextInput input, .stTextArea textarea, .stNumberInput input, div[data-baseweb="select"] > div, .stChatInput textarea {{ background:{WHITE} !important; border:1px solid var(--vd-line) !important; border-radius:var(--vd-r) !important; color:var(--vd-ink) !important; font-family:'Archivo', sans-serif; }} .stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-indigo) !important}} *:focus-visible {{outline:2px solid var(--vd-indigo) !important; outline-offset:2px}} ::selection {{background:rgba(79,70,229,.18)}} .stSlider [data-baseweb="slider"] div[role="slider"] {{background:var(--vd-indigo)}} section[data-testid="stFileUploaderDropzone"] {{ background:{WHITE}; border:1.5px dashed #C3D3F5; border-radius:var(--vd-r); padding:22px; }} div[data-testid="stDataFrame"] {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); overflow:hidden; }} .vd-rule {{height:1px; background:var(--vd-line); border:0; margin:24px 0}} .vd-kicker {{ font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--vd-indigo); margin-bottom:10px; }} .vd-hero {{ background:linear-gradient(180deg,var(--vd-pale) 0%,{WHITE} 100%); border:1px solid var(--vd-line); border-radius:0; padding:30px 32px; margin-bottom:22px; }} .vd-hero h1 {{font-size:34px; margin:0 0 8px}} .vd-hero p {{color:var(--vd-muted); max-width:70ch; margin:0}} .vd-answer {{ background:var(--vd-pale); border:1px solid var(--vd-line); border-left:3px solid var(--vd-indigo); border-radius:var(--vd-r); padding:16px 18px; margin:6px 0 14px; }} .vd-poster {{ background:var(--vd-navy); color:{WHITE}; border-radius:0; padding:30px; }} .vd-poster .q {{ font-family:'Archivo', sans-serif; font-weight:600; font-size:24px; line-height:1.2; margin:0; }} .vd-poster .q em {{font-style:normal; color:var(--vd-orange)}} .vd-poster .row {{ display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid rgba(255,255,255,.16); font-size:14px; }} .vd-feature {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); padding:16px 18px; height:100%; }} .vd-feature b {{font-family:'Archivo', sans-serif; font-weight:600; display:block; margin-bottom:4px; color:var(--vd-navy)}} .vd-feature span {{color:var(--vd-muted); font-size:14px}} .vd-bar-label {{display:flex; justify-content:space-between; font-size:14px; margin-bottom:5px}} .vd-bar {{height:7px; background:var(--vd-pale); border-radius:0; overflow:hidden}} .vd-bar > div {{height:100%; background:var(--vd-indigo)}} .vd-bar.alert > div {{background:var(--vd-orange)}} .vd-tag {{ display:inline-block; font-size:12px; font-weight:700; padding:4px 12px; border-radius:0; background:rgba(79,70,229,.12); color:var(--vd-indigo); }}  @media (max-width: 900px) {{ .stApp, html, body {{ background:#141312 !important; color:#f3f2f2 !important; }} .block-container {{ padding:1rem .9rem 3.5rem !important; max-width:100% !important; }} h1,h2,h3,h4,h5,h6 {{ color:#f3f2f2 !important; letter-spacing:-.045em; }} h1 {{font-size:28px !important}} h2 {{font-size:23px !important}} h3 {{font-size:20px !important}} h4 {{font-size:17px !important}} p, li, span, label, .stMarkdown {{ color:rgba(243,242,242,.85) !important; }} .stCaption, [data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p {{ color:rgba(243,242,242,.45) !important; }} section[data-testid="stSidebar"] {{ background:#0d0c0c !important; border-right:1px solid rgba(243,242,242,.14) !important; }} section[data-testid="stSidebar"] * {{ color:#f3f2f2 !important; }} div[data-testid="stHorizontalBlock"] {{ flex-direction:column; gap:12px; }} div[data-testid="column"] {{ width:100% !important; flex:1 1 100% !important; min-width:100% !important; }} div[data-testid="stMetric"] {{ background:#1c1a19 !important; border:0 !important; border-radius:0 !important; padding:14px 16px !important; }} div[data-testid="stMetricValue"] {{ color:#f3f2f2 !important; font-size:27px !important; letter-spacing:-.04em; }} div[data-testid="stMetricLabel"] p {{ color:rgba(243,242,242,.45) !important; font-size:9px !important; letter-spacing:.14em; }} .stTabs [data-baseweb="tab-list"] {{ overflow-x:auto; scrollbar-width:none; gap:0; border-bottom:1px solid rgba(243,242,242,.16); }} .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {{display:none}} .stTabs [data-baseweb="tab"] {{ padding:12px 14px; font-size:13px; white-space:nowrap; color:rgba(243,242,242,.5) !important; }} .stTabs [aria-selected="true"] {{ color:#ff5c3d !important; box-shadow:inset 0 -2px 0 0 #ec3013; }} .stTabs [aria-selected="true"] p {{ color:#ff5c3d !important; }} .stButton button, .stDownloadButton button, .stFormSubmitButton button {{ min-height:48px; width:100%; font-size:15px; border-radius:0 !important; background:transparent !important; border:1px solid rgba(243,242,242,.3) !important; color:#f3f2f2 !important; }} .stButton button[kind="primary"], .stDownloadButton button[kind="primary"] {{ background:#ec3013 !important; border-color:#ec3013 !important; color:#f3f2f2 !important; }} .stTextInput input, .stTextArea textarea, .stNumberInput input, .stChatInput textarea, div[data-baseweb="select"] > div {{ background:#1c1a19 !important; border:1px solid rgba(243,242,242,.22) !important; color:#f3f2f2 !important; min-height:48px; font-size:16px; border-radius:0 !important; }} div[data-baseweb="select"] svg {{ fill:#f3f2f2 !important; }} section[data-testid="stFileUploaderDropzone"] {{ background:#1c1a19 !important; border:1.5px dashed rgba(243,242,242,.3) !important; }} section[data-testid="stFileUploaderDropzone"] * {{ color:rgba(243,242,242,.75) !important; }} div[data-testid="stDataFrame"] {{ border:1px solid rgba(243,242,242,.16) !important; font-size:12px; }} .stExpander, details {{ background:#1c1a19 !important; border:1px solid rgba(243,242,242,.16) !important; border-radius:0 !important; }} .stExpander summary, details summary {{ color:#f3f2f2 !important; }} .vd-rule {{ background:rgba(243,242,242,.16) !important; }} .vd-kicker {{ color:#ff5c3d !important; }} .vd-hero {{ background:#1c1a19 !important; border:0 !important; border-left:2px solid #ec3013 !important; padding:20px 18px !important; }} .vd-hero h1 {{ font-size:26px !important; }} .vd-hero p {{ color:rgba(243,242,242,.65) !important; }} .vd-answer {{ background:#1c1a19 !important; border:0 !important; border-left:2px solid #ec3013 !important; border-radius:0 !important; color:rgba(243,242,242,.9) !important; }} .vd-answer * {{ color:rgba(243,242,242,.9) !important; }} .vd-feature {{ background:#1c1a19 !important; border:0 !important; padding:14px 16px !important; }} .vd-feature b {{ color:#f3f2f2 !important; }} .vd-feature span {{ color:rgba(243,242,242,.55) !important; }} .vd-poster {{ background:#ec3013 !important; padding:22px !important; }} .vd-poster .q {{ font-size:20px !important; }} .vd-bar {{ background:rgba(243,242,242,.16) !important; }} .vd-bar > div {{ background:#f3f2f2 !important; }} .vd-bar.alert > div {{ background:#ec3013 !important; }} .vd-tag {{ background:rgba(236,48,19,.22) !important; color:#ff5c3d !important; }} hr {{ border-color:rgba(243,242,242,.16) !important; }} .stAlert {{ border-radius:0 !important; }} ::selection {{ background:rgba(236,48,19,.4); }} }} .stApp {{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }} h1,h2,h3 {{ text-wrap:balance; }} p, li {{ text-wrap:pretty; }} .vd-kicker {{ font-weight:800; }} @media (max-width: 900px) {{ h1 {{ font-size:30px !important; line-height:.98 !important; letter-spacing:-.05em !important; }} h2 {{ font-size:24px !important; line-height:1.02 !important; }} h3 {{ font-size:20px !important; }} h4 {{ font-size:17px !important; }} p, li, .stMarkdown p {{ font-size:15px !important; line-height:1.55 !important; }} .vd-kicker {{ font-size:10px !important; letter-spacing:.18em !important; }} .vd-hero h1 {{ font-size:28px !important; line-height:.98 !important; }} .vd-hero p {{ font-size:14px !important; }} div[data-testid="stMetricValue"] {{ font-variant-numeric:tabular-nums; }} section[data-testid="stFileUploaderDropzone"] {{ padding:26px 18px !important; }} section[data-testid="stFileUploaderDropzone"] button {{ background:#ec3013 !important; border-color:#ec3013 !important; color:#f3f2f2 !important; }} label[data-testid="stWidgetLabel"] p {{ font-size:11px !important; letter-spacing:.16em; text-transform:uppercase; color:#ff5c3d !important; font-weight:800 !important; }} .vd-feature {{ margin-bottom:10px; }} }}</style>"""
+    f"""<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"> <style> :root {{ --vd-navy:{NAVY}; --vd-indigo:{INDIGO}; --vd-orange:{ORANGE}; --vd-pale:{PALE}; --vd-ink:{INK}; --vd-muted:{MUTED}; --vd-line:{LINE}; --vd-r:{RADIUS}; }} html, body, .stApp, [class*="css"] {{ font-family:'Archivo', system-ui, sans-serif; background:{WHITE}; color:var(--vd-ink); }} h1,h2,h3,h4,h5,h6 {{ font-family:'Archivo', system-ui, sans-serif !important; font-weight:800 !important; letter-spacing:-.02em; line-height:1.16; color:var(--vd-navy); }} #MainMenu, footer, header [data-testid="stStatusWidget"] {{visibility:hidden}} .block-container {{padding-top:2rem; padding-bottom:4rem; max-width:1500px}} section[data-testid="stSidebar"] {{ background:var(--vd-pale); border-right:1px solid var(--vd-line); }} section[data-testid="stSidebar"] .block-container {{padding-top:1.5rem}} div[data-testid="stMetric"] {{ background:{WHITE}; padding:16px 18px; border:1px solid var(--vd-line); border-radius:var(--vd-r); }} div[data-testid="stMetricLabel"] p {{ font-size:12px !important; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--vd-muted) !important; }} div[data-testid="stMetricValue"] {{ font-family:'Archivo', sans-serif; font-size:32px !important; font-weight:600; color:var(--vd-navy); }} .stTabs [data-baseweb="tab-list"] {{gap:6px; border-bottom:1px solid var(--vd-line)}} .stTabs [data-baseweb="tab"] {{ background:transparent; padding:11px 16px; font-weight:600; color:var(--vd-muted); }} .stTabs [aria-selected="true"] {{ color:var(--vd-indigo) !important; box-shadow:inset 0 -2px 0 0 var(--vd-indigo); }} .stTabs [data-baseweb="tab-highlight"] {{background:transparent}} .stButton button, .stDownloadButton button, .stFormSubmitButton button {{ font-family:'Archivo', sans-serif; font-weight:700; font-size:15px; border-radius:var(--vd-r); border:1px solid var(--vd-line); background:{WHITE}; color:var(--vd-navy); padding:10px 18px; }} .stButton button:hover {{border-color:var(--vd-indigo); color:var(--vd-indigo)}} .stButton button[kind="primary"], .stDownloadButton button[kind="primary"], .stFormSubmitButton button[kind="primary"] {{ background:var(--vd-indigo); border-color:var(--vd-indigo); color:{WHITE}; }} .stButton button[kind="primary"]:hover, .stDownloadButton button[kind="primary"]:hover {{ background:{INDIGO_DARK}; border-color:{INDIGO_DARK}; color:{WHITE}; }} .stTextInput input, .stTextArea textarea, .stNumberInput input, div[data-baseweb="select"] > div, .stChatInput textarea {{ background:{WHITE} !important; border:1px solid var(--vd-line) !important; border-radius:var(--vd-r) !important; color:var(--vd-ink) !important; font-family:'Archivo', sans-serif; }} .stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-indigo) !important}} *:focus-visible {{outline:2px solid var(--vd-indigo) !important; outline-offset:2px}} ::selection {{background:rgba(79,70,229,.18)}} .stSlider [data-baseweb="slider"] div[role="slider"] {{background:var(--vd-indigo)}} section[data-testid="stFileUploaderDropzone"] {{ background:{WHITE}; border:1.5px dashed #C3D3F5; border-radius:var(--vd-r); padding:22px; }} div[data-testid="stDataFrame"] {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); overflow:hidden; }} .vd-rule {{height:1px; background:var(--vd-line); border:0; margin:24px 0}} .vd-kicker {{ font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--vd-indigo); margin-bottom:10px; }} .vd-hero {{ background:linear-gradient(180deg,var(--vd-pale) 0%,{WHITE} 100%); border:1px solid var(--vd-line); border-radius:0; padding:30px 32px; margin-bottom:22px; }} .vd-hero h1 {{font-size:34px; margin:0 0 8px}} .vd-hero p {{color:var(--vd-muted); max-width:70ch; margin:0}} .vd-answer {{ background:var(--vd-pale); border:1px solid var(--vd-line); border-left:3px solid var(--vd-indigo); border-radius:var(--vd-r); padding:16px 18px; margin:6px 0 14px; }} .vd-poster {{ background:var(--vd-navy); color:{WHITE}; border-radius:0; padding:30px; }} .vd-poster .q {{ font-family:'Archivo', sans-serif; font-weight:600; font-size:24px; line-height:1.2; margin:0; }} .vd-poster .q em {{font-style:normal; color:var(--vd-orange)}} .vd-poster .row {{ display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid rgba(255,255,255,.16); font-size:14px; }} .vd-feature {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); padding:16px 18px; height:100%; }} .vd-feature b {{font-family:'Archivo', sans-serif; font-weight:600; display:block; margin-bottom:4px; color:var(--vd-navy)}} .vd-feature span {{color:var(--vd-muted); font-size:14px}} .vd-bar-label {{display:flex; justify-content:space-between; font-size:14px; margin-bottom:5px}} .vd-bar {{height:7px; background:var(--vd-pale); border-radius:0; overflow:hidden}} .vd-bar > div {{height:100%; background:var(--vd-indigo)}} .vd-bar.alert > div {{background:var(--vd-orange)}} .vd-tag {{ display:inline-block; font-size:12px; font-weight:700; padding:4px 12px; border-radius:0; background:rgba(79,70,229,.12); color:var(--vd-indigo); }}   .stApp {{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }} h1,h2,h3 {{ text-wrap:balance; }} p, li {{ text-wrap:pretty; }} .vd-kicker {{ font-weight:800; }} </style>"""
 )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Thème clair / sombre
+# ─────────────────────────────────────────────────────────────────────────────
+DARK_RULES = """.stApp, html, body { background:#141312 !important; color:#f3f2f2 !important; } .block-container { padding:1rem .9rem 3.5rem !important; max-width:100% !important; } h1,h2,h3,h4,h5,h6 { color:#f3f2f2 !important; letter-spacing:-.045em; } h1 {font-size:28px !important} h2 {font-size:23px !important} h3 {font-size:20px !important} h4 {font-size:17px !important} p, li, span, label, .stMarkdown { color:rgba(243,242,242,.85) !important; } .stCaption, [data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p { color:rgba(243,242,242,.45) !important; } section[data-testid="stSidebar"] { background:#0d0c0c !important; border-right:1px solid rgba(243,242,242,.14) !important; } section[data-testid="stSidebar"] * { color:#f3f2f2 !important; } div[data-testid="stHorizontalBlock"] { flex-direction:column; gap:12px; } div[data-testid="column"] { width:100% !important; flex:1 1 100% !important; min-width:100% !important; } div[data-testid="stMetric"] { background:#1c1a19 !important; border:0 !important; border-radius:0 !important; padding:14px 16px !important; } div[data-testid="stMetricValue"] { color:#f3f2f2 !important; font-size:27px !important; letter-spacing:-.04em; } div[data-testid="stMetricLabel"] p { color:rgba(243,242,242,.45) !important; font-size:9px !important; letter-spacing:.14em; } .stTabs [data-baseweb="tab-list"] { overflow-x:auto; scrollbar-width:none; gap:0; border-bottom:1px solid rgba(243,242,242,.16); } .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {display:none} .stTabs [data-baseweb="tab"] { padding:12px 14px; font-size:13px; white-space:nowrap; color:rgba(243,242,242,.5) !important; } .stTabs [aria-selected="true"] { color:#ff5c3d !important; box-shadow:inset 0 -2px 0 0 #ec3013; } .stTabs [aria-selected="true"] p { color:#ff5c3d !important; } .stButton button, .stDownloadButton button, .stFormSubmitButton button { min-height:48px; width:100%; font-size:15px; border-radius:0 !important; background:transparent !important; border:1px solid rgba(243,242,242,.3) !important; color:#f3f2f2 !important; } .stButton button[kind="primary"], .stDownloadButton button[kind="primary"] { background:#ec3013 !important; border-color:#ec3013 !important; color:#f3f2f2 !important; } .stTextInput input, .stTextArea textarea, .stNumberInput input, .stChatInput textarea, div[data-baseweb="select"] > div { background:#1c1a19 !important; border:1px solid rgba(243,242,242,.22) !important; color:#f3f2f2 !important; min-height:48px; font-size:16px; border-radius:0 !important; } div[data-baseweb="select"] svg { fill:#f3f2f2 !important; } section[data-testid="stFileUploaderDropzone"] { background:#1c1a19 !important; border:1.5px dashed rgba(243,242,242,.3) !important; } section[data-testid="stFileUploaderDropzone"] * { color:rgba(243,242,242,.75) !important; } div[data-testid="stDataFrame"] { border:1px solid rgba(243,242,242,.16) !important; font-size:12px; } .stExpander, details { background:#1c1a19 !important; border:1px solid rgba(243,242,242,.16) !important; border-radius:0 !important; } .stExpander summary, details summary { color:#f3f2f2 !important; } .vd-rule { background:rgba(243,242,242,.16) !important; } .vd-kicker { color:#ff5c3d !important; } .vd-hero { background:#1c1a19 !important; border:0 !important; border-left:2px solid #ec3013 !important; padding:20px 18px !important; } .vd-hero h1 { font-size:26px !important; } .vd-hero p { color:rgba(243,242,242,.65) !important; } .vd-answer { background:#1c1a19 !important; border:0 !important; border-left:2px solid #ec3013 !important; border-radius:0 !important; color:rgba(243,242,242,.9) !important; } .vd-answer * { color:rgba(243,242,242,.9) !important; } .vd-feature { background:#1c1a19 !important; border:0 !important; padding:14px 16px !important; } .vd-feature b { color:#f3f2f2 !important; } .vd-feature span { color:rgba(243,242,242,.55) !important; } .vd-poster { background:#ec3013 !important; padding:22px !important; } .vd-poster .q { font-size:20px !important; } .vd-bar { background:rgba(243,242,242,.16) !important; } .vd-bar > div { background:#f3f2f2 !important; } .vd-bar.alert > div { background:#ec3013 !important; } .vd-tag { background:rgba(236,48,19,.22) !important; color:#ff5c3d !important; } hr { border-color:rgba(243,242,242,.16) !important; } .stAlert { border-radius:0 !important; } ::selection { background:rgba(236,48,19,.4); } h1 { font-size:30px !important; line-height:.98 !important; letter-spacing:-.05em !important; } h2 { font-size:24px !important; line-height:1.02 !important; } h3 { font-size:20px !important; } h4 { font-size:17px !important; } p, li, .stMarkdown p { font-size:15px !important; line-height:1.55 !important; } .vd-kicker { font-size:10px !important; letter-spacing:.18em !important; } .vd-hero h1 { font-size:28px !important; line-height:.98 !important; } .vd-hero p { font-size:14px !important; } div[data-testid="stMetricValue"] { font-variant-numeric:tabular-nums; } section[data-testid="stFileUploaderDropzone"] { padding:26px 18px !important; } section[data-testid="stFileUploaderDropzone"] button { background:#ec3013 !important; border-color:#ec3013 !important; color:#f3f2f2 !important; } label[data-testid="stWidgetLabel"] p { font-size:11px !important; letter-spacing:.16em; text-transform:uppercase; color:#ff5c3d !important; font-weight:800 !important; } .vd-feature { margin-bottom:10px; }"""
+
+_theme = st.session_state.get("vd_theme", "Auto")
+if _theme == "Sombre":
+    st.html("<style>" + DARK_RULES + "</style>")
+    pio.templates.default = "visualizedata_dark"
+elif _theme == "Auto":
+    st.html("<style>@media (max-width: 900px) {" + DARK_RULES + "}</style>")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -257,6 +270,28 @@ def quality_table(df: pd.DataFrame) -> pd.DataFrame:
             "Uniques": [int(df[c].nunique(dropna=True)) for c in df.columns],
         }
     )
+
+
+def is_identifier(series: pd.Series, name: str) -> bool:
+    """Repère les colonnes d'identifiants : inutiles à représenter en histogramme."""
+    label = str(name).lower()
+    if any(token in label for token in ("_id", "id_", "code", "numero", "num_", "ref", "matricule")):
+        return True
+    if label in ("id", "index", "n", "no"):
+        return True
+    valid = series.dropna()
+    if valid.empty:
+        return False
+    if valid.nunique() / len(valid) > 0.95 and len(valid) > 20:
+        return True
+    return False
+
+
+def rank_measures(df: pd.DataFrame) -> list[str]:
+    """Colonnes numériques ordonnées de la plus parlante à la moins parlante."""
+    numeric = df.select_dtypes(include="number").columns.tolist()
+    measures = [c for c in numeric if not is_identifier(df[c], c)]
+    return measures or numeric
 
 
 def outlier_counts(df: pd.DataFrame) -> pd.DataFrame:
@@ -695,6 +730,12 @@ st.html(
     """<div class="vd-hero"> <div class="vd-kicker">Assistant IA</div> <h1>Transformer les données en décisions</h1> <p>Importez un fichier CSV ou Excel : audit de qualité, statistiques, visualisations et réponses en langage naturel — sans Python ni SQL.</p> </div>"""
 )
 
+st.segmented_control(
+    "Apparence", ["Auto", "Clair", "Sombre"], default="Auto",
+    key="vd_theme", label_visibility="collapsed",
+    help="Auto : sombre sur téléphone et tablette, clair sur ordinateur.",
+)
+
 uploaded_file = st.file_uploader(
     "Déposez un fichier CSV ou Excel",
     type=["csv", "xlsx", "xls"],
@@ -724,7 +765,7 @@ if uploaded_file is None:
         """<div class="vd-poster" style="margin-top:22px"> <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:14px">Exemple de sortie</div> <p class="q">« Le canal revendeur recule de 9 % pendant que <em>le direct progresse.</em> »</p> <div style="margin-top:26px"> <div class="row"><span style="opacity:.85">Fichiers acceptés</span><span style="font-weight:800">CSV · XLSX · XLS</span></div> <div class="row"><span style="opacity:.85">Temps moyen d'analyse</span><span style="font-weight:800">&lt; 5 s</span></div> <div class="row"><span style="opacity:.85">Installation</span><span style="font-weight:800">Aucune</span></div> </div> </div>"""
     )
     st.html('<hr class="vd-rule">')
-    st.caption("VisualizeData Assistant · build modernist-14 · mobile")
+    st.caption("VisualizeData Assistant · build modernist-15")
     st.stop()
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -762,51 +803,6 @@ with st.sidebar:
             f'<span style="font-weight:700;color:{INDIGO}">{index}</span><span>{step}</span></div>'
         )
 
-    if st.toggle("Thème sombre", value=False,
-                 help="Appliqué automatiquement sur téléphone et tablette."):
-        pio.templates.default = "visualizedata_dark"
-        st.html(
-            "<style>.stApp,html,body{background:#141312 !important;color:#f3f2f2 !important}"
-            "h1,h2,h3,h4,h5,h6{color:#f3f2f2 !important}"
-            "p,li,span,label,.stMarkdown{color:rgba(243,242,242,.85) !important}"
-            "section[data-testid='stSidebar']{background:#0d0c0c !important;"
-            "border-right:1px solid rgba(243,242,242,.14) !important}"
-            "section[data-testid='stSidebar'] *{color:#f3f2f2 !important}"
-            "div[data-testid='stMetric']{background:#1c1a19 !important;border:0 !important}"
-            "div[data-testid='stMetricValue']{color:#f3f2f2 !important}"
-            "div[data-testid='stMetricLabel'] p{color:rgba(243,242,242,.45) !important}"
-            ".stTabs [data-baseweb='tab']{color:rgba(243,242,242,.5) !important}"
-            ".stTabs [aria-selected='true'],.stTabs [aria-selected='true'] p{color:#ff5c3d !important}"
-            ".stButton button,.stDownloadButton button{background:transparent !important;"
-            "border:1px solid rgba(243,242,242,.3) !important;color:#f3f2f2 !important}"
-            ".stButton button[kind='primary'],.stDownloadButton button[kind='primary']"
-            "{background:#ec3013 !important;border-color:#ec3013 !important}"
-            ".stTextInput input,.stTextArea textarea,.stChatInput textarea,"
-            "div[data-baseweb='select']>div{background:#1c1a19 !important;"
-            "border-color:rgba(243,242,242,.22) !important;color:#f3f2f2 !important}"
-            "section[data-testid='stFileUploaderDropzone']{background:#1c1a19 !important;"
-            "border-color:rgba(243,242,242,.3) !important}"
-            "section[data-testid='stFileUploaderDropzone'] *{color:rgba(243,242,242,.75) !important}"
-            ".vd-rule{background:rgba(243,242,242,.16) !important}"
-            ".vd-kicker{color:#ff5c3d !important}"
-            ".vd-hero{background:#1c1a19 !important;border:0 !important;"
-            "border-left:2px solid #ec3013 !important}"
-            ".vd-hero p{color:rgba(243,242,242,.65) !important}"
-            ".vd-answer,.vd-answer *{background:#1c1a19 !important;border-radius:0 !important;"
-            "color:rgba(243,242,242,.9) !important}"
-            ".vd-answer{border:0 !important;border-left:2px solid #ec3013 !important}"
-            ".vd-feature{background:#1c1a19 !important;border:0 !important}"
-            ".vd-feature b{color:#f3f2f2 !important}"
-            ".vd-feature span{color:rgba(243,242,242,.55) !important}"
-            ".vd-bar{background:rgba(243,242,242,.16) !important}"
-            ".vd-bar>div{background:#f3f2f2 !important}"
-            ".vd-bar.alert>div{background:#ec3013 !important}"
-            ".stExpander,details{background:#1c1a19 !important;"
-            "border:1px solid rgba(243,242,242,.16) !important}"
-            ".stExpander summary,details summary{color:#f3f2f2 !important}"
-            "div[data-testid='stDataFrame']{border-color:rgba(243,242,242,.16) !important}"
-            "</style>"
-        )
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1020,15 +1016,22 @@ with tabs[3]:
         options = ["Histogramme", "Nuage de points", "Boîte à moustaches"]
         if date_cols:
             options += ["Série temporelle", "Projection"]
+        measures = rank_measures(df)
+        ignored = [c for c in numeric_cols if c not in measures]
         chart_type = st.radio("Type de graphique", options, horizontal=True,
                               label_visibility="collapsed")
+        if ignored:
+            st.caption(
+                "Colonnes écartées par défaut car ce sont des identifiants : "
+                + ", ".join(ignored) + "."
+            )
         st.html('<hr class="vd-rule" style="margin:14px 0 20px">')
         controls, chart = st.columns([1, 2.4], gap="large")
 
         if chart_type == "Histogramme":
             with controls:
-                x = st.selectbox("Variable", numeric_cols)
-                bins = st.slider("Nombre de classes", 10, 100, 30, step=5)
+                x = st.selectbox("Variable", measures + ignored)
+                bins = st.slider("Nombre de classes", 5, 100, 30, step=5)
                 split = st.selectbox("Découper par", ["Aucune"] + [c for c in all_cols if c != x])
             with chart:
                 fig = px.histogram(df, x=x, nbins=bins,
@@ -1040,8 +1043,8 @@ with tabs[3]:
                 st.info("Il faut au moins deux variables numériques.")
             else:
                 with controls:
-                    x = st.selectbox("Axe X", numeric_cols, key="scatter_x")
-                    y = st.selectbox("Axe Y", numeric_cols, index=1, key="scatter_y")
+                    x = st.selectbox("Axe X", measures + ignored, key="scatter_x")
+                    y = st.selectbox("Axe Y", measures + ignored, index=1, key="scatter_y")
                     color = st.selectbox("Couleur", ["Aucune"] + all_cols)
                     trend = st.checkbox("Ajouter une tendance", value=False)
                 with chart:
@@ -1056,7 +1059,7 @@ with tabs[3]:
 
         elif chart_type == "Boîte à moustaches":
             with controls:
-                y = st.selectbox("Variable numérique", numeric_cols, key="box_y")
+                y = st.selectbox("Variable numérique", measures + ignored, key="box_y")
                 category = st.selectbox("Catégorie", ["Aucune"] + [c for c in all_cols if c != y])
             with chart:
                 fig = px.box(df, x=None if category == "Aucune" else category, y=y, points="outliers")
@@ -1065,7 +1068,7 @@ with tabs[3]:
         elif chart_type == "Projection":
             with controls:
                 date_col = st.selectbox("Date", date_cols, key="fc_date")
-                value_col = st.selectbox("Mesure", numeric_cols, key="fc_value")
+                value_col = st.selectbox("Mesure", measures, key="fc_value")
                 horizon = st.slider("Mois à projeter", 1, 12, 3)
             observed, projection = forecast_series(df, date_col, value_col, horizon)
             with chart:
@@ -1095,7 +1098,7 @@ with tabs[3]:
         else:
             with controls:
                 date_col = st.selectbox("Date", date_cols)
-                value_col = st.selectbox("Mesure", numeric_cols)
+                value_col = st.selectbox("Mesure", measures)
                 grain = st.selectbox("Granularité", ["Jour", "Semaine", "Mois", "Trimestre"], index=2)
                 aggregate = st.selectbox("Agrégation", ["Somme", "Moyenne", "Nombre"])
             rule = {"Jour": "D", "Semaine": "W", "Mois": "MS", "Trimestre": "QS"}[grain]
@@ -1223,4 +1226,4 @@ with tabs[4]:
                 history.append({"role": "assistant", "content": answer})
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-14 · mobile")
+st.caption("VisualizeData Assistant · build modernist-15")
