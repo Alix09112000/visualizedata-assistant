@@ -452,6 +452,15 @@ PROVIDERS = {
 }
 
 
+def business_context() -> str:
+    """Contexte métier, saisi depuis la barre d'état ou depuis le fil de discussion."""
+    for key in ("vd_context", "vd_context_inline"):
+        value = st.session_state.get(key, "")
+        if value and value.strip():
+            return value.strip()
+    return ""
+
+
 def available_providers() -> dict:
     return {name: cfg for name, cfg in PROVIDERS.items() if os.getenv(cfg["env"])}
 
@@ -722,7 +731,183 @@ def markdown_report(df: pd.DataFrame, name: str, insights: list[str], history: l
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Barre latérale
+# Modélisation — prédiction, importance des variables, fiabilité
+# ──────────────────────────────────────────────────────────────────
+def suggest_target(df: pd.DataFrame) -> str | None:
+    """Propose la colonne la plus intéressante à prédire."""
+    priority = ("montant", "chiffre", "ca", "revenu", "prix", "total", "quantite",
+                "score", "nps", "satisfaction", "churn", "retard", "statut", "resultat")
+    candidates = []
+    for col in df.columns:
+        series = df[col]
+        label = str(col).lower()
+        if is_identifier(series, col) or series.isna().mean() > 0.4:
+            continue
+        if pd.api.types.is_datetime64_any_dtype(series):
+            continue
+        if pd.api.types.is_numeric_dtype(series):
+            kind, score = "num", 2
+        elif 2 <= series.nunique(dropna=True) <= 12:
+            kind, score = "cat", 2
+        else:
+            continue
+        if any(token in label for token in priority):
+            score += 4
+        candidates.append((score, col, kind))
+    if not candidates:
+        return None
+    candidates.sort(reverse=True)
+    return candidates[0][1]
+
+
+def modelable_targets(df: pd.DataFrame) -> list[str]:
+    targets = []
+    for col in df.columns:
+        series = df[col]
+        if is_identifier(series, col) or series.isna().mean() > 0.4:
+            continue
+        if pd.api.types.is_datetime64_any_dtype(series):
+            continue
+        if pd.api.types.is_numeric_dtype(series) or 2 <= series.nunique(dropna=True) <= 12:
+            targets.append(col)
+    return targets
+
+
+@st.cache_data(show_spinner=False)
+def train_model(df: pd.DataFrame, target: str) -> dict:
+    """Entraîne un modèle léger et retourne tout ce qu'il faut pour l'expliquer."""
+    from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+    from sklearn.metrics import accuracy_score, r2_score, mean_absolute_error
+    from sklearn.model_selection import train_test_split
+
+    work = df.dropna(subset=[target]).copy()
+    if len(work) < 40:
+        return {"error": "Il faut au moins 40 lignes renseignées pour entraîner un modèle."}
+
+    y = work[target]
+    features = [
+        c for c in work.columns
+        if c != target and not is_identifier(work[c], c) and work[c].isna().mean() < 0.5
+    ]
+    if not features:
+        return {"error": "Aucune variable explicative exploitable dans ce fichier."}
+
+    X = work[features].copy()
+    for col in X.columns:
+        if pd.api.types.is_datetime64_any_dtype(X[col]):
+            X[col] = X[col].view("int64") // 10**9
+        elif not pd.api.types.is_numeric_dtype(X[col]):
+            if X[col].nunique() > 40:
+                X = X.drop(columns=[col])
+                continue
+            X[col] = X[col].astype("category").cat.codes
+    X = X.fillna(X.median(numeric_only=True)).fillna(-1)
+    if X.empty:
+        return {"error": "Aucune variable explicative exploitable dans ce fichier."}
+
+    classification = not pd.api.types.is_numeric_dtype(y) or y.nunique() <= 12
+    if classification:
+        y = y.astype(str)
+        if y.value_counts().min() < 5:
+            return {"error": "Certaines catégories sont trop rares pour être apprises."}
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.25, random_state=0,
+        stratify=y if classification and y.nunique() > 1 else None,
+    )
+    model = (
+        RandomForestClassifier(n_estimators=160, random_state=0, n_jobs=-1, min_samples_leaf=2)
+        if classification else
+        RandomForestRegressor(n_estimators=160, random_state=0, n_jobs=-1, min_samples_leaf=2)
+    )
+    model.fit(X_train, y_train)
+    predicted = model.predict(X_test)
+
+    importance = (
+        pd.Series(model.feature_importances_, index=X.columns)
+        .sort_values(ascending=False).head(8)
+    )
+    result = {
+        "target": target,
+        "classification": classification,
+        "features": list(X.columns),
+        "importance": importance,
+        "n_train": len(X_train),
+        "n_test": len(X_test),
+    }
+    if classification:
+        result["score"] = float(accuracy_score(y_test, predicted))
+        result["baseline"] = float(y_train.value_counts(normalize=True).max())
+        result["classes"] = sorted(y.unique().tolist())
+        probabilities = model.predict_proba(X_test)
+        result["risk"] = pd.DataFrame({
+            "ligne": X_test.index,
+            "prédit": predicted,
+            "réel": y_test.values,
+            "confiance": probabilities.max(axis=1).round(3),
+        }).sort_values("confiance")
+    else:
+        result["score"] = float(r2_score(y_test, predicted))
+        result["mae"] = float(mean_absolute_error(y_test, predicted))
+        result["moyenne"] = float(y_test.mean())
+        comparison = pd.DataFrame({"réel": y_test.values, "prédit": predicted}, index=X_test.index)
+        comparison["écart"] = (comparison["prédit"] - comparison["réel"]).round(2)
+        result["comparison"] = comparison
+        result["risk"] = comparison.reindex(
+            comparison["écart"].abs().sort_values(ascending=False).index
+        ).head(20)
+    return result
+
+
+def reliability_label(score: float, classification: bool, baseline: float = 0.0) -> tuple[str, str]:
+    """Retourne (niveau, phrase) — affirmatif, mais jamais trompeur."""
+    if classification:
+        gain = score - baseline
+        if score >= 0.85 and gain > 0.1:
+            return "Élevée", "Le modèle reconnaît bien les cas de votre historique."
+        if score >= 0.7 and gain > 0.05:
+            return "Correcte", "Le modèle est utile pour orienter, pas pour trancher seul."
+        return "Faible", "Les données actuelles n'expliquent pas assez ce résultat."
+    if score >= 0.7:
+        return "Élevée", "Le modèle reproduit fidèlement les valeurs observées."
+    if score >= 0.4:
+        return "Correcte", "Le modèle capte la tendance générale, avec une marge d'erreur réelle."
+    return "Faible", "Les variables disponibles n'expliquent pas assez cette valeur."
+
+
+MODEL_PROMPT = """Tu es analyste de données pour un dirigeant de PME sans compétence technique.
+On te donne le résultat d'un modèle prédictif. Rédige en français, ton affirmatif et direct :
+
+**Conclusion** — une phrase : ce que le modèle permet de faire concrètement.
+**Ce qui pèse le plus** — deux ou trois puces reprenant les variables les plus importantes,
+traduites en langage métier.
+**Action** — une seule phrase.
+
+N'emploie aucun terme technique (pas de R², accuracy, random forest, features).
+N'invente aucun chiffre absent des données fournies.
+{context}"""
+
+
+def explain_model(client: OpenAI, model_name: str, result: dict, context: str):
+    context_block = f"\nCONTEXTE MÉTIER :\n{context}" if context else ""
+    kind = "catégorie" if result["classification"] else "valeur"
+    payload = (
+        f"On cherche à estimer la {kind} de « {result['target']} ».\n"
+        f"Fiabilité : {result['label']} — {result['sentence']}\n"
+        f"Variables les plus influentes (de la plus forte à la plus faible) :\n"
+        + result["importance"].round(3).to_string()
+    )
+    return client.chat.completions.create(
+        model=model_name,
+        messages=[
+            {"role": "system", "content": MODEL_PROMPT.format(context=context_block)},
+            {"role": "user", "content": payload},
+        ],
+        temperature=0.2,
+        stream=True,
+    )
+
+
 # ──────────────────────────────────────────────────────────────────
 # En-tête et import — dans le flux principal, visible sur téléphone
 # ──────────────────────────────────────────────────────────────────
@@ -765,7 +950,7 @@ if uploaded_file is None:
         """<div class="vd-poster" style="margin-top:22px"> <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:14px">Exemple de sortie</div> <p class="q">« Le canal revendeur recule de 9 % pendant que <em>le direct progresse.</em> »</p> <div style="margin-top:26px"> <div class="row"><span style="opacity:.85">Fichiers acceptés</span><span style="font-weight:800">CSV · XLSX · XLS</span></div> <div class="row"><span style="opacity:.85">Temps moyen d'analyse</span><span style="font-weight:800">&lt; 5 s</span></div> <div class="row"><span style="opacity:.85">Installation</span><span style="font-weight:800">Aucune</span></div> </div> </div>"""
     )
     st.html('<hr class="vd-rule">')
-    st.caption("VisualizeData Assistant · build modernist-15")
+    st.caption("VisualizeData Assistant · build modernist-17 · réglages visibles")
     st.stop()
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -876,39 +1061,57 @@ if insights:
 providers = available_providers()
 engine_options = ["Analyse locale (sans clé)"] + list(providers)
 
-with st.expander("Moteur d'analyse et contexte métier", expanded=not providers):
-    left_setting, right_setting = st.columns([1, 1], gap="large")
-    with left_setting:
-        engine = st.selectbox("Moteur d'analyse", engine_options)
-        if engine in providers:
-            st.html(f'<span class="vd-tag">{providers[engine]["model"]}</span>')
-            st.caption(providers[engine]["note"])
-            compute_mode = st.toggle(
-                "Calcul exact sur vos données", value=True,
-                help="L'assistant écrit une requête, l'exécute sur le fichier et commente "
-                     "le résultat réel. Désactivé, il raisonne sur le résumé statistique.",
-            )
-        else:
-            compute_mode = False
-            st.caption(
-                "Réponses calculées sur place à partir de vos statistiques. "
-                "Aucune donnée ne sort de l'application."
-            )
-            if not providers:
-                st.caption(
-                    "Pour des réponses rédigées, ajoutez une clé dans Render → Environment : "
-                    "GROQ_API_KEY, GEMINI_API_KEY, OPENAI_API_KEY, MISTRAL_API_KEY "
-                    "ou OPENROUTER_API_KEY."
-                )
-    with right_setting:
+# Barre d'état : moteur, calcul exact, contexte — toujours visibles
+_context_set = bool(business_context())
+bar_engine, bar_compute, bar_context = st.columns(3, gap="small")
+
+with bar_engine:
+    engine = st.selectbox("Moteur d'analyse", engine_options)
+    if engine in providers:
+        st.caption(providers[engine]["model"])
+    else:
+        st.caption("Sans clé · aucune donnée ne sort")
+
+with bar_compute:
+    if engine in providers:
+        compute_mode = st.toggle(
+            "Calcul exact", value=True,
+            help="L'assistant écrit une requête, l'exécute sur votre fichier et commente "
+                 "le résultat réel. Désactivé, il raisonne sur le résumé statistique.",
+        )
+        st.caption("Requête exécutée sur le fichier" if compute_mode
+                   else "Raisonnement sur le résumé")
+    else:
+        compute_mode = False
+        st.toggle("Calcul exact", value=False, disabled=True,
+                  help="Nécessite une clé IA.")
+        st.caption("Indisponible sans clé IA")
+
+with bar_context:
+    with st.popover(
+        ("Contexte renseigné" if _context_set else "Contexte métier — à renseigner"),
+        use_container_width=True,
+    ):
         st.text_area(
-            "Contexte métier",
+            "Décrivez votre activité en deux phrases",
             placeholder="Ex. : distributeur de matériaux, 3 agences, saison haute de mars "
                         "à juin. Le canal revendeur est prioritaire cette année.",
-            height=130,
+            height=140,
             key="vd_context",
         )
-        st.caption("Décrit une fois, repris dans toutes les réponses de l'assistant.")
+        st.caption(
+            "L'assistant s'en sert pour interpréter vos chiffres au lieu de les décrire. "
+            "Repris dans le briefing, les réponses et la conclusion du modèle."
+        )
+    st.caption("Améliore nettement les réponses" if not _context_set
+               else "Repris dans toutes les réponses")
+
+if not providers:
+    st.caption(
+        "Aucune clé IA détectée. Pour des réponses rédigées, ajoutez une variable dans "
+        "Render → Environment : GROQ_API_KEY, GEMINI_API_KEY, OPENAI_API_KEY, "
+        "MISTRAL_API_KEY ou OPENROUTER_API_KEY."
+    )
 
 _engine_ready = engine in providers
 if _engine_ready:
@@ -920,7 +1123,7 @@ if _engine_ready:
                     st.session_state[_brief_key] = ai_briefing(
                         make_client(engine), providers[engine]["model"],
                         build_dataset_summary(df), insights,
-                        st.session_state.get("vd_context", "").strip(),
+                        business_context(),
                     )
                 st.rerun()
             except Exception as exc:
@@ -929,7 +1132,8 @@ if _engine_ready:
         st.html('<div class="vd-kicker" style="margin-top:22px">Briefing de l\'assistant</div>')
         st.html(f'<div class="vd-answer">{st.session_state[_brief_key]}</div>')
 
-tabs = st.tabs(["Aperçu", "Qualité", "Statistiques", "Visualisations", "Assistant IA"])
+tabs = st.tabs(["Aperçu", "Qualité", "Statistiques", "Visualisations",
+                "Prédiction", "Assistant IA"])
 
 # ── Aperçu ───────────────────────────────────────────────────────────────────
 with tabs[0]:
@@ -1112,12 +1316,128 @@ with tabs[3]:
                 fig.update_traces(line_color=INDIGO, line_width=2.5, marker_color=ORANGE)
                 st.plotly_chart(fig, use_container_width=True)
 
-# ── Assistant IA ─────────────────────────────────────────────────────────────
+# ── Prédiction ───────────────────────────────────────────────────────────────
 with tabs[4]:
+    targets = modelable_targets(df)
+    if not targets:
+        st.info(
+            "Aucune colonne de ce fichier ne se prête à une prédiction : il faut une "
+            "mesure chiffrée ou une catégorie à deux à douze valeurs, renseignée sur "
+            "au moins 60 % des lignes."
+        )
+    else:
+        proposed = suggest_target(df) or targets[0]
+        st.markdown("#### Que voulez-vous estimer ?")
+        st.caption(
+            f"L'application propose « {proposed} ». Changez-la si une autre colonne "
+            "vous intéresse davantage."
+        )
+        choice, action = st.columns([2, 1], gap="large")
+        with choice:
+            target = st.selectbox(
+                "Colonne à estimer", targets, index=targets.index(proposed),
+                label_visibility="collapsed",
+            )
+        with action:
+            launch = st.button("Lancer l'analyse", type="primary", use_container_width=True)
+
+        state_key = f"vd_model::{uploaded_file.name}::{target}"
+        if launch:
+            with st.spinner("Apprentissage sur votre historique…"):
+                st.session_state[state_key] = train_model(df, target)
+
+        outcome = st.session_state.get(state_key)
+        if outcome and outcome.get("error"):
+            st.warning(outcome["error"])
+        elif outcome:
+            label, sentence = reliability_label(
+                outcome["score"], outcome["classification"], outcome.get("baseline", 0.0)
+            )
+            outcome["label"], outcome["sentence"] = label, sentence
+
+            st.html('<hr class="vd-rule">')
+            k1, k2, k3 = st.columns(3, gap="small")
+            k1.metric("Fiabilité", label)
+            if outcome["classification"]:
+                k2.metric("Cas correctement retrouvés", f"{outcome['score'] * 100:.0f} %")
+                k3.metric("Catégories", len(outcome["classes"]))
+            else:
+                k2.metric("Écart moyen", f"{outcome['mae']:,.0f}".replace(",", " "))
+                k3.metric("Valeur moyenne", f"{outcome['moyenne']:,.0f}".replace(",", " "))
+            st.caption(
+                f"{sentence} Modèle appris sur {outcome['n_train']} lignes et vérifié "
+                f"sur {outcome['n_test']} lignes jamais vues."
+            )
+
+            if engine in providers:
+                explain_key = state_key + "::texte"
+                if explain_key not in st.session_state:
+                    if st.button("Lire la conclusion de l'assistant"):
+                        try:
+                            with st.spinner("Rédaction…"):
+                                stream = explain_model(
+                                    make_client(engine), providers[engine]["model"],
+                                    outcome, business_context(),
+                                )
+                                st.session_state[explain_key] = st.write_stream(
+                                    chunk.choices[0].delta.content or "" for chunk in stream
+                                )
+                            st.rerun()
+                        except Exception as exc:
+                            st.error(f"Conclusion indisponible : {exc}")
+                else:
+                    st.html(f'<div class="vd-answer">{st.session_state[explain_key]}</div>')
+
+            st.html('<hr class="vd-rule">')
+            weight_col, chart_col = st.columns([1, 1.3], gap="large")
+            with weight_col:
+                st.markdown("#### Ce qui pèse le plus")
+                weights = (outcome["importance"] / outcome["importance"].sum() * 100).round(1)
+                for name, value in weights.items():
+                    alert = " alert" if value == weights.max() else ""
+                    st.html(
+                        f'<div class="vd-bar-label"><span>{name}</span>'
+                        f'<span style="color:{MUTED}">{value} %</span></div>'
+                        f'<div class="vd-bar{alert}"><div style="width:{value / weights.max() * 100:.0f}%"></div></div>'
+                        '<div style="height:12px"></div>'
+                    )
+            with chart_col:
+                if outcome["classification"]:
+                    st.markdown("#### Répartition des estimations")
+                    counts = outcome["risk"]["prédit"].value_counts().reset_index()
+                    counts.columns = ["catégorie", "lignes"]
+                    fig = px.bar(counts, x="catégorie", y="lignes")
+                    st.plotly_chart(fig, use_container_width=True)
+                else:
+                    st.markdown("#### Prédit contre réel")
+                    comparison = outcome["comparison"]
+                    fig = px.scatter(comparison, x="réel", y="prédit", opacity=0.7)
+                    low = float(min(comparison["réel"].min(), comparison["prédit"].min()))
+                    high = float(max(comparison["réel"].max(), comparison["prédit"].max()))
+                    fig.add_shape(type="line", x0=low, y0=low, x1=high, y1=high,
+                                  line=dict(color=ORANGE, width=2, dash="dot"))
+                    st.plotly_chart(fig, use_container_width=True)
+
+            st.html('<hr class="vd-rule">')
+            st.markdown("#### Lignes à regarder en priorité")
+            st.caption(
+                "Les cas où le modèle hésite le plus."
+                if outcome["classification"] else
+                "Les cas où l'écart entre estimation et réalité est le plus fort."
+            )
+            st.dataframe(outcome["risk"].head(20), use_container_width=True, hide_index=True)
+        else:
+            st.caption(
+                "Rien n'est calculé tant que vous ne lancez pas l'analyse : "
+                "l'apprentissage prend quelques secondes."
+            )
+
+# ── Assistant IA ─────────────────────────────────────────────────────────────
+with tabs[5]:
     history = st.session_state.setdefault("vd_history", [])
     summary = build_dataset_summary(df)
     use_ai = engine in providers
-    context = st.session_state.get("vd_context", "").strip()
+    context = business_context()
 
     left, right = st.columns([1.6, 1], gap="large")
 
@@ -1152,6 +1472,29 @@ with tabs[4]:
 
     with left:
         st.markdown("#### Interroger les données")
+
+        if not context and not st.session_state.get("vd_context_dismissed"):
+            st.html(
+                '<div class="vd-answer"><b style="font-weight:800">Pour de meilleures '
+                'réponses</b><br>Décrivez votre activité en deux phrases. L\'assistant '
+                'interprétera vos chiffres au lieu de les décrire.</div>'
+            )
+            invite, dismiss = st.columns([2, 1], gap="small")
+            with invite:
+                with st.popover("Ajouter le contexte", use_container_width=True):
+                    st.text_area(
+                        "Décrivez votre activité en deux phrases",
+                        placeholder="Ex. : distributeur de matériaux, 3 agences, saison "
+                                    "haute de mars à juin. Le canal revendeur est "
+                                    "prioritaire cette année.",
+                        height=140,
+                        key="vd_context_inline",
+                    )
+            with dismiss:
+                if st.button("Plus tard", use_container_width=True):
+                    st.session_state["vd_context_dismissed"] = True
+                    st.rerun()
+
         for message in history:
             if message["role"] == "user":
                 st.markdown(f"**Question —** {message['content']}")
@@ -1226,4 +1569,4 @@ with tabs[4]:
                 history.append({"role": "assistant", "content": answer})
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-15")
+st.caption("VisualizeData Assistant · build modernist-17 · réglages visibles")
