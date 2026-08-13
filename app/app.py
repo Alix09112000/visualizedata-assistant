@@ -249,31 +249,31 @@ PROVIDERS = {
     "OpenAI": {
         "env": "OPENAI_API_KEY",
         "base_url": None,
-        "model": "gpt-4o-mini",
+        "model": os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
         "note": "Le plus complet. Payant à l'usage.",
     },
     "Groq": {
         "env": "GROQ_API_KEY",
         "base_url": "https://api.groq.com/openai/v1",
-        "model": "llama-3.3-70b-versatile",
+        "model": os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
         "note": "Palier gratuit généreux, réponses très rapides.",
     },
     "Mistral": {
         "env": "MISTRAL_API_KEY",
         "base_url": "https://api.mistral.ai/v1",
-        "model": "mistral-small-latest",
+        "model": os.getenv("MISTRAL_MODEL", "mistral-small-latest"),
         "note": "Hébergement européen, bon français.",
     },
     "Google Gemini": {
         "env": "GEMINI_API_KEY",
         "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
-        "model": "gemini-2.0-flash",
+        "model": os.getenv("GEMINI_MODEL", "gemini-flash-latest"),
         "note": "Palier gratuit, bonne tenue sur les tableaux.",
     },
     "OpenRouter": {
         "env": "OPENROUTER_API_KEY",
         "base_url": "https://openrouter.ai/api/v1",
-        "model": "meta-llama/llama-3.3-70b-instruct",
+        "model": os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.3-70b-instruct"),
         "note": "Un seul compte, de nombreux modèles.",
     },
 }
@@ -746,4 +746,4 @@ with tabs[4]:
                 history.append({"role": "assistant", "content": answer})
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-7 · accès libre")
+st.caption("VisualizeData Assistant · build modernist-8 · accès libre")
