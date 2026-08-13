@@ -2,6 +2,7 @@ import io
 import os
 from datetime import datetime
 
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -342,11 +343,183 @@ def local_answer(df: pd.DataFrame, question: str) -> str:
     return "\n".join(lines)
 
 
+# ──────────────────────────────────────────────────────────────────
+# Moteur de calcul — l'IA écrit du code pandas, on l'exécute nous-mêmes
+# ──────────────────────────────────────────────────────────────────
+SAFE_BUILTINS = {
+    "abs": abs, "all": all, "any": any, "bool": bool, "dict": dict,
+    "enumerate": enumerate, "filter": filter, "float": float, "int": int,
+    "len": len, "list": list, "map": map, "max": max, "min": min,
+    "range": range, "round": round, "set": set, "sorted": sorted, "str": str,
+    "sum": sum, "tuple": tuple, "zip": zip, "isinstance": isinstance,
+    "type": type, "print": lambda *a, **k: None,
+}
+
+FORBIDDEN = (
+    "import ", "__", "open(", "eval(", "exec(", "compile(", "globals(",
+    "locals(", "getattr", "setattr", "delattr", "input(", "exit(", "quit(",
+    "os.", "sys.", "subprocess", "socket", "requests", "urllib", "shutil",
+    "pathlib", "pickle", "to_csv", "to_excel", "to_pickle", "read_csv",
+    "read_excel", "write", "remove", "rmtree", "system",
+)
+
+CODE_PROMPT = """Tu écris du code Python pandas pour répondre à une question sur un DataFrame nommé `df`.
+
+RÈGLES ABSOLUES :
+- Réponds UNIQUEMENT par du code Python, sans texte, sans balises markdown.
+- `df`, `pd` et `px` (plotly.express) sont déjà disponibles. N'importe RIEN.
+- Affecte le résultat chiffré à une variable nommée `result` (DataFrame, Series ou nombre).
+- Si un graphique éclaire la réponse, affecte une figure plotly à `fig`. Sinon, ne définis pas `fig`.
+- N'écris aucun fichier, n'accède à aucune ressource externe, n'utilise pas print().
+- Reste sur les colonnes réellement présentes.
+- Code court : cinq lignes au maximum.
+
+SCHÉMA DU DATAFRAME :
+{schema}
+"""
+
+
+def dataframe_schema(df: pd.DataFrame) -> str:
+    lines = [f"{len(df)} lignes, {len(df.columns)} colonnes", ""]
+    for col in df.columns:
+        series = df[col]
+        detail = f"- {col} ({series.dtype})"
+        if pd.api.types.is_numeric_dtype(series):
+            valid = series.dropna()
+            if not valid.empty:
+                detail += f" — de {valid.min():.4g} à {valid.max():.4g}, moyenne {valid.mean():.4g}"
+        elif pd.api.types.is_datetime64_any_dtype(series):
+            valid = series.dropna()
+            if not valid.empty:
+                detail += f" — du {valid.min():%Y-%m-%d} au {valid.max():%Y-%m-%d}"
+        else:
+            modalities = series.dropna().astype(str).unique()[:8]
+            if len(modalities):
+                detail += " — ex. " + ", ".join(map(str, modalities))
+        if series.isna().any():
+            detail += f" [{series.isna().sum()} manquants]"
+        lines.append(detail)
+    return "\n".join(lines)
+
+
+def generate_code(client: OpenAI, model: str, question: str, df: pd.DataFrame) -> str:
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": CODE_PROMPT.format(schema=dataframe_schema(df))},
+            {"role": "user", "content": question},
+        ],
+        temperature=0,
+    )
+    code = response.choices[0].message.content or ""
+    code = code.replace("```python", "```").split("```")
+    code = code[1] if len(code) > 1 else code[0]
+    return code.strip()
+
+
+def run_code(code: str, df: pd.DataFrame) -> tuple[object, object, str | None]:
+    """Exécute le code dans un espace restreint. Retourne (result, fig, erreur)."""
+    lowered = code.lower()
+    for pattern in FORBIDDEN:
+        if pattern in lowered:
+            return None, None, f"Instruction refusée par la sécurité : `{pattern.strip()}`"
+
+    scope = {"df": df.copy(), "pd": pd, "px": px, "go": go}
+    try:
+        exec(code, {"__builtins__": SAFE_BUILTINS}, scope)
+    except Exception as exc:
+        return None, None, f"{type(exc).__name__} : {exc}"
+    return scope.get("result"), scope.get("fig"), None
+
+
+def result_to_text(result: object) -> str:
+    if result is None:
+        return "aucun résultat"
+    if isinstance(result, pd.DataFrame):
+        return result.head(30).to_string()
+    if isinstance(result, pd.Series):
+        return result.head(30).to_string()
+    if isinstance(result, float):
+        return f"{result:,.4g}".replace(",", " ")
+    return str(result)
+
+
+COMMENT_PROMPT = """Tu es VisualizeData Assistant, analyste de données pour des dirigeants de PME
+sans compétence technique. On te donne une question, le code exécuté et son RÉSULTAT RÉEL.
+
+Rédige en français une réponse courte et directe :
+- Commence par la réponse chiffrée, en reprenant EXACTEMENT les chiffres du résultat.
+- Explique ce que cela signifie pour l'activité, en une ou deux phrases.
+- Termine par une seule recommandation actionnable.
+N'invente aucun chiffre absent du résultat. Ne mentionne ni le code ni pandas.
+{context}"""
+
+
+def comment_result(client: OpenAI, model: str, question: str, code: str,
+                   result: object, context: str):
+    context_block = f"\nCONTEXTE MÉTIER FOURNI PAR LE CLIENT :\n{context}" if context else ""
+    return client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": COMMENT_PROMPT.format(context=context_block)},
+            {"role": "user", "content": (
+                f"QUESTION :\n{question}\n\nCODE EXÉCUTÉ :\n{code}\n\n"
+                f"RÉSULTAT RÉEL :\n{result_to_text(result)}"
+            )},
+        ],
+        temperature=0.2,
+        stream=True,
+    )
+
+
 def ask_assistant(client: OpenAI, model: str, question: str, summary: str, history: list[dict]):
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     messages += [{"role": m["role"], "content": m["content"]} for m in history[-6:]]
     messages.append({"role": "user", "content": f"QUESTION:\n{question}\n\nDONNÉES RÉSUMÉES:\n{summary}"})
     return client.chat.completions.create(model=model, messages=messages, temperature=0.2, stream=True)
+
+
+BRIEF_PROMPT = """Tu es analyste de données pour des dirigeants de PME sans compétence technique.
+À partir du diagnostic ci-dessous, rédige en français un briefing de lecture immédiate :
+
+**Ce qu'il faut retenir** — trois puces maximum, chacune avec un chiffre du diagnostic.
+**Ce qu'il faut surveiller** — une puce sur la fiabilité des données.
+**Prochaine action** — une seule phrase, concrète.
+
+N'invente aucun chiffre. Pas de préambule, pas de conclusion générale.
+{context}"""
+
+
+def ai_briefing(client: OpenAI, model: str, summary: str, insights: list[str], context: str) -> str:
+    context_block = f"\nCONTEXTE MÉTIER :\n{context}" if context else ""
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": BRIEF_PROMPT.format(context=context_block)},
+            {"role": "user", "content": "DIAGNOSTIC :\n" + "\n".join(insights) + "\n\n" + summary},
+        ],
+        temperature=0.2,
+    )
+    return response.choices[0].message.content or ""
+
+
+def forecast_series(df: pd.DataFrame, date_col: str, value_col: str, periods: int = 3):
+    """Projection linéaire simple sur les valeurs mensuelles agrégées."""
+    monthly = (
+        df[[date_col, value_col]].dropna(subset=[date_col])
+        .set_index(date_col)[value_col].resample("MS").sum()
+    )
+    monthly = monthly[monthly.notna()]
+    if len(monthly) < 4:
+        return None, None
+    x = np.arange(len(monthly))
+    slope, intercept = np.polyfit(x, monthly.values, 1)
+    future_x = np.arange(len(monthly), len(monthly) + periods)
+    future_index = pd.date_range(
+        monthly.index[-1] + pd.offsets.MonthBegin(1), periods=periods, freq="MS"
+    )
+    projection = pd.Series(slope * future_x + intercept, index=future_index)
+    return monthly, projection
 
 
 def markdown_report(df: pd.DataFrame, name: str, insights: list[str], history: list[dict]) -> str:
@@ -411,6 +584,18 @@ with st.sidebar:
             f'<span style="font-weight:700;color:{INDIGO}">{index}</span><span>{step}</span></div>'
         )
 
+    st.html('<div class="vd-kicker" style="margin-top:20px">Contexte métier</div>')
+    business_context = st.text_area(
+        "Contexte",
+        value=st.session_state.get("vd_context", ""),
+        placeholder="Ex. : distributeur de matériaux, 3 agences, saison haute de mars à juin. "
+                    "Le canal revendeur est prioritaire cette année.",
+        height=110,
+        label_visibility="collapsed",
+        key="vd_context",
+    )
+    st.caption("Décrit une fois, repris dans toutes les réponses de l'assistant.")
+
     st.html('<div class="vd-kicker" style="margin-top:20px">Moteur d\'analyse</div>')
     providers = available_providers()
     engine_options = ["Analyse locale (sans clé)"] + list(providers)
@@ -418,7 +603,13 @@ with st.sidebar:
     if engine in providers:
         st.html(f'<span class="vd-tag">{providers[engine]["model"]}</span>')
         st.caption(providers[engine]["note"])
+        compute_mode = st.toggle(
+            "Calcul exact sur vos données", value=True,
+            help="L'assistant écrit une requête, l'exécute sur le fichier et commente "
+                 "le résultat réel. Désactivé, il raisonne sur le résumé statistique.",
+        )
     else:
+        compute_mode = False
         st.caption(
             "Réponses calculées sur place à partir de vos statistiques. "
             "Aucune donnée ne sort de l'application."
@@ -537,6 +728,25 @@ if insights:
     for note in insights:
         st.markdown(f"- {note}")
 
+_engine_ready = engine in providers
+if _engine_ready:
+    _brief_key = f"vd_brief::{uploaded_file.name}::{sheet_name}"
+    if _brief_key not in st.session_state:
+        if st.button("Lire le briefing de l'assistant", type="primary"):
+            try:
+                with st.spinner("Lecture du jeu de données…"):
+                    st.session_state[_brief_key] = ai_briefing(
+                        make_client(engine), providers[engine]["model"],
+                        build_dataset_summary(df), insights,
+                        st.session_state.get("vd_context", "").strip(),
+                    )
+                st.rerun()
+            except Exception as exc:
+                st.error(f"Briefing indisponible : {exc}")
+    else:
+        st.html('<div class="vd-kicker" style="margin-top:22px">Briefing de l\'assistant</div>')
+        st.html(f'<div class="vd-answer">{st.session_state[_brief_key]}</div>')
+
 tabs = st.tabs(["Aperçu", "Qualité", "Statistiques", "Visualisations", "Assistant IA"])
 
 # ── Aperçu ───────────────────────────────────────────────────────────────────
@@ -623,7 +833,7 @@ with tabs[3]:
     else:
         options = ["Histogramme", "Nuage de points", "Boîte à moustaches"]
         if date_cols:
-            options.append("Série temporelle")
+            options += ["Série temporelle", "Projection"]
         chart_type = st.radio("Type de graphique", options, horizontal=True,
                               label_visibility="collapsed")
         st.html('<hr class="vd-rule" style="margin:14px 0 20px">')
@@ -666,6 +876,36 @@ with tabs[3]:
                 fig = px.box(df, x=None if category == "Aucune" else category, y=y, points="outliers")
                 st.plotly_chart(fig, use_container_width=True)
 
+        elif chart_type == "Projection":
+            with controls:
+                date_col = st.selectbox("Date", date_cols, key="fc_date")
+                value_col = st.selectbox("Mesure", numeric_cols, key="fc_value")
+                horizon = st.slider("Mois à projeter", 1, 12, 3)
+            observed, projection = forecast_series(df, date_col, value_col, horizon)
+            with chart:
+                if observed is None:
+                    st.info("Il faut au moins quatre mois de données pour projeter une tendance.")
+                else:
+                    fig = go.Figure()
+                    fig.add_scatter(
+                        x=observed.index, y=observed.values, mode="lines+markers",
+                        name="Observé", line=dict(color=INDIGO, width=2.5),
+                    )
+                    fig.add_scatter(
+                        x=[observed.index[-1]] + list(projection.index),
+                        y=[observed.iloc[-1]] + list(projection.values),
+                        mode="lines+markers", name="Projection",
+                        line=dict(color=ORANGE, width=2.5, dash="dot"),
+                    )
+                    st.plotly_chart(fig, use_container_width=True)
+                    total = projection.sum()
+                    st.caption(
+                        f"Projection linéaire sur {horizon} mois : {total:,.0f} au total, "
+                        f"soit {projection.mean():,.0f} par mois en moyenne. "
+                        "Tendance calculée sur l'historique disponible, hors saisonnalité "
+                        "et hors événement exceptionnel.".replace(",", " ")
+                    )
+
         else:
             with controls:
                 date_col = st.selectbox("Date", date_cols)
@@ -688,15 +928,24 @@ with tabs[4]:
     history = st.session_state.setdefault("vd_history", [])
     summary = build_dataset_summary(df)
     use_ai = engine in providers
+    context = st.session_state.get("vd_context", "").strip()
 
     left, right = st.columns([1.6, 1], gap="large")
+
     with right:
         st.html('<div class="vd-kicker">Questions suggérées</div>')
         for index, suggestion in enumerate(SUGGESTIONS):
             if st.button(suggestion, key=f"sugg_{index}", use_container_width=True):
                 st.session_state["vd_pending"] = suggestion
         st.html('<hr class="vd-rule">')
-        if use_ai:
+        if use_ai and compute_mode:
+            st.caption(
+                f"{engine} · {providers[engine]['model']} — mode calcul exact. "
+                "L'assistant écrit une requête, elle est exécutée sur votre fichier, "
+                "et la réponse commente le résultat réel. Le code est vérifié avant "
+                "exécution et ne peut ni écrire de fichier ni accéder au réseau."
+            )
+        elif use_ai:
             st.caption(
                 f"{engine} · {providers[engine]['model']}. L'assistant ne reçoit qu'un résumé "
                 "statistique et un échantillon de 12 lignes — jamais le fichier complet."
@@ -704,9 +953,10 @@ with tabs[4]:
         else:
             st.caption(
                 "Analyse locale : les réponses sont calculées à partir de vos statistiques, "
-                "sans appel externe. Changez de moteur dans la barre latérale pour une "
-                "lecture rédigée."
+                "sans appel externe. Ajoutez une clé IA pour une lecture rédigée."
             )
+        if context:
+            st.caption("Contexte métier pris en compte.")
         if history and st.button("Effacer la conversation"):
             st.session_state["vd_history"] = []
             st.rerun()
@@ -718,6 +968,9 @@ with tabs[4]:
                 st.markdown(f"**Question —** {message['content']}")
             else:
                 st.markdown(message["content"])
+                if message.get("code"):
+                    with st.expander("Voir le calcul effectué"):
+                        st.code(message["code"], language="python")
 
         question = st.chat_input("Posez une question sur vos données…")
         pending = st.session_state.pop("vd_pending", None)
@@ -726,7 +979,44 @@ with tabs[4]:
         if question:
             st.markdown(f"**Question —** {question}")
             history.append({"role": "user", "content": question})
-            if use_ai:
+
+            if use_ai and compute_mode:
+                client, model = make_client(engine), providers[engine]["model"]
+                try:
+                    with st.spinner("Calcul sur vos données…"):
+                        code = generate_code(client, model, question, df)
+                        result, fig, error = run_code(code, df)
+
+                    if error:
+                        st.warning(f"Le calcul n'a pas abouti ({error}). Réponse sur le résumé statistique.")
+                        with st.spinner("Analyse en cours…"):
+                            stream = ask_assistant(client, model, question, summary, history[:-1])
+                            answer = st.write_stream(
+                                chunk.choices[0].delta.content or "" for chunk in stream
+                            )
+                        history.append({"role": "assistant", "content": answer})
+                    else:
+                        if isinstance(result, (pd.DataFrame, pd.Series)) and len(result) > 1:
+                            st.dataframe(
+                                result.head(50) if isinstance(result, pd.DataFrame)
+                                else result.head(50).to_frame(),
+                                use_container_width=True,
+                            )
+                        if fig is not None:
+                            st.plotly_chart(fig, use_container_width=True)
+                        with st.spinner("Rédaction…"):
+                            stream = comment_result(client, model, question, code, result, context)
+                            answer = st.write_stream(
+                                chunk.choices[0].delta.content or "" for chunk in stream
+                            )
+                        with st.expander("Voir le calcul effectué"):
+                            st.code(code, language="python")
+                        history.append({"role": "assistant", "content": answer, "code": code})
+                except Exception as exc:
+                    history.pop()
+                    st.error(f"Impossible d'obtenir l'analyse via {engine} : {exc}")
+
+            elif use_ai:
                 try:
                     with st.spinner("Analyse en cours…"):
                         stream = ask_assistant(
@@ -740,10 +1030,11 @@ with tabs[4]:
                 except Exception as exc:
                     history.pop()
                     st.error(f"Impossible d'obtenir l'analyse via {engine} : {exc}")
+
             else:
                 answer = local_answer(df, question)
                 st.markdown(answer)
                 history.append({"role": "assistant", "content": answer})
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-8 · accès libre")
+st.caption("VisualizeData Assistant · build modernist-9 · calcul exact")
