@@ -1,0 +1,541 @@
+reference,designation,famille,depot,stock_actuel,stock_mini,delai_reappro_jours,valeur_unitaire,rotation_mensuelle,statut
+REF-1000,Ciment modèle 37,Ciment,Entrepôt Nord,399,35,12,14573,38,Normal
+REF-1001,Peinture modèle 36,Peinture,Entrepôt Nord,228,92,7,20919,90,Normal
+REF-1002,Ciment modèle 2,Ciment,Entrepôt Sud,21,42,23,10262,79,Sous le seuil
+REF-1003,Carrelage modèle 22,Carrelage,Entrepôt Nord,358,94,3,15435,45,Normal
+REF-1004,Électricité modèle 5,Électricité,Entrepôt Sud,206,70,12,14606,5,Normal
+REF-1005,Plomberie modèle 29,Plomberie,Dépôt Bouaké,43,47,9,10246,108,Sous le seuil
+REF-1006,Peinture modèle 14,Peinture,Entrepôt Sud,96,78,13,10559,24,À surveiller
+REF-1007,Carrelage modèle 29,Carrelage,Entrepôt Nord,248,63,8,15170,113,Normal
+REF-1008,Plomberie modèle 18,Plomberie,Entrepôt Sud,107,32,29,14366,65,Normal
+REF-1009,Fer à béton modèle 8,Fer à béton,Dépôt Bouaké,21,78,24,9761,29,Sous le seuil
+REF-1010,Ciment modèle 22,Ciment,Dépôt Bouaké,362,53,20,14880,81,Normal
+REF-1011,Plomberie modèle 15,Plomberie,Entrepôt Sud,234,81,12,8351,54,Normal
+REF-1012,Carrelage modèle 31,Carrelage,Dépôt Bouaké,58,46,24,13809,37,À surveiller
+REF-1013,Fer à béton modèle 19,Fer à béton,Dépôt Bouaké,275,42,9,10501,42,Normal
+REF-1014,Ciment modèle 19,Ciment,Entrepôt Sud,272,41,22,4700,83,Normal
+REF-1015,Peinture modèle 23,Peinture,Dépôt Bouaké,61,41,5,6554,105,À surveiller
+REF-1016,Peinture modèle 10,Peinture,Entrepôt Nord,57,34,7,19256,113,À surveiller
+REF-1017,Peinture modèle 25,Peinture,Dépôt Bouaké,279,55,21,8853,44,Normal
+REF-1018,Carrelage modèle 36,Carrelage,Entrepôt Nord,377,63,28,6363,117,Normal
+REF-1019,Plomberie modèle 3,Plomberie,Entrepôt Nord,353,31,5,5676,6,Normal
+REF-1020,Fer à béton modèle 16,Fer à béton,Entrepôt Nord,233,98,7,18025,70,Normal
+REF-1021,Fer à béton modèle 23,Fer à béton,Entrepôt Sud,394,99,7,15334,74,Normal
+REF-1022,Ciment modèle 22,Ciment,Dépôt Bouaké,316,39,12,17015,92,Normal
+REF-1023,Plomberie modèle 10,Plomberie,Entrepôt Sud,247,91,24,12427,98,Normal
+REF-1024,Peinture modèle 1,Peinture,Dépôt Bouaké,269,90,27,7427,58,Normal
+REF-1025,Plomberie modèle 18,Plomberie,Dépôt Bouaké,193,34,15,5908,50,Normal
+REF-1026,Peinture modèle 10,Peinture,Dépôt Bouaké,273,39,24,13433,103,Normal
+REF-1027,Peinture modèle 6,Peinture,Entrepôt Sud,360,31,11,10604,22,Normal
+REF-1028,Fer à béton modèle 4,Fer à béton,Entrepôt Sud,189,33,13,5720,105,Normal
+REF-1029,Plomberie modèle 31,Plomberie,Entrepôt Sud,295,30,13,9078,113,Normal
+REF-1030,Fer à béton modèle 8,Fer à béton,Entrepôt Sud,219,89,16,10987,68,Normal
+REF-1031,Électricité modèle 21,Électricité,Dépôt Bouaké,189,31,10,14219,85,Normal
+REF-1032,Électricité modèle 4,Électricité,Entrepôt Nord,39,38,19,13190,111,À surveiller
+REF-1033,Plomberie modèle 30,Plomberie,Entrepôt Nord,248,90,29,20240,110,Normal
+REF-1034,Carrelage modèle 11,Carrelage,Entrepôt Nord,188,75,21,3234,52,Normal
+REF-1035,Carrelage modèle 32,Carrelage,Dépôt Bouaké,159,52,27,9254,115,Normal
+REF-1036,Fer à béton modèle 37,Fer à béton,Entrepôt Sud,204,98,18,16835,93,Normal
+REF-1037,Ciment modèle 17,Ciment,Entrepôt Nord,375,91,17,13074,31,Normal
+REF-1038,Ciment modèle 30,Ciment,Entrepôt Nord,213,27,24,11612,18,Normal
+REF-1039,Fer à béton modèle 15,Fer à béton,Entrepôt Nord,375,95,2,3230,110,Normal
+REF-1040,Plomberie modèle 35,Plomberie,Entrepôt Sud,16,24,14,13127,67,Sous le seuil
+REF-1041,Fer à béton modèle 7,Fer à béton,Entrepôt Nord,111,61,19,10163,109,À surveiller
+REF-1042,Carrelage modèle 2,Carrelage,Dépôt Bouaké,368,59,8,14725,88,Normal
+REF-1043,Fer à béton modèle 25,Fer à béton,Entrepôt Nord,283,70,5,3863,53,Normal
+REF-1044,Fer à béton modèle 9,Fer à béton,Dépôt Bouaké,199,26,3,9399,106,Normal
+REF-1045,Électricité modèle 24,Électricité,Entrepôt Sud,176,72,29,11948,36,Normal
+REF-1046,Carrelage modèle 14,Carrelage,Entrepôt Nord,47,26,15,17398,17,À surveiller
+REF-1047,Peinture modèle 36,Peinture,Dépôt Bouaké,371,52,26,4678,2,Normal
+REF-1048,Plomberie modèle 10,Plomberie,Dépôt Bouaké,155,72,11,4711,15,Normal
+REF-1049,Ciment modèle 8,Ciment,Entrepôt Nord,395,80,15,15287,62,Normal
+REF-1050,Plomberie modèle 5,Plomberie,Entrepôt Nord,320,30,25,6359,10,Normal
+REF-1051,Fer à béton modèle 9,Fer à béton,Dépôt Bouaké,180,71,9,6356,108,Normal
+REF-1052,Peinture modèle 2,Peinture,Entrepôt Sud,293,64,25,9997,114,Normal
+REF-1053,Ciment modèle 15,Ciment,Entrepôt Nord,285,44,28,20788,81,Normal
+REF-1054,Carrelage modèle 8,Carrelage,Entrepôt Sud,211,77,26,4239,43,Normal
+REF-1055,Ciment modèle 16,Ciment,Dépôt Bouaké,381,48,13,12996,18,Normal
+REF-1056,Carrelage modèle 20,Carrelage,Entrepôt Sud,239,82,19,3034,90,Normal
+REF-1057,Carrelage modèle 9,Carrelage,Dépôt Bouaké,389,34,5,10734,73,Normal
+REF-1058,Ciment modèle 31,Ciment,Entrepôt Sud,360,71,16,11399,25,Normal
+REF-1059,Carrelage modèle 23,Carrelage,Entrepôt Nord,255,67,3,7941,104,Normal
+REF-1060,Fer à béton modèle 18,Fer à béton,Entrepôt Nord,25,99,27,9999,114,Sous le seuil
+REF-1061,Peinture modèle 19,Peinture,Entrepôt Sud,32,39,10,20673,118,Sous le seuil
+REF-1062,Peinture modèle 29,Peinture,Entrepôt Sud,223,73,14,12230,75,Normal
+REF-1063,Plomberie modèle 6,Plomberie,Dépôt Bouaké,176,94,7,20156,76,À surveiller
+REF-1064,Électricité modèle 34,Électricité,Entrepôt Nord,272,52,4,11094,83,Normal
+REF-1065,Ciment modèle 11,Ciment,Dépôt Bouaké,253,61,19,9480,67,Normal
+REF-1066,Fer à béton modèle 37,Fer à béton,Dépôt Bouaké,351,94,28,12004,92,Normal
+REF-1067,Ciment modèle 38,Ciment,Entrepôt Sud,118,24,23,7929,111,Normal
+REF-1068,Ciment modèle 1,Ciment,Entrepôt Sud,346,34,12,12427,24,Normal
+REF-1069,Plomberie modèle 31,Plomberie,Entrepôt Sud,128,30,14,3843,106,Normal
+REF-1070,Électricité modèle 31,Électricité,Entrepôt Nord,20,86,18,11875,105,Sous le seuil
+REF-1071,Plomberie modèle 31,Plomberie,Entrepôt Nord,189,66,2,14461,21,Normal
+REF-1072,Ciment modèle 31,Ciment,Entrepôt Nord,209,84,5,3060,58,Normal
+REF-1073,Peinture modèle 37,Peinture,Entrepôt Nord,120,45,26,11928,34,Normal
+REF-1074,Fer à béton modèle 17,Fer à béton,Entrepôt Nord,112,66,7,16049,4,À surveiller
+REF-1075,Peinture modèle 37,Peinture,Dépôt Bouaké,287,31,26,3040,20,Normal
+REF-1076,Peinture modèle 11,Peinture,Dépôt Bouaké,51,72,20,5023,56,Sous le seuil
+REF-1077,Fer à béton modèle 33,Fer à béton,Entrepôt Sud,379,96,23,20402,74,Normal
+REF-1078,Carrelage modèle 7,Carrelage,Entrepôt Nord,293,83,16,19625,111,Normal
+REF-1079,Ciment modèle 28,Ciment,Dépôt Bouaké,203,68,29,9448,95,Normal
+REF-1080,Fer à béton modèle 39,Fer à béton,Dépôt Bouaké,364,65,7,3853,1,Normal
+REF-1081,Peinture modèle 17,Peinture,Dépôt Bouaké,14,46,17,18447,40,Sous le seuil
+REF-1082,Peinture modèle 28,Peinture,Dépôt Bouaké,353,38,22,19781,16,Normal
+REF-1083,Peinture modèle 32,Peinture,Entrepôt Nord,109,83,24,19809,24,À surveiller
+REF-1084,Plomberie modèle 32,Plomberie,Entrepôt Nord,252,84,14,8494,2,Normal
+REF-1085,Plomberie modèle 39,Plomberie,Entrepôt Nord,66,26,3,20509,33,Normal
+REF-1086,Carrelage modèle 29,Carrelage,Entrepôt Sud,26,25,12,17071,12,À surveiller
+REF-1087,Ciment modèle 24,Ciment,Dépôt Bouaké,99,84,2,13088,103,À surveiller
+REF-1088,Plomberie modèle 27,Plomberie,Entrepôt Sud,335,69,16,14641,88,Normal
+REF-1089,Électricité modèle 15,Électricité,Entrepôt Nord,120,48,28,17269,67,Normal
+REF-1090,Ciment modèle 33,Ciment,Entrepôt Sud,312,91,27,16046,69,Normal
+REF-1091,Carrelage modèle 36,Carrelage,Entrepôt Sud,394,63,10,16561,53,Normal
+REF-1092,Plomberie modèle 10,Plomberie,Entrepôt Sud,257,96,20,12101,118,Normal
+REF-1093,Carrelage modèle 15,Carrelage,Dépôt Bouaké,23,50,10,13385,92,Sous le seuil
+REF-1094,Plomberie modèle 39,Plomberie,Dépôt Bouaké,172,80,26,8914,3,Normal
+REF-1095,Ciment modèle 1,Ciment,Entrepôt Sud,53,71,16,10803,78,Sous le seuil
+REF-1096,Électricité modèle 10,Électricité,Dépôt Bouaké,209,41,13,18324,72,Normal
+REF-1097,Plomberie modèle 34,Plomberie,Dépôt Bouaké,164,32,21,14947,36,Normal
+REF-1098,Carrelage modèle 25,Carrelage,Entrepôt Sud,43,36,4,4232,120,À surveiller
+REF-1099,Peinture modèle 38,Peinture,Entrepôt Nord,163,68,25,11195,62,Normal
+REF-1100,Fer à béton modèle 21,Fer à béton,Dépôt Bouaké,218,87,12,19971,115,Normal
+REF-1101,Peinture modèle 25,Peinture,Entrepôt Nord,301,84,8,15988,104,Normal
+REF-1102,Électricité modèle 4,Électricité,Entrepôt Sud,177,66,16,7260,69,Normal
+REF-1103,Ciment modèle 12,Ciment,Entrepôt Sud,314,25,28,12115,30,Normal
+REF-1104,Ciment modèle 35,Ciment,Dépôt Bouaké,19,57,28,6651,77,Sous le seuil
+REF-1105,Électricité modèle 31,Électricité,Entrepôt Nord,52,77,23,13283,108,Sous le seuil
+REF-1106,Peinture modèle 18,Peinture,Dépôt Bouaké,268,53,8,15599,43,Normal
+REF-1107,Ciment modèle 28,Ciment,Entrepôt Nord,281,76,24,15094,104,Normal
+REF-1108,Carrelage modèle 29,Carrelage,Entrepôt Nord,13,43,3,18616,38,Sous le seuil
+REF-1109,Ciment modèle 37,Ciment,Entrepôt Nord,301,26,11,10306,74,Normal
+REF-1110,Électricité modèle 34,Électricité,Entrepôt Nord,67,20,27,14143,103,Normal
+REF-1111,Peinture modèle 34,Peinture,Entrepôt Sud,106,78,2,3055,114,À surveiller
+REF-1112,Carrelage modèle 31,Carrelage,Entrepôt Nord,342,24,10,16857,4,Normal
+REF-1113,Peinture modèle 2,Peinture,Dépôt Bouaké,385,92,13,4299,105,Normal
+REF-1114,Électricité modèle 2,Électricité,Entrepôt Sud,286,78,15,9966,26,Normal
+REF-1115,Fer à béton modèle 6,Fer à béton,Dépôt Bouaké,88,26,3,18601,112,Normal
+REF-1116,Peinture modèle 26,Peinture,Entrepôt Sud,97,51,14,19608,8,À surveiller
+REF-1117,Ciment modèle 20,Ciment,Entrepôt Sud,248,78,16,15264,72,Normal
+REF-1118,Électricité modèle 21,Électricité,Entrepôt Sud,20,85,27,16635,36,Sous le seuil
+REF-1119,Carrelage modèle 19,Carrelage,Dépôt Bouaké,309,22,14,13602,43,Normal
+REF-1120,Peinture modèle 6,Peinture,Dépôt Bouaké,277,76,14,19693,39,Normal
+REF-1121,Ciment modèle 22,Ciment,Dépôt Bouaké,251,83,5,20934,8,Normal
+REF-1122,Peinture modèle 10,Peinture,Entrepôt Sud,43,55,26,14676,1,Sous le seuil
+REF-1123,Fer à béton modèle 6,Fer à béton,Dépôt Bouaké,39,95,25,9524,27,Sous le seuil
+REF-1124,Fer à béton modèle 29,Fer à béton,Entrepôt Sud,65,77,20,19192,13,Sous le seuil
+REF-1125,Plomberie modèle 17,Plomberie,Entrepôt Nord,126,21,14,20249,100,Normal
+REF-1126,Plomberie modèle 40,Plomberie,Dépôt Bouaké,244,57,26,8304,98,Normal
+REF-1127,Électricité modèle 35,Électricité,Entrepôt Nord,11,43,7,9416,9,Sous le seuil
+REF-1128,Électricité modèle 12,Électricité,Entrepôt Nord,234,82,7,12154,61,Normal
+REF-1129,Fer à béton modèle 39,Fer à béton,Dépôt Bouaké,161,20,22,9873,62,Normal
+REF-1130,Ciment modèle 30,Ciment,Entrepôt Sud,124,62,10,12986,23,Normal
+REF-1131,Fer à béton modèle 10,Fer à béton,Entrepôt Sud,127,23,26,9372,54,Normal
+REF-1132,Ciment modèle 30,Ciment,Entrepôt Nord,391,57,16,14707,36,Normal
+REF-1133,Carrelage modèle 29,Carrelage,Entrepôt Sud,7,23,13,14799,96,Sous le seuil
+REF-1134,Électricité modèle 15,Électricité,Dépôt Bouaké,115,40,25,5160,46,Normal
+REF-1135,Fer à béton modèle 7,Fer à béton,Dépôt Bouaké,344,34,15,10244,65,Normal
+REF-1136,Électricité modèle 21,Électricité,Entrepôt Sud,287,24,23,12613,67,Normal
+REF-1137,Électricité modèle 23,Électricité,Entrepôt Sud,370,65,19,19890,6,Normal
+REF-1138,Plomberie modèle 33,Plomberie,Entrepôt Nord,222,79,19,10697,116,Normal
+REF-1139,Peinture modèle 36,Peinture,Entrepôt Nord,36,91,16,19685,109,Sous le seuil
+REF-1140,Plomberie modèle 1,Plomberie,Dépôt Bouaké,351,87,13,13903,47,Normal
+REF-1141,Électricité modèle 38,Électricité,Entrepôt Sud,23,22,11,19008,4,À surveiller
+REF-1142,Électricité modèle 16,Électricité,Entrepôt Nord,105,70,28,16343,6,À surveiller
+REF-1143,Plomberie modèle 27,Plomberie,Entrepôt Sud,385,85,25,16454,7,Normal
+REF-1144,Carrelage modèle 23,Carrelage,Entrepôt Nord,201,29,17,15395,37,Normal
+REF-1145,Plomberie modèle 22,Plomberie,Entrepôt Nord,71,36,11,10204,33,À surveiller
+REF-1146,Carrelage modèle 32,Carrelage,Entrepôt Sud,383,78,13,4635,71,Normal
+REF-1147,Électricité modèle 27,Électricité,Entrepôt Nord,149,78,23,11726,103,À surveiller
+REF-1148,Ciment modèle 17,Ciment,Entrepôt Nord,151,45,22,15855,100,Normal
+REF-1149,Carrelage modèle 12,Carrelage,Entrepôt Sud,265,20,8,3739,41,Normal
+REF-1150,Plomberie modèle 1,Plomberie,Entrepôt Nord,185,95,17,13254,69,À surveiller
+REF-1151,Carrelage modèle 40,Carrelage,Entrepôt Nord,326,40,5,15702,14,Normal
+REF-1152,Fer à béton modèle 18,Fer à béton,Entrepôt Nord,239,76,21,12359,52,Normal
+REF-1153,Fer à béton modèle 25,Fer à béton,Entrepôt Nord,158,99,17,5193,59,À surveiller
+REF-1154,Peinture modèle 9,Peinture,Dépôt Bouaké,241,61,24,18149,5,Normal
+REF-1155,Carrelage modèle 39,Carrelage,Entrepôt Nord,376,37,16,15935,43,Normal
+REF-1156,Carrelage modèle 21,Carrelage,Dépôt Bouaké,261,42,26,11091,95,Normal
+REF-1157,Carrelage modèle 27,Carrelage,Dépôt Bouaké,66,48,8,3860,57,À surveiller
+REF-1158,Peinture modèle 22,Peinture,Dépôt Bouaké,130,22,26,12260,20,Normal
+REF-1159,Ciment modèle 37,Ciment,Entrepôt Nord,13,75,26,13893,3,Sous le seuil
+REF-1160,Électricité modèle 3,Électricité,Dépôt Bouaké,35,72,27,15792,45,Sous le seuil
+REF-1161,Électricité modèle 11,Électricité,Entrepôt Nord,48,87,26,4418,18,Sous le seuil
+REF-1162,Ciment modèle 31,Ciment,Entrepôt Nord,97,80,23,6455,54,À surveiller
+REF-1163,Plomberie modèle 17,Plomberie,Entrepôt Nord,280,82,15,19700,1,Normal
+REF-1164,Carrelage modèle 11,Carrelage,Entrepôt Nord,114,67,26,11868,112,À surveiller
+REF-1165,Fer à béton modèle 13,Fer à béton,Entrepôt Sud,296,72,24,4800,50,Normal
+REF-1166,Ciment modèle 12,Ciment,Entrepôt Nord,207,36,3,11639,119,Normal
+REF-1167,Plomberie modèle 17,Plomberie,Entrepôt Nord,102,73,2,12354,40,À surveiller
+REF-1168,Fer à béton modèle 30,Fer à béton,Dépôt Bouaké,308,65,18,17320,73,Normal
+REF-1169,Plomberie modèle 28,Plomberie,Entrepôt Nord,58,56,27,11921,82,À surveiller
+REF-1170,Électricité modèle 2,Électricité,Entrepôt Nord,303,54,2,5605,8,Normal
+REF-1171,Électricité modèle 7,Électricité,Entrepôt Nord,200,97,3,11898,60,Normal
+REF-1172,Plomberie modèle 1,Plomberie,Dépôt Bouaké,331,46,11,16378,98,Normal
+REF-1173,Plomberie modèle 25,Plomberie,Dépôt Bouaké,71,33,2,9207,103,Normal
+REF-1174,Électricité modèle 26,Électricité,Dépôt Bouaké,372,51,22,20358,38,Normal
+REF-1175,Électricité modèle 32,Électricité,Entrepôt Nord,202,56,11,5238,47,Normal
+REF-1176,Carrelage modèle 31,Carrelage,Entrepôt Nord,83,40,16,18997,1,Normal
+REF-1177,Électricité modèle 5,Électricité,Entrepôt Sud,223,25,7,7606,55,Normal
+REF-1178,Plomberie modèle 37,Plomberie,Entrepôt Nord,328,22,7,14505,45,Normal
+REF-1179,Peinture modèle 28,Peinture,Dépôt Bouaké,180,75,19,19206,39,Normal
+REF-1180,Fer à béton modèle 25,Fer à béton,Entrepôt Nord,230,76,22,18269,23,Normal
+REF-1181,Ciment modèle 36,Ciment,Dépôt Bouaké,244,37,18,10049,77,Normal
+REF-1182,Ciment modèle 26,Ciment,Entrepôt Nord,228,30,16,6640,22,Normal
+REF-1183,Plomberie modèle 39,Plomberie,Entrepôt Sud,259,90,3,5499,14,Normal
+REF-1184,Électricité modèle 25,Électricité,Entrepôt Nord,66,93,18,7201,113,Sous le seuil
+REF-1185,Peinture modèle 16,Peinture,Dépôt Bouaké,304,39,18,14849,39,Normal
+REF-1186,Ciment modèle 35,Ciment,Dépôt Bouaké,190,92,20,9196,94,Normal
+REF-1187,Plomberie modèle 17,Plomberie,Entrepôt Sud,334,60,24,17351,77,Normal
+REF-1188,Fer à béton modèle 34,Fer à béton,Dépôt Bouaké,66,69,11,15803,1,Sous le seuil
+REF-1189,Carrelage modèle 40,Carrelage,Dépôt Bouaké,355,86,3,7627,83,Normal
+REF-1190,Électricité modèle 10,Électricité,Entrepôt Sud,376,68,7,19490,5,Normal
+REF-1191,Plomberie modèle 4,Plomberie,Dépôt Bouaké,1,25,24,9594,29,Sous le seuil
+REF-1192,Ciment modèle 7,Ciment,Entrepôt Nord,206,56,7,3416,47,Normal
+REF-1193,Peinture modèle 37,Peinture,Entrepôt Nord,124,69,17,20778,6,À surveiller
+REF-1194,Fer à béton modèle 11,Fer à béton,Entrepôt Nord,226,42,29,5090,113,Normal
+REF-1195,Peinture modèle 7,Peinture,Dépôt Bouaké,217,87,9,18296,55,Normal
+REF-1196,Fer à béton modèle 27,Fer à béton,Dépôt Bouaké,279,53,25,5894,4,Normal
+REF-1197,Ciment modèle 16,Ciment,Entrepôt Nord,248,35,3,7373,86,Normal
+REF-1198,Ciment modèle 28,Ciment,Dépôt Bouaké,342,42,11,20975,92,Normal
+REF-1199,Électricité modèle 17,Électricité,Dépôt Bouaké,177,42,16,5302,103,Normal
+REF-1200,Ciment modèle 30,Ciment,Entrepôt Sud,63,76,11,10899,113,Sous le seuil
+REF-1201,Peinture modèle 38,Peinture,Entrepôt Nord,312,29,25,14520,119,Normal
+REF-1202,Ciment modèle 11,Ciment,Entrepôt Nord,267,73,17,10864,112,Normal
+REF-1203,Ciment modèle 22,Ciment,Dépôt Bouaké,181,41,18,8136,32,Normal
+REF-1204,Électricité modèle 5,Électricité,Entrepôt Nord,390,83,4,3014,111,Normal
+REF-1205,Carrelage modèle 27,Carrelage,Entrepôt Nord,343,40,11,16472,116,Normal
+REF-1206,Fer à béton modèle 15,Fer à béton,Entrepôt Sud,305,80,5,14160,31,Normal
+REF-1207,Peinture modèle 28,Peinture,Dépôt Bouaké,68,47,24,6719,93,À surveiller
+REF-1208,Carrelage modèle 38,Carrelage,Entrepôt Sud,26,56,9,15717,45,Sous le seuil
+REF-1209,Peinture modèle 13,Peinture,Entrepôt Sud,190,60,29,11222,117,Normal
+REF-1210,Ciment modèle 37,Ciment,Dépôt Bouaké,273,31,2,7175,73,Normal
+REF-1211,Ciment modèle 39,Ciment,Entrepôt Nord,34,95,24,20542,59,Sous le seuil
+REF-1212,Ciment modèle 20,Ciment,Dépôt Bouaké,49,81,19,11784,39,Sous le seuil
+REF-1213,Carrelage modèle 12,Carrelage,Entrepôt Nord,174,71,5,20121,53,Normal
+REF-1214,Électricité modèle 14,Électricité,Entrepôt Sud,212,27,17,12443,10,Normal
+REF-1215,Électricité modèle 19,Électricité,Entrepôt Sud,157,20,3,12165,64,Normal
+REF-1216,Carrelage modèle 11,Carrelage,Dépôt Bouaké,2,86,11,12180,5,Sous le seuil
+REF-1217,Électricité modèle 14,Électricité,Dépôt Bouaké,391,24,9,16403,67,Normal
+REF-1218,Fer à béton modèle 28,Fer à béton,Entrepôt Sud,93,33,12,20343,49,Normal
+REF-1219,Fer à béton modèle 3,Fer à béton,Dépôt Bouaké,219,36,3,8520,95,Normal
+REF-1220,Électricité modèle 28,Électricité,Entrepôt Nord,25,28,6,7389,10,Sous le seuil
+REF-1221,Carrelage modèle 30,Carrelage,Dépôt Bouaké,142,53,18,20326,30,Normal
+REF-1222,Fer à béton modèle 2,Fer à béton,Dépôt Bouaké,147,75,16,7332,32,À surveiller
+REF-1223,Ciment modèle 1,Ciment,Entrepôt Nord,224,59,29,5521,118,Normal
+REF-1224,Plomberie modèle 4,Plomberie,Entrepôt Sud,262,61,7,17050,14,Normal
+REF-1225,Carrelage modèle 2,Carrelage,Entrepôt Sud,44,34,2,4926,79,À surveiller
+REF-1226,Ciment modèle 8,Ciment,Entrepôt Nord,135,87,28,10590,93,À surveiller
+REF-1227,Carrelage modèle 15,Carrelage,Dépôt Bouaké,192,23,12,20198,6,Normal
+REF-1228,Plomberie modèle 26,Plomberie,Dépôt Bouaké,136,49,6,15212,55,Normal
+REF-1229,Électricité modèle 36,Électricité,Entrepôt Nord,191,93,11,13704,10,Normal
+REF-1230,Ciment modèle 25,Ciment,Dépôt Bouaké,330,98,17,7366,91,Normal
+REF-1231,Plomberie modèle 13,Plomberie,Entrepôt Nord,323,39,29,11648,20,Normal
+REF-1232,Peinture modèle 20,Peinture,Entrepôt Sud,372,59,18,11318,72,Normal
+REF-1233,Plomberie modèle 39,Plomberie,Entrepôt Sud,122,66,27,6951,5,À surveiller
+REF-1234,Plomberie modèle 24,Plomberie,Dépôt Bouaké,240,78,2,7665,22,Normal
+REF-1235,Carrelage modèle 23,Carrelage,Dépôt Bouaké,238,78,4,6987,46,Normal
+REF-1236,Ciment modèle 13,Ciment,Entrepôt Nord,347,90,16,12705,92,Normal
+REF-1237,Peinture modèle 38,Peinture,Entrepôt Sud,222,89,2,8795,40,Normal
+REF-1238,Carrelage modèle 12,Carrelage,Entrepôt Sud,285,25,26,14433,37,Normal
+REF-1239,Fer à béton modèle 8,Fer à béton,Entrepôt Sud,5,54,2,10888,41,Sous le seuil
+REF-1240,Ciment modèle 18,Ciment,Entrepôt Sud,76,80,24,4134,73,Sous le seuil
+REF-1241,Ciment modèle 10,Ciment,Entrepôt Sud,331,24,8,19583,83,Normal
+REF-1242,Fer à béton modèle 19,Fer à béton,Entrepôt Sud,328,44,9,11269,17,Normal
+REF-1243,Électricité modèle 31,Électricité,Entrepôt Sud,331,66,26,12592,41,Normal
+REF-1244,Peinture modèle 37,Peinture,Entrepôt Nord,64,98,13,5754,104,Sous le seuil
+REF-1245,Électricité modèle 16,Électricité,Entrepôt Sud,363,89,14,8031,42,Normal
+REF-1246,Électricité modèle 18,Électricité,Dépôt Bouaké,79,58,27,8861,84,À surveiller
+REF-1247,Plomberie modèle 33,Plomberie,Entrepôt Sud,135,90,28,18164,35,À surveiller
+REF-1248,Peinture modèle 18,Peinture,Dépôt Bouaké,323,58,5,19656,20,Normal
+REF-1249,Carrelage modèle 23,Carrelage,Entrepôt Nord,369,98,4,4719,23,Normal
+REF-1250,Ciment modèle 12,Ciment,Dépôt Bouaké,325,42,23,20463,83,Normal
+REF-1251,Carrelage modèle 11,Carrelage,Entrepôt Sud,356,60,17,4016,31,Normal
+REF-1252,Plomberie modèle 17,Plomberie,Entrepôt Sud,279,64,8,12877,117,Normal
+REF-1253,Plomberie modèle 27,Plomberie,Entrepôt Sud,365,52,5,3079,31,Normal
+REF-1254,Électricité modèle 32,Électricité,Dépôt Bouaké,86,55,15,12691,108,À surveiller
+REF-1255,Carrelage modèle 22,Carrelage,Entrepôt Sud,91,83,6,14466,113,À surveiller
+REF-1256,Fer à béton modèle 37,Fer à béton,Dépôt Bouaké,119,33,27,10167,73,Normal
+REF-1257,Carrelage modèle 17,Carrelage,Dépôt Bouaké,283,38,22,11669,43,Normal
+REF-1258,Carrelage modèle 9,Carrelage,Entrepôt Sud,377,89,10,3414,90,Normal
+REF-1259,Carrelage modèle 23,Carrelage,Entrepôt Nord,303,56,29,20722,111,Normal
+REF-1260,Plomberie modèle 13,Plomberie,Entrepôt Sud,386,86,26,9671,25,Normal
+REF-1261,Ciment modèle 16,Ciment,Entrepôt Nord,355,80,15,6299,43,Normal
+REF-1262,Plomberie modèle 21,Plomberie,Dépôt Bouaké,189,79,20,10307,11,Normal
+REF-1263,Fer à béton modèle 32,Fer à béton,Entrepôt Nord,107,47,16,9060,41,Normal
+REF-1264,Électricité modèle 37,Électricité,Entrepôt Sud,54,88,9,16100,88,Sous le seuil
+REF-1265,Fer à béton modèle 36,Fer à béton,Entrepôt Nord,108,30,28,8204,17,Normal
+REF-1266,Plomberie modèle 2,Plomberie,Entrepôt Sud,385,68,27,16250,82,Normal
+REF-1267,Plomberie modèle 3,Plomberie,Entrepôt Sud,396,24,23,5889,115,Normal
+REF-1268,Ciment modèle 30,Ciment,Entrepôt Sud,198,66,2,19224,99,Normal
+REF-1269,Peinture modèle 1,Peinture,Entrepôt Nord,372,56,2,10978,34,Normal
+REF-1270,Peinture modèle 3,Peinture,Entrepôt Sud,98,21,14,18361,102,Normal
+REF-1271,Carrelage modèle 24,Carrelage,Entrepôt Nord,46,89,10,7147,4,Sous le seuil
+REF-1272,Fer à béton modèle 31,Fer à béton,Entrepôt Nord,255,71,15,18838,37,Normal
+REF-1273,Électricité modèle 22,Électricité,Entrepôt Nord,152,76,28,6602,112,Normal
+REF-1274,Fer à béton modèle 31,Fer à béton,Dépôt Bouaké,36,80,19,3146,99,Sous le seuil
+REF-1275,Électricité modèle 2,Électricité,Entrepôt Nord,32,95,19,19927,93,Sous le seuil
+REF-1276,Électricité modèle 1,Électricité,Entrepôt Nord,235,32,4,4141,28,Normal
+REF-1277,Ciment modèle 28,Ciment,Entrepôt Nord,78,95,25,19831,30,Sous le seuil
+REF-1278,Ciment modèle 29,Ciment,Dépôt Bouaké,43,37,3,12020,101,À surveiller
+REF-1279,Fer à béton modèle 7,Fer à béton,Entrepôt Sud,13,44,21,8286,16,Sous le seuil
+REF-1280,Plomberie modèle 34,Plomberie,Entrepôt Sud,357,22,2,6755,34,Normal
+REF-1281,Électricité modèle 1,Électricité,Entrepôt Sud,246,39,2,19880,23,Normal
+REF-1282,Plomberie modèle 26,Plomberie,Entrepôt Nord,68,97,22,20035,114,Sous le seuil
+REF-1283,Plomberie modèle 39,Plomberie,Entrepôt Nord,369,22,29,12320,114,Normal
+REF-1284,Fer à béton modèle 20,Fer à béton,Entrepôt Nord,141,49,24,5890,74,Normal
+REF-1285,Fer à béton modèle 8,Fer à béton,Entrepôt Nord,137,47,26,20285,53,Normal
+REF-1286,Peinture modèle 29,Peinture,Entrepôt Sud,62,84,4,17994,51,Sous le seuil
+REF-1287,Ciment modèle 25,Ciment,Dépôt Bouaké,209,44,22,5600,24,Normal
+REF-1288,Fer à béton modèle 37,Fer à béton,Entrepôt Sud,235,23,18,18686,14,Normal
+REF-1289,Ciment modèle 5,Ciment,Entrepôt Nord,302,75,16,16706,83,Normal
+REF-1290,Peinture modèle 11,Peinture,Entrepôt Sud,3,94,7,12220,88,Sous le seuil
+REF-1291,Fer à béton modèle 38,Fer à béton,Entrepôt Nord,266,34,8,13466,20,Normal
+REF-1292,Carrelage modèle 5,Carrelage,Dépôt Bouaké,286,51,10,18637,113,Normal
+REF-1293,Peinture modèle 1,Peinture,Entrepôt Nord,88,91,11,13851,13,Sous le seuil
+REF-1294,Électricité modèle 17,Électricité,Dépôt Bouaké,41,31,7,18919,37,À surveiller
+REF-1295,Fer à béton modèle 10,Fer à béton,Dépôt Bouaké,136,79,12,19754,77,À surveiller
+REF-1296,Peinture modèle 24,Peinture,Dépôt Bouaké,106,99,25,20266,18,À surveiller
+REF-1297,Ciment modèle 18,Ciment,Dépôt Bouaké,219,46,6,20439,97,Normal
+REF-1298,Électricité modèle 5,Électricité,Dépôt Bouaké,343,37,26,15325,48,Normal
+REF-1299,Ciment modèle 35,Ciment,Dépôt Bouaké,165,76,13,11496,78,Normal
+REF-1300,Carrelage modèle 37,Carrelage,Dépôt Bouaké,372,74,23,3459,109,Normal
+REF-1301,Ciment modèle 18,Ciment,Entrepôt Nord,321,77,17,19965,81,Normal
+REF-1302,Ciment modèle 29,Ciment,Dépôt Bouaké,230,44,5,11108,72,Normal
+REF-1303,Peinture modèle 34,Peinture,Entrepôt Sud,11,97,23,7962,38,Sous le seuil
+REF-1304,Ciment modèle 32,Ciment,Dépôt Bouaké,162,29,11,20713,75,Normal
+REF-1305,Ciment modèle 20,Ciment,Entrepôt Sud,31,76,12,17613,71,Sous le seuil
+REF-1306,Peinture modèle 15,Peinture,Dépôt Bouaké,58,96,18,19750,57,Sous le seuil
+REF-1307,Électricité modèle 8,Électricité,Entrepôt Sud,318,60,15,12943,109,Normal
+REF-1308,Carrelage modèle 23,Carrelage,Entrepôt Nord,19,56,5,20217,16,Sous le seuil
+REF-1309,Électricité modèle 9,Électricité,Dépôt Bouaké,210,43,5,11028,90,Normal
+REF-1310,Peinture modèle 3,Peinture,Dépôt Bouaké,268,38,15,3359,77,Normal
+REF-1311,Électricité modèle 22,Électricité,Entrepôt Nord,394,37,6,19747,82,Normal
+REF-1312,Fer à béton modèle 5,Fer à béton,Entrepôt Nord,143,98,7,12607,94,À surveiller
+REF-1313,Ciment modèle 21,Ciment,Dépôt Bouaké,200,45,10,18143,99,Normal
+REF-1314,Peinture modèle 9,Peinture,Entrepôt Sud,382,31,8,15881,106,Normal
+REF-1315,Ciment modèle 6,Ciment,Entrepôt Nord,117,35,5,8961,51,Normal
+REF-1316,Fer à béton modèle 33,Fer à béton,Entrepôt Nord,273,47,26,8879,69,Normal
+REF-1317,Ciment modèle 10,Ciment,Dépôt Bouaké,5,65,12,4552,54,Sous le seuil
+REF-1318,Peinture modèle 29,Peinture,Entrepôt Sud,105,40,15,19371,44,Normal
+REF-1319,Plomberie modèle 8,Plomberie,Entrepôt Sud,330,27,16,11387,42,Normal
+REF-1320,Carrelage modèle 16,Carrelage,Entrepôt Nord,222,60,26,11218,48,Normal
+REF-1321,Carrelage modèle 32,Carrelage,Entrepôt Sud,329,99,14,7169,40,Normal
+REF-1322,Électricité modèle 12,Électricité,Entrepôt Sud,100,94,14,16571,118,À surveiller
+REF-1323,Peinture modèle 37,Peinture,Entrepôt Nord,354,23,2,19067,63,Normal
+REF-1324,Fer à béton modèle 36,Fer à béton,Entrepôt Nord,315,24,21,4342,89,Normal
+REF-1325,Plomberie modèle 26,Plomberie,Dépôt Bouaké,120,75,20,9079,31,À surveiller
+REF-1326,Électricité modèle 9,Électricité,Entrepôt Nord,349,42,15,17911,23,Normal
+REF-1327,Ciment modèle 4,Ciment,Dépôt Bouaké,36,84,20,19960,83,Sous le seuil
+REF-1328,Carrelage modèle 21,Carrelage,Dépôt Bouaké,365,97,18,14480,46,Normal
+REF-1329,Fer à béton modèle 18,Fer à béton,Entrepôt Sud,224,78,8,12516,43,Normal
+REF-1330,Peinture modèle 12,Peinture,Entrepôt Sud,223,85,26,18567,105,Normal
+REF-1331,Peinture modèle 8,Peinture,Entrepôt Nord,62,57,18,18630,93,À surveiller
+REF-1332,Ciment modèle 5,Ciment,Entrepôt Nord,246,89,11,7241,96,Normal
+REF-1333,Carrelage modèle 4,Carrelage,Dépôt Bouaké,289,84,20,14942,69,Normal
+REF-1334,Fer à béton modèle 10,Fer à béton,Dépôt Bouaké,294,58,29,16348,44,Normal
+REF-1335,Plomberie modèle 5,Plomberie,Dépôt Bouaké,64,78,18,14774,7,Sous le seuil
+REF-1336,Carrelage modèle 40,Carrelage,Dépôt Bouaké,346,33,29,9873,105,Normal
+REF-1337,Plomberie modèle 1,Plomberie,Entrepôt Nord,52,74,8,7723,19,Sous le seuil
+REF-1338,Carrelage modèle 23,Carrelage,Dépôt Bouaké,11,54,11,11244,109,Sous le seuil
+REF-1339,Fer à béton modèle 33,Fer à béton,Dépôt Bouaké,292,30,21,12913,60,Normal
+REF-1340,Plomberie modèle 20,Plomberie,Entrepôt Sud,232,34,11,20801,118,Normal
+REF-1341,Carrelage modèle 2,Carrelage,Entrepôt Nord,15,63,22,4697,93,Sous le seuil
+REF-1342,Fer à béton modèle 35,Fer à béton,Dépôt Bouaké,127,32,4,20424,65,Normal
+REF-1343,Fer à béton modèle 37,Fer à béton,Entrepôt Nord,300,63,6,8644,31,Normal
+REF-1344,Ciment modèle 6,Ciment,Entrepôt Sud,123,26,11,11076,43,Normal
+REF-1345,Carrelage modèle 27,Carrelage,Dépôt Bouaké,67,87,12,19554,79,Sous le seuil
+REF-1346,Plomberie modèle 37,Plomberie,Entrepôt Sud,143,35,15,16217,24,Normal
+REF-1347,Peinture modèle 13,Peinture,Entrepôt Nord,157,22,10,13499,78,Normal
+REF-1348,Plomberie modèle 5,Plomberie,Entrepôt Sud,0,68,10,19900,53,Sous le seuil
+REF-1349,Fer à béton modèle 4,Fer à béton,Entrepôt Nord,245,21,3,10320,11,Normal
+REF-1350,Peinture modèle 15,Peinture,Entrepôt Nord,283,29,4,7556,51,Normal
+REF-1351,Ciment modèle 20,Ciment,Dépôt Bouaké,48,31,11,10455,57,À surveiller
+REF-1352,Ciment modèle 26,Ciment,Entrepôt Sud,150,27,8,11351,74,Normal
+REF-1353,Ciment modèle 26,Ciment,Dépôt Bouaké,367,38,9,16537,31,Normal
+REF-1354,Ciment modèle 4,Ciment,Dépôt Bouaké,87,99,10,7006,37,Sous le seuil
+REF-1355,Ciment modèle 9,Ciment,Entrepôt Sud,93,55,22,14846,114,À surveiller
+REF-1356,Plomberie modèle 10,Plomberie,Dépôt Bouaké,343,80,15,4676,52,Normal
+REF-1357,Fer à béton modèle 27,Fer à béton,Entrepôt Sud,250,27,11,11384,21,Normal
+REF-1358,Fer à béton modèle 20,Fer à béton,Entrepôt Nord,3,42,13,5955,102,Sous le seuil
+REF-1359,Carrelage modèle 3,Carrelage,Entrepôt Sud,326,72,13,18212,5,Normal
+REF-1360,Peinture modèle 38,Peinture,Dépôt Bouaké,351,70,20,13139,71,Normal
+REF-1361,Fer à béton modèle 2,Fer à béton,Entrepôt Nord,113,36,27,12812,88,Normal
+REF-1362,Plomberie modèle 21,Plomberie,Entrepôt Nord,141,32,8,10592,108,Normal
+REF-1363,Peinture modèle 36,Peinture,Entrepôt Nord,12,30,27,9765,29,Sous le seuil
+REF-1364,Peinture modèle 34,Peinture,Entrepôt Sud,164,90,24,15063,63,À surveiller
+REF-1365,Carrelage modèle 38,Carrelage,Entrepôt Sud,8,29,28,5688,77,Sous le seuil
+REF-1366,Carrelage modèle 26,Carrelage,Entrepôt Sud,57,55,15,6494,7,À surveiller
+REF-1367,Électricité modèle 34,Électricité,Entrepôt Nord,382,97,25,3194,12,Normal
+REF-1368,Fer à béton modèle 18,Fer à béton,Dépôt Bouaké,236,47,20,18384,97,Normal
+REF-1369,Électricité modèle 34,Électricité,Entrepôt Sud,65,95,21,6275,6,Sous le seuil
+REF-1370,Plomberie modèle 27,Plomberie,Entrepôt Nord,28,74,15,16484,41,Sous le seuil
+REF-1371,Électricité modèle 25,Électricité,Entrepôt Sud,360,27,2,17785,44,Normal
+REF-1372,Fer à béton modèle 28,Fer à béton,Dépôt Bouaké,203,82,21,11902,96,Normal
+REF-1373,Plomberie modèle 28,Plomberie,Entrepôt Nord,95,46,2,11863,101,Normal
+REF-1374,Ciment modèle 3,Ciment,Entrepôt Sud,109,44,7,12042,32,Normal
+REF-1375,Fer à béton modèle 28,Fer à béton,Dépôt Bouaké,24,50,6,7900,62,Sous le seuil
+REF-1376,Ciment modèle 37,Ciment,Entrepôt Sud,93,64,13,12595,93,À surveiller
+REF-1377,Électricité modèle 38,Électricité,Entrepôt Nord,179,65,29,4719,103,Normal
+REF-1378,Fer à béton modèle 8,Fer à béton,Entrepôt Sud,289,49,18,11429,18,Normal
+REF-1379,Ciment modèle 20,Ciment,Entrepôt Sud,81,46,5,6981,85,À surveiller
+REF-1380,Peinture modèle 16,Peinture,Entrepôt Nord,69,32,14,20599,6,Normal
+REF-1381,Plomberie modèle 15,Plomberie,Entrepôt Nord,45,45,18,4359,36,À surveiller
+REF-1382,Plomberie modèle 30,Plomberie,Entrepôt Nord,237,91,9,7690,61,Normal
+REF-1383,Plomberie modèle 14,Plomberie,Entrepôt Nord,146,80,2,6447,65,À surveiller
+REF-1384,Peinture modèle 16,Peinture,Entrepôt Sud,317,30,26,3294,3,Normal
+REF-1385,Plomberie modèle 34,Plomberie,Entrepôt Sud,257,83,4,6539,119,Normal
+REF-1386,Peinture modèle 6,Peinture,Entrepôt Nord,106,71,19,18592,76,À surveiller
+REF-1387,Peinture modèle 16,Peinture,Entrepôt Nord,327,96,16,3188,8,Normal
+REF-1388,Peinture modèle 18,Peinture,Entrepôt Sud,191,30,21,18622,81,Normal
+REF-1389,Ciment modèle 12,Ciment,Entrepôt Nord,53,74,21,7606,35,Sous le seuil
+REF-1390,Plomberie modèle 11,Plomberie,Dépôt Bouaké,337,31,17,9902,25,Normal
+REF-1391,Ciment modèle 10,Ciment,Entrepôt Nord,153,86,18,14858,94,À surveiller
+REF-1392,Plomberie modèle 2,Plomberie,Entrepôt Sud,146,22,12,8463,28,Normal
+REF-1393,Peinture modèle 29,Peinture,Entrepôt Sud,107,41,27,4552,37,Normal
+REF-1394,Fer à béton modèle 10,Fer à béton,Entrepôt Sud,166,67,13,5275,54,Normal
+REF-1395,Fer à béton modèle 17,Fer à béton,Entrepôt Sud,330,97,26,13991,86,Normal
+REF-1396,Fer à béton modèle 31,Fer à béton,Entrepôt Sud,326,66,25,16407,63,Normal
+REF-1397,Ciment modèle 36,Ciment,Entrepôt Sud,215,70,23,3949,97,Normal
+REF-1398,Électricité modèle 26,Électricité,Dépôt Bouaké,394,32,14,5480,63,Normal
+REF-1399,Carrelage modèle 20,Carrelage,Dépôt Bouaké,175,44,5,19246,112,Normal
+REF-1400,Ciment modèle 39,Ciment,Entrepôt Sud,245,22,5,10425,70,Normal
+REF-1401,Ciment modèle 9,Ciment,Dépôt Bouaké,345,63,28,6891,95,Normal
+REF-1402,Électricité modèle 27,Électricité,Entrepôt Sud,303,78,14,10579,33,Normal
+REF-1403,Peinture modèle 18,Peinture,Entrepôt Nord,167,38,10,14153,7,Normal
+REF-1404,Carrelage modèle 18,Carrelage,Dépôt Bouaké,168,24,4,12962,20,Normal
+REF-1405,Fer à béton modèle 1,Fer à béton,Dépôt Bouaké,278,40,11,8310,109,Normal
+REF-1406,Électricité modèle 25,Électricité,Entrepôt Sud,150,24,3,16718,112,Normal
+REF-1407,Ciment modèle 36,Ciment,Dépôt Bouaké,185,54,15,3595,56,Normal
+REF-1408,Carrelage modèle 1,Carrelage,Entrepôt Sud,311,85,16,10908,94,Normal
+REF-1409,Fer à béton modèle 36,Fer à béton,Dépôt Bouaké,273,48,8,12566,9,Normal
+REF-1410,Peinture modèle 37,Peinture,Dépôt Bouaké,221,73,6,12603,16,Normal
+REF-1411,Ciment modèle 33,Ciment,Entrepôt Sud,61,64,11,20366,116,Sous le seuil
+REF-1412,Ciment modèle 14,Ciment,Entrepôt Nord,388,57,27,14162,32,Normal
+REF-1413,Ciment modèle 32,Ciment,Entrepôt Sud,330,99,14,12435,103,Normal
+REF-1414,Fer à béton modèle 12,Fer à béton,Entrepôt Nord,368,52,29,10924,87,Normal
+REF-1415,Électricité modèle 10,Électricité,Entrepôt Nord,366,81,23,8094,102,Normal
+REF-1416,Peinture modèle 35,Peinture,Entrepôt Nord,320,67,17,3424,25,Normal
+REF-1417,Ciment modèle 19,Ciment,Dépôt Bouaké,250,82,11,11788,117,Normal
+REF-1418,Fer à béton modèle 16,Fer à béton,Entrepôt Nord,41,40,8,12559,8,À surveiller
+REF-1419,Peinture modèle 38,Peinture,Entrepôt Sud,32,96,15,12232,101,Sous le seuil
+REF-1420,Électricité modèle 6,Électricité,Entrepôt Nord,374,62,16,8582,62,Normal
+REF-1421,Carrelage modèle 20,Carrelage,Dépôt Bouaké,164,45,16,6071,38,Normal
+REF-1422,Fer à béton modèle 37,Fer à béton,Entrepôt Nord,216,37,5,7315,3,Normal
+REF-1423,Plomberie modèle 4,Plomberie,Entrepôt Sud,6,21,29,10058,66,Sous le seuil
+REF-1424,Peinture modèle 15,Peinture,Entrepôt Nord,356,53,24,14188,117,Normal
+REF-1425,Peinture modèle 21,Peinture,Entrepôt Nord,115,78,22,9344,24,À surveiller
+REF-1426,Électricité modèle 11,Électricité,Dépôt Bouaké,67,66,18,4424,77,À surveiller
+REF-1427,Ciment modèle 25,Ciment,Entrepôt Nord,145,58,6,17885,91,Normal
+REF-1428,Électricité modèle 28,Électricité,Entrepôt Nord,230,34,6,11218,25,Normal
+REF-1429,Peinture modèle 23,Peinture,Entrepôt Sud,363,35,8,10862,43,Normal
+REF-1430,Ciment modèle 3,Ciment,Entrepôt Nord,52,26,21,19159,97,Normal
+REF-1431,Carrelage modèle 28,Carrelage,Dépôt Bouaké,239,48,21,18397,78,Normal
+REF-1432,Fer à béton modèle 1,Fer à béton,Dépôt Bouaké,1,59,16,18979,63,Sous le seuil
+REF-1433,Carrelage modèle 38,Carrelage,Dépôt Bouaké,80,73,10,13460,23,À surveiller
+REF-1434,Peinture modèle 7,Peinture,Entrepôt Sud,314,43,19,10477,63,Normal
+REF-1435,Ciment modèle 16,Ciment,Entrepôt Nord,327,24,23,4151,95,Normal
+REF-1436,Plomberie modèle 28,Plomberie,Entrepôt Sud,82,80,10,21000,107,À surveiller
+REF-1437,Carrelage modèle 8,Carrelage,Entrepôt Sud,219,82,17,3235,43,Normal
+REF-1438,Plomberie modèle 11,Plomberie,Entrepôt Nord,377,43,26,13303,106,Normal
+REF-1439,Électricité modèle 13,Électricité,Dépôt Bouaké,390,38,20,16876,11,Normal
+REF-1440,Électricité modèle 14,Électricité,Entrepôt Sud,187,54,6,13413,25,Normal
+REF-1441,Carrelage modèle 9,Carrelage,Entrepôt Nord,366,74,8,17795,116,Normal
+REF-1442,Fer à béton modèle 34,Fer à béton,Entrepôt Nord,323,52,14,8916,21,Normal
+REF-1443,Électricité modèle 35,Électricité,Entrepôt Nord,366,34,20,14452,58,Normal
+REF-1444,Plomberie modèle 17,Plomberie,Dépôt Bouaké,272,47,11,9412,96,Normal
+REF-1445,Peinture modèle 31,Peinture,Dépôt Bouaké,140,21,18,14674,27,Normal
+REF-1446,Peinture modèle 18,Peinture,Dépôt Bouaké,49,69,14,5613,93,Sous le seuil
+REF-1447,Ciment modèle 18,Ciment,Dépôt Bouaké,303,88,27,17822,7,Normal
+REF-1448,Fer à béton modèle 27,Fer à béton,Entrepôt Sud,175,48,22,9592,43,Normal
+REF-1449,Électricité modèle 39,Électricité,Entrepôt Sud,84,22,16,16916,47,Normal
+REF-1450,Plomberie modèle 16,Plomberie,Entrepôt Nord,153,75,18,5538,106,Normal
+REF-1451,Peinture modèle 21,Peinture,Entrepôt Sud,40,45,20,19180,86,Sous le seuil
+REF-1452,Peinture modèle 38,Peinture,Entrepôt Sud,250,56,16,10624,1,Normal
+REF-1453,Carrelage modèle 18,Carrelage,Dépôt Bouaké,167,71,17,5734,21,Normal
+REF-1454,Peinture modèle 11,Peinture,Dépôt Bouaké,304,36,20,11815,28,Normal
+REF-1455,Plomberie modèle 22,Plomberie,Entrepôt Nord,174,57,16,10026,99,Normal
+REF-1456,Carrelage modèle 10,Carrelage,Dépôt Bouaké,314,23,21,14582,66,Normal
+REF-1457,Carrelage modèle 23,Carrelage,Entrepôt Nord,94,96,2,19819,86,Sous le seuil
+REF-1458,Carrelage modèle 27,Carrelage,Entrepôt Sud,175,41,12,12571,55,Normal
+REF-1459,Peinture modèle 30,Peinture,Dépôt Bouaké,203,56,29,20736,112,Normal
+REF-1460,Carrelage modèle 26,Carrelage,Entrepôt Sud,158,97,3,20400,65,À surveiller
+REF-1461,Ciment modèle 8,Ciment,Dépôt Bouaké,132,66,5,17792,74,Normal
+REF-1462,Plomberie modèle 39,Plomberie,Entrepôt Sud,124,95,12,10791,70,À surveiller
+REF-1463,Plomberie modèle 32,Plomberie,Entrepôt Sud,325,68,29,13113,19,Normal
+REF-1464,Fer à béton modèle 40,Fer à béton,Entrepôt Nord,287,77,19,11041,26,Normal
+REF-1465,Ciment modèle 40,Ciment,Entrepôt Sud,289,86,2,19227,114,Normal
+REF-1466,Électricité modèle 2,Électricité,Entrepôt Nord,286,48,3,18767,20,Normal
+REF-1467,Carrelage modèle 39,Carrelage,Entrepôt Nord,179,80,16,8802,119,Normal
+REF-1468,Peinture modèle 28,Peinture,Dépôt Bouaké,69,31,28,13023,70,Normal
+REF-1469,Fer à béton modèle 26,Fer à béton,Dépôt Bouaké,167,82,3,10798,69,Normal
+REF-1470,Fer à béton modèle 12,Fer à béton,Entrepôt Sud,372,38,5,16451,25,Normal
+REF-1471,Carrelage modèle 10,Carrelage,Entrepôt Nord,366,66,21,15373,29,Normal
+REF-1472,Fer à béton modèle 1,Fer à béton,Entrepôt Sud,107,75,28,17042,27,À surveiller
+REF-1473,Plomberie modèle 12,Plomberie,Entrepôt Sud,266,46,25,11820,89,Normal
+REF-1474,Carrelage modèle 1,Carrelage,Dépôt Bouaké,216,98,22,12497,3,Normal
+REF-1475,Peinture modèle 32,Peinture,Entrepôt Nord,21,88,4,16372,48,Sous le seuil
+REF-1476,Carrelage modèle 26,Carrelage,Dépôt Bouaké,315,83,13,3325,89,Normal
+REF-1477,Ciment modèle 20,Ciment,Dépôt Bouaké,77,73,18,11821,21,À surveiller
+REF-1478,Électricité modèle 14,Électricité,Dépôt Bouaké,335,98,15,11051,21,Normal
+REF-1479,Plomberie modèle 33,Plomberie,Dépôt Bouaké,299,52,8,19959,85,Normal
+REF-1480,Carrelage modèle 18,Carrelage,Entrepôt Nord,288,46,8,18739,62,Normal
+REF-1481,Carrelage modèle 31,Carrelage,Entrepôt Nord,236,33,24,17174,33,Normal
+REF-1482,Peinture modèle 11,Peinture,Dépôt Bouaké,139,80,10,17594,119,À surveiller
+REF-1483,Fer à béton modèle 36,Fer à béton,Dépôt Bouaké,67,33,24,7465,31,Normal
+REF-1484,Ciment modèle 3,Ciment,Entrepôt Nord,145,58,18,11372,113,Normal
+REF-1485,Plomberie modèle 1,Plomberie,Entrepôt Nord,106,97,20,20730,59,À surveiller
+REF-1486,Électricité modèle 35,Électricité,Dépôt Bouaké,29,47,11,20259,106,Sous le seuil
+REF-1487,Électricité modèle 27,Électricité,Dépôt Bouaké,138,61,15,6703,26,Normal
+REF-1488,Plomberie modèle 12,Plomberie,Entrepôt Sud,343,93,19,3401,79,Normal
+REF-1489,Fer à béton modèle 9,Fer à béton,Dépôt Bouaké,246,85,7,5036,44,Normal
+REF-1490,Fer à béton modèle 13,Fer à béton,Dépôt Bouaké,88,45,17,15907,118,À surveiller
+REF-1491,Fer à béton modèle 25,Fer à béton,Entrepôt Nord,317,66,19,8436,55,Normal
+REF-1492,Fer à béton modèle 31,Fer à béton,Entrepôt Sud,288,32,25,20177,34,Normal
+REF-1493,Ciment modèle 25,Ciment,Dépôt Bouaké,345,99,15,16294,30,Normal
+REF-1494,Carrelage modèle 38,Carrelage,Entrepôt Nord,365,61,26,18267,72,Normal
+REF-1495,Peinture modèle 35,Peinture,Dépôt Bouaké,116,35,29,9718,118,Normal
+REF-1496,Plomberie modèle 13,Plomberie,Entrepôt Nord,159,23,17,10010,7,Normal
+REF-1497,Plomberie modèle 32,Plomberie,Dépôt Bouaké,367,74,15,18630,111,Normal
+REF-1498,Fer à béton modèle 23,Fer à béton,Entrepôt Nord,359,46,21,8635,79,Normal
+REF-1499,Plomberie modèle 9,Plomberie,Dépôt Bouaké,310,76,8,6980,27,Normal
+REF-1500,Carrelage modèle 13,Carrelage,Entrepôt Sud,368,67,15,6381,11,Normal
+REF-1501,Fer à béton modèle 40,Fer à béton,Dépôt Bouaké,35,23,24,8877,40,À surveiller
+REF-1502,Carrelage modèle 18,Carrelage,Entrepôt Sud,262,52,10,11486,7,Normal
+REF-1503,Carrelage modèle 21,Carrelage,Dépôt Bouaké,347,36,21,20025,108,Normal
+REF-1504,Ciment modèle 33,Ciment,Dépôt Bouaké,107,90,22,3052,47,À surveiller
+REF-1505,Carrelage modèle 3,Carrelage,Entrepôt Nord,87,29,16,3609,114,Normal
+REF-1506,Plomberie modèle 2,Plomberie,Dépôt Bouaké,240,57,22,4436,33,Normal
+REF-1507,Carrelage modèle 9,Carrelage,Entrepôt Sud,70,58,29,11675,45,À surveiller
+REF-1508,Fer à béton modèle 40,Fer à béton,Entrepôt Sud,76,45,2,3213,119,À surveiller
+REF-1509,Plomberie modèle 16,Plomberie,Entrepôt Nord,238,53,15,8743,9,Normal
+REF-1510,Plomberie modèle 15,Plomberie,Entrepôt Nord,17,67,7,3740,91,Sous le seuil
+REF-1511,Ciment modèle 23,Ciment,Entrepôt Sud,113,80,4,19649,92,À surveiller
+REF-1512,Électricité modèle 17,Électricité,Dépôt Bouaké,91,41,9,3080,72,Normal
+REF-1513,Fer à béton modèle 2,Fer à béton,Dépôt Bouaké,331,36,21,13222,104,Normal
+REF-1514,Peinture modèle 16,Peinture,Entrepôt Sud,363,24,22,3162,45,Normal
+REF-1515,Électricité modèle 38,Électricité,Dépôt Bouaké,87,31,4,7822,93,Normal
+REF-1516,Carrelage modèle 19,Carrelage,Entrepôt Sud,225,39,2,12662,49,Normal
+REF-1517,Peinture modèle 40,Peinture,Dépôt Bouaké,360,89,29,13801,12,Normal
+REF-1518,Ciment modèle 8,Ciment,Entrepôt Sud,247,61,6,6530,14,Normal
+REF-1519,Carrelage modèle 40,Carrelage,Entrepôt Sud,24,90,5,14959,0,Sous le seuil
+REF-1520,Peinture modèle 21,Peinture,Dépôt Bouaké,255,24,23,16526,77,Normal
+REF-1521,Électricité modèle 5,Électricité,Entrepôt Sud,232,84,22,17765,55,Normal
+REF-1522,Électricité modèle 18,Électricité,Dépôt Bouaké,155,34,13,19058,5,Normal
+REF-1523,Peinture modèle 8,Peinture,Dépôt Bouaké,204,33,2,19121,60,Normal
+REF-1524,Carrelage modèle 7,Carrelage,Entrepôt Nord,305,48,3,11604,36,Normal
+REF-1525,Électricité modèle 19,Électricité,Entrepôt Sud,85,75,13,9199,17,À surveiller
+REF-1526,Ciment modèle 32,Ciment,Entrepôt Sud,97,49,12,18259,73,À surveiller
+REF-1527,Plomberie modèle 2,Plomberie,Dépôt Bouaké,348,75,19,11152,10,Normal
+REF-1528,Peinture modèle 26,Peinture,Dépôt Bouaké,197,75,11,19000,72,Normal
+REF-1529,Peinture modèle 9,Peinture,Dépôt Bouaké,305,84,22,20434,24,Normal
+REF-1530,Plomberie modèle 35,Plomberie,Dépôt Bouaké,208,32,15,13550,79,Normal
+REF-1531,Peinture modèle 34,Peinture,Entrepôt Sud,121,27,12,14281,104,Normal
+REF-1532,Fer à béton modèle 40,Fer à béton,Dépôt Bouaké,369,58,5,10580,8,Normal
+REF-1533,Électricité modèle 31,Électricité,Entrepôt Sud,138,46,4,9281,54,Normal
+REF-1534,Électricité modèle 40,Électricité,Entrepôt Sud,75,66,18,14465,61,À surveiller
+REF-1535,Fer à béton modèle 37,Fer à béton,Entrepôt Sud,132,94,16,11107,68,À surveiller
+REF-1536,Plomberie modèle 13,Plomberie,Entrepôt Sud,203,94,16,9734,28,Normal
+REF-1537,Fer à béton modèle 1,Fer à béton,Dépôt Bouaké,110,98,9,16366,57,À surveiller
+REF-1538,Peinture modèle 22,Peinture,Dépôt Bouaké,197,52,21,6292,45,Normal
+REF-1539,Électricité modèle 11,Électricité,Dépôt Bouaké,350,87,2,16181,57,Normal

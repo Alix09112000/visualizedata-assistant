@@ -103,6 +103,108 @@ elif _theme == "Auto":
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# Exemples, limites de session et retours
+# ─────────────────────────────────────────────────────────────────────────────
+EXAMPLES = {
+    "Ventes d'une PME de distribution": (
+        "ventes_distribution.csv",
+        "1 400 commandes sur un an : régions, canaux, familles de produits, remises.",
+    ),
+    "Enquête de satisfaction client": (
+        "satisfaction_clients.csv",
+        "820 réponses NPS par agence et par canal de contact.",
+    ),
+    "Suivi de stocks": (
+        "suivi_stocks.csv",
+        "540 références, seuils, délais de réapprovisionnement, rotation.",
+    ),
+    "Fichier volontairement sale": (
+        "commandes_brut.csv",
+        "Export brut avec lignes de titre, montants en texte et régions fusionnées.",
+    ),
+}
+
+MAX_UPLOAD_MB = 50
+MAX_AI_QUESTIONS = 30
+
+
+@st.cache_data(show_spinner=False)
+def example_bytes(filename: str) -> bytes:
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "exemples", filename)
+    with open(path, "rb") as handle:
+        return handle.read()
+
+
+class ExampleFile:
+    """Se comporte comme un fichier importé, pour réutiliser le même pipeline."""
+
+    def __init__(self, name: str, payload: bytes):
+        self.name = name
+        self._payload = payload
+
+    def getvalue(self) -> bytes:
+        return self._payload
+
+
+def ai_quota_left() -> int:
+    return MAX_AI_QUESTIONS - st.session_state.get("vd_ai_calls", 0)
+
+
+def consume_ai_quota() -> None:
+    st.session_state["vd_ai_calls"] = st.session_state.get("vd_ai_calls", 0) + 1
+
+
+def send_feedback(subject: str, body: str) -> tuple[bool, str]:
+    """Envoie un retour via un service compatible SMTP (Resend, Brevo…)."""
+    import smtplib
+    from email.message import EmailMessage
+
+    host = os.getenv("SMTP_HOST")
+    user = os.getenv("SMTP_USER")
+    password = os.getenv("SMTP_PASSWORD")
+    sender = os.getenv("SMTP_FROM", user or "")
+    recipient = os.getenv("FEEDBACK_TO", "mdjoman@upb.ci")
+
+    if not (host and user and password and sender):
+        return False, "envoi non configuré"
+
+    message = EmailMessage()
+    message["Subject"] = subject
+    message["From"] = sender
+    message["To"] = recipient
+    message.set_content(body)
+    try:
+        port = int(os.getenv("SMTP_PORT", "587"))
+        with smtplib.SMTP(host, port, timeout=12) as server:
+            server.starttls()
+            server.login(user, password)
+            server.send_message(message)
+        return True, "envoyé"
+    except Exception as exc:
+        return False, str(exc)
+
+
+def record_feedback(kind: str, detail: str, extra: str = "") -> None:
+    """Consigne le retour dans la session et tente l'envoi par e-mail."""
+    entry = {
+        "moment": datetime.now().strftime("%d/%m/%Y %H:%M"),
+        "type": kind,
+        "detail": detail,
+        "contexte": extra,
+    }
+    st.session_state.setdefault("vd_feedback", []).append(entry)
+    body = (
+        f"Type : {kind}\n"
+        f"Détail : {detail}\n"
+        f"Contexte : {extra}\n"
+        f"Moment : {entry['moment']}\n"
+        f"Moteur : {st.session_state.get('vd_engine_label', 'inconnu')}\n"
+    )
+    send_feedback(f"VisualizeData — retour ({kind})", body)
+
+
+
 # Chargement des données
 # ─────────────────────────────────────────────────────────────────────────────
 @st.cache_data(show_spinner=False)
@@ -924,8 +1026,40 @@ st.segmented_control(
 uploaded_file = st.file_uploader(
     "Déposez un fichier CSV ou Excel",
     type=["csv", "xlsx", "xls"],
-    help="CSV, XLSX ou XLS · jusqu'à 200 Mo · séparateur et encodage détectés automatiquement.",
+    help=f"CSV, XLSX ou XLS · jusqu'à {MAX_UPLOAD_MB} Mo · séparateur et encodage "
+         "détectés automatiquement.",
 )
+
+if uploaded_file is not None and uploaded_file.size > MAX_UPLOAD_MB * 1024 * 1024:
+    st.error(
+        f"Ce fichier dépasse {MAX_UPLOAD_MB} Mo. Réduisez-le ou envoyez seulement "
+        "les colonnes utiles à l'analyse."
+    )
+    st.stop()
+
+st.caption(
+    "Vos fichiers ne sont jamais enregistrés : ils restent en mémoire le temps de la "
+    "session et disparaissent à la fermeture de l'onglet. L'assistant IA ne reçoit "
+    "qu'un résumé statistique et un échantillon de douze lignes, jamais le fichier entier."
+)
+
+if uploaded_file is None:
+    st.html('<div class="vd-kicker" style="margin-top:26px">Ou essayez un exemple</div>')
+    st.caption("Aucun fichier sous la main ? Chargez un jeu de démonstration en un clic.")
+    example_choice = st.selectbox(
+        "Jeu d'exemple", list(EXAMPLES),
+        format_func=lambda name: f"{name} — {EXAMPLES[name][1]}",
+        label_visibility="collapsed",
+    )
+    if st.button("Charger cet exemple", type="primary", use_container_width=True):
+        filename = EXAMPLES[example_choice][0]
+        st.session_state["vd_example"] = filename
+        record_feedback("exemple chargé", example_choice)
+        st.rerun()
+
+if uploaded_file is None and st.session_state.get("vd_example"):
+    _name = st.session_state["vd_example"]
+    uploaded_file = ExampleFile(_name, example_bytes(_name))
 
 sheet_name = None
 if uploaded_file is not None and not uploaded_file.name.lower().endswith(".csv"):
@@ -950,7 +1084,12 @@ if uploaded_file is None:
         """<div class="vd-poster" style="margin-top:22px"> <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:14px">Exemple de sortie</div> <p class="q">« Le canal revendeur recule de 9 % pendant que <em>le direct progresse.</em> »</p> <div style="margin-top:26px"> <div class="row"><span style="opacity:.85">Fichiers acceptés</span><span style="font-weight:800">CSV · XLSX · XLS</span></div> <div class="row"><span style="opacity:.85">Temps moyen d'analyse</span><span style="font-weight:800">&lt; 5 s</span></div> <div class="row"><span style="opacity:.85">Installation</span><span style="font-weight:800">Aucune</span></div> </div> </div>"""
     )
     st.html('<hr class="vd-rule">')
-    st.caption("VisualizeData Assistant · build modernist-19")
+    st.caption(
+        "Application hébergée sur une instance gratuite : après une période d'inactivité, "
+        "le premier chargement peut prendre une minute, le temps que le service se réveille. "
+        "Les suivants sont immédiats."
+    )
+    st.caption("VisualizeData Assistant · build modernist-20")
     st.stop()
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -976,6 +1115,12 @@ with st.sidebar:
         help="Détecte la ligne d'en-tête, supprime les lignes et colonnes vides, "
              "reconstitue les cellules fusionnées et convertit les nombres écrits en texte.",
     )
+
+    if st.session_state.get("vd_example"):
+        st.caption("Jeu de démonstration")
+        if st.button("Charger mon propre fichier", use_container_width=True):
+            del st.session_state["vd_example"]
+            st.rerun()
 
     st.html('<div class="vd-kicker" style="margin-top:18px">Parcours</div>')
     for index, step in enumerate(
@@ -1067,6 +1212,7 @@ bar_engine, bar_compute, bar_context = st.columns(3, gap="small")
 
 with bar_engine:
     engine = st.selectbox("Moteur d'analyse", engine_options)
+    st.session_state["vd_engine_label"] = engine
     if engine in providers:
         st.caption(providers[engine]["model"])
     else:
@@ -1512,7 +1658,15 @@ with tabs[5]:
             st.markdown(f"**Question —** {question}")
             history.append({"role": "user", "content": question})
 
+            if use_ai and ai_quota_left() <= 0:
+                st.warning(
+                    f"Limite de {MAX_AI_QUESTIONS} questions atteinte pour cette session. "
+                    "Rechargez la page pour repartir, ou utilisez l'analyse locale."
+                )
+                use_ai = False
+
             if use_ai and compute_mode:
+                consume_ai_quota()
                 client, model = make_client(engine), providers[engine]["model"]
                 try:
                     with st.spinner("Calcul sur vos données…"):
@@ -1549,6 +1703,7 @@ with tabs[5]:
                     st.error(f"Impossible d'obtenir l'analyse via {engine} : {exc}")
 
             elif use_ai:
+                consume_ai_quota()
                 try:
                     with st.spinner("Analyse en cours…"):
                         stream = ask_assistant(
@@ -1568,5 +1723,66 @@ with tabs[5]:
                 st.markdown(answer)
                 history.append({"role": "assistant", "content": answer})
 
+        if history and history[-1]["role"] == "assistant":
+            rated_key = f"vd_rated::{len(history)}"
+            if not st.session_state.get(rated_key):
+                st.caption("Cette réponse vous a-t-elle aidé ?")
+                yes, no, _ = st.columns([1, 1, 3], gap="small")
+                with yes:
+                    if st.button("Oui", use_container_width=True, key=f"up::{len(history)}"):
+                        record_feedback("réponse utile", history[-2]["content"][:300])
+                        st.session_state[rated_key] = True
+                        st.rerun()
+                with no:
+                    if st.button("Non", use_container_width=True, key=f"down::{len(history)}"):
+                        record_feedback("réponse inutile", history[-2]["content"][:300],
+                                        history[-1]["content"][:500])
+                        st.session_state[rated_key] = True
+                        st.rerun()
+            else:
+                st.caption("Merci, c'est noté.")
+
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-19")
+
+if not st.session_state.get("vd_session_feedback"):
+    st.html('<div class="vd-kicker">Votre avis</div>')
+    st.markdown("#### Qu'est-ce qui vous manque ?")
+    st.caption(
+        "Une phrase suffit. C'est ce qui décide des prochaines améliorations."
+    )
+    remark = st.text_area(
+        "Votre remarque", height=90, label_visibility="collapsed",
+        placeholder="Ex. : j'aimerais comparer deux fichiers, ou exporter en Excel.",
+        key="vd_remark",
+    )
+    send_col, skip_col, _ = st.columns([1, 1, 2], gap="small")
+    with send_col:
+        if st.button("Envoyer", type="primary", use_container_width=True):
+            if remark.strip():
+                record_feedback("remarque", remark.strip(),
+                                f"fichier {uploaded_file.name}")
+                st.session_state["vd_session_feedback"] = True
+                st.rerun()
+            else:
+                st.caption("Écrivez d'abord une phrase.")
+    with skip_col:
+        if st.button("Plus tard", use_container_width=True):
+            st.session_state["vd_session_feedback"] = True
+            st.rerun()
+else:
+    st.caption("Merci pour votre retour.")
+
+with st.expander("Nouveautés"):
+    st.markdown(
+        "**Août 2026**\n"
+        "- Prédiction : estimez une valeur ou une catégorie, avec les variables qui pèsent le plus.\n"
+        "- Calcul exact : l'assistant exécute une requête sur votre fichier avant de répondre.\n"
+        "- Nettoyage automatique des exports bruts : en-tête réel, lignes vides, cellules fusionnées.\n"
+        "- Jeux de données d'exemple, thème sombre, application utilisable sur téléphone.\n"
+        "- Projection à trois mois sur les séries temporelles.\n"
+        "\n**À venir**\n"
+        "- Comparaison de deux fichiers, segmentation automatique, export du rapport en PDF."
+    )
+    st.caption("Une idée, un problème ? Écrivez à mdjoman@upb.ci.")
+
+st.caption("VisualizeData Assistant · build modernist-20")

@@ -1,0 +1,1401 @@
+date_vente,region,canal_vente,famille_produit,segment_client,quantite,prix_unitaire,remise_pct,montant_ht
+2024-08-05,Bouaké,Revendeur,Électricité,Particulier,22,9888,5,206659
+2024-01-28,Daloa,Direct,Fer à béton,,3,8880,0,26640
+2024-01-27,Korhogo,Grand compte,Plomberie,Particulier,3,7662,7,21377
+2024-03-15,Daloa,Direct,Plomberie,Artisan,2,7881,4,15132
+2024-11-11,Korhogo,Grand compte,Plomberie,Artisan,14,6624,10,83462
+2024-05-19,Bouaké,Grand compte,Fer à béton,,23,8374,7,241812
+2024-07-28,Yamoussoukro,Direct,Électricité,Particulier,15,9481,4,136526
+2024-05-25,San-Pédro,Direct,Ciment,Particulier,22,6412,2,186628
+2024-06-13,Abidjan,Grand compte,Fer à béton,Artisan,35,9487,9,407917
+2024-12-06,Bouaké,Revendeur,Peinture,Particulier,28,13333,1,369591
+2024-08-13,Abidjan,Direct,Plomberie,,18,7105,3,124053
+2024-04-02,Bouaké,Grand compte,Fer à béton,Particulier,3,10237,10,37314
+2024-06-12,Bouaké,Grand compte,Fer à béton,Artisan,19,9958,5,242652
+2024-01-01,Yamoussoukro,Direct,Électricité,Entreprise,24,9148,5,208574
+2024-09-20,Daloa,Direct,Fer à béton,Entreprise,16,9990,3,155045
+2024-12-10,Korhogo,Revendeur,Électricité,Entreprise,24,9938,3,231357
+2024-05-03,Korhogo,Grand compte,Électricité,Artisan,10,8475,1,113268
+2024-02-19,San-Pédro,Grand compte,Fer à béton,Particulier,12,8332,9,90985
+2024-08-22,Daloa,Grand compte,Fer à béton,Particulier,5,10092,5,47937
+2024-04-23,Korhogo,Direct,Électricité,Entreprise,12,9199,3,144553
+2024-07-21,Daloa,Revendeur,Électricité,Artisan,24,9301,1,220992
+2024-08-09,Korhogo,Revendeur,Ciment,,20,6371,5,121049
+2024-10-02,Abidjan,Grand compte,Fer à béton,Artisan,9,7996,11,64048
+2024-10-06,San-Pédro,Direct,Peinture,,18,13122,1,233834
+2024-02-28,San-Pédro,Revendeur,Fer à béton,Particulier,5,10178,1,50381
+2024-12-27,Abidjan,Direct,Ciment,Particulier,18,6848,0,123264
+2024-01-23,Abidjan,Direct,Peinture,Artisan,40,13688,1,542045
+2024-03-18,Bouaké,Revendeur,Carrelage,,29,12143,1,348626
+2024-04-13,Korhogo,Grand compte,Peinture,Artisan,30,15560,1,623878
+2024-02-11,Bouaké,Direct,Fer à béton,Particulier,23,10181,3,227138
+2024-11-09,San-Pédro,Direct,Carrelage,Particulier,22,12774,6,264166
+2024-08-14,Korhogo,Grand compte,Fer à béton,,20,10241,14,176145
+2024-12-07,Daloa,Revendeur,Ciment,Particulier,4,6704,0,26816
+2024-12-14,Abidjan,Grand compte,Électricité,Artisan,18,7846,8,129930
+2024-01-19,Yamoussoukro,Direct,Peinture,,32,16351,2,512767
+2024-10-26,San-Pédro,Revendeur,Ciment,Particulier,22,5710,2,123108
+2024-01-04,Bouaké,Direct,Fer à béton,Particulier,40,9284,3,360219
+2024-11-27,Daloa,Grand compte,Carrelage,Particulier,4,10567,7,39309
+2024-12-05,San-Pédro,Direct,Fer à béton,,32,9822,5,298589
+2024-05-29,Abidjan,Direct,Plomberie,Particulier,18,7660,1,184277
+2024-04-16,Abidjan,Grand compte,Électricité,Artisan,16,8455,12,160713
+2024-11-17,Abidjan,Direct,Ciment,Particulier,13,6518,6,79650
+2024-03-31,Korhogo,Grand compte,Électricité,Particulier,28,9119,13,222139
+2024-08-21,San-Pédro,Grand compte,Carrelage,Artisan,12,13557,13,141535
+2024-12-30,San-Pédro,Direct,Carrelage,Entreprise,40,12276,1,486130
+2024-12-12,San-Pédro,Direct,Plomberie,Artisan,2,7089,4,13611
+2024-10-22,Abidjan,Revendeur,Carrelage,Particulier,7,11781,2,80818
+2024-02-26,San-Pédro,Direct,Ciment,Artisan,34,6521,5,210628
+2024-11-15,Daloa,Direct,Électricité,Artisan,19,8370,4,152669
+2024-02-05,Abidjan,Revendeur,Fer à béton,,27,9704,0,262008
+2024-08-07,Yamoussoukro,Direct,Ciment,Particulier,3,6707,5,19115
+2024-08-28,San-Pédro,Direct,Fer à béton,Artisan,5,7830,0,39150
+2024-07-25,Abidjan,Revendeur,Ciment,,7,6178,1,42814
+2024-12-29,Korhogo,Direct,Peinture,,8,13194,6,99219
+2024-12-19,Yamoussoukro,Grand compte,Carrelage,,27,12412,5,318368
+2024-10-16,Abidjan,Revendeur,Électricité,,12,8003,2,94115
+2024-07-25,Korhogo,Revendeur,Plomberie,,25,8233,4,197592
+2024-06-21,Abidjan,Grand compte,Peinture,Entreprise,6,13549,11,97675
+2024-11-25,San-Pédro,Revendeur,Plomberie,Entreprise,36,7507,2,264847
+2024-01-01,Bouaké,Revendeur,Peinture,Particulier,38,13639,0,518282
+2024-05-24,Abidjan,Direct,Ciment,Artisan,30,5839,1,234115
+2024-08-06,Abidjan,Revendeur,Électricité,,30,8551,4,246269
+2024-09-10,San-Pédro,Grand compte,Plomberie,Artisan,2,6351,6,11940
+2024-04-05,Daloa,Direct,Électricité,,15,9331,1,187063
+2024-04-28,Daloa,Grand compte,Carrelage,Particulier,21,11401,4,310290
+2024-05-08,Daloa,Direct,Peinture,,2,16362,4,42410
+2024-09-24,Yamoussoukro,Direct,Carrelage,Entreprise,6,11746,1,69771
+2024-04-06,Daloa,Grand compte,Fer à béton,Artisan,9,8010,11,86616
+2024-08-02,Korhogo,Revendeur,Carrelage,Artisan,20,12005,2,235298
+2024-01-03,Korhogo,Revendeur,Ciment,Entreprise,20,6161,1,121988
+2024-05-02,Yamoussoukro,Grand compte,Électricité,Particulier,19,8399,14,185274
+2024-02-11,Abidjan,Grand compte,Carrelage,Particulier,1,10860,10,9774
+2024-04-22,Korhogo,Revendeur,Plomberie,Artisan,21,7031,6,187369
+2024-10-22,Korhogo,Grand compte,Peinture,Particulier,18,12574,2,221805
+2024-01-13,Yamoussoukro,Grand compte,Carrelage,Entreprise,38,12801,12,428065
+2024-04-03,Yamoussoukro,Revendeur,Carrelage,Artisan,31,11507,2,471937
+2024-07-20,Bouaké,Direct,Ciment,Entreprise,17,6267,1,105474
+2024-02-08,Yamoussoukro,Direct,Fer à béton,Entreprise,16,8950,4,137472
+2024-05-30,Bouaké,Grand compte,Électricité,,9,9021,6,103029
+2024-11-05,San-Pédro,Grand compte,Ciment,Artisan,3,5728,7,15981
+2024-08-21,Korhogo,Grand compte,Peinture,Particulier,20,14984,1,296683
+2024-03-12,Abidjan,Direct,Plomberie,Entreprise,33,7793,3,249454
+2024-03-31,Abidjan,Grand compte,Fer à béton,Entreprise,9,9132,6,77257
+2024-08-29,Yamoussoukro,Revendeur,Ciment,Artisan,19,5895,3,108645
+2024-07-09,Yamoussoukro,Grand compte,Carrelage,Entreprise,33,11808,2,381871
+2024-08-03,Bouaké,Revendeur,Électricité,Particulier,15,9248,4,133171
+2024-05-27,San-Pédro,Revendeur,Ciment,,2,7218,5,18514
+2024-05-23,Korhogo,Grand compte,Peinture,Entreprise,1,12668,7,15905
+2024-11-01,San-Pédro,Grand compte,Électricité,,24,10119,3,235570
+2024-12-12,Abidjan,Grand compte,Plomberie,Particulier,35,7925,3,269054
+2024-05-18,Korhogo,Revendeur,Peinture,,26,12931,1,449339
+2024-08-30,Yamoussoukro,Direct,Plomberie,Entreprise,5,8076,4,38765
+2024-02-07,Yamoussoukro,Direct,Électricité,Entreprise,13,7810,1,100515
+2024-02-27,Korhogo,Grand compte,Peinture,Particulier,35,14453,12,445152
+2024-02-24,Abidjan,Direct,Fer à béton,Artisan,38,10323,1,388351
+2024-04-02,Yamoussoukro,Grand compte,Électricité,Particulier,4,8668,11,41658
+2024-07-14,Bouaké,Direct,Électricité,,35,9844,5,327313
+2024-02-27,Bouaké,Grand compte,Peinture,Artisan,34,15738,9,486934
+2024-07-06,Korhogo,Grand compte,Électricité,Particulier,10,7777,3,75437
+2024-09-19,Daloa,Revendeur,Ciment,,20,5874,4,112781
+2024-07-05,Korhogo,Direct,Peinture,Entreprise,8,12331,5,93716
+2024-09-11,Abidjan,Direct,Ciment,Entreprise,7,5609,5,37300
+2024-03-22,Daloa,Direct,Plomberie,Entreprise,20,8112,3,157373
+2024-04-22,Yamoussoukro,Grand compte,Électricité,Artisan,39,7864,14,356074
+2024-08-03,Korhogo,Grand compte,Peinture,Particulier,34,13187,9,408006
+2024-03-09,Korhogo,Revendeur,Plomberie,Entreprise,11,6412,3,68416
+2024-09-06,Yamoussoukro,Direct,Plomberie,Particulier,22,8496,5,177566
+2024-10-30,Yamoussoukro,Revendeur,Fer à béton,Particulier,14,9890,3,134306
+2024-03-24,Daloa,Revendeur,Carrelage,Entreprise,19,12590,6,224857
+2024-04-12,Korhogo,Direct,Carrelage,Particulier,35,11604,2,537323
+2024-03-17,Yamoussoukro,Grand compte,Fer à béton,Entreprise,34,9843,3,324622
+2024-04-18,Yamoussoukro,Revendeur,Électricité,Artisan,39,8770,2,452506
+2024-05-29,Bouaké,Direct,Électricité,Entreprise,23,7652,3,230467
+2024-10-10,Daloa,Grand compte,Peinture,Artisan,19,15719,13,259835
+2024-02-06,San-Pédro,Direct,Peinture,Entreprise,36,14309,4,494519
+2024-09-26,Abidjan,Direct,Carrelage,,12,11035,2,129772
+2024-09-14,San-Pédro,Grand compte,Peinture,Artisan,6,13071,2,76857
+2024-05-12,San-Pédro,Direct,Ciment,Artisan,7,7241,1,67743
+2024-11-12,Abidjan,Revendeur,Ciment,Artisan,10,6953,6,65358
+2024-07-27,Abidjan,Grand compte,Carrelage,,40,11224,7,417533
+2024-09-15,Daloa,Grand compte,Ciment,Particulier,31,7107,12,193879
+2024-10-11,Yamoussoukro,Grand compte,Carrelage,Particulier,38,11919,13,394042
+2024-02-08,Yamoussoukro,Direct,Carrelage,,29,13149,4,366068
+2024-04-21,San-Pédro,Revendeur,Plomberie,Particulier,24,7756,2,246269
+2024-10-24,Yamoussoukro,Grand compte,Peinture,Particulier,23,12591,15,246154
+2024-04-01,Daloa,Revendeur,Ciment,,10,5593,3,73240
+2024-12-24,Yamoussoukro,Grand compte,Carrelage,Artisan,9,13078,3,114171
+2024-02-17,Abidjan,Grand compte,Électricité,Particulier,3,8852,8,24432
+2024-03-18,Yamoussoukro,Revendeur,Ciment,Artisan,27,7314,6,185629
+2024-02-02,Yamoussoukro,Direct,Peinture,,22,13745,0,302390
+2024-05-29,Daloa,Grand compte,Électricité,Artisan,25,8960,3,293328
+2024-05-07,Abidjan,Grand compte,Ciment,Particulier,23,6324,12,172797
+2024-09-27,Yamoussoukro,Grand compte,Plomberie,Particulier,17,7409,3,122174
+2024-12-30,Bouaké,Grand compte,Ciment,Artisan,18,5648,8,93531
+2024-09-30,Bouaké,Direct,Fer à béton,Entreprise,25,8647,3,209690
+2024-03-28,Daloa,Revendeur,Fer à béton,Artisan,32,8692,3,269800
+2024-04-12,Korhogo,Grand compte,Peinture,Entreprise,28,15855,7,557367
+2024-02-16,Bouaké,Revendeur,Carrelage,,9,12860,2,113425
+2024-01-19,Korhogo,Revendeur,Plomberie,Entreprise,8,7584,2,59459
+2024-06-02,Yamoussoukro,Direct,Électricité,Entreprise,19,8906,3,221586
+2024-09-23,Daloa,Direct,Ciment,Artisan,5,6541,2,32051
+2024-02-23,Bouaké,Direct,Fer à béton,,30,8559,1,254202
+2024-02-08,San-Pédro,Revendeur,Peinture,Entreprise,12,15426,3,179559
+2024-04-14,Daloa,Direct,Peinture,Particulier,17,15521,4,341959
+2024-01-01,Korhogo,Grand compte,Fer à béton,Entreprise,37,8158,14,259588
+2024-10-03,Korhogo,Direct,Électricité,Entreprise,22,8115,4,171389
+2024-11-09,Abidjan,Grand compte,Plomberie,Artisan,13,6367,8,76149
+2024-09-22,Korhogo,Direct,Peinture,Entreprise,19,16562,0,314678
+2024-07-02,Korhogo,Grand compte,Fer à béton,,18,9857,6,166780
+2024-10-17,Abidjan,Grand compte,Ciment,Particulier,26,5975,13,135155
+2024-12-22,Daloa,Grand compte,Plomberie,Artisan,10,7960,11,70844
+2024-06-22,Bouaké,Grand compte,Carrelage,Particulier,23,10203,10,285123
+2024-08-16,Bouaké,Direct,Plomberie,,18,7472,1,133151
+2024-12-05,Daloa,Direct,Électricité,Particulier,25,8465,2,207393
+2024-04-20,Daloa,Grand compte,Électricité,Entreprise,11,7570,7,104545
+2024-12-01,Yamoussoukro,Revendeur,Électricité,Particulier,12,8627,1,102489
+2024-09-14,San-Pédro,Revendeur,Fer à béton,Artisan,31,7902,5,232714
+2024-01-15,Yamoussoukro,Direct,Carrelage,Particulier,39,12741,2,486961
+2024-02-16,Bouaké,Grand compte,Plomberie,Particulier,1,8358,5,7940
+2024-11-12,Korhogo,Grand compte,Électricité,Particulier,31,9507,3,285875
+2024-04-23,Korhogo,Direct,Peinture,Entreprise,25,16438,3,538139
+2024-09-30,Abidjan,Direct,Ciment,Particulier,28,6111,4,164264
+2024-08-15,Korhogo,Direct,Peinture,Particulier,1,13779,5,13090
+2024-09-29,Abidjan,Direct,Carrelage,Particulier,10,11303,5,107379
+2024-01-24,Daloa,Grand compte,Carrelage,Entreprise,6,12510,11,66803
+2024-10-09,Korhogo,Direct,Ciment,,29,6768,4,188421
+2024-08-25,Daloa,Grand compte,Carrelage,,35,13122,14,394972
+2024-08-26,Korhogo,Revendeur,Plomberie,Entreprise,34,7627,3,251538
+2024-04-16,Abidjan,Grand compte,Peinture,Entreprise,32,13094,0,565661
+2024-02-01,Korhogo,Revendeur,Plomberie,,30,7737,2,227468
+2024-04-23,San-Pédro,Direct,Plomberie,,33,7624,5,322667
+2024-02-18,Korhogo,Grand compte,Carrelage,Particulier,17,10354,13,153136
+2024-12-27,Abidjan,Revendeur,Ciment,Entreprise,35,5837,2,200209
+2024-01-09,Bouaké,Grand compte,Plomberie,Artisan,38,7287,13,240908
+2024-08-13,Bouaké,Revendeur,Plomberie,Particulier,32,6368,3,197663
+2024-04-07,San-Pédro,Revendeur,Carrelage,Entreprise,29,11814,1,457893
+2024-02-20,Yamoussoukro,Revendeur,Électricité,Artisan,39,8688,1,335444
+2024-04-23,Yamoussoukro,Revendeur,Ciment,Artisan,20,6924,1,185079
+2024-12-23,Bouaké,Grand compte,Plomberie,Entreprise,12,8169,9,89205
+2024-01-26,Abidjan,Revendeur,Carrelage,Entreprise,21,12427,4,250528
+2024-02-28,Yamoussoukro,Grand compte,Carrelage,Particulier,23,11119,6,240393
+2024-07-02,Yamoussoukro,Direct,Électricité,Artisan,40,9325,5,354350
+2024-03-14,Yamoussoukro,Revendeur,Électricité,,37,7642,4,271444
+2024-08-24,San-Pédro,Grand compte,Électricité,Particulier,26,9190,7,222214
+2024-05-27,Abidjan,Direct,Électricité,,12,8195,2,130104
+2024-09-08,Korhogo,Direct,Ciment,,33,6048,4,191601
+2024-12-07,San-Pédro,Revendeur,Électricité,Artisan,10,9032,0,90320
+2024-05-24,Bouaké,Grand compte,Peinture,Particulier,39,15818,15,707895
+2024-09-09,San-Pédro,Direct,Ciment,Particulier,2,7119,3,13811
+2024-11-12,Korhogo,Revendeur,Ciment,Entreprise,28,6953,4,186897
+2024-09-04,San-Pédro,Revendeur,Ciment,,39,6474,1,249961
+2024-05-23,Abidjan,Direct,Ciment,Artisan,6,5975,5,45978
+2024-12-30,Yamoussoukro,Revendeur,Plomberie,Entreprise,29,7478,3,210356
+2024-09-21,Daloa,Direct,Fer à béton,,24,10189,2,239645
+2024-08-02,Bouaké,Revendeur,Ciment,,35,7065,5,234911
+2024-11-19,Abidjan,Direct,Carrelage,Particulier,28,11689,3,317473
+2024-03-17,Abidjan,Direct,Électricité,Particulier,2,7605,5,14450
+2024-10-08,Yamoussoukro,Revendeur,Plomberie,Particulier,18,8094,5,138407
+2024-11-17,San-Pédro,Revendeur,Peinture,Particulier,14,14308,4,192300
+2024-11-09,Bouaké,Direct,Peinture,Artisan,15,12709,1,188729
+2024-11-17,San-Pédro,Revendeur,Plomberie,Artisan,37,8412,1,308132
+2024-09-25,Abidjan,Grand compte,Ciment,Entreprise,5,6773,14,29124
+2024-06-19,Abidjan,Direct,Ciment,Artisan,22,5797,1,170449
+2024-02-05,Yamoussoukro,Direct,Ciment,Particulier,30,6359,2,186955
+2024-09-29,San-Pédro,Revendeur,Peinture,Particulier,20,13352,0,267040
+2024-08-01,Bouaké,Revendeur,Électricité,,20,8185,4,157152
+2024-04-12,Korhogo,Grand compte,Électricité,Artisan,35,9763,1,456689
+2024-07-18,Bouaké,Direct,Fer à béton,,15,9781,2,143781
+2024-07-11,Yamoussoukro,Revendeur,Carrelage,Entreprise,7,11888,2,81552
+2024-06-10,Korhogo,Grand compte,Peinture,,1,16644,3,21795
+2024-12-27,Daloa,Direct,Peinture,,32,13725,3,426024
+2024-08-02,Yamoussoukro,Revendeur,Carrelage,,37,12271,3,440406
+2024-03-29,Yamoussoukro,Direct,Carrelage,Particulier,12,10783,5,122926
+2024-07-08,Bouaké,Grand compte,Électricité,,7,8325,9,53030
+2024-10-03,San-Pédro,Direct,Carrelage,Entreprise,18,11483,5,196359
+2024-12-21,San-Pédro,Grand compte,Fer à béton,Particulier,1,10138,10,9124
+2024-04-22,Bouaké,Grand compte,Ciment,,35,6905,4,313211
+2024-01-13,Yamoussoukro,Direct,Peinture,,33,14697,3,470451
+2024-03-26,Daloa,Revendeur,Ciment,Entreprise,15,7173,2,105443
+2024-01-08,Abidjan,Revendeur,Plomberie,Particulier,1,7189,0,7189
+2024-03-09,San-Pédro,Revendeur,Carrelage,Entreprise,27,13132,1,351018
+2024-05-16,Korhogo,Revendeur,Carrelage,Artisan,1,10385,2,13739
+2024-09-12,Yamoussoukro,Grand compte,Électricité,,38,9403,13,310863
+2024-02-16,Abidjan,Grand compte,Électricité,Entreprise,11,9822,2,105881
+2024-10-27,Abidjan,Revendeur,Fer à béton,Particulier,20,8663,5,164597
+2024-09-30,Korhogo,Revendeur,Fer à béton,Entreprise,5,10389,2,50906
+2024-07-02,San-Pédro,Revendeur,Électricité,Particulier,39,9980,3,377543
+2024-09-16,San-Pédro,Grand compte,Plomberie,Particulier,19,8392,12,140314
+2024-06-06,Korhogo,Revendeur,Peinture,Particulier,30,15262,1,611930
+2024-08-09,San-Pédro,Grand compte,Peinture,Artisan,22,14271,7,291985
+2024-10-27,San-Pédro,Revendeur,Ciment,Artisan,18,7165,5,122522
+2024-11-04,Abidjan,Direct,Ciment,Particulier,12,5647,1,67086
+2024-06-17,Abidjan,Grand compte,Peinture,Particulier,7,14944,11,125687
+2024-02-02,Korhogo,Grand compte,Plomberie,,6,7626,7,42553
+2024-08-15,Abidjan,Revendeur,Peinture,Particulier,37,12828,5,450904
+2024-08-19,Yamoussoukro,Grand compte,Plomberie,,12,8120,3,94517
+2024-01-24,Bouaké,Direct,Plomberie,Particulier,37,8150,4,289488
+2024-07-04,Korhogo,Grand compte,Peinture,Particulier,25,15529,2,380461
+2024-06-01,Abidjan,Direct,Plomberie,,31,8289,1,343426
+2024-06-09,Abidjan,Grand compte,Fer à béton,Particulier,10,9614,14,111619
+2024-11-15,Abidjan,Revendeur,Fer à béton,Particulier,25,8290,1,205178
+2024-09-20,San-Pédro,Grand compte,Peinture,Artisan,9,15889,10,128701
+2024-02-13,Bouaké,Revendeur,Peinture,,7,12706,5,84495
+2024-12-28,Korhogo,Direct,Plomberie,Particulier,6,6314,5,35990
+2024-01-12,Abidjan,Direct,Fer à béton,Entreprise,7,8108,3,55053
+2024-09-15,San-Pédro,Grand compte,Peinture,Artisan,27,15273,10,371134
+2024-09-22,San-Pédro,Direct,Fer à béton,,15,9766,5,139166
+2024-09-03,Yamoussoukro,Revendeur,Carrelage,Entreprise,29,11636,1,334070
+2024-02-27,Abidjan,Grand compte,Carrelage,,18,12309,14,190543
+2024-12-25,Abidjan,Direct,Peinture,Particulier,10,14944,4,143462
+2024-03-02,Bouaké,Direct,Ciment,,25,5894,4,141456
+2024-02-07,Korhogo,Revendeur,Plomberie,Artisan,14,7058,5,93871
+2024-06-25,Yamoussoukro,Revendeur,Ciment,Artisan,26,6044,1,210023
+2024-12-27,Bouaké,Revendeur,Fer à béton,,14,8245,0,115430
+2024-02-11,San-Pédro,Revendeur,Fer à béton,,19,9119,4,166331
+2024-08-19,San-Pédro,Grand compte,Fer à béton,,22,10579,14,200155
+2024-08-17,Bouaké,Revendeur,Ciment,Entreprise,30,6150,3,178965
+2024-04-24,Korhogo,Direct,Fer à béton,Entreprise,9,10004,2,119118
+2024-03-29,Abidjan,Grand compte,Peinture,Entreprise,9,14682,4,126852
+2024-01-15,Korhogo,Revendeur,Ciment,Artisan,24,7459,4,171855
+2024-03-11,Bouaké,Grand compte,Plomberie,,39,7262,3,274721
+2024-06-12,Bouaké,Grand compte,Carrelage,,19,12159,1,308760
+2024-10-25,Abidjan,Direct,Électricité,Artisan,15,9759,3,141993
+2024-11-16,San-Pédro,Revendeur,Peinture,Artisan,14,15061,3,204528
+2024-01-01,San-Pédro,Direct,Fer à béton,,2,10394,5,19749
+2024-04-16,Bouaké,Direct,Peinture,,40,13368,2,707435
+2024-03-15,Korhogo,Revendeur,Fer à béton,,5,8082,4,38794
+2024-03-17,Daloa,Revendeur,Peinture,,20,14662,0,293240
+2024-10-02,Daloa,Grand compte,Fer à béton,Entreprise,27,10344,15,237395
+2024-10-25,Yamoussoukro,Grand compte,Peinture,Entreprise,16,12835,8,188931
+2024-12-25,San-Pédro,Revendeur,Carrelage,Entreprise,29,12438,2,353488
+2024-11-09,Daloa,Grand compte,Plomberie,Entreprise,17,7019,6,112164
+2024-11-23,Abidjan,Revendeur,Électricité,Artisan,29,8386,1,240762
+2024-03-27,Korhogo,Grand compte,Ciment,Entreprise,13,5727,7,69239
+2024-08-13,Abidjan,Revendeur,Électricité,Entreprise,32,7903,6,237722
+2024-02-13,San-Pédro,Grand compte,Électricité,,9,10022,10,81178
+2024-10-14,Daloa,Revendeur,Carrelage,Entreprise,36,13564,3,473655
+2024-08-13,San-Pédro,Grand compte,Ciment,Artisan,27,6678,15,153260
+2024-06-15,Yamoussoukro,Direct,Électricité,Artisan,3,9347,3,36720
+2024-11-30,Bouaké,Revendeur,Électricité,Entreprise,30,9316,4,268301
+2024-02-16,Korhogo,Grand compte,Peinture,Particulier,15,13350,2,196245
+2024-12-10,San-Pédro,Direct,Fer à béton,Particulier,10,8742,1,86546
+2024-05-05,Daloa,Revendeur,Électricité,Artisan,7,7600,5,68229
+2024-11-21,Daloa,Grand compte,Fer à béton,Artisan,29,8753,5,241145
+2024-07-18,Bouaké,Direct,Ciment,Entreprise,12,6401,4,73740
+2024-04-13,Abidjan,Direct,Carrelage,Artisan,10,11473,1,153337
+2024-08-14,Bouaké,Revendeur,Peinture,Entreprise,38,13018,3,479843
+2024-12-11,San-Pédro,Grand compte,Fer à béton,Entreprise,34,8792,5,283982
+2024-08-01,Daloa,Direct,Fer à béton,,6,8776,4,50550
+2024-06-18,Yamoussoukro,Revendeur,Peinture,,31,14127,3,573479
+2024-03-08,Korhogo,Grand compte,Fer à béton,Artisan,12,9631,6,108638
+2024-03-04,Abidjan,Direct,Peinture,Artisan,26,13314,4,332317
+2024-01-02,San-Pédro,Grand compte,Plomberie,Artisan,10,6438,15,54723
+2024-12-27,Bouaké,Direct,Carrelage,,6,12628,2,74253
+2024-04-12,Daloa,Revendeur,Électricité,Particulier,2,9417,3,24663
+2024-01-04,San-Pédro,Grand compte,Carrelage,Particulier,6,12390,2,72853
+2024-09-01,Daloa,Grand compte,Électricité,Entreprise,22,8439,15,157809
+2024-11-24,San-Pédro,Direct,Peinture,,31,13907,0,431117
+2024-05-26,Yamoussoukro,Direct,Ciment,,15,7383,4,143526
+2024-04-02,Daloa,Direct,Ciment,Entreprise,4,5826,2,30831
+2024-02-20,Korhogo,Direct,Peinture,Entreprise,27,14358,5,368283
+2024-07-14,Bouaké,Revendeur,Fer à béton,,10,7934,1,78547
+2024-10-23,San-Pédro,Direct,Plomberie,Entreprise,25,6513,4,156312
+2024-06-17,Yamoussoukro,Direct,Électricité,Particulier,14,9666,2,179034
+2024-11-24,Yamoussoukro,Direct,Fer à béton,Entreprise,40,9148,2,358602
+2024-09-24,Korhogo,Grand compte,Ciment,Particulier,21,7317,1,152120
+2024-06-12,Korhogo,Direct,Plomberie,Particulier,20,6979,1,186549
+2024-01-25,San-Pédro,Grand compte,Plomberie,Particulier,29,6853,4,190788
+2024-10-09,San-Pédro,Direct,Plomberie,Artisan,37,6919,4,245763
+2024-11-30,Korhogo,Revendeur,Carrelage,,2,13088,1,25914
+2024-04-23,Bouaké,Grand compte,Plomberie,,29,7816,4,293757
+2024-03-02,San-Pédro,Direct,Peinture,Artisan,3,12608,1,37446
+2024-06-07,Bouaké,Revendeur,Électricité,Entreprise,8,9464,1,101189
+2024-12-03,Abidjan,Grand compte,Plomberie,,19,8198,14,133955
+2024-10-07,San-Pédro,Grand compte,Ciment,Particulier,27,5642,11,135577
+2024-11-09,Abidjan,Grand compte,Plomberie,Particulier,5,6506,13,28301
+2024-08-01,San-Pédro,Direct,Plomberie,Entreprise,10,6567,4,63043
+2024-05-16,Daloa,Direct,Peinture,Particulier,13,13669,4,230295
+2024-12-02,Korhogo,Direct,Peinture,Particulier,33,14781,4,468262
+2024-11-21,Daloa,Grand compte,Électricité,,40,8420,12,296384
+2024-11-04,Daloa,Direct,Électricité,Artisan,16,7812,1,123742
+2024-07-15,Bouaké,Direct,Peinture,Entreprise,28,15445,2,423811
+2024-07-09,Yamoussoukro,Grand compte,Plomberie,Entreprise,2,8207,2,16086
+2024-05-19,Abidjan,Grand compte,Fer à béton,Artisan,29,9536,4,358401
+2024-09-01,Bouaké,Direct,Fer à béton,Entreprise,16,7918,5,120354
+2024-11-11,Bouaké,Direct,Carrelage,Artisan,15,12982,2,190835
+2024-09-01,Bouaké,Grand compte,Fer à béton,Entreprise,16,9654,5,146741
+2024-04-09,Bouaké,Revendeur,Électricité,Artisan,16,9945,1,212664
+2024-01-08,Daloa,Revendeur,Ciment,Artisan,23,6804,4,150232
+2024-10-26,Abidjan,Revendeur,Plomberie,Artisan,36,8170,4,282355
+2024-12-04,Daloa,Direct,Électricité,Particulier,29,9015,3,253592
+2024-08-19,Bouaké,Direct,Carrelage,Artisan,16,11015,3,170953
+2024-09-13,Daloa,Grand compte,Plomberie,Particulier,7,7134,10,44944
+2024-03-28,Yamoussoukro,Direct,Ciment,Particulier,22,6492,0,142824
+2024-11-25,Daloa,Revendeur,Fer à béton,Entreprise,23,10313,4,227711
+2024-01-15,Yamoussoukro,Revendeur,Plomberie,Entreprise,7,7959,5,52927
+2024-05-20,Daloa,Direct,Fer à béton,,39,9698,3,495282
+2024-09-22,Daloa,Direct,Électricité,,30,9218,4,265478
+2024-05-07,Yamoussoukro,Revendeur,Plomberie,Particulier,15,6444,2,127881
+2024-01-26,Daloa,Grand compte,Ciment,Artisan,25,7063,14,151855
+2024-05-14,Yamoussoukro,Revendeur,Fer à béton,,16,8656,5,177621
+2024-10-17,Korhogo,Grand compte,Plomberie,Artisan,35,8328,2,285650
+2024-10-20,Daloa,Grand compte,Peinture,Entreprise,17,13826,14,202136
+2024-02-20,Yamoussoukro,Grand compte,Peinture,,39,12781,11,443629
+2024-04-30,Abidjan,Grand compte,Fer à béton,Particulier,23,7865,6,229556
+2024-03-21,San-Pédro,Direct,Ciment,Entreprise,11,6518,3,69547
+2024-10-25,Daloa,Revendeur,Carrelage,,15,11778,2,173137
+2024-05-26,San-Pédro,Direct,Électricité,Particulier,34,8860,4,390407
+2024-06-17,Bouaké,Revendeur,Plomberie,,6,7956,2,63155
+2024-08-14,Yamoussoukro,Direct,Fer à béton,Particulier,37,9614,3,345046
+2024-06-24,Abidjan,Grand compte,Ciment,Particulier,14,5870,7,103177
+2024-04-16,Bouaké,Revendeur,Carrelage,Entreprise,8,12254,3,128373
+2024-01-18,Abidjan,Grand compte,Ciment,Entreprise,15,7149,4,102946
+2024-10-14,Bouaké,Direct,Plomberie,Artisan,15,7697,5,109682
+2024-12-27,Yamoussoukro,Grand compte,Fer à béton,,9,10442,1,93038
+2024-03-24,Korhogo,Revendeur,Ciment,Particulier,2,5767,3,11188
+2024-06-15,Bouaké,Revendeur,Électricité,Entreprise,28,8205,1,307048
+2024-11-06,Bouaké,Revendeur,Peinture,,14,16656,4,223857
+2024-03-16,Bouaké,Revendeur,Peinture,,28,16318,0,456904
+2024-02-16,Korhogo,Revendeur,Fer à béton,Artisan,4,8558,1,33890
+2024-01-09,Yamoussoukro,Revendeur,Plomberie,Artisan,5,7324,2,35888
+2024-04-09,Abidjan,Revendeur,Fer à béton,,23,8408,3,253236
+2024-08-28,Abidjan,Grand compte,Ciment,Particulier,10,7036,13,61213
+2024-06-25,Yamoussoukro,Revendeur,Carrelage,Particulier,38,12789,3,636393
+2024-01-14,Korhogo,Revendeur,Plomberie,Particulier,10,7743,2,75881
+2024-08-24,Abidjan,Grand compte,Carrelage,Particulier,34,10263,15,296601
+2024-01-25,Abidjan,Revendeur,Électricité,Artisan,6,7911,1,46991
+2024-08-19,Korhogo,Revendeur,Fer à béton,Artisan,34,7983,5,257851
+2024-01-07,Yamoussoukro,Grand compte,Carrelage,,29,11981,13,302281
+2024-10-30,San-Pédro,Direct,Ciment,Artisan,23,7011,0,161253
+2024-08-24,Korhogo,Revendeur,Électricité,Entreprise,39,8860,2,338629
+2024-11-28,Daloa,Grand compte,Électricité,Entreprise,29,10175,10,265568
+2024-10-29,Korhogo,Direct,Peinture,,3,15278,4,44001
+2024-02-14,Yamoussoukro,Direct,Plomberie,Artisan,17,8306,1,139790
+2024-06-03,Bouaké,Grand compte,Ciment,Entreprise,23,5548,1,170543
+2024-12-19,Korhogo,Revendeur,Électricité,,38,8100,2,301644
+2024-04-26,Daloa,Grand compte,Ciment,,30,6170,8,229894
+2024-11-20,Yamoussoukro,Direct,Ciment,,25,7322,6,172067
+2024-03-03,San-Pédro,Revendeur,Fer à béton,Particulier,4,9873,2,38702
+2024-04-16,San-Pédro,Direct,Peinture,Particulier,16,15050,2,318578
+2024-01-23,San-Pédro,Revendeur,Plomberie,Artisan,21,7943,3,161799
+2024-06-01,Korhogo,Revendeur,Peinture,Particulier,7,12662,1,118459
+2024-12-28,Korhogo,Grand compte,Carrelage,Particulier,9,10221,1,91069
+2024-03-09,Korhogo,Revendeur,Fer à béton,Particulier,6,10192,1,60540
+2024-02-14,Bouaké,Direct,Carrelage,Particulier,40,11087,6,416871
+2024-07-26,Bouaké,Revendeur,Carrelage,Artisan,40,12216,0,488640
+2024-12-15,Daloa,Direct,Peinture,,19,15973,2,297417
+2024-07-17,Daloa,Revendeur,Électricité,Artisan,5,10180,4,48864
+2024-12-03,San-Pédro,Revendeur,Ciment,Particulier,1,7175,4,6888
+2024-12-13,Daloa,Direct,Plomberie,Artisan,22,7636,4,161272
+2024-07-12,Abidjan,Grand compte,Carrelage,Entreprise,39,11716,14,392955
+2024-04-05,Bouaké,Revendeur,Électricité,Artisan,28,8385,3,307444
+2024-04-06,Bouaké,Grand compte,Peinture,Particulier,33,16271,0,724873
+2024-12-14,Yamoussoukro,Direct,Peinture,Entreprise,9,15699,2,138465
+2024-04-19,Bouaké,Grand compte,Peinture,,29,15448,5,574550
+2024-06-18,Abidjan,Revendeur,Fer à béton,Entreprise,5,7820,5,50146
+2024-06-12,Korhogo,Revendeur,Plomberie,,14,6534,6,116083
+2024-05-11,Bouaké,Direct,Peinture,Artisan,20,14726,5,377722
+2024-02-11,Bouaké,Grand compte,Fer à béton,Artisan,38,8160,0,310080
+2024-03-14,San-Pédro,Grand compte,Carrelage,Particulier,40,10227,5,388626
+2024-02-08,Bouaké,Direct,Carrelage,Artisan,40,10622,3,412134
+2024-07-04,Korhogo,Direct,Carrelage,,4,10200,4,39168
+2024-09-04,Korhogo,Grand compte,Plomberie,Artisan,3,8334,3,24252
+2024-05-23,Yamoussoukro,Revendeur,Plomberie,Particulier,11,7505,1,110335
+2024-10-01,San-Pédro,Direct,Peinture,Entreprise,20,15715,3,304871
+2024-10-24,San-Pédro,Grand compte,Peinture,Entreprise,9,15591,10,126287
+2024-10-26,San-Pédro,Direct,Fer à béton,Artisan,6,8928,6,50354
+2024-01-17,Bouaké,Direct,Carrelage,,12,11041,4,127192
+2024-02-02,Korhogo,Grand compte,Électricité,Artisan,21,9626,0,202146
+2024-11-08,Abidjan,Revendeur,Fer à béton,Particulier,34,8887,3,293093
+2024-02-19,Abidjan,Revendeur,Ciment,Entreprise,1,6267,2,6142
+2024-05-22,Abidjan,Revendeur,Plomberie,,16,7155,0,154548
+2024-02-09,Korhogo,Grand compte,Fer à béton,Artisan,4,9600,8,35328
+2024-11-18,Korhogo,Grand compte,Carrelage,Particulier,12,11167,3,129984
+2024-12-24,Yamoussoukro,Revendeur,Fer à béton,,11,9917,6,102542
+2024-11-27,Daloa,Direct,Carrelage,Entreprise,40,11603,5,440914
+2024-11-19,Abidjan,Direct,Électricité,Particulier,34,7906,3,260740
+2024-05-06,Yamoussoukro,Grand compte,Peinture,Particulier,21,14803,10,377699
+2024-01-18,Bouaké,Revendeur,Peinture,Particulier,5,15799,6,74255
+2024-06-02,San-Pédro,Direct,Ciment,Artisan,35,6914,1,323420
+2024-08-24,Yamoussoukro,Grand compte,Ciment,Particulier,12,6577,6,74189
+2024-10-29,Yamoussoukro,Direct,Plomberie,Particulier,39,6927,2,264750
+2024-10-23,Daloa,Direct,Ciment,Particulier,33,7346,1,239994
+2024-05-23,San-Pédro,Direct,Ciment,,39,6619,4,334551
+2024-05-03,San-Pédro,Revendeur,Plomberie,Artisan,32,7994,1,341887
+2024-11-18,Abidjan,Direct,Ciment,Entreprise,6,6890,5,39273
+2024-01-11,Abidjan,Revendeur,Carrelage,Entreprise,10,10739,2,105242
+2024-04-18,Korhogo,Grand compte,Peinture,Particulier,5,15315,14,88904
+2024-09-29,Korhogo,Revendeur,Peinture,Entreprise,27,13372,2,353823
+2024-02-24,San-Pédro,Direct,Ciment,Entreprise,24,6234,5,142135
+2024-07-07,Yamoussoukro,Revendeur,Ciment,,24,6597,1,156745
+2024-02-11,Abidjan,Grand compte,Peinture,Artisan,22,12585,4,265795
+2024-11-02,Yamoussoukro,Revendeur,Fer à béton,Artisan,32,10499,1,332608
+2024-12-27,San-Pédro,Revendeur,Carrelage,Entreprise,6,10661,6,60128
+2024-11-15,Yamoussoukro,Direct,Peinture,,16,13764,1,218022
+2024-08-14,Korhogo,Grand compte,Fer à béton,Particulier,8,8171,14,56216
+2024-10-27,Korhogo,Revendeur,Électricité,Artisan,4,9209,6,34626
+2024-06-22,Daloa,Revendeur,Peinture,,27,14347,1,517719
+2024-01-24,Daloa,Direct,Plomberie,Entreprise,25,6451,4,154824
+2024-02-17,Bouaké,Direct,Fer à béton,Artisan,2,10544,5,20034
+2024-05-20,Abidjan,Grand compte,Carrelage,,18,11928,1,286952
+2024-04-03,Bouaké,Direct,Fer à béton,Entreprise,17,8744,1,198668
+2024-05-17,Abidjan,Direct,Plomberie,,15,7164,1,143620
+2024-07-16,Yamoussoukro,Direct,Fer à béton,Entreprise,29,7945,6,216581
+2024-12-03,San-Pédro,Grand compte,Ciment,Entreprise,8,5578,8,41054
+2024-11-28,Bouaké,Direct,Carrelage,Artisan,39,11061,5,409810
+2024-05-13,Bouaké,Revendeur,Fer à béton,Artisan,13,10468,3,178202
+2024-03-05,Abidjan,Direct,Plomberie,Entreprise,15,6400,2,94080
+2024-12-20,Abidjan,Grand compte,Électricité,Artisan,3,8206,14,21171
+2024-05-02,Yamoussoukro,Direct,Peinture,,10,16562,1,221351
+2024-08-26,Abidjan,Revendeur,Électricité,,34,9298,2,309809
+2024-02-02,Bouaké,Direct,Peinture,Entreprise,26,12645,2,322195
+2024-12-29,Korhogo,Grand compte,Carrelage,Artisan,31,10761,14,286888
+2024-10-24,Daloa,Revendeur,Plomberie,Particulier,3,6389,2,18784
+2024-03-22,Daloa,Direct,Plomberie,,26,7240,1,186358
+2024-04-20,Yamoussoukro,Grand compte,Peinture,Particulier,20,14895,3,390100
+2024-10-03,Bouaké,Grand compte,Électricité,,24,8664,13,180904
+2024-08-21,Korhogo,Direct,Plomberie,Entreprise,1,6987,1,6917
+2024-05-16,Korhogo,Revendeur,Fer à béton,Artisan,38,9050,3,450337
+2024-10-18,Abidjan,Revendeur,Peinture,Particulier,16,15608,3,242236
+2024-02-18,Korhogo,Direct,Plomberie,Entreprise,24,7775,1,184734
+2024-05-06,Bouaké,Direct,Plomberie,Artisan,10,6659,1,88998
+2024-11-20,Abidjan,Grand compte,Plomberie,Particulier,35,7289,14,219399
+2024-04-22,Korhogo,Revendeur,Plomberie,Entreprise,7,7555,0,71395
+2024-05-16,San-Pédro,Direct,Ciment,Artisan,37,7008,5,332547
+2024-04-28,San-Pédro,Grand compte,Fer à béton,,5,9593,8,59573
+2024-09-25,Yamoussoukro,Revendeur,Carrelage,Artisan,27,10513,0,283851
+2024-07-10,San-Pédro,Direct,Ciment,Particulier,29,5999,0,173971
+2024-10-02,Daloa,Direct,Plomberie,,18,7612,2,134276
+2024-08-01,San-Pédro,Grand compte,Électricité,Entreprise,13,9562,5,118091
+2024-10-08,Bouaké,Direct,Peinture,,21,12855,4,259157
+2024-06-28,Abidjan,Direct,Carrelage,Particulier,14,13109,2,242805
+2024-06-01,San-Pédro,Revendeur,Peinture,Artisan,4,15607,3,81749
+2024-08-23,Abidjan,Grand compte,Plomberie,Entreprise,10,6706,8,61695
+2024-07-18,Daloa,Grand compte,Ciment,Artisan,21,7257,14,131061
+2024-08-19,Korhogo,Revendeur,Ciment,Entreprise,34,6475,5,209143
+2024-05-20,Daloa,Direct,Électricité,,32,7844,4,325306
+2024-09-20,Yamoussoukro,Direct,Plomberie,Artisan,15,6809,4,98050
+2024-11-16,Yamoussoukro,Direct,Carrelage,Entreprise,38,13023,6,465182
+2024-01-07,Daloa,Grand compte,Peinture,Artisan,20,15870,11,282486
+2024-03-01,Bouaké,Direct,Ciment,Artisan,25,7119,0,177975
+2024-12-04,Korhogo,Direct,Plomberie,Entreprise,30,6650,3,193515
+2024-08-26,Yamoussoukro,Grand compte,Peinture,,10,13443,8,123676
+2024-08-28,San-Pédro,Direct,Carrelage,Entreprise,14,12365,1,171379
+2024-06-04,Yamoussoukro,Revendeur,Carrelage,Particulier,15,11821,5,227406
+2024-06-26,San-Pédro,Revendeur,Ciment,Entreprise,27,5925,5,205168
+2024-11-20,Yamoussoukro,Direct,Fer à béton,,3,9576,3,27866
+2024-01-04,Daloa,Revendeur,Fer à béton,Particulier,38,10576,4,385812
+2024-11-27,Korhogo,Grand compte,Électricité,,35,8059,3,273603
+2024-02-01,Bouaké,Grand compte,Peinture,Particulier,28,15352,4,412662
+2024-06-12,Yamoussoukro,Grand compte,Carrelage,Particulier,32,10080,10,391910
+2024-08-08,Abidjan,Revendeur,Ciment,Particulier,1,6951,5,6603
+2024-04-04,San-Pédro,Grand compte,Électricité,Artisan,4,10023,5,51418
+2024-09-07,Daloa,Revendeur,Plomberie,Particulier,5,7078,3,34328
+2024-02-26,Korhogo,Grand compte,Ciment,,10,6029,14,51849
+2024-04-27,Abidjan,Revendeur,Ciment,Particulier,1,6210,4,8048
+2024-08-24,Yamoussoukro,Revendeur,Peinture,Particulier,2,14979,5,28460
+2024-04-14,Korhogo,Revendeur,Fer à béton,Artisan,15,8852,5,170290
+2024-01-27,Abidjan,Direct,Plomberie,Artisan,35,7183,3,243863
+2024-10-28,San-Pédro,Revendeur,Fer à béton,Particulier,20,8142,2,159583
+2024-09-27,Abidjan,Revendeur,Plomberie,Entreprise,35,7248,1,251143
+2024-04-06,San-Pédro,Revendeur,Fer à béton,Particulier,28,8975,2,332470
+2024-11-01,Abidjan,Revendeur,Carrelage,Particulier,13,10034,0,130442
+2024-06-25,Abidjan,Revendeur,Carrelage,Artisan,34,11834,4,521453
+2024-12-22,Yamoussoukro,Revendeur,Plomberie,Entreprise,35,7693,5,255792
+2024-12-16,Abidjan,Grand compte,Ciment,Artisan,34,6862,1,230975
+2024-09-04,Korhogo,Direct,Électricité,Artisan,28,7883,2,216310
+2024-04-13,Yamoussoukro,Revendeur,Fer à béton,Particulier,26,9181,1,319031
+2024-04-23,Yamoussoukro,Grand compte,Fer à béton,Entreprise,30,10309,10,375763
+2024-01-20,Yamoussoukro,Grand compte,Ciment,Particulier,34,6384,1,214885
+2024-03-08,Bouaké,Direct,Carrelage,Artisan,7,12175,4,81816
+2024-04-08,Korhogo,Direct,Peinture,Entreprise,34,14289,1,649306
+2024-12-24,Abidjan,Direct,Plomberie,Artisan,29,6359,6,173346
+2024-05-25,Korhogo,Revendeur,Ciment,Particulier,34,7267,4,320213
+2024-04-14,Abidjan,Direct,Peinture,Entreprise,33,14959,1,659759
+2024-10-24,Daloa,Revendeur,Électricité,Particulier,1,9889,5,9395
+2024-10-13,Bouaké,Revendeur,Ciment,,21,6026,0,126546
+2024-06-01,San-Pédro,Direct,Ciment,,36,6220,5,287177
+2024-02-13,Korhogo,Grand compte,Plomberie,,20,8465,1,167607
+2024-05-09,Abidjan,Grand compte,Électricité,Particulier,29,10224,11,356240
+2024-07-15,Daloa,Grand compte,Fer à béton,Particulier,36,8234,6,278639
+2024-06-25,Daloa,Direct,Fer à béton,Particulier,25,10408,0,351270
+2024-02-21,Daloa,Revendeur,Ciment,Particulier,27,5710,4,148003
+2024-10-10,San-Pédro,Direct,Électricité,Particulier,3,8396,4,24180
+2024-06-16,Abidjan,Revendeur,Ciment,Particulier,33,6288,6,263323
+2024-09-14,Yamoussoukro,Direct,Fer à béton,,23,10524,2,237211
+2024-06-24,San-Pédro,Direct,Plomberie,,33,7339,0,326952
+2024-03-20,Bouaké,Revendeur,Ciment,Particulier,7,6551,2,44940
+2024-03-11,Korhogo,Revendeur,Fer à béton,Entreprise,16,9575,1,151668
+2024-02-28,San-Pédro,Grand compte,Carrelage,Particulier,3,12104,11,32318
+2024-05-10,San-Pédro,Grand compte,Ciment,Entreprise,31,6431,4,258372
+2024-01-22,Abidjan,Grand compte,Peinture,Artisan,38,16298,14,532619
+2024-01-12,Bouaké,Grand compte,Ciment,,21,6779,0,142359
+2024-01-11,Bouaké,Revendeur,Fer à béton,Particulier,8,9778,5,74313
+2024-09-18,San-Pédro,Revendeur,Peinture,Particulier,39,13690,4,512554
+2024-10-07,Abidjan,Revendeur,Carrelage,Entreprise,20,12987,1,257143
+2024-08-01,San-Pédro,Grand compte,Ciment,Artisan,7,6102,7,39724
+2024-08-08,Yamoussoukro,Grand compte,Plomberie,Particulier,32,7695,2,241315
+2024-09-06,Daloa,Revendeur,Fer à béton,Artisan,20,8705,5,165395
+2024-05-01,Yamoussoukro,Grand compte,Électricité,Entreprise,39,9982,12,462486
+2024-09-12,Daloa,Direct,Fer à béton,Entreprise,34,8196,3,270304
+2024-07-12,Yamoussoukro,Direct,Carrelage,Artisan,23,11776,6,254597
+2024-07-25,San-Pédro,Grand compte,Plomberie,Artisan,29,8420,15,207553
+2024-06-16,San-Pédro,Direct,Fer à béton,Entreprise,1,8116,1,10847
+2024-12-26,Bouaké,Grand compte,Peinture,Artisan,8,15232,10,109670
+2024-05-08,Yamoussoukro,Direct,Peinture,Particulier,7,14932,3,136874
+2024-07-15,Daloa,Grand compte,Peinture,,37,13812,5,485492
+2024-09-20,San-Pédro,Grand compte,Peinture,,38,16025,5,578503
+2024-04-12,Yamoussoukro,Direct,Peinture,Particulier,38,14503,5,706804
+2024-09-23,Abidjan,Direct,Ciment,Entreprise,3,5756,6,16232
+2024-06-04,Bouaké,Revendeur,Électricité,,34,9611,1,436733
+2024-08-16,San-Pédro,Revendeur,Carrelage,Particulier,34,11414,0,388076
+2024-11-22,Abidjan,Revendeur,Ciment,Particulier,36,6012,3,209939
+2024-06-07,Bouaké,Direct,Carrelage,Particulier,11,11110,1,163334
+2024-06-24,Yamoussoukro,Direct,Électricité,Entreprise,9,9699,3,114308
+2024-07-05,Daloa,Revendeur,Fer à béton,Artisan,35,8573,0,300055
+2024-08-17,Bouaké,Revendeur,Fer à béton,Entreprise,12,8845,0,106140
+2024-03-17,Daloa,Direct,Peinture,,3,12331,4,35513
+2024-11-14,San-Pédro,Revendeur,Ciment,Particulier,25,6507,6,152915
+2024-03-29,Bouaké,Revendeur,Fer à béton,Artisan,19,10451,3,192612
+2024-09-06,San-Pédro,Grand compte,Plomberie,Artisan,10,7442,10,66978
+2024-10-15,Abidjan,Revendeur,Plomberie,Particulier,35,6633,4,222869
+2024-03-29,San-Pédro,Grand compte,Peinture,Particulier,4,13851,6,52080
+2024-11-12,Yamoussoukro,Grand compte,Plomberie,Particulier,11,7579,1,82535
+2024-01-08,Daloa,Revendeur,Fer à béton,Artisan,20,9259,3,179625
+2024-03-04,Daloa,Direct,Peinture,,1,16664,1,16497
+2024-07-06,Bouaké,Grand compte,Fer à béton,,18,8129,6,137543
+2024-07-24,Daloa,Direct,Carrelage,,29,12309,2,349822
+2024-11-23,San-Pédro,Grand compte,Fer à béton,Entreprise,12,8963,11,95725
+2024-03-03,Korhogo,Revendeur,Fer à béton,,21,9312,4,187730
+2024-04-08,Korhogo,Revendeur,Plomberie,,39,6898,4,348653
+2024-11-14,Daloa,Revendeur,Peinture,Entreprise,36,16322,2,575840
+2024-04-17,Korhogo,Revendeur,Peinture,,13,13745,3,233988
+2024-12-12,Yamoussoukro,Revendeur,Peinture,Entreprise,20,14929,2,292608
+2024-07-02,Yamoussoukro,Revendeur,Carrelage,Entreprise,37,10338,1,378681
+2024-10-02,Yamoussoukro,Revendeur,Fer à béton,,6,9358,4,53902
+2024-10-07,Daloa,Direct,Carrelage,Artisan,25,11095,3,269054
+2024-08-23,Korhogo,Grand compte,Peinture,Particulier,30,16627,0,498810
+2024-08-31,San-Pédro,Grand compte,Ciment,Entreprise,9,6792,3,59294
+2024-07-27,San-Pédro,Grand compte,Électricité,Artisan,12,9833,2,115636
+2024-11-16,Bouaké,Revendeur,Ciment,Artisan,23,7350,0,169050
+2024-07-21,Bouaké,Direct,Carrelage,Artisan,40,12965,6,487484
+2024-03-13,Abidjan,Direct,Carrelage,Entreprise,8,10820,0,86560
+2024-02-17,Korhogo,Direct,Peinture,Particulier,2,16277,1,32228
+2024-07-21,Bouaké,Revendeur,Plomberie,Artisan,14,8226,5,109406
+2024-11-15,San-Pédro,Direct,Ciment,,34,7073,3,233268
+2024-06-30,Daloa,Grand compte,Peinture,Artisan,2,14204,5,36433
+2024-05-19,Abidjan,Grand compte,Fer à béton,Artisan,13,9188,8,148349
+2024-02-18,Abidjan,Revendeur,Carrelage,Particulier,4,11803,5,44851
+2024-06-15,Korhogo,Direct,Électricité,,22,7811,3,225027
+2024-12-26,Korhogo,Grand compte,Électricité,Artisan,3,7792,10,21038
+2024-07-30,Abidjan,Direct,Plomberie,,10,6648,0,66480
+2024-09-06,Bouaké,Grand compte,Fer à béton,,37,10098,4,358681
+2024-12-25,Korhogo,Revendeur,Peinture,Entreprise,23,13883,3,309730
+2024-04-26,San-Pédro,Direct,Peinture,Artisan,39,13250,3,676684
+2024-03-09,Korhogo,Direct,Électricité,Entreprise,38,8218,0,312284
+2024-09-27,Daloa,Direct,Ciment,Entreprise,24,6252,6,141045
+2024-06-03,Bouaké,Revendeur,Peinture,Entreprise,23,14555,4,433855
+2024-04-17,Korhogo,Grand compte,Plomberie,,35,8049,9,346087
+2024-12-26,Bouaké,Direct,Électricité,Particulier,2,10203,5,19386
+2024-12-20,Yamoussoukro,Direct,Ciment,Particulier,23,7311,2,164790
+2024-08-12,Bouaké,Revendeur,Carrelage,,24,13429,6,302958
+2024-01-06,Abidjan,Direct,Ciment,Entreprise,37,7066,4,250984
+2024-04-14,San-Pédro,Direct,Peinture,Artisan,12,12546,4,195115
+2024-06-03,Korhogo,Direct,Peinture,Particulier,26,16653,6,549449
+2024-09-10,San-Pédro,Revendeur,Ciment,Entreprise,19,6394,4,116627
+2024-09-14,Bouaké,Grand compte,Carrelage,Particulier,6,10035,2,59006
+2024-03-16,Abidjan,Direct,Électricité,Artisan,20,10114,4,194189
+2024-12-14,Yamoussoukro,Revendeur,Électricité,,39,9576,2,365995
+2024-03-01,San-Pédro,Grand compte,Fer à béton,Artisan,12,8392,2,98690
+2024-02-22,Daloa,Direct,Ciment,Artisan,39,6541,4,244895
+2024-12-01,Korhogo,Grand compte,Peinture,Particulier,25,15929,9,362385
+2024-03-18,Korhogo,Revendeur,Fer à béton,Artisan,40,9925,2,389060
+2024-12-26,San-Pédro,Revendeur,Ciment,Particulier,11,5700,6,58938
+2024-07-02,San-Pédro,Grand compte,Peinture,,4,15650,12,55088
+2024-05-03,San-Pédro,Revendeur,Ciment,Artisan,33,7035,2,307141
+2024-12-23,Bouaké,Revendeur,Carrelage,Entreprise,13,12879,4,160730
+2024-06-29,Korhogo,Revendeur,Fer à béton,Entreprise,9,10067,4,117421
+2024-07-15,San-Pédro,Grand compte,Électricité,Particulier,16,7719,5,117329
+2024-02-10,Yamoussoukro,Direct,Peinture,Entreprise,27,13983,4,362439
+2024-01-28,Abidjan,Grand compte,Carrelage,,10,12695,15,107908
+2024-01-29,Abidjan,Direct,Fer à béton,,12,8833,2,103876
+2024-12-02,Abidjan,Revendeur,Plomberie,Entreprise,4,8490,5,32262
+2024-09-07,Daloa,Grand compte,Plomberie,,32,7302,7,217308
+2024-03-29,San-Pédro,Direct,Électricité,Artisan,19,8295,3,152877
+2024-06-20,Abidjan,Revendeur,Électricité,Entreprise,19,8285,4,204010
+2024-05-15,Korhogo,Direct,Ciment,Entreprise,7,6451,1,60352
+2024-02-11,Korhogo,Revendeur,Électricité,Particulier,23,8633,2,194588
+2024-04-15,Bouaké,Grand compte,Fer à béton,Artisan,10,8309,13,97589
+2024-09-06,Abidjan,Revendeur,Carrelage,Entreprise,33,12958,4,410509
+2024-04-29,San-Pédro,Revendeur,Peinture,Artisan,11,13758,2,200220
+2024-04-13,San-Pédro,Direct,Fer à béton,Particulier,33,8143,2,355515
+2024-11-21,San-Pédro,Grand compte,Électricité,Particulier,8,8245,12,58045
+2024-01-20,Daloa,Revendeur,Électricité,Entreprise,39,7912,0,308568
+2024-12-24,Korhogo,Revendeur,Électricité,,30,7615,2,223881
+2024-02-18,Bouaké,Grand compte,Ciment,Artisan,30,6785,15,173018
+2024-06-06,Yamoussoukro,Direct,Peinture,Entreprise,17,16177,1,367550
+2024-05-30,Yamoussoukro,Grand compte,Plomberie,Particulier,37,7963,7,369909
+2024-01-05,Yamoussoukro,Grand compte,Électricité,Particulier,5,10125,2,49613
+2024-09-10,Bouaké,Grand compte,Plomberie,Particulier,16,6532,12,91971
+2024-07-26,Daloa,Direct,Électricité,Particulier,34,7689,3,253583
+2024-03-10,Korhogo,Grand compte,Peinture,Particulier,3,16562,2,48692
+2024-07-13,Abidjan,Direct,Fer à béton,,37,10349,5,363767
+2024-11-27,Yamoussoukro,Grand compte,Peinture,Entreprise,35,16659,9,530589
+2024-06-03,Bouaké,Direct,Carrelage,,6,12594,4,97931
+2024-08-23,Abidjan,Revendeur,Fer à béton,Artisan,18,7906,2,139462
+2024-07-27,Korhogo,Revendeur,Ciment,,22,5969,1,130005
+2024-12-02,Abidjan,Grand compte,Ciment,,37,6541,6,227496
+2024-05-24,Korhogo,Direct,Électricité,,16,9781,3,204932
+2024-11-29,Abidjan,Grand compte,Plomberie,,14,7379,9,94008
+2024-09-13,Abidjan,Direct,Ciment,Particulier,3,7133,3,20757
+2024-09-05,Yamoussoukro,Direct,Ciment,Artisan,36,6718,4,232174
+2024-03-19,Abidjan,Grand compte,Électricité,,2,7681,13,13365
+2024-04-12,Daloa,Grand compte,Carrelage,Particulier,12,13052,7,196641
+2024-07-28,San-Pédro,Grand compte,Plomberie,Artisan,32,7876,11,224308
+2024-05-28,Bouaké,Revendeur,Plomberie,,12,6981,2,110830
+2024-06-18,San-Pédro,Direct,Peinture,Artisan,9,15766,0,191557
+2024-12-06,Korhogo,Revendeur,Électricité,Entreprise,12,7973,5,90892
+2024-04-10,Daloa,Direct,Fer à béton,Particulier,3,9487,2,37654
+2024-12-20,Yamoussoukro,Direct,Peinture,,32,14909,3,462775
+2024-12-14,Daloa,Revendeur,Plomberie,Particulier,17,7602,4,124065
+2024-09-02,Abidjan,Grand compte,Électricité,Artisan,7,8788,7,57210
+2024-05-27,Bouaké,Revendeur,Électricité,,18,7967,5,183918
+2024-08-02,Yamoussoukro,Revendeur,Ciment,,27,6044,1,161556
+2024-06-13,San-Pédro,Revendeur,Plomberie,Particulier,38,7262,6,350188
+2024-10-13,Abidjan,Revendeur,Ciment,Particulier,33,5928,5,185843
+2024-04-30,San-Pédro,Grand compte,Électricité,Particulier,14,9014,10,153328
+2024-12-26,San-Pédro,Grand compte,Carrelage,Particulier,19,10871,4,198287
+2024-09-15,Abidjan,Grand compte,Peinture,Artisan,39,12547,2,479546
+2024-08-04,Yamoussoukro,Revendeur,Carrelage,Particulier,24,13187,5,300664
+2024-09-17,Abidjan,Revendeur,Ciment,,33,6492,2,209951
+2024-04-22,Abidjan,Revendeur,Carrelage,,36,12508,1,601810
+2024-01-28,San-Pédro,Grand compte,Ciment,Artisan,24,5551,3,129227
+2024-12-26,Daloa,Revendeur,Carrelage,Particulier,4,10051,5,38194
+2024-04-18,Daloa,Grand compte,Peinture,Entreprise,9,12505,2,148897
+2024-06-16,Bouaké,Direct,Électricité,Artisan,6,8062,4,62690
+2024-09-18,San-Pédro,Grand compte,Carrelage,,16,11488,11,163589
+2024-10-19,Bouaké,Grand compte,Plomberie,Entreprise,12,8235,12,86962
+2024-02-05,Abidjan,Grand compte,Ciment,Artisan,24,6445,12,136118
+2024-05-02,Abidjan,Revendeur,Électricité,Entreprise,19,9308,1,236363
+2024-10-31,Bouaké,Grand compte,Ciment,,14,6169,14,74275
+2024-04-11,Yamoussoukro,Grand compte,Plomberie,Artisan,40,7882,2,417115
+2024-12-28,Bouaké,Revendeur,Carrelage,Artisan,34,12677,5,409467
+2024-08-16,San-Pédro,Revendeur,Plomberie,Artisan,32,7600,5,231040
+2024-10-31,Yamoussoukro,Grand compte,Fer à béton,,6,9918,4,57128
+2024-08-30,Bouaké,Revendeur,Carrelage,,16,10876,3,168796
+2024-09-22,Korhogo,Revendeur,Plomberie,Particulier,27,7186,5,184321
+2024-07-06,Yamoussoukro,Direct,Électricité,,2,9187,0,18374
+2024-01-14,Korhogo,Grand compte,Ciment,Artisan,11,6565,5,68604
+2024-11-02,Yamoussoukro,Direct,Plomberie,,9,7914,3,69089
+2024-10-21,Yamoussoukro,Direct,Carrelage,Artisan,33,12360,2,399722
+2024-01-11,Abidjan,Direct,Carrelage,Artisan,32,13090,5,397936
+2024-10-29,Daloa,Grand compte,Ciment,,24,5753,9,125646
+2024-05-23,Bouaké,Grand compte,Ciment,Artisan,18,7324,1,176193
+2024-10-30,San-Pédro,Grand compte,Plomberie,,40,8119,13,282541
+2024-12-17,Abidjan,Revendeur,Électricité,Entreprise,30,7785,2,228879
+2024-07-23,Yamoussoukro,Revendeur,Électricité,Entreprise,38,9475,3,349249
+2024-12-28,Yamoussoukro,Revendeur,Ciment,Entreprise,38,6093,1,229219
+2024-03-26,Bouaké,Grand compte,Peinture,Entreprise,26,16372,4,408645
+2024-02-23,Abidjan,Grand compte,Fer à béton,,21,8684,8,167775
+2024-03-03,Yamoussoukro,Revendeur,Ciment,Particulier,2,5635,0,11270
+2024-11-23,Abidjan,Revendeur,Fer à béton,,23,10304,6,222772
+2024-10-18,Abidjan,Direct,Électricité,Artisan,7,8863,2,60800
+2024-03-16,Korhogo,Grand compte,Carrelage,,30,12243,12,323215
+2024-07-18,Bouaké,Grand compte,Électricité,Artisan,28,8105,14,195168
+2024-03-23,Daloa,Grand compte,Ciment,Entreprise,2,7413,7,13788
+2024-02-07,Korhogo,Direct,Électricité,Artisan,7,7912,4,53169
+2024-07-31,Korhogo,Grand compte,Peinture,,40,16007,15,544238
+2024-04-07,Bouaké,Direct,Carrelage,,18,11927,5,275335
+2024-05-14,Abidjan,Grand compte,Ciment,Artisan,7,6906,11,58083
+2024-06-13,San-Pédro,Revendeur,Ciment,,7,5723,2,53001
+2024-12-02,Daloa,Revendeur,Électricité,Entreprise,24,9656,2,227109
+2024-05-10,Daloa,Grand compte,Fer à béton,,24,8178,1,262318
+2024-03-06,San-Pédro,Grand compte,Fer à béton,Entreprise,5,10422,11,46378
+2024-03-26,Yamoussoukro,Revendeur,Carrelage,,29,13025,3,366393
+2024-02-17,Yamoussoukro,Direct,Électricité,Artisan,1,9082,4,8719
+2024-10-16,Bouaké,Grand compte,Peinture,Artisan,30,15942,7,444782
+2024-07-20,Abidjan,Grand compte,Fer à béton,Artisan,24,10466,5,238625
+2024-11-25,Bouaké,Revendeur,Carrelage,Particulier,16,12605,3,195630
+2024-09-02,Yamoussoukro,Grand compte,Fer à béton,,12,9064,1,107680
+2024-10-09,Abidjan,Grand compte,Peinture,Particulier,29,15630,13,394345
+2024-08-24,Yamoussoukro,Revendeur,Carrelage,,15,12511,0,187665
+2024-06-17,Abidjan,Revendeur,Carrelage,,33,13494,3,583123
+2024-07-30,Yamoussoukro,Direct,Fer à béton,Entreprise,16,9056,2,141998
+2024-01-25,San-Pédro,Direct,Peinture,Entreprise,14,16380,0,229320
+2024-07-21,Korhogo,Grand compte,Peinture,Entreprise,23,16344,1,372153
+2024-03-15,Bouaké,Revendeur,Fer à béton,Artisan,1,8390,4,8054
+2024-02-04,Abidjan,Direct,Fer à béton,Artisan,38,8474,2,315572
+2024-08-09,Abidjan,Direct,Carrelage,Entreprise,24,11047,1,262477
+2024-05-16,Korhogo,Grand compte,Peinture,Entreprise,24,14959,5,460438
+2024-11-25,Daloa,Direct,Électricité,,23,7621,5,166519
+2024-10-24,Abidjan,Revendeur,Électricité,Artisan,24,10218,2,240327
+2024-08-20,San-Pédro,Revendeur,Électricité,Artisan,22,8018,5,167576
+2024-09-19,Yamoussoukro,Grand compte,Ciment,Particulier,18,6117,12,96893
+2024-10-27,Abidjan,Grand compte,Électricité,Particulier,19,9924,4,181014
+2024-10-04,Yamoussoukro,Direct,Ciment,Artisan,22,6063,6,125383
+2024-09-19,Bouaké,Direct,Carrelage,Particulier,33,13311,2,430478
+2024-02-03,Abidjan,Grand compte,Carrelage,Entreprise,26,12697,15,280604
+2024-10-01,San-Pédro,Revendeur,Carrelage,Particulier,14,13045,4,175325
+2024-10-30,Daloa,Grand compte,Ciment,Particulier,1,6369,0,6369
+2024-04-09,San-Pédro,Revendeur,Carrelage,Artisan,19,11272,2,283344
+2024-09-22,Daloa,Grand compte,Ciment,,20,5678,12,99933
+2024-06-27,San-Pédro,Direct,Plomberie,Particulier,26,6496,1,225730
+2024-10-22,Abidjan,Grand compte,Ciment,Particulier,38,7418,10,253696
+2024-01-09,Yamoussoukro,Direct,Peinture,Artisan,10,13712,2,134378
+2024-03-09,Bouaké,Grand compte,Plomberie,Entreprise,35,8234,11,256489
+2024-03-26,Abidjan,Revendeur,Électricité,Particulier,8,8997,3,69817
+2024-12-02,Daloa,Direct,Fer à béton,Particulier,5,9745,3,47263
+2024-07-11,Korhogo,Revendeur,Carrelage,,33,12300,4,389664
+2024-06-20,Daloa,Grand compte,Ciment,Artisan,32,5683,4,235685
+2024-02-28,Yamoussoukro,Grand compte,Carrelage,,13,11278,11,130486
+2024-01-09,Bouaké,Revendeur,Fer à béton,Artisan,35,9382,4,315235
+2024-01-06,Yamoussoukro,Direct,Plomberie,Entreprise,40,7028,2,275498
+2024-10-09,Yamoussoukro,Direct,Ciment,Entreprise,5,6765,2,33149
+2024-05-09,Korhogo,Revendeur,Ciment,Artisan,11,7360,4,104924
+2024-10-30,Daloa,Grand compte,Plomberie,,7,6570,12,40471
+2024-01-15,Daloa,Grand compte,Électricité,Particulier,6,9254,12,48861
+2024-09-14,Daloa,Direct,Plomberie,Particulier,40,6725,4,258240
+2024-04-29,Korhogo,Revendeur,Carrelage,Entreprise,15,10364,0,209871
+2024-11-25,Korhogo,Revendeur,Carrelage,,26,10094,3,254571
+2024-07-10,Korhogo,Revendeur,Plomberie,,9,7507,5,64185
+2024-08-01,Abidjan,Revendeur,Ciment,Particulier,11,6568,5,68636
+2024-02-22,Daloa,Direct,Plomberie,Artisan,36,7204,6,243783
+2024-10-22,Yamoussoukro,Direct,Fer à béton,Artisan,31,7863,6,229128
+2024-12-14,San-Pédro,Grand compte,Fer à béton,Entreprise,18,9347,2,164881
+2024-12-10,Abidjan,Direct,Carrelage,Artisan,35,13461,4,452290
+2024-05-14,Yamoussoukro,Grand compte,Peinture,Entreprise,20,14504,5,372028
+2024-10-13,Abidjan,Grand compte,Électricité,Artisan,21,9572,8,184931
+2024-06-26,San-Pédro,Direct,Plomberie,Artisan,36,8039,2,382881
+2024-03-14,Bouaké,Grand compte,Peinture,,28,12981,4,348929
+2024-03-30,Korhogo,Direct,Ciment,Entreprise,5,5725,2,28053
+2024-06-08,Korhogo,Revendeur,Fer à béton,Artisan,40,9579,5,491403
+2024-02-10,Bouaké,Revendeur,Plomberie,,8,8060,5,61256
+2024-08-19,Abidjan,Revendeur,Fer à béton,,15,10499,5,149611
+2024-01-10,Korhogo,Revendeur,Fer à béton,Particulier,26,8462,1,217812
+2024-07-22,San-Pédro,Direct,Plomberie,Artisan,26,8054,1,207310
+2024-01-23,San-Pédro,Direct,Carrelage,Artisan,4,12656,2,49612
+2024-12-21,Daloa,Direct,Électricité,Entreprise,9,8396,2,74053
+2024-09-08,Korhogo,Grand compte,Peinture,Artisan,16,12370,4,190003
+2024-08-11,Abidjan,Grand compte,Carrelage,Artisan,15,12651,10,170789
+2024-01-29,Bouaké,Direct,Électricité,,32,7647,5,232469
+2024-06-16,Abidjan,Direct,Électricité,Entreprise,28,8348,5,299777
+2024-08-03,Yamoussoukro,Revendeur,Plomberie,Particulier,15,8473,1,125824
+2024-12-01,Korhogo,Revendeur,Électricité,Entreprise,2,9779,4,18776
+2024-01-05,Bouaké,Grand compte,Électricité,Artisan,1,9975,15,8479
+2024-02-08,Yamoussoukro,Revendeur,Fer à béton,Particulier,33,7877,4,249543
+2024-05-24,Abidjan,Grand compte,Carrelage,Particulier,1,12021,10,14606
+2024-07-20,Yamoussoukro,Grand compte,Électricité,Artisan,10,8118,1,80368
+2024-03-09,Yamoussoukro,Revendeur,Peinture,Artisan,3,14785,0,44355
+2024-11-01,San-Pédro,Grand compte,Fer à béton,Artisan,6,9117,7,50873
+2024-03-20,Korhogo,Direct,Ciment,,37,5780,2,209583
+2024-11-17,Yamoussoukro,Grand compte,Fer à béton,Artisan,28,10129,15,241070
+2024-03-02,Daloa,Direct,Peinture,,39,14070,4,526781
+2024-11-10,Abidjan,Revendeur,Ciment,Artisan,28,5651,1,156646
+2024-01-09,Yamoussoukro,Revendeur,Ciment,,3,7472,1,22192
+2024-04-21,Korhogo,Revendeur,Peinture,Entreprise,4,14066,4,72918
+2024-02-07,Bouaké,Revendeur,Ciment,Artisan,30,6734,3,195959
+2024-05-16,Yamoussoukro,Revendeur,Fer à béton,Entreprise,9,8923,6,101910
+2024-09-16,Daloa,Revendeur,Plomberie,Particulier,16,7923,1,125500
+2024-11-03,Korhogo,Revendeur,Plomberie,Particulier,32,8220,5,249888
+2024-10-22,Yamoussoukro,Direct,Fer à béton,Particulier,10,8415,5,79943
+2024-03-18,Yamoussoukro,Grand compte,Ciment,Entreprise,13,6569,2,83689
+2024-02-04,Korhogo,Grand compte,Électricité,,24,9863,1,234345
+2024-05-03,Abidjan,Revendeur,Peinture,Artisan,30,14647,2,581339
+2024-03-22,Daloa,Direct,Fer à béton,,37,9997,2,362491
+2024-07-09,Abidjan,Direct,Fer à béton,Artisan,37,10161,3,364678
+2024-11-25,Korhogo,Direct,Électricité,Artisan,18,8607,0,154926
+2024-05-09,Abidjan,Grand compte,Plomberie,,31,6633,12,244280
+2024-05-11,Daloa,Direct,Carrelage,Artisan,39,11799,3,602581
+2024-11-09,Korhogo,Grand compte,Électricité,Artisan,35,9367,3,318010
+2024-03-21,Abidjan,Revendeur,Ciment,Entreprise,35,6968,2,239002
+2024-02-22,Yamoussoukro,Revendeur,Ciment,Artisan,13,6535,6,79858
+2024-01-28,Daloa,Grand compte,Plomberie,,13,8192,14,91587
+2024-12-26,Bouaké,Grand compte,Carrelage,Particulier,35,13510,5,449208
+2024-11-27,Daloa,Grand compte,Électricité,Entreprise,19,9163,6,163651
+2024-05-07,Daloa,Direct,Ciment,Entreprise,19,6100,5,148642
+2024-04-06,San-Pédro,Grand compte,Électricité,Artisan,28,8806,14,286265
+2024-03-14,Abidjan,Revendeur,Ciment,,33,6073,4,192393
+2024-04-25,Daloa,Direct,Ciment,,39,7092,6,350990
+2024-03-09,Daloa,Grand compte,Plomberie,Entreprise,36,7419,3,259071
+2024-11-13,Korhogo,Direct,Carrelage,,18,12987,1,231428
+2024-01-03,Yamoussoukro,Direct,Peinture,Artisan,29,15333,3,431317
+2024-03-15,Korhogo,Revendeur,Plomberie,,29,6919,2,196638
+2024-12-13,Korhogo,Direct,Peinture,Entreprise,40,12730,2,499016
+2024-07-17,Daloa,Direct,Électricité,Particulier,18,7888,5,134885
+2024-10-15,Korhogo,Grand compte,Fer à béton,Entreprise,38,7901,12,264209
+2024-06-14,Abidjan,Revendeur,Ciment,Particulier,24,5926,5,182402
+2024-10-18,San-Pédro,Direct,Fer à béton,Artisan,26,10255,3,258631
+2024-07-06,Yamoussoukro,Grand compte,Peinture,Artisan,9,16178,3,141234
+2024-12-30,San-Pédro,Direct,Peinture,,11,15454,1,168294
+2024-10-02,Yamoussoukro,Revendeur,Plomberie,,36,6347,3,221637
+2024-07-12,Daloa,Direct,Électricité,Artisan,25,9269,2,227091
+2024-02-27,Bouaké,Direct,Plomberie,Artisan,25,8254,3,200160
+2024-10-14,Bouaké,Direct,Ciment,Particulier,21,5721,2,117738
+2024-05-10,Bouaké,Revendeur,Fer à béton,Particulier,20,9861,2,260922
+2024-11-12,Daloa,Direct,Ciment,Entreprise,1,7060,1,6989
+2024-01-13,Bouaké,Revendeur,Plomberie,Artisan,5,6458,4,30998
+2024-11-01,Daloa,Revendeur,Carrelage,Artisan,7,10600,1,73458
+2024-04-25,San-Pédro,Grand compte,Carrelage,Particulier,20,13024,0,351648
+2024-04-01,Korhogo,Direct,Électricité,,7,9962,5,89434
+2024-10-31,Abidjan,Direct,Électricité,Particulier,12,8732,3,101640
+2024-11-12,Yamoussoukro,Direct,Plomberie,Artisan,20,7457,1,147649
+2024-01-08,Korhogo,Grand compte,Peinture,Entreprise,18,14547,5,248754
+2024-05-07,Korhogo,Direct,Électricité,Entreprise,11,8309,3,119687
+2024-02-11,San-Pédro,Revendeur,Électricité,Entreprise,4,9255,6,34799
+2024-06-23,Abidjan,Grand compte,Électricité,Artisan,23,9731,13,262868
+2024-02-07,Bouaké,Revendeur,Fer à béton,Entreprise,39,8909,2,340502
+2024-12-07,Yamoussoukro,Grand compte,Plomberie,Entreprise,7,7162,3,48630
+2024-04-20,Yamoussoukro,Direct,Plomberie,,18,7328,1,176290
+2024-04-15,Bouaké,Direct,Fer à béton,Artisan,1,9400,4,12182
+2024-11-29,San-Pédro,Revendeur,Peinture,Entreprise,26,15022,5,371043
+2024-10-13,San-Pédro,Revendeur,Fer à béton,,39,8494,4,318015
+2024-01-13,Daloa,Revendeur,Fer à béton,Artisan,14,8056,2,110528
+2024-06-12,San-Pédro,Direct,Peinture,Entreprise,17,12612,1,286551
+2024-04-24,Bouaké,Direct,Électricité,Particulier,30,9840,4,382579
+2024-12-25,Bouaké,Grand compte,Carrelage,Particulier,32,11391,13,317125
+2024-09-07,Abidjan,Revendeur,Électricité,Artisan,17,9290,1,156351
+2024-03-05,Bouaké,Direct,Fer à béton,Particulier,24,7963,1,189201
+2024-01-31,Daloa,Revendeur,Ciment,,28,5919,4,159103
+2024-05-23,Bouaké,Direct,Fer à béton,Artisan,24,8373,5,257721
+2024-02-05,Yamoussoukro,Revendeur,Ciment,Artisan,34,5987,1,201522
+2024-07-23,Bouaké,Revendeur,Électricité,Particulier,2,8502,2,16664
+2024-01-13,San-Pédro,Revendeur,Carrelage,Particulier,5,10290,6,48363
+2024-05-22,Korhogo,Grand compte,Peinture,Entreprise,7,15200,1,142204
+2024-05-25,San-Pédro,Grand compte,Peinture,,23,15913,2,484217
+2024-10-10,San-Pédro,Direct,Fer à béton,,1,8046,6,7563
+2024-10-04,Abidjan,Grand compte,Ciment,Particulier,10,7124,13,61979
+2024-06-18,Daloa,Grand compte,Plomberie,Artisan,36,8234,12,352152
+2024-12-19,Korhogo,Direct,Carrelage,,23,12188,6,263505
+2024-02-10,Abidjan,Revendeur,Plomberie,,26,8479,1,218249
+2024-07-11,Yamoussoukro,Direct,Plomberie,Artisan,22,7926,6,163910
+2024-06-18,Yamoussoukro,Direct,Ciment,Entreprise,34,5714,6,246536
+2024-10-14,Bouaké,Revendeur,Ciment,Artisan,39,6025,2,230276
+2024-10-03,Daloa,Direct,Peinture,Artisan,30,12616,3,367126
+2024-11-11,Korhogo,Revendeur,Ciment,,20,6752,5,128288
+2024-04-17,San-Pédro,Direct,Plomberie,Particulier,10,7398,4,95878
+2024-04-02,Yamoussoukro,Revendeur,Électricité,Particulier,30,9334,2,370466
+2024-05-27,Abidjan,Revendeur,Peinture,Entreprise,18,13621,2,324370
+2024-10-02,Bouaké,Grand compte,Plomberie,Particulier,24,7267,10,156967
+2024-07-12,Daloa,Revendeur,Ciment,Particulier,14,6957,6,91554
+2024-09-14,Bouaké,Direct,Carrelage,Artisan,34,10433,3,344080
+2024-06-27,San-Pédro,Grand compte,Plomberie,Artisan,35,7217,14,293263
+2024-06-13,Abidjan,Direct,Électricité,,19,8326,5,202884
+2024-11-06,San-Pédro,Direct,Ciment,Artisan,14,6757,5,89868
+2024-04-23,Abidjan,Revendeur,Fer à béton,,26,9199,2,316427
+2024-03-26,Daloa,Revendeur,Peinture,,18,14251,1,253953
+2024-06-01,Korhogo,Revendeur,Carrelage,Particulier,3,10465,0,42383
+2024-02-27,Korhogo,Revendeur,Peinture,,25,13311,1,329447
+2024-12-15,Bouaké,Direct,Plomberie,Entreprise,10,6902,2,67640
+2024-11-27,Yamoussoukro,Grand compte,Carrelage,Entreprise,12,12147,10,131188
+2024-02-22,Yamoussoukro,Revendeur,Fer à béton,Entreprise,28,10071,2,276348
+2024-02-24,Korhogo,Direct,Peinture,Artisan,10,14669,5,139356
+2024-09-08,Abidjan,Direct,Carrelage,Entreprise,30,12952,1,384674
+2024-10-20,Abidjan,Grand compte,Ciment,Artisan,22,6554,7,134095
+2024-09-27,Daloa,Revendeur,Carrelage,Particulier,15,10683,1,158643
+2024-05-11,Yamoussoukro,Grand compte,Peinture,Artisan,14,15291,14,248540
+2024-06-11,Daloa,Revendeur,Peinture,,5,15249,3,99843
+2024-10-31,Korhogo,Direct,Peinture,,20,13625,1,269775
+2024-08-07,Korhogo,Revendeur,Électricité,Artisan,15,9649,4,138946
+2024-02-24,Abidjan,Grand compte,Plomberie,Entreprise,28,8112,4,218051
+2024-07-28,Yamoussoukro,Direct,Électricité,Entreprise,11,8032,2,86585
+2024-05-19,Korhogo,Revendeur,Carrelage,Particulier,27,11020,1,397662
+2024-10-11,Yamoussoukro,Revendeur,Ciment,Entreprise,5,6554,2,32115
+2024-07-18,Abidjan,Revendeur,Carrelage,Artisan,3,10453,4,30105
+2024-05-05,Abidjan,Grand compte,Fer à béton,,2,9918,6,25172
+2024-04-30,Yamoussoukro,Revendeur,Carrelage,,23,11307,4,337039
+2024-01-14,San-Pédro,Revendeur,Carrelage,Particulier,22,12660,1,275735
+2024-06-11,Bouaké,Direct,Ciment,Particulier,11,5939,3,85548
+2024-08-14,San-Pédro,Direct,Ciment,,24,5823,2,136957
+2024-07-18,Daloa,Revendeur,Carrelage,,30,13464,3,391802
+2024-05-14,Yamoussoukro,Revendeur,Plomberie,,38,8284,3,412220
+2024-04-26,Abidjan,Grand compte,Fer à béton,Artisan,18,8869,3,209051
+2024-05-29,Bouaké,Revendeur,Ciment,,30,6525,3,256335
+2024-09-01,Abidjan,Revendeur,Plomberie,Entreprise,18,8325,1,148352
+2024-10-30,Abidjan,Grand compte,Électricité,Particulier,8,9127,13,63524
+2024-05-03,Yamoussoukro,Revendeur,Fer à béton,Artisan,10,9630,4,124805
+2024-10-29,Bouaké,Direct,Électricité,Artisan,2,9127,5,17341
+2024-08-31,Daloa,Grand compte,Carrelage,Particulier,24,12363,4,284844
+2024-05-06,Daloa,Grand compte,Carrelage,Entreprise,30,10592,5,407527
+2024-11-27,Daloa,Direct,Carrelage,,31,11304,4,336407
+2024-08-15,San-Pédro,Direct,Peinture,Artisan,37,13144,5,462012
+2024-07-13,San-Pédro,Direct,Électricité,Particulier,14,8033,4,107964
+2024-05-20,Abidjan,Grand compte,Plomberie,Artisan,24,7344,15,202254
+2024-01-04,Bouaké,Grand compte,Ciment,,9,5772,1,51429
+2024-09-07,Abidjan,Revendeur,Plomberie,,40,6781,5,257678
+2024-11-19,Korhogo,Direct,Carrelage,Artisan,14,13101,1,181580
+2024-01-18,Korhogo,Direct,Plomberie,Entreprise,13,6546,5,80843
+2024-08-25,San-Pédro,Direct,Fer à béton,Particulier,8,8826,6,66372
+2024-06-19,Yamoussoukro,Revendeur,Carrelage,Entreprise,18,13514,0,328390
+2024-03-22,San-Pédro,Direct,Carrelage,Particulier,26,11551,1,297323
+2024-01-07,Abidjan,Grand compte,Ciment,Artisan,30,6962,5,198417
+2024-02-16,Korhogo,Grand compte,Fer à béton,Artisan,27,8901,6,225907
+2024-04-29,San-Pédro,Direct,Plomberie,Artisan,24,7114,6,216664
+2024-04-27,Daloa,Grand compte,Ciment,Particulier,22,7125,10,190451
+2024-09-28,Bouaké,Direct,Électricité,Entreprise,34,8756,5,282819
+2024-11-13,Abidjan,Direct,Peinture,Particulier,16,15325,4,235392
+2024-05-28,San-Pédro,Grand compte,Électricité,Entreprise,31,7826,5,311142
+2024-01-22,Abidjan,Revendeur,Peinture,,33,15258,3,488409
+2024-11-29,San-Pédro,Revendeur,Peinture,Particulier,27,15385,1,411241
+2024-12-21,Abidjan,Direct,Électricité,Particulier,36,7781,3,271713
+2024-07-18,Abidjan,Revendeur,Électricité,Entreprise,9,9722,6,82248
+2024-06-08,Abidjan,Grand compte,Plomberie,Particulier,20,6786,9,166732
+2024-05-26,Yamoussoukro,Grand compte,Peinture,Entreprise,14,14489,15,232766
+2024-07-23,San-Pédro,Grand compte,Fer à béton,Artisan,5,9263,6,43536
+2024-10-05,Abidjan,Grand compte,Fer à béton,Artisan,24,8363,7,186662
+2024-05-28,Bouaké,Revendeur,Peinture,Artisan,3,13097,6,49860
+2024-09-07,Bouaké,Grand compte,Peinture,Entreprise,29,15992,14,398840
+2024-05-05,Yamoussoukro,Revendeur,Fer à béton,,2,8633,1,23076
+2024-01-25,Yamoussoukro,Grand compte,Peinture,,15,14178,1,210543
+2024-09-18,Korhogo,Direct,Peinture,Particulier,25,13437,6,315770
+2024-05-02,Korhogo,Direct,Carrelage,,19,12933,3,321780
+2024-08-09,Daloa,Revendeur,Carrelage,,32,12256,0,392192
+2024-03-22,Daloa,Grand compte,Ciment,Particulier,36,5940,1,211702
+2024-03-28,San-Pédro,Grand compte,Électricité,Particulier,2,10058,10,18104
+2024-01-08,Abidjan,Direct,Électricité,Particulier,2,8123,5,15434
+2024-07-19,Daloa,Revendeur,Peinture,Artisan,28,12390,5,329574
+2024-11-08,San-Pédro,Grand compte,Carrelage,,7,12582,6,82790
+2024-06-13,San-Pédro,Grand compte,Fer à béton,Entreprise,26,8222,8,265505
+2024-09-11,Bouaké,Grand compte,Peinture,Particulier,29,12975,2,368750
+2024-09-11,Bouaké,Revendeur,Fer à béton,,18,8254,0,148572
+2024-09-07,Bouaké,Direct,Ciment,Artisan,28,7070,2,194001
+2024-10-11,Abidjan,Direct,Carrelage,Entreprise,35,11323,0,396305
+2024-05-17,Daloa,Direct,Peinture,Artisan,14,14609,0,276110
+2024-11-02,San-Pédro,Direct,Fer à béton,Artisan,31,9051,3,272164
+2024-06-02,Korhogo,Direct,Carrelage,Entreprise,27,11244,2,401647
+2024-12-23,Daloa,Revendeur,Fer à béton,Particulier,15,9033,0,135495
+2024-02-13,Yamoussoukro,Grand compte,Carrelage,,37,10696,10,356177
+2024-06-13,San-Pédro,Direct,Plomberie,Artisan,39,8497,6,420525
+2024-07-07,Abidjan,Direct,Peinture,Particulier,6,14583,3,84873
+2024-06-16,Bouaké,Revendeur,Fer à béton,,11,8051,6,112384
+2024-09-16,Yamoussoukro,Grand compte,Ciment,Entreprise,21,7012,13,128109
+2024-07-10,Korhogo,Grand compte,Peinture,,15,16052,5,228741
+2024-11-21,Korhogo,Direct,Plomberie,Particulier,9,8322,4,71902
+2024-09-26,Korhogo,Direct,Électricité,,14,7621,1,105627
+2024-01-11,Yamoussoukro,Revendeur,Plomberie,Entreprise,23,7946,4,175448
+2024-02-19,San-Pédro,Direct,Carrelage,Artisan,6,11434,1,67918
+2024-10-23,Yamoussoukro,Grand compte,Peinture,,38,14894,9,515035
+2024-10-17,Abidjan,Grand compte,Plomberie,Particulier,5,7015,7,32620
+2024-03-23,Abidjan,Revendeur,Électricité,Artisan,15,8585,5,122336
+2024-01-20,Abidjan,Direct,Peinture,Particulier,8,14817,4,113795
+2024-08-22,Bouaké,Revendeur,Carrelage,Entreprise,11,13105,5,136947
+2024-08-20,Korhogo,Grand compte,Électricité,Particulier,16,10157,10,146261
+2024-05-13,San-Pédro,Direct,Ciment,Particulier,40,5798,2,306830
+2024-09-05,Bouaké,Revendeur,Plomberie,Entreprise,19,8042,5,145158
+2024-03-05,San-Pédro,Direct,Peinture,Particulier,5,15576,6,73207
+2024-06-19,Bouaké,Grand compte,Carrelage,Entreprise,21,13437,9,346654
+2024-05-17,Yamoussoukro,Revendeur,Peinture,Artisan,2,15244,3,39924
+2024-08-27,Yamoussoukro,Revendeur,Plomberie,Artisan,38,7171,4,261598
+2024-12-14,Bouaké,Revendeur,Fer à béton,Entreprise,17,8157,5,131736
+2024-05-19,Bouaké,Direct,Peinture,Entreprise,8,12885,6,130809
+2024-09-08,Bouaké,Grand compte,Plomberie,Particulier,3,6999,11,18687
+2024-03-20,Abidjan,Revendeur,Fer à béton,Artisan,27,8481,3,222117
+2024-10-07,Abidjan,Revendeur,Fer à béton,Artisan,9,8560,2,75499
+2024-04-26,Korhogo,Grand compte,Ciment,Particulier,25,5998,5,192311
+2024-06-06,Yamoussoukro,Direct,Ciment,Artisan,19,6545,3,162843
+2024-06-22,Daloa,Direct,Carrelage,Particulier,20,13400,4,347328
+2024-06-22,Korhogo,Grand compte,Peinture,Entreprise,2,16186,2,42828
+2024-06-15,Yamoussoukro,Direct,Fer à béton,Entreprise,40,10577,6,536889
+2024-02-15,Daloa,Revendeur,Fer à béton,Artisan,27,10282,2,272062
+2024-09-06,Bouaké,Direct,Électricité,Particulier,29,8643,5,238115
+2024-09-28,San-Pédro,Grand compte,Plomberie,Particulier,23,8380,12,169611
+2024-02-15,Abidjan,Grand compte,Électricité,Artisan,13,8807,6,107622
+2024-02-21,Daloa,Revendeur,Carrelage,Artisan,30,11232,1,333590
+2024-02-23,Korhogo,Revendeur,Carrelage,,32,11336,6,340987
+2024-09-19,Abidjan,Grand compte,Électricité,Entreprise,5,8469,11,37687
+2024-11-16,Daloa,Revendeur,Ciment,,39,6178,1,238533
+2024-01-04,Korhogo,Revendeur,Peinture,,17,15663,3,258283
+2024-06-27,Korhogo,Revendeur,Carrelage,Artisan,17,12214,5,266296
+2024-05-12,Bouaké,Grand compte,Carrelage,Entreprise,29,13421,7,488652
+2024-07-26,Bouaké,Revendeur,Plomberie,Artisan,31,6307,3,189651
+2024-11-12,Bouaké,Grand compte,Plomberie,Entreprise,19,6319,11,106854
+2024-05-21,Abidjan,Direct,Fer à béton,Artisan,18,8915,4,207969
+2024-08-04,Abidjan,Direct,Plomberie,,37,7454,4,264766
+2024-06-01,Korhogo,Revendeur,Peinture,,34,13685,3,609297
+2024-02-22,Abidjan,Grand compte,Peinture,,28,15834,2,434485
+2024-08-21,San-Pédro,Grand compte,Électricité,Artisan,6,7724,8,42636
+2024-03-11,San-Pédro,Direct,Fer à béton,Artisan,15,10197,2,149896
+2024-05-14,Korhogo,Grand compte,Fer à béton,,33,9879,10,396099
+2024-12-30,Yamoussoukro,Direct,Peinture,Particulier,31,12984,6,378354
+2024-05-29,Abidjan,Revendeur,Ciment,,19,7138,1,181259
+2024-12-22,Korhogo,Grand compte,Carrelage,Entreprise,11,13437,14,127114
+2024-05-27,Daloa,Grand compte,Ciment,,31,6074,15,216067
+2024-11-05,San-Pédro,Revendeur,Fer à béton,,31,10279,5,302717
+2024-05-05,Yamoussoukro,Direct,Plomberie,Entreprise,20,7478,3,195849
+2024-04-24,Abidjan,Revendeur,Fer à béton,Particulier,37,8502,1,420428
+2024-05-03,San-Pédro,Revendeur,Électricité,Artisan,1,9884,2,13077
+2024-06-14,Abidjan,Direct,Fer à béton,,3,8726,4,33927
+2024-12-27,Yamoussoukro,Direct,Fer à béton,,7,8476,1,58739
+2024-11-15,San-Pédro,Direct,Fer à béton,Entreprise,17,9030,1,151975
+2024-02-04,Abidjan,Direct,Ciment,Entreprise,23,5771,5,126096
+2024-08-10,Daloa,Direct,Ciment,Artisan,14,6152,2,84405
+2024-07-02,San-Pédro,Grand compte,Peinture,,28,16624,12,409615
+2024-07-02,Bouaké,Revendeur,Fer à béton,Artisan,9,10353,2,91313
+2024-06-20,Daloa,Direct,Électricité,Artisan,15,8755,0,177289
+2024-05-29,Daloa,Grand compte,Carrelage,Artisan,5,11046,6,70087
+2024-12-25,Korhogo,Grand compte,Carrelage,Artisan,7,10426,9,66414
+2024-11-23,Korhogo,Grand compte,Plomberie,Particulier,19,8496,2,158196
+2024-08-09,Bouaké,Revendeur,Plomberie,Particulier,9,6881,1,61310
+2024-07-16,Yamoussoukro,Grand compte,Plomberie,Artisan,22,8033,12,155519
+2024-12-15,Abidjan,Revendeur,Ciment,Particulier,2,7181,5,13644
+2024-05-21,Korhogo,Direct,Carrelage,Entreprise,26,11066,1,384532
+2024-11-08,Abidjan,Grand compte,Peinture,,4,14109,2,55307
+2024-11-23,Bouaké,Grand compte,Fer à béton,Particulier,12,9665,1,114820
+2024-01-07,Abidjan,Revendeur,Plomberie,Entreprise,38,7996,5,288656
+2024-01-24,San-Pédro,Revendeur,Carrelage,,10,11030,3,106991
+2024-11-22,Bouaké,Direct,Ciment,Entreprise,27,6855,5,175831
+2024-04-03,Bouaké,Revendeur,Fer à béton,,2,9405,4,24378
+2024-08-27,Yamoussoukro,Revendeur,Carrelage,Particulier,39,12777,2,488337
+2024-08-15,Abidjan,Grand compte,Peinture,Entreprise,17,13247,5,213939
+2024-08-02,Abidjan,Direct,Plomberie,,37,6318,4,224415
+2024-04-02,San-Pédro,Direct,Carrelage,Particulier,22,11628,2,338445
+2024-08-24,Yamoussoukro,Direct,Plomberie,Particulier,7,7381,0,51667
+2024-05-18,San-Pédro,Direct,Ciment,Particulier,11,5706,1,83887
+2024-10-11,San-Pédro,Revendeur,Plomberie,Particulier,23,6487,5,141741
+2024-07-28,Daloa,Grand compte,Fer à béton,Artisan,12,10215,12,107870
+2024-08-27,Abidjan,Grand compte,Électricité,Entreprise,29,10218,12,260763
+2024-02-26,Yamoussoukro,Direct,Carrelage,Artisan,37,10207,3,366329
+2024-10-28,Daloa,Direct,Peinture,Artisan,23,12560,1,285991
+2024-06-27,Daloa,Direct,Peinture,Entreprise,6,13388,4,104105
+2024-12-01,Abidjan,Direct,Électricité,,37,8842,2,320611
+2024-06-26,Daloa,Direct,Carrelage,Entreprise,38,12111,5,590230
+2024-03-03,Abidjan,Grand compte,Ciment,Artisan,39,5869,12,201424
+2024-08-19,San-Pédro,Revendeur,Carrelage,,2,11366,6,21368
+2024-10-28,San-Pédro,Grand compte,Ciment,Particulier,20,6049,2,118560
+2024-12-05,Abidjan,Revendeur,Carrelage,Entreprise,4,12026,2,47142
+2024-09-15,Abidjan,Direct,Carrelage,Entreprise,36,10114,4,349540
+2024-01-15,Bouaké,Grand compte,Ciment,Particulier,29,6567,10,171399
+2024-09-25,Abidjan,Direct,Plomberie,,36,7855,0,282780
+2024-12-19,Abidjan,Grand compte,Ciment,Artisan,26,7441,8,177989
+2024-12-22,Korhogo,Direct,Peinture,,3,13706,1,40707
+2024-06-21,Yamoussoukro,Grand compte,Peinture,Artisan,6,16547,3,130010
+2024-12-30,Korhogo,Revendeur,Plomberie,Artisan,21,7413,3,151003
+2024-02-11,Daloa,Grand compte,Fer à béton,Artisan,7,9918,6,65260
+2024-02-20,Bouaké,Revendeur,Électricité,,3,9842,6,27754
+2024-02-17,Abidjan,Revendeur,Électricité,Artisan,26,9681,4,241638
+2024-03-12,Abidjan,Revendeur,Électricité,,18,8868,1,158028
+2024-06-16,Daloa,Revendeur,Fer à béton,,30,8397,2,333277
+2024-12-14,Abidjan,Direct,Peinture,,1,15340,5,14573
+2024-05-08,San-Pédro,Direct,Ciment,Artisan,16,6386,2,135179
+2024-10-18,Bouaké,Direct,Fer à béton,Entreprise,17,9143,3,150768
+2024-06-19,Abidjan,Direct,Électricité,Entreprise,4,10134,2,53629
+2024-05-01,Korhogo,Revendeur,Carrelage,Artisan,9,10373,5,119730
+2024-09-10,Bouaké,Revendeur,Plomberie,Entreprise,19,8436,2,157078
+2024-02-27,Korhogo,Revendeur,Fer à béton,Artisan,5,9729,6,45726
+2024-02-28,Korhogo,Direct,Ciment,Particulier,11,7297,1,79464
+2024-12-27,Abidjan,Revendeur,Peinture,Entreprise,7,14734,2,101075
+2024-06-12,Bouaké,Direct,Peinture,Particulier,30,13750,6,523463
+2024-01-20,Daloa,Revendeur,Fer à béton,Artisan,39,9649,5,357495
+2024-01-10,Bouaké,Grand compte,Fer à béton,Entreprise,38,9994,4,364581
+2024-06-15,Yamoussoukro,Direct,Électricité,Entreprise,7,7783,5,69872
+2024-12-02,Abidjan,Direct,Plomberie,Entreprise,14,8173,6,107557
+2024-06-17,Bouaké,Revendeur,Peinture,Artisan,35,14471,5,649567
+2024-07-01,Daloa,Revendeur,Plomberie,,22,6432,3,137259
+2024-10-05,San-Pédro,Direct,Fer à béton,Artisan,20,8295,5,157605
+2024-07-28,Yamoussoukro,Grand compte,Peinture,Particulier,5,13837,2,67801
+2024-09-30,Yamoussoukro,Revendeur,Plomberie,,2,7470,0,14940
+2024-04-10,Korhogo,Direct,Électricité,,24,9572,3,300829
+2024-08-10,San-Pédro,Direct,Peinture,,14,14553,5,193555
+2024-07-20,Bouaké,Revendeur,Ciment,,33,6831,2,220915
+2024-12-15,Bouaké,Direct,Fer à béton,Particulier,17,8460,4,138067
+2024-11-25,Yamoussoukro,Direct,Peinture,Particulier,4,15903,4,61068
+2024-04-12,San-Pédro,Grand compte,Plomberie,,7,8439,3,77356
+2024-08-28,Yamoussoukro,Grand compte,Peinture,Artisan,9,13685,9,112080
+2024-05-18,Abidjan,Direct,Fer à béton,Particulier,35,10210,1,477598
+2024-12-23,San-Pédro,Revendeur,Plomberie,Artisan,2,6951,5,13207
+2024-12-10,Bouaké,Revendeur,Plomberie,Entreprise,14,6914,1,95828
+2024-06-29,Daloa,Revendeur,Ciment,Entreprise,37,5568,4,266997
+2024-06-23,Abidjan,Direct,Fer à béton,Artisan,28,8571,4,311024
+2024-04-09,Bouaké,Revendeur,Électricité,,10,9995,4,129535
+2024-03-28,Yamoussoukro,Revendeur,Plomberie,Particulier,5,7762,2,38034
+2024-12-11,Bouaké,Grand compte,Ciment,Particulier,32,5938,1,188116
+2024-10-21,San-Pédro,Direct,Peinture,Particulier,35,12484,1,432571
+2024-04-20,San-Pédro,Revendeur,Ciment,Entreprise,38,6835,3,340116
+2024-08-15,Korhogo,Direct,Carrelage,Particulier,27,11779,5,302131
+2024-02-23,Daloa,Revendeur,Ciment,Entreprise,17,7404,6,118316
+2024-05-14,Daloa,Grand compte,Fer à béton,Artisan,15,8558,10,155970
+2024-09-27,Korhogo,Grand compte,Plomberie,Particulier,4,6645,11,23656
+2024-01-29,Korhogo,Revendeur,Électricité,,7,7708,1,53416
+2024-05-23,San-Pédro,Direct,Peinture,Particulier,9,14486,3,170725
+2024-05-01,Korhogo,Direct,Carrelage,,29,10350,4,388994
+2024-06-07,Korhogo,Grand compte,Peinture,Artisan,38,13524,10,624403
+2024-10-03,Abidjan,Revendeur,Électricité,Entreprise,37,8580,4,304762
+2024-07-17,Abidjan,Grand compte,Fer à béton,,11,8072,11,79025
+2024-10-05,Daloa,Revendeur,Ciment,,37,5684,6,197690
+2024-01-17,Bouaké,Revendeur,Électricité,,39,9139,1,352857
+2024-01-05,Bouaké,Direct,Ciment,Artisan,5,5910,6,27777
+2024-09-11,Abidjan,Grand compte,Électricité,Artisan,3,7858,3,22867
+2024-09-15,Daloa,Direct,Carrelage,,11,10152,2,109439
+2024-02-28,Yamoussoukro,Grand compte,Fer à béton,Artisan,34,10288,0,349792
+2024-11-04,Yamoussoukro,Direct,Fer à béton,Entreprise,36,9518,1,339222
+2024-01-07,Yamoussoukro,Direct,Électricité,Artisan,30,8024,6,226277
+2024-08-22,Bouaké,Grand compte,Électricité,,32,10032,1,317814
+2024-12-17,Abidjan,Grand compte,Carrelage,,10,11281,6,106041
+2024-06-22,Bouaké,Grand compte,Ciment,Particulier,9,6196,5,71517
+2024-03-12,Bouaké,Grand compte,Électricité,Entreprise,17,7985,12,119456
+2024-09-19,San-Pédro,Direct,Plomberie,Entreprise,1,7451,2,7302
+2024-08-11,Korhogo,Grand compte,Ciment,Artisan,11,6674,1,72680
+2024-11-29,San-Pédro,Revendeur,Électricité,Artisan,1,9586,4,9203
+2024-02-15,Bouaké,Revendeur,Plomberie,Particulier,15,6310,6,88971
+2024-04-02,Yamoussoukro,Direct,Carrelage,Particulier,11,12385,1,182078
+2024-12-07,Abidjan,Direct,Carrelage,Artisan,22,12566,2,270923
+2024-02-13,Korhogo,Direct,Électricité,,18,8159,5,139519
+2024-01-06,Abidjan,Direct,Carrelage,Artisan,35,10399,1,360325
+2024-06-03,Daloa,Direct,Électricité,Entreprise,11,8479,4,120877
+2024-03-30,Korhogo,Revendeur,Électricité,Particulier,18,8276,6,140030
+2024-07-30,Daloa,Grand compte,Électricité,Artisan,3,9028,5,25730
+2024-06-10,Korhogo,Direct,Électricité,,34,9858,1,447957
+2024-02-13,Daloa,Grand compte,Plomberie,Entreprise,3,7207,11,19243
+2024-11-08,Daloa,Revendeur,Peinture,Particulier,27,16380,4,424570
+2024-11-27,Korhogo,Grand compte,Ciment,,2,7093,11,12626
+2024-06-13,Abidjan,Revendeur,Électricité,Particulier,3,9100,2,36118
+2024-09-19,Korhogo,Direct,Peinture,Particulier,19,12448,6,222321
+2024-11-04,San-Pédro,Grand compte,Fer à béton,Entreprise,2,8943,2,17528
+2024-10-12,Korhogo,Revendeur,Électricité,Particulier,7,7776,4,52255
+2024-06-25,San-Pédro,Revendeur,Plomberie,Particulier,18,6615,6,151100
+2024-05-12,Korhogo,Revendeur,Électricité,Entreprise,39,9690,3,494873
+2024-03-07,Yamoussoukro,Revendeur,Carrelage,,21,10201,3,207794
+2024-07-23,Bouaké,Direct,Électricité,Artisan,40,8970,2,351624
+2024-03-18,Korhogo,Direct,Peinture,Particulier,15,15242,1,226344
+2024-01-20,Daloa,Revendeur,Ciment,Particulier,39,7449,1,287606
+2024-07-17,Abidjan,Direct,Électricité,Particulier,13,8523,6,104151
+2024-02-07,Abidjan,Direct,Carrelage,,6,11802,2,69396
+2024-07-07,Korhogo,Direct,Électricité,,14,10119,1,140249
+2024-03-16,Yamoussoukro,Direct,Plomberie,,3,6943,1,20621
+2024-02-24,Abidjan,Direct,Fer à béton,Entreprise,10,9710,2,95158
+2024-10-24,Abidjan,Grand compte,Fer à béton,Particulier,1,7861,9,7154
+2024-03-28,Daloa,Revendeur,Ciment,Entreprise,15,6038,2,88759
+2024-09-20,San-Pédro,Revendeur,Électricité,Entreprise,32,9772,1,309577
+2024-03-12,San-Pédro,Revendeur,Peinture,Entreprise,26,14748,3,371945
+2024-05-25,Bouaké,Grand compte,Peinture,Entreprise,25,15907,15,456332
+2024-10-11,Yamoussoukro,Revendeur,Fer à béton,Entreprise,38,8513,6,304084
+2024-04-11,Yamoussoukro,Revendeur,Plomberie,,16,8259,0,178394
+2024-12-02,Bouaké,Direct,Électricité,Particulier,11,9669,0,106359
+2024-11-21,Abidjan,Grand compte,Ciment,Particulier,31,6111,10,170497
+2024-08-19,Korhogo,Revendeur,Peinture,Entreprise,39,16125,2,616298
+2024-03-18,Abidjan,Revendeur,Plomberie,Artisan,3,6494,5,18508
+2024-02-05,Daloa,Revendeur,Électricité,Particulier,27,10007,6,253978
+2024-07-06,Korhogo,Revendeur,Carrelage,Entreprise,13,12014,4,149935
+2024-06-10,Yamoussoukro,Direct,Carrelage,Entreprise,20,12004,5,307903
+2024-04-14,San-Pédro,Grand compte,Électricité,,17,7983,7,170385
+2024-03-06,Bouaké,Revendeur,Électricité,,3,9213,5,26257
+2024-02-07,Bouaké,Revendeur,Fer à béton,,23,9815,5,214458
+2024-02-02,Korhogo,Revendeur,Carrelage,Particulier,14,12635,3,171583
+2024-03-30,Daloa,Grand compte,Plomberie,Entreprise,31,6649,11,183446
+2024-02-13,Korhogo,Revendeur,Carrelage,Artisan,23,13095,1,298173
+2024-12-25,Korhogo,Grand compte,Peinture,,30,12893,10,348111
+2024-01-09,Abidjan,Direct,Fer à béton,Artisan,24,7902,3,183959
+2024-07-23,Korhogo,Revendeur,Peinture,,12,15504,1,184188
+2024-10-27,Daloa,Grand compte,Carrelage,Entreprise,31,12088,3,363486
+2024-07-01,Yamoussoukro,Revendeur,Électricité,,26,7667,3,193362
+2024-01-12,Abidjan,Grand compte,Ciment,,13,6145,2,78287
+2024-11-06,Korhogo,Direct,Électricité,Particulier,13,9569,3,120665
+2024-12-01,Bouaké,Direct,Fer à béton,Entreprise,3,8670,0,26010
+2024-02-19,San-Pédro,Direct,Peinture,Entreprise,23,13056,5,285274
+2024-08-29,Korhogo,Revendeur,Électricité,Particulier,31,8523,1,261571
+2024-11-26,Yamoussoukro,Revendeur,Plomberie,Artisan,20,7166,0,143320
+2024-04-25,Bouaké,Direct,Carrelage,Particulier,28,10031,4,364005
+2024-02-14,Yamoussoukro,Direct,Électricité,Entreprise,11,9202,0,101222
+2024-01-28,Abidjan,Direct,Peinture,Artisan,15,15406,1,228779
+2024-05-14,Bouaké,Direct,Fer à béton,Entreprise,2,8158,1,21806
+2024-06-28,Daloa,Revendeur,Peinture,Entreprise,6,13959,1,111937
+2024-08-18,San-Pédro,Direct,Peinture,Particulier,5,16324,1,80804
+2024-08-18,Daloa,Direct,Plomberie,Entreprise,2,6774,6,12735
+2024-01-30,Korhogo,Direct,Fer à béton,Entreprise,4,8462,3,32833
+2024-03-17,Yamoussoukro,Grand compte,Carrelage,,34,13069,11,395468
+2024-03-30,Korhogo,Revendeur,Ciment,Entreprise,12,6745,1,80131
+2024-08-31,San-Pédro,Direct,Peinture,Artisan,12,12368,2,145448
+2024-07-01,Abidjan,Revendeur,Ciment,,26,7117,4,177640
+2024-01-20,Yamoussoukro,Revendeur,Électricité,Artisan,15,9910,4,142704
+2024-12-08,Korhogo,Grand compte,Carrelage,Particulier,7,11030,3,74894
+2024-01-10,Bouaké,Grand compte,Carrelage,Particulier,33,11278,2,364731
+2024-07-08,Abidjan,Direct,Peinture,,16,12466,1,197461
+2024-11-16,Bouaké,Grand compte,Peinture,Artisan,16,14112,13,196439
+2024-10-31,Yamoussoukro,Grand compte,Plomberie,Particulier,24,6339,2,149093
+2024-12-04,San-Pédro,Grand compte,Ciment,Particulier,25,5808,7,135036
+2024-08-23,San-Pédro,Revendeur,Fer à béton,Artisan,37,10460,6,363799
+2024-11-04,Abidjan,Grand compte,Ciment,Artisan,12,6676,5,76106
+2024-06-04,Korhogo,Revendeur,Électricité,,37,7999,6,375577
+2024-11-05,San-Pédro,Grand compte,Fer à béton,Artisan,28,8018,10,202054
+2024-08-30,Abidjan,Revendeur,Plomberie,Entreprise,38,8289,1,311832
+2024-08-10,San-Pédro,Direct,Plomberie,Entreprise,9,7419,5,63432
+2024-09-07,Daloa,Grand compte,Peinture,,30,13364,5,380874
+2024-09-11,Bouaké,Direct,Peinture,,4,13520,2,52998
+2024-01-21,San-Pédro,Direct,Carrelage,Entreprise,8,10247,2,80336
+2024-09-07,Korhogo,Direct,Fer à béton,Particulier,2,8467,3,16426
+2024-12-02,Yamoussoukro,Revendeur,Carrelage,,37,11621,3,417078
+2024-12-12,Abidjan,Grand compte,Ciment,,9,6935,6,58670
+2024-03-05,Yamoussoukro,Revendeur,Peinture,Artisan,7,13209,2,90614
+2024-06-26,San-Pédro,Direct,Fer à béton,Particulier,20,8302,1,221912
+2024-05-20,Bouaké,Revendeur,Électricité,Artisan,28,7871,2,291573
+2024-05-09,Bouaké,Revendeur,Ciment,Entreprise,33,6683,5,282841
+2024-09-22,Bouaké,Direct,Fer à béton,Particulier,34,8831,5,285241
+2024-04-30,Abidjan,Direct,Fer à béton,Particulier,17,10008,1,227387
+2024-05-24,Yamoussoukro,Grand compte,Ciment,Artisan,32,6779,12,257710
+2024-11-02,San-Pédro,Direct,Fer à béton,,20,8557,4,164294
+2024-02-21,Bouaké,Revendeur,Électricité,Particulier,15,9753,6,137517
+2024-05-22,Bouaké,Revendeur,Ciment,Artisan,17,6460,1,146774
+2024-06-06,Yamoussoukro,Grand compte,Électricité,Particulier,7,7925,10,67402
+2024-04-15,Bouaké,Grand compte,Fer à béton,Entreprise,31,10147,2,416159
+2024-04-05,Korhogo,Revendeur,Peinture,Artisan,6,13996,5,107699
+2024-03-25,Bouaké,Revendeur,Carrelage,,32,11327,0,362464
+2024-01-14,San-Pédro,Revendeur,Fer à béton,Artisan,15,8563,2,125876
+2024-09-16,Yamoussoukro,Grand compte,Ciment,Entreprise,12,6335,9,69178
+2024-03-26,Yamoussoukro,Revendeur,Ciment,Entreprise,13,7138,6,87226
+2024-06-01,San-Pédro,Grand compte,Carrelage,Particulier,13,12917,9,206291
+2024-10-03,San-Pédro,Grand compte,Plomberie,Particulier,3,7489,10,20220
+2024-11-21,Yamoussoukro,Grand compte,Ciment,,39,7447,2,284624
+2024-08-25,Korhogo,Revendeur,Ciment,Particulier,21,6378,2,131259
+2024-06-27,Daloa,Direct,Électricité,,6,9207,0,74577
+2024-12-15,San-Pédro,Direct,Peinture,Particulier,4,16078,3,62383
+2024-03-18,Daloa,Grand compte,Fer à béton,,35,9915,11,308852
+2024-08-31,Yamoussoukro,Revendeur,Peinture,Entreprise,16,14142,1,224009
+2024-06-11,Bouaké,Direct,Carrelage,Artisan,27,11525,0,420086
+2024-06-12,Korhogo,Direct,Carrelage,Artisan,9,12491,2,148730
+2024-01-07,Korhogo,Revendeur,Fer à béton,,40,8860,0,354400
+2024-08-11,Yamoussoukro,Direct,Plomberie,,1,7322,3,7102
+2024-11-24,Korhogo,Revendeur,Ciment,Entreprise,22,7042,5,147178
+2024-01-09,San-Pédro,Revendeur,Peinture,,12,15302,2,179952
+2024-11-23,Daloa,Direct,Carrelage,Artisan,19,11994,4,218771
+2024-11-28,Korhogo,Direct,Carrelage,Artisan,2,10574,3,20514
+2024-10-23,Yamoussoukro,Direct,Électricité,,2,10157,3,19705
+2024-05-06,Abidjan,Grand compte,Carrelage,Entreprise,4,12951,15,59445
+2024-10-12,Yamoussoukro,Revendeur,Carrelage,,9,13287,2,117191
+2024-04-10,Abidjan,Grand compte,Peinture,Particulier,39,16308,12,755582
+2024-03-30,Bouaké,Grand compte,Fer à béton,,19,10030,9,173419
+2024-11-09,Bouaké,Revendeur,Ciment,Artisan,5,6749,5,32058
+2024-06-14,Daloa,Revendeur,Peinture,,9,12773,2,152088
+2024-05-22,Bouaké,Direct,Carrelage,Artisan,18,10322,6,235775
+2024-12-08,Yamoussoukro,Revendeur,Carrelage,,34,13344,3,440085
+2024-02-18,Abidjan,Revendeur,Fer à béton,Particulier,23,8953,2,201801
+2024-06-26,Korhogo,Revendeur,Fer à béton,Entreprise,9,9315,1,112045
+2024-11-28,Bouaké,Direct,Fer à béton,Artisan,28,7868,0,220304
+2024-02-04,Yamoussoukro,Grand compte,Peinture,Particulier,14,16197,6,213153
+2024-05-13,Bouaké,Grand compte,Carrelage,,18,11052,11,239022
+2024-07-09,Abidjan,Grand compte,Peinture,Artisan,40,13055,9,475202
+2024-04-04,Korhogo,Revendeur,Ciment,Particulier,6,6235,3,48988
+2024-08-11,Abidjan,Direct,Plomberie,,39,7568,1,292200
+2024-09-05,Bouaké,Direct,Peinture,Artisan,17,16280,1,273992
+2024-07-28,San-Pédro,Direct,Peinture,Entreprise,3,12898,0,38694
+2024-01-23,Bouaké,Grand compte,Électricité,,23,9162,5,200190
+2024-09-09,Daloa,Grand compte,Électricité,Particulier,10,7574,7,70438
+2024-01-02,Daloa,Revendeur,Électricité,Particulier,21,8101,4,163316
+2024-12-04,Korhogo,Direct,Carrelage,Artisan,18,12810,2,225968
+2024-03-01,Yamoussoukro,Revendeur,Peinture,Particulier,3,15886,0,47658
+2024-05-21,Bouaké,Grand compte,Ciment,,33,5926,11,234963
+2024-09-12,San-Pédro,Direct,Électricité,,24,9029,5,205861
+2024-03-13,Yamoussoukro,Revendeur,Ciment,Entreprise,31,7366,2,223779
+2024-04-07,Bouaké,Grand compte,Carrelage,,34,13490,4,594423
+2024-04-20,Korhogo,Revendeur,Plomberie,Artisan,36,7333,3,345692
+2024-04-30,Yamoussoukro,Direct,Carrelage,Artisan,24,13277,4,412968
+2024-03-21,Bouaké,Direct,Plomberie,,9,8085,2,71310
+2024-10-29,Bouaké,Revendeur,Fer à béton,Artisan,37,10348,1,379047
+2024-11-06,Abidjan,Grand compte,Carrelage,Entreprise,32,12439,5,378146
+2024-06-01,Daloa,Revendeur,Peinture,,17,13852,0,317903
+2024-10-04,Korhogo,Revendeur,Carrelage,Artisan,18,10471,4,180939
+2024-06-06,Korhogo,Revendeur,Ciment,,3,7007,5,26959
+2024-06-07,Korhogo,Grand compte,Plomberie,Artisan,10,7265,5,93174
+2024-08-28,San-Pédro,Grand compte,Peinture,Entreprise,38,13243,0,503234
+2024-12-15,San-Pédro,Revendeur,Plomberie,Entreprise,32,7142,4,219402
+2024-05-19,Abidjan,Revendeur,Ciment,,16,5720,2,121081
+2024-07-06,San-Pédro,Revendeur,Électricité,Particulier,19,9236,3,170219
+2024-12-07,Yamoussoukro,Revendeur,Peinture,Artisan,25,14144,4,339456
+2024-06-09,Korhogo,Revendeur,Ciment,Artisan,20,7009,1,187351
+2024-04-05,Korhogo,Revendeur,Peinture,Artisan,33,14222,3,614582
+2024-07-18,Bouaké,Revendeur,Peinture,,27,15743,0,425061
+2024-03-28,Korhogo,Grand compte,Carrelage,Particulier,25,10864,14,233576
+2024-07-28,Bouaké,Direct,Électricité,Particulier,21,8733,2,179725
+2024-08-29,Yamoussoukro,Revendeur,Carrelage,Entreprise,17,11827,3,195027
+2024-09-27,Daloa,Grand compte,Électricité,,21,8625,14,155768
+2024-08-19,San-Pédro,Direct,Électricité,Particulier,3,8452,4,24342
+2024-03-12,Korhogo,Direct,Plomberie,Particulier,29,6982,6,190329
+2024-12-14,San-Pédro,Revendeur,Peinture,Particulier,31,15863,4,472083
+2024-10-14,San-Pédro,Grand compte,Carrelage,Artisan,13,12573,11,145470
+2024-12-27,Abidjan,Revendeur,Peinture,Artisan,5,15478,5,73521
+2024-12-23,San-Pédro,Direct,Électricité,,35,9479,2,325130
+2024-01-16,Abidjan,Direct,Électricité,Artisan,23,8764,5,191493
+2024-12-15,Bouaké,Revendeur,Fer à béton,,18,8301,1,147924
+2024-09-04,Korhogo,Grand compte,Carrelage,Particulier,12,11511,12,121556
+2024-08-18,Korhogo,Direct,Peinture,Particulier,8,16380,1,129730
+2024-04-10,San-Pédro,Direct,Plomberie,Artisan,22,8323,4,237305
+2024-03-28,Abidjan,Grand compte,Plomberie,Artisan,11,6886,10,68171
+2024-01-08,Yamoussoukro,Grand compte,Plomberie,Artisan,30,7767,5,221360
+2024-04-14,Yamoussoukro,Grand compte,Peinture,Particulier,26,14680,15,437978
+2024-01-01,Korhogo,Grand compte,Carrelage,Artisan,16,10216,13,142207
+2024-10-11,Bouaké,Direct,Plomberie,Entreprise,23,8040,5,175674
+2024-08-23,Korhogo,Revendeur,Ciment,Particulier,5,5901,4,28325
+2024-06-24,Korhogo,Revendeur,Peinture,Artisan,39,15969,6,790322
+2024-05-01,Daloa,Revendeur,Peinture,Artisan,28,15584,2,577294
+2024-10-26,Daloa,Direct,Électricité,Particulier,21,9492,2,195345
+2024-06-09,Bouaké,Direct,Électricité,Particulier,26,9142,1,317675
+2024-10-03,Abidjan,Grand compte,Plomberie,Entreprise,19,7064,11,119452
+2024-04-07,Korhogo,Direct,Plomberie,,12,6663,1,106861
+2024-11-21,Korhogo,Grand compte,Fer à béton,Entreprise,3,8824,7,24619
+2024-01-19,Abidjan,Revendeur,Peinture,,32,13485,6,405629
+2024-01-01,Bouaké,Revendeur,Électricité,Entreprise,35,7762,2,266237
+2024-11-14,Daloa,Revendeur,Électricité,,39,8489,3,321139
+2024-08-31,Daloa,Revendeur,Fer à béton,Artisan,29,10192,6,277834
+2024-04-18,Yamoussoukro,Revendeur,Ciment,Particulier,13,6727,5,112156
+2024-03-15,Korhogo,Direct,Ciment,Entreprise,13,5956,2,75879
+2024-04-23,Korhogo,Revendeur,Plomberie,,12,8053,3,126545
+2024-08-12,Abidjan,Revendeur,Fer à béton,Entreprise,12,9808,1,116519
+2024-10-01,San-Pédro,Grand compte,Électricité,Entreprise,2,9873,15,16784
+2024-08-14,Korhogo,Revendeur,Plomberie,Artisan,23,8321,3,185642
+2024-12-04,Abidjan,Grand compte,Électricité,Particulier,16,8343,3,129483
+2024-11-06,Korhogo,Grand compte,Peinture,,32,14065,1,445579
+2024-04-23,Bouaké,Revendeur,Peinture,Artisan,28,16323,4,592329
+2024-10-18,Korhogo,Revendeur,Électricité,,9,9962,2,87865
+2024-07-23,Bouaké,Grand compte,Fer à béton,Particulier,31,9963,11,274879
+2024-03-17,Daloa,Direct,Fer à béton,Artisan,23,10362,4,228793
+2024-04-21,Yamoussoukro,Revendeur,Fer à béton,Artisan,11,8067,0,119795
+2024-12-30,Korhogo,Grand compte,Fer à béton,Entreprise,27,9630,6,244409
+2024-06-06,Yamoussoukro,Direct,Peinture,Artisan,21,16105,1,452011
+2024-07-06,Daloa,Grand compte,Électricité,,3,8280,13,21611
+2024-10-25,Daloa,Grand compte,Ciment,Entreprise,23,5953,2,134181
+2024-01-25,Abidjan,Revendeur,Ciment,,32,6698,3,207906
+2024-01-13,Korhogo,Grand compte,Ciment,Entreprise,24,5870,7,131018
+2024-03-15,San-Pédro,Grand compte,Peinture,Entreprise,14,13159,5,175015
+2024-12-23,San-Pédro,Direct,Ciment,,29,6689,3,188162
+2024-05-24,Bouaké,Revendeur,Fer à béton,Artisan,31,7944,4,319158
+2024-05-13,Abidjan,Direct,Ciment,,1,6076,5,7792
+2024-07-23,Yamoussoukro,Direct,Électricité,,39,8173,2,312372
+2024-05-28,Korhogo,Direct,Ciment,Particulier,8,7140,1,76341
+2024-01-16,Korhogo,Grand compte,Carrelage,,19,13244,1,249120
+2024-05-16,Yamoussoukro,Grand compte,Ciment,Entreprise,35,5954,2,275700
+2024-12-04,Daloa,Direct,Fer à béton,,23,9377,1,213514
+2024-06-17,San-Pédro,Direct,Carrelage,Entreprise,20,13223,5,339170
+2024-12-22,Daloa,Grand compte,Carrelage,Artisan,5,12224,8,56230
+2024-03-08,Yamoussoukro,Direct,Fer à béton,Artisan,25,7992,5,189810
+2024-12-22,San-Pédro,Direct,Carrelage,Artisan,17,12291,0,208947
+2024-07-05,Korhogo,Grand compte,Plomberie,Particulier,38,7580,12,253475
+2024-02-09,San-Pédro,Grand compte,Plomberie,Entreprise,36,7153,3,249783
+2024-06-11,Korhogo,Revendeur,Électricité,Artisan,17,8932,1,202940
+2024-03-06,Daloa,Direct,Électricité,Particulier,23,9603,2,216452
+2024-02-27,Abidjan,Direct,Peinture,Entreprise,40,13255,4,508992
+2024-06-17,San-Pédro,Revendeur,Peinture,Artisan,6,13383,2,106234
+2024-10-10,Yamoussoukro,Revendeur,Électricité,Particulier,33,9894,4,313442
+2024-01-16,Daloa,Revendeur,Peinture,Artisan,14,14469,4,194463
+2024-08-22,Daloa,Revendeur,Électricité,Particulier,18,9601,5,164177
+2024-03-18,Daloa,Grand compte,Électricité,Artisan,28,8959,2,245835
+2024-11-11,Korhogo,Revendeur,Carrelage,Particulier,19,11108,1,208941
+2024-11-01,San-Pédro,Revendeur,Carrelage,,11,13301,3,141922
+2024-12-24,Daloa,Direct,Peinture,Artisan,34,13830,2,460816
+2024-10-05,Yamoussoukro,Direct,Peinture,Entreprise,40,13150,3,510220
+2024-12-24,San-Pédro,Revendeur,Carrelage,Particulier,8,11203,6,84247
+2024-11-27,Yamoussoukro,Revendeur,Peinture,Particulier,31,14533,6,423492
+2024-04-26,San-Pédro,Revendeur,Peinture,Artisan,12,13527,6,205989
+2024-01-09,Daloa,Direct,Plomberie,Entreprise,18,7387,2,130307
+2024-07-14,Daloa,Grand compte,Fer à béton,Entreprise,38,10240,13,338534
+2024-04-08,Korhogo,Direct,Plomberie,Entreprise,1,6964,5,8931
+2024-07-12,Bouaké,Revendeur,Peinture,,10,16294,3,158052
+2024-09-30,Bouaké,Revendeur,Fer à béton,Particulier,3,8145,3,23702
+2024-02-19,San-Pédro,Direct,Ciment,,35,6688,6,220035
+2024-04-28,San-Pédro,Grand compte,Plomberie,Entreprise,21,8062,5,217130
+2024-05-13,Bouaké,Grand compte,Ciment,Artisan,31,5775,2,236850
+2024-09-20,Bouaké,Revendeur,Électricité,Entreprise,23,8561,2,192965
+2024-06-25,Abidjan,Revendeur,Électricité,Particulier,8,9078,5,93140
+2024-03-25,Korhogo,Revendeur,Carrelage,Particulier,10,13214,3,128176
+2024-08-22,Yamoussoukro,Grand compte,Plomberie,Artisan,31,7975,12,217558
+2024-03-06,Abidjan,Revendeur,Peinture,Entreprise,15,12582,2,184955
+2024-12-27,San-Pédro,Grand compte,Plomberie,Artisan,37,8155,15,256475
