@@ -85,7 +85,7 @@ pio.templates.default = "visualizedata"
 # CSS — applique l'identité VisualizeData à l'interface Streamlit
 # ─────────────────────────────────────────────────────────────────────────────
 st.html(
-    f"""<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"> <style> :root {{ --vd-navy:{NAVY}; --vd-indigo:{INDIGO}; --vd-orange:{ORANGE}; --vd-pale:{PALE}; --vd-ink:{INK}; --vd-muted:{MUTED}; --vd-line:{LINE}; --vd-r:{RADIUS}; }} html, body, .stApp, [class*="css"] {{ font-family:'Archivo', system-ui, sans-serif; background:{WHITE}; color:var(--vd-ink); }} h1,h2,h3,h4,h5,h6 {{ font-family:'Archivo', system-ui, sans-serif !important; font-weight:800 !important; letter-spacing:-.02em; line-height:1.16; color:var(--vd-navy); }} #MainMenu, footer, header [data-testid="stStatusWidget"] {{visibility:hidden}} .block-container {{padding-top:2rem; padding-bottom:4rem; max-width:1500px}} section[data-testid="stSidebar"] {{ background:var(--vd-pale); border-right:1px solid var(--vd-line); }} section[data-testid="stSidebar"] .block-container {{padding-top:1.5rem}} div[data-testid="stMetric"] {{ background:{WHITE}; padding:16px 18px; border:1px solid var(--vd-line); border-radius:var(--vd-r); }} div[data-testid="stMetricLabel"] p {{ font-size:12px !important; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--vd-muted) !important; }} div[data-testid="stMetricValue"] {{ font-family:'Archivo', sans-serif; font-size:32px !important; font-weight:600; color:var(--vd-navy); }} .stTabs [data-baseweb="tab-list"] {{gap:6px; border-bottom:1px solid var(--vd-line)}} .stTabs [data-baseweb="tab"] {{ background:transparent; padding:11px 16px; font-weight:600; color:var(--vd-muted); }} .stTabs [aria-selected="true"] {{ color:var(--vd-indigo) !important; box-shadow:inset 0 -2px 0 0 var(--vd-indigo); }} .stTabs [data-baseweb="tab-highlight"] {{background:transparent}} .stButton button, .stDownloadButton button, .stFormSubmitButton button {{ font-family:'Archivo', sans-serif; font-weight:700; font-size:15px; border-radius:var(--vd-r); border:1px solid var(--vd-line); background:{WHITE}; color:var(--vd-navy); padding:10px 18px; }} .stButton button:hover {{border-color:var(--vd-indigo); color:var(--vd-indigo)}} .stButton button[kind="primary"], .stDownloadButton button[kind="primary"], .stFormSubmitButton button[kind="primary"] {{ background:var(--vd-indigo); border-color:var(--vd-indigo); color:{WHITE}; }} .stButton button[kind="primary"]:hover, .stDownloadButton button[kind="primary"]:hover {{ background:{INDIGO_DARK}; border-color:{INDIGO_DARK}; color:{WHITE}; }} .stTextInput input, .stTextArea textarea, .stNumberInput input, div[data-baseweb="select"] > div, .stChatInput textarea {{ background:{WHITE} !important; border:1px solid var(--vd-line) !important; border-radius:var(--vd-r) !important; color:var(--vd-ink) !important; font-family:'Archivo', sans-serif; }} .stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-indigo) !important}} *:focus-visible {{outline:2px solid var(--vd-indigo) !important; outline-offset:2px}} ::selection {{background:rgba(79,70,229,.18)}} .stSlider [data-baseweb="slider"] div[role="slider"] {{background:var(--vd-indigo)}} section[data-testid="stFileUploaderDropzone"] {{ background:{WHITE}; border:1.5px dashed #C3D3F5; border-radius:var(--vd-r); padding:22px; }} div[data-testid="stDataFrame"] {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); overflow:hidden; }} .vd-rule {{height:1px; background:var(--vd-line); border:0; margin:24px 0}} .vd-kicker {{ font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--vd-indigo); margin-bottom:10px; }} .vd-hero {{ background:linear-gradient(180deg,var(--vd-pale) 0%,{WHITE} 100%); border:1px solid var(--vd-line); border-radius:0; padding:30px 32px; margin-bottom:22px; }} .vd-hero h1 {{font-size:34px; margin:0 0 8px}} .vd-hero p {{color:var(--vd-muted); max-width:70ch; margin:0}} .vd-answer {{ background:var(--vd-pale); border:1px solid var(--vd-line); border-left:3px solid var(--vd-indigo); border-radius:var(--vd-r); padding:16px 18px; margin:6px 0 14px; }} .vd-poster {{ background:var(--vd-navy); color:{WHITE}; border-radius:0; padding:30px; }} .vd-poster .q {{ font-family:'Archivo', sans-serif; font-weight:600; font-size:24px; line-height:1.2; margin:0; }} .vd-poster .q em {{font-style:normal; color:var(--vd-orange)}} .vd-poster .row {{ display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid rgba(255,255,255,.16); font-size:14px; }} .vd-feature {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); padding:16px 18px; height:100%; }} .vd-feature b {{font-family:'Archivo', sans-serif; font-weight:600; display:block; margin-bottom:4px; color:var(--vd-navy)}} .vd-feature span {{color:var(--vd-muted); font-size:14px}} .vd-bar-label {{display:flex; justify-content:space-between; font-size:14px; margin-bottom:5px}} .vd-bar {{height:7px; background:var(--vd-pale); border-radius:0; overflow:hidden}} .vd-bar > div {{height:100%; background:var(--vd-indigo)}} .vd-bar.alert > div {{background:var(--vd-orange)}} .vd-tag {{ display:inline-block; font-size:12px; font-weight:700; padding:4px 12px; border-radius:0; background:rgba(79,70,229,.12); color:var(--vd-indigo); }}  @media (max-width: 900px) {{ .stApp, html, body {{ background:#141312 !important; color:#f3f2f2 !important; }} .block-container {{ padding:1rem .9rem 3.5rem !important; max-width:100% !important; }} h1,h2,h3,h4,h5,h6 {{ color:#f3f2f2 !important; letter-spacing:-.045em; }} h1 {{font-size:28px !important}} h2 {{font-size:23px !important}} h3 {{font-size:20px !important}} h4 {{font-size:17px !important}} p, li, span, label, .stMarkdown {{ color:rgba(243,242,242,.85) !important; }} .stCaption, [data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p {{ color:rgba(243,242,242,.45) !important; }} section[data-testid="stSidebar"] {{ background:#0d0c0c !important; border-right:1px solid rgba(243,242,242,.14) !important; }} section[data-testid="stSidebar"] * {{ color:#f3f2f2 !important; }} div[data-testid="stHorizontalBlock"] {{ flex-direction:column; gap:12px; }} div[data-testid="column"] {{ width:100% !important; flex:1 1 100% !important; min-width:100% !important; }} div[data-testid="stMetric"] {{ background:#1c1a19 !important; border:0 !important; border-radius:0 !important; padding:14px 16px !important; }} div[data-testid="stMetricValue"] {{ color:#f3f2f2 !important; font-size:27px !important; letter-spacing:-.04em; }} div[data-testid="stMetricLabel"] p {{ color:rgba(243,242,242,.45) !important; font-size:9px !important; letter-spacing:.14em; }} .stTabs [data-baseweb="tab-list"] {{ overflow-x:auto; scrollbar-width:none; gap:0; border-bottom:1px solid rgba(243,242,242,.16); }} .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {{display:none}} .stTabs [data-baseweb="tab"] {{ padding:12px 14px; font-size:13px; white-space:nowrap; color:rgba(243,242,242,.5) !important; }} .stTabs [aria-selected="true"] {{ color:#ff5c3d !important; box-shadow:inset 0 -2px 0 0 #ec3013; }} .stTabs [aria-selected="true"] p {{ color:#ff5c3d !important; }} .stButton button, .stDownloadButton button, .stFormSubmitButton button {{ min-height:48px; width:100%; font-size:15px; border-radius:0 !important; background:transparent !important; border:1px solid rgba(243,242,242,.3) !important; color:#f3f2f2 !important; }} .stButton button[kind="primary"], .stDownloadButton button[kind="primary"] {{ background:#ec3013 !important; border-color:#ec3013 !important; color:#f3f2f2 !important; }} .stTextInput input, .stTextArea textarea, .stNumberInput input, .stChatInput textarea, div[data-baseweb="select"] > div {{ background:#1c1a19 !important; border:1px solid rgba(243,242,242,.22) !important; color:#f3f2f2 !important; min-height:48px; font-size:16px; border-radius:0 !important; }} div[data-baseweb="select"] svg {{ fill:#f3f2f2 !important; }} section[data-testid="stFileUploaderDropzone"] {{ background:#1c1a19 !important; border:1.5px dashed rgba(243,242,242,.3) !important; }} section[data-testid="stFileUploaderDropzone"] * {{ color:rgba(243,242,242,.75) !important; }} div[data-testid="stDataFrame"] {{ border:1px solid rgba(243,242,242,.16) !important; font-size:12px; }} .stExpander, details {{ background:#1c1a19 !important; border:1px solid rgba(243,242,242,.16) !important; border-radius:0 !important; }} .stExpander summary, details summary {{ color:#f3f2f2 !important; }} .vd-rule {{ background:rgba(243,242,242,.16) !important; }} .vd-kicker {{ color:#ff5c3d !important; }} .vd-hero {{ background:#1c1a19 !important; border:0 !important; border-left:2px solid #ec3013 !important; padding:20px 18px !important; }} .vd-hero h1 {{ font-size:26px !important; }} .vd-hero p {{ color:rgba(243,242,242,.65) !important; }} .vd-answer {{ background:#1c1a19 !important; border:0 !important; border-left:2px solid #ec3013 !important; border-radius:0 !important; color:rgba(243,242,242,.9) !important; }} .vd-answer * {{ color:rgba(243,242,242,.9) !important; }} .vd-feature {{ background:#1c1a19 !important; border:0 !important; padding:14px 16px !important; }} .vd-feature b {{ color:#f3f2f2 !important; }} .vd-feature span {{ color:rgba(243,242,242,.55) !important; }} .vd-poster {{ background:#ec3013 !important; padding:22px !important; }} .vd-poster .q {{ font-size:20px !important; }} .vd-bar {{ background:rgba(243,242,242,.16) !important; }} .vd-bar > div {{ background:#f3f2f2 !important; }} .vd-bar.alert > div {{ background:#ec3013 !important; }} .vd-tag {{ background:rgba(236,48,19,.22) !important; color:#ff5c3d !important; }} hr {{ border-color:rgba(243,242,242,.16) !important; }} .stAlert {{ border-radius:0 !important; }} ::selection {{ background:rgba(236,48,19,.4); }} }}</style>"""
+    f"""<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet"> <style> :root {{ --vd-navy:{NAVY}; --vd-indigo:{INDIGO}; --vd-orange:{ORANGE}; --vd-pale:{PALE}; --vd-ink:{INK}; --vd-muted:{MUTED}; --vd-line:{LINE}; --vd-r:{RADIUS}; }} html, body, .stApp, [class*="css"] {{ font-family:'Archivo', system-ui, sans-serif; background:{WHITE}; color:var(--vd-ink); }} h1,h2,h3,h4,h5,h6 {{ font-family:'Archivo', system-ui, sans-serif !important; font-weight:800 !important; letter-spacing:-.02em; line-height:1.16; color:var(--vd-navy); }} #MainMenu, footer, header [data-testid="stStatusWidget"] {{visibility:hidden}} .block-container {{padding-top:2rem; padding-bottom:4rem; max-width:1500px}} section[data-testid="stSidebar"] {{ background:var(--vd-pale); border-right:1px solid var(--vd-line); }} section[data-testid="stSidebar"] .block-container {{padding-top:1.5rem}} div[data-testid="stMetric"] {{ background:{WHITE}; padding:16px 18px; border:1px solid var(--vd-line); border-radius:var(--vd-r); }} div[data-testid="stMetricLabel"] p {{ font-size:12px !important; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--vd-muted) !important; }} div[data-testid="stMetricValue"] {{ font-family:'Archivo', sans-serif; font-size:32px !important; font-weight:600; color:var(--vd-navy); }} .stTabs [data-baseweb="tab-list"] {{gap:6px; border-bottom:1px solid var(--vd-line)}} .stTabs [data-baseweb="tab"] {{ background:transparent; padding:11px 16px; font-weight:600; color:var(--vd-muted); }} .stTabs [aria-selected="true"] {{ color:var(--vd-indigo) !important; box-shadow:inset 0 -2px 0 0 var(--vd-indigo); }} .stTabs [data-baseweb="tab-highlight"] {{background:transparent}} .stButton button, .stDownloadButton button, .stFormSubmitButton button {{ font-family:'Archivo', sans-serif; font-weight:700; font-size:15px; border-radius:var(--vd-r); border:1px solid var(--vd-line); background:{WHITE}; color:var(--vd-navy); padding:10px 18px; }} .stButton button:hover {{border-color:var(--vd-indigo); color:var(--vd-indigo)}} .stButton button[kind="primary"], .stDownloadButton button[kind="primary"], .stFormSubmitButton button[kind="primary"] {{ background:var(--vd-indigo); border-color:var(--vd-indigo); color:{WHITE}; }} .stButton button[kind="primary"]:hover, .stDownloadButton button[kind="primary"]:hover {{ background:{INDIGO_DARK}; border-color:{INDIGO_DARK}; color:{WHITE}; }} .stTextInput input, .stTextArea textarea, .stNumberInput input, div[data-baseweb="select"] > div, .stChatInput textarea {{ background:{WHITE} !important; border:1px solid var(--vd-line) !important; border-radius:var(--vd-r) !important; color:var(--vd-ink) !important; font-family:'Archivo', sans-serif; }} .stTextInput input:focus, .stTextArea textarea:focus {{border-color:var(--vd-indigo) !important}} *:focus-visible {{outline:2px solid var(--vd-indigo) !important; outline-offset:2px}} ::selection {{background:rgba(79,70,229,.18)}} .stSlider [data-baseweb="slider"] div[role="slider"] {{background:var(--vd-indigo)}} section[data-testid="stFileUploaderDropzone"] {{ background:{WHITE}; border:1.5px dashed #C3D3F5; border-radius:var(--vd-r); padding:22px; }} div[data-testid="stDataFrame"] {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); overflow:hidden; }} .vd-rule {{height:1px; background:var(--vd-line); border:0; margin:24px 0}} .vd-kicker {{ font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--vd-indigo); margin-bottom:10px; }} .vd-hero {{ background:linear-gradient(180deg,var(--vd-pale) 0%,{WHITE} 100%); border:1px solid var(--vd-line); border-radius:0; padding:30px 32px; margin-bottom:22px; }} .vd-hero h1 {{font-size:34px; margin:0 0 8px}} .vd-hero p {{color:var(--vd-muted); max-width:70ch; margin:0}} .vd-answer {{ background:var(--vd-pale); border:1px solid var(--vd-line); border-left:3px solid var(--vd-indigo); border-radius:var(--vd-r); padding:16px 18px; margin:6px 0 14px; }} .vd-poster {{ background:var(--vd-navy); color:{WHITE}; border-radius:0; padding:30px; }} .vd-poster .q {{ font-family:'Archivo', sans-serif; font-weight:600; font-size:24px; line-height:1.2; margin:0; }} .vd-poster .q em {{font-style:normal; color:var(--vd-orange)}} .vd-poster .row {{ display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid rgba(255,255,255,.16); font-size:14px; }} .vd-feature {{ border:1px solid var(--vd-line); border-radius:var(--vd-r); padding:16px 18px; height:100%; }} .vd-feature b {{font-family:'Archivo', sans-serif; font-weight:600; display:block; margin-bottom:4px; color:var(--vd-navy)}} .vd-feature span {{color:var(--vd-muted); font-size:14px}} .vd-bar-label {{display:flex; justify-content:space-between; font-size:14px; margin-bottom:5px}} .vd-bar {{height:7px; background:var(--vd-pale); border-radius:0; overflow:hidden}} .vd-bar > div {{height:100%; background:var(--vd-indigo)}} .vd-bar.alert > div {{background:var(--vd-orange)}} .vd-tag {{ display:inline-block; font-size:12px; font-weight:700; padding:4px 12px; border-radius:0; background:rgba(79,70,229,.12); color:var(--vd-indigo); }}  @media (max-width: 900px) {{ .stApp, html, body {{ background:#141312 !important; color:#f3f2f2 !important; }} .block-container {{ padding:1rem .9rem 3.5rem !important; max-width:100% !important; }} h1,h2,h3,h4,h5,h6 {{ color:#f3f2f2 !important; letter-spacing:-.045em; }} h1 {{font-size:28px !important}} h2 {{font-size:23px !important}} h3 {{font-size:20px !important}} h4 {{font-size:17px !important}} p, li, span, label, .stMarkdown {{ color:rgba(243,242,242,.85) !important; }} .stCaption, [data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p {{ color:rgba(243,242,242,.45) !important; }} section[data-testid="stSidebar"] {{ background:#0d0c0c !important; border-right:1px solid rgba(243,242,242,.14) !important; }} section[data-testid="stSidebar"] * {{ color:#f3f2f2 !important; }} div[data-testid="stHorizontalBlock"] {{ flex-direction:column; gap:12px; }} div[data-testid="column"] {{ width:100% !important; flex:1 1 100% !important; min-width:100% !important; }} div[data-testid="stMetric"] {{ background:#1c1a19 !important; border:0 !important; border-radius:0 !important; padding:14px 16px !important; }} div[data-testid="stMetricValue"] {{ color:#f3f2f2 !important; font-size:27px !important; letter-spacing:-.04em; }} div[data-testid="stMetricLabel"] p {{ color:rgba(243,242,242,.45) !important; font-size:9px !important; letter-spacing:.14em; }} .stTabs [data-baseweb="tab-list"] {{ overflow-x:auto; scrollbar-width:none; gap:0; border-bottom:1px solid rgba(243,242,242,.16); }} .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {{display:none}} .stTabs [data-baseweb="tab"] {{ padding:12px 14px; font-size:13px; white-space:nowrap; color:rgba(243,242,242,.5) !important; }} .stTabs [aria-selected="true"] {{ color:#ff5c3d !important; box-shadow:inset 0 -2px 0 0 #ec3013; }} .stTabs [aria-selected="true"] p {{ color:#ff5c3d !important; }} .stButton button, .stDownloadButton button, .stFormSubmitButton button {{ min-height:48px; width:100%; font-size:15px; border-radius:0 !important; background:transparent !important; border:1px solid rgba(243,242,242,.3) !important; color:#f3f2f2 !important; }} .stButton button[kind="primary"], .stDownloadButton button[kind="primary"] {{ background:#ec3013 !important; border-color:#ec3013 !important; color:#f3f2f2 !important; }} .stTextInput input, .stTextArea textarea, .stNumberInput input, .stChatInput textarea, div[data-baseweb="select"] > div {{ background:#1c1a19 !important; border:1px solid rgba(243,242,242,.22) !important; color:#f3f2f2 !important; min-height:48px; font-size:16px; border-radius:0 !important; }} div[data-baseweb="select"] svg {{ fill:#f3f2f2 !important; }} section[data-testid="stFileUploaderDropzone"] {{ background:#1c1a19 !important; border:1.5px dashed rgba(243,242,242,.3) !important; }} section[data-testid="stFileUploaderDropzone"] * {{ color:rgba(243,242,242,.75) !important; }} div[data-testid="stDataFrame"] {{ border:1px solid rgba(243,242,242,.16) !important; font-size:12px; }} .stExpander, details {{ background:#1c1a19 !important; border:1px solid rgba(243,242,242,.16) !important; border-radius:0 !important; }} .stExpander summary, details summary {{ color:#f3f2f2 !important; }} .vd-rule {{ background:rgba(243,242,242,.16) !important; }} .vd-kicker {{ color:#ff5c3d !important; }} .vd-hero {{ background:#1c1a19 !important; border:0 !important; border-left:2px solid #ec3013 !important; padding:20px 18px !important; }} .vd-hero h1 {{ font-size:26px !important; }} .vd-hero p {{ color:rgba(243,242,242,.65) !important; }} .vd-answer {{ background:#1c1a19 !important; border:0 !important; border-left:2px solid #ec3013 !important; border-radius:0 !important; color:rgba(243,242,242,.9) !important; }} .vd-answer * {{ color:rgba(243,242,242,.9) !important; }} .vd-feature {{ background:#1c1a19 !important; border:0 !important; padding:14px 16px !important; }} .vd-feature b {{ color:#f3f2f2 !important; }} .vd-feature span {{ color:rgba(243,242,242,.55) !important; }} .vd-poster {{ background:#ec3013 !important; padding:22px !important; }} .vd-poster .q {{ font-size:20px !important; }} .vd-bar {{ background:rgba(243,242,242,.16) !important; }} .vd-bar > div {{ background:#f3f2f2 !important; }} .vd-bar.alert > div {{ background:#ec3013 !important; }} .vd-tag {{ background:rgba(236,48,19,.22) !important; color:#ff5c3d !important; }} hr {{ border-color:rgba(243,242,242,.16) !important; }} .stAlert {{ border-radius:0 !important; }} ::selection {{ background:rgba(236,48,19,.4); }} }} .stApp {{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }} h1,h2,h3 {{ text-wrap:balance; }} p, li {{ text-wrap:pretty; }} .vd-kicker {{ font-weight:800; }} @media (max-width: 900px) {{ h1 {{ font-size:30px !important; line-height:.98 !important; letter-spacing:-.05em !important; }} h2 {{ font-size:24px !important; line-height:1.02 !important; }} h3 {{ font-size:20px !important; }} h4 {{ font-size:17px !important; }} p, li, .stMarkdown p {{ font-size:15px !important; line-height:1.55 !important; }} .vd-kicker {{ font-size:10px !important; letter-spacing:.18em !important; }} .vd-hero h1 {{ font-size:28px !important; line-height:.98 !important; }} .vd-hero p {{ font-size:14px !important; }} div[data-testid="stMetricValue"] {{ font-variant-numeric:tabular-nums; }} section[data-testid="stFileUploaderDropzone"] {{ padding:26px 18px !important; }} section[data-testid="stFileUploaderDropzone"] button {{ background:#ec3013 !important; border-color:#ec3013 !important; color:#f3f2f2 !important; }} label[data-testid="stWidgetLabel"] p {{ font-size:11px !important; letter-spacing:.16em; text-transform:uppercase; color:#ff5c3d !important; font-weight:800 !important; }} .vd-feature {{ margin-bottom:10px; }} }}</style>"""
 )
 
 
@@ -688,7 +688,49 @@ def markdown_report(df: pd.DataFrame, name: str, insights: list[str], history: l
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Barre latérale
+# ──────────────────────────────────────────────────────────────────
+# En-tête et import — dans le flux principal, visible sur téléphone
+# ──────────────────────────────────────────────────────────────────
+st.html(
+    """<div class="vd-hero"> <div class="vd-kicker">Assistant IA</div> <h1>Transformer les données en décisions</h1> <p>Importez un fichier CSV ou Excel : audit de qualité, statistiques, visualisations et réponses en langage naturel — sans Python ni SQL.</p> </div>"""
+)
+
+uploaded_file = st.file_uploader(
+    "Déposez un fichier CSV ou Excel",
+    type=["csv", "xlsx", "xls"],
+    help="CSV, XLSX ou XLS · jusqu'à 200 Mo · séparateur et encodage détectés automatiquement.",
+)
+
+sheet_name = None
+if uploaded_file is not None and not uploaded_file.name.lower().endswith(".csv"):
+    sheets = excel_sheets(uploaded_file.getvalue())
+    if len(sheets) > 1:
+        sheet_name = st.selectbox("Feuille du classeur", sheets)
+
+if uploaded_file is None:
+    st.html('<div class="vd-kicker" style="margin-top:28px">Ce que fait l\'assistant</div>')
+    features = [
+        ("Nettoyage automatique", "Détecte l'en-tête réel, supprime les lignes vides, "
+                                  "reconstitue les cellules fusionnées, convertit les nombres."),
+        ("Audit de qualité", "Manquants, doublons, valeurs extrêmes, complétude par variable."),
+        ("Statistiques et graphiques", "Descriptives, corrélations, histogramme, nuage, "
+                                       "boîte, série temporelle, projection."),
+        ("Questions en français", "L'assistant calcule sur vos données puis explique le résultat."),
+    ]
+    for title, description in features:
+        st.html(f'<div class="vd-feature"><b>{title}</b><span>{description}</span></div>')
+
+    st.html(
+        """<div class="vd-poster" style="margin-top:22px"> <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:14px">Exemple de sortie</div> <p class="q">« Le canal revendeur recule de 9 % pendant que <em>le direct progresse.</em> »</p> <div style="margin-top:26px"> <div class="row"><span style="opacity:.85">Fichiers acceptés</span><span style="font-weight:800">CSV · XLSX · XLS</span></div> <div class="row"><span style="opacity:.85">Temps moyen d'analyse</span><span style="font-weight:800">&lt; 5 s</span></div> <div class="row"><span style="opacity:.85">Installation</span><span style="font-weight:800">Aucune</span></div> </div> </div>"""
+    )
+    st.html('<hr class="vd-rule">')
+    st.caption("VisualizeData Assistant · build modernist-14 · mobile")
+    st.stop()
+
 # ─────────────────────────────────────────────────────────────────────────────
+# ──────────────────────────────────────────────────────────────────
+# Barre latérale — réglages, une fois le fichier chargé
+# ──────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.html(
         f'<div style="display:flex;align-items:center;gap:10px;padding:2px 0 6px">'
@@ -700,23 +742,16 @@ with st.sidebar:
 
     st.html('<hr class="vd-rule" style="margin:14px 0">')
 
-    uploaded_file = st.file_uploader(
-        "Fichier CSV ou Excel", type=["csv", "xlsx", "xls"], label_visibility="collapsed"
+    st.html(
+        f'<div style="padding:2px 0 8px"><b style="font-weight:800">{uploaded_file.name}</b></div>'
     )
-
     smart_header = st.toggle(
         "Nettoyage automatique", value=True,
         help="Détecte la ligne d'en-tête, supprime les lignes et colonnes vides, "
              "reconstitue les cellules fusionnées et convertit les nombres écrits en texte.",
     )
 
-    sheet_name = None
-    if uploaded_file is not None and not uploaded_file.name.lower().endswith(".csv"):
-        sheets = excel_sheets(uploaded_file.getvalue())
-        if len(sheets) > 1:
-            sheet_name = st.selectbox("Feuille", sheets)
-
-    st.html('<div class="vd-kicker" style="margin-top:20px">Parcours</div>')
+    st.html('<div class="vd-kicker" style="margin-top:18px">Parcours</div>')
     for index, step in enumerate(
         ["Importer un fichier", "Explorer les indicateurs",
          "Visualiser les données", "Interroger avec l'IA"], start=1
@@ -773,94 +808,6 @@ with st.sidebar:
             "</style>"
         )
 
-    st.html('<div class="vd-kicker" style="margin-top:20px">Contexte métier</div>')
-    business_context = st.text_area(
-        "Contexte",
-        value=st.session_state.get("vd_context", ""),
-        placeholder="Ex. : distributeur de matériaux, 3 agences, saison haute de mars à juin. "
-                    "Le canal revendeur est prioritaire cette année.",
-        height=110,
-        label_visibility="collapsed",
-        key="vd_context",
-    )
-    st.caption("Décrit une fois, repris dans toutes les réponses de l'assistant.")
-
-    st.html('<div class="vd-kicker" style="margin-top:20px">Moteur d\'analyse</div>')
-    providers = available_providers()
-    engine_options = ["Analyse locale (sans clé)"] + list(providers)
-    engine = st.selectbox("Moteur", engine_options, label_visibility="collapsed")
-    if engine in providers:
-        st.html(f'<span class="vd-tag">{providers[engine]["model"]}</span>')
-        st.caption(providers[engine]["note"])
-        compute_mode = st.toggle(
-            "Calcul exact sur vos données", value=True,
-            help="L'assistant écrit une requête, l'exécute sur le fichier et commente "
-                 "le résultat réel. Désactivé, il raisonne sur le résumé statistique.",
-        )
-    else:
-        compute_mode = False
-        st.caption(
-            "Réponses calculées sur place à partir de vos statistiques. "
-            "Aucune donnée ne sort de l'application."
-        )
-        if not providers:
-            st.caption(
-                "Pour des réponses rédigées, ajoutez une clé dans Render → Environment : "
-                "OPENAI_API_KEY, GROQ_API_KEY, MISTRAL_API_KEY, GEMINI_API_KEY "
-                "ou OPENROUTER_API_KEY."
-            )
-
-# ─────────────────────────────────────────────────────────────────────────────
-# En-tête
-# ─────────────────────────────────────────────────────────────────────────────
-st.html(
-    """
-<div class="vd-hero">
-  <div class="vd-kicker">Assistant IA</div>
-  <h1>Transformer les données en décisions</h1>
-  <p>Importez un fichier CSV ou Excel : audit de qualité, statistiques descriptives,
-  visualisations et réponses en langage naturel — sans Python ni SQL.</p>
-</div>
-"""
-)
-
-# ─────────────────────────────────────────────────────────────────────────────
-# État d'accueil
-# ─────────────────────────────────────────────────────────────────────────────
-if uploaded_file is None:
-    left, right = st.columns([1.15, 1], gap="large")
-    with left:
-        st.html('<div class="vd-kicker" style="margin-top:26px">Pour commencer</div>')
-        st.markdown("#### Déposez un fichier dans la barre latérale")
-        st.caption("CSV, XLSX ou XLS · séparateur et encodage détectés automatiquement.")
-        st.html('<hr class="vd-rule">')
-        features = [
-            ("Audit rapide", "Manquants, doublons, types, modalités, valeurs extrêmes."),
-            ("Statistiques descriptives", "Moyennes, écarts, quantiles par variable."),
-            ("Visualisations", "Histogramme, nuage de points, boîte, séries temporelles."),
-            ("Questions en langage naturel", "Conversation suivie, sources rappelées."),
-        ]
-        cols = st.columns(2, gap="large")
-        for index, (title, description) in enumerate(features):
-            with cols[index % 2]:
-                st.html(
-                    f'<div class="vd-feature"><b>{title}</b><span>{description}</span></div>'
-                )
-    with right:
-        st.html(
-    """
-<div class="vd-poster">
-  <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:14px">Exemple de sortie</div>
-  <p class="q">« Le canal revendeur recule de 9 % pendant que <em>le direct progresse.</em> »</p>
-  <div style="margin-top:34px">
-    <div class="row"><span style="opacity:.85">Fichiers acceptés</span><span style="font-weight:800">CSV · XLSX · XLS</span></div>
-    <div class="row"><span style="opacity:.85">Temps moyen d'analyse</span><span style="font-weight:800">&lt; 5 s</span></div>
-    <div class="row"><span style="opacity:.85">Installation</span><span style="font-weight:800">Aucune</span></div>
-  </div>
-</div>
-"""
-        )
-    st.stop()
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Lecture du fichier
@@ -926,6 +873,46 @@ if insights:
     st.html('<div class="vd-kicker" style="margin-top:26px">Constats automatiques</div>')
     for note in insights:
         st.markdown(f"- {note}")
+
+# ──────────────────────────────────────────────────────────────────
+# Moteur d'analyse — dans le flux principal, atteignable sur téléphone
+# ──────────────────────────────────────────────────────────────────
+providers = available_providers()
+engine_options = ["Analyse locale (sans clé)"] + list(providers)
+
+with st.expander("Moteur d'analyse et contexte métier", expanded=not providers):
+    left_setting, right_setting = st.columns([1, 1], gap="large")
+    with left_setting:
+        engine = st.selectbox("Moteur d'analyse", engine_options)
+        if engine in providers:
+            st.html(f'<span class="vd-tag">{providers[engine]["model"]}</span>')
+            st.caption(providers[engine]["note"])
+            compute_mode = st.toggle(
+                "Calcul exact sur vos données", value=True,
+                help="L'assistant écrit une requête, l'exécute sur le fichier et commente "
+                     "le résultat réel. Désactivé, il raisonne sur le résumé statistique.",
+            )
+        else:
+            compute_mode = False
+            st.caption(
+                "Réponses calculées sur place à partir de vos statistiques. "
+                "Aucune donnée ne sort de l'application."
+            )
+            if not providers:
+                st.caption(
+                    "Pour des réponses rédigées, ajoutez une clé dans Render → Environment : "
+                    "GROQ_API_KEY, GEMINI_API_KEY, OPENAI_API_KEY, MISTRAL_API_KEY "
+                    "ou OPENROUTER_API_KEY."
+                )
+    with right_setting:
+        st.text_area(
+            "Contexte métier",
+            placeholder="Ex. : distributeur de matériaux, 3 agences, saison haute de mars "
+                        "à juin. Le canal revendeur est prioritaire cette année.",
+            height=130,
+            key="vd_context",
+        )
+        st.caption("Décrit une fois, repris dans toutes les réponses de l'assistant.")
 
 _engine_ready = engine in providers
 if _engine_ready:
@@ -1236,4 +1223,4 @@ with tabs[4]:
                 history.append({"role": "assistant", "content": answer})
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-12 · mobile sombre")
+st.caption("VisualizeData Assistant · build modernist-14 · mobile")
