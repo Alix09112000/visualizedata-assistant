@@ -71,58 +71,6 @@ st.html(
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Authentification Google — obligatoire
-# ─────────────────────────────────────────────────────────────────────────────
-def require_google_login() -> None:
-    """Bloque l'application tant que l'utilisateur n'est pas connecté via Google."""
-    try:
-        logged_in = bool(st.user.is_logged_in)
-    except Exception:
-        st.error(
-            "Connexion Google non configurée. Renseignez la section [auth] dans "
-            "`.streamlit/secrets.toml` (voir README), puis relancez l'application."
-        )
-        st.stop()
-        return
-
-    if logged_in:
-        return
-
-    st.html(
-        f"""<div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">{MARK}<span style="font-family:Archivo,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.035em">Visualize<span style="color:{INDIGO}">Data</span></span></div><div class="vd-hero"> <div class="vd-kicker">Accès réservé</div> <h1>Connectez-vous pour analyser vos données</h1> <p>L'assistant s'utilise avec un compte Google. Nous ne lisons que votre nom et votre adresse e-mail : aucun accès à Gmail, Drive ou vos documents.</p> </div>"""
-    )
-
-    left, right = st.columns([1.15, 1], gap="large")
-    with left:
-        st.html('<div class="vd-kicker" style="margin-top:22px">Se connecter</div>')
-        if st.button("Continuer avec Google", type="primary", use_container_width=True):
-            st.login("google")
-        st.caption(
-            "En continuant, vous acceptez que votre nom et votre adresse e-mail servent "
-            "à identifier votre session. Vos fichiers ne sont jamais stockés."
-        )
-        st.html('<hr class="vd-rule">')
-        cols = st.columns(2, gap="large")
-        details = [
-            ("Session privée", "Les fichiers importés restent en mémoire le temps de la session."),
-            ("Aucune installation", "Tout se passe dans le navigateur, sur ordinateur comme sur mobile."),
-            ("Analyse en secondes", "Audit de qualité, statistiques et graphiques dès l'import."),
-            ("Réponses en français", "L'assistant explique les résultats en langage courant."),
-        ]
-        for index, (title, description) in enumerate(details):
-            with cols[index % 2]:
-                st.html(f'<div class="vd-feature"><b>{title}</b><span>{description}</span></div>')
-    with right:
-        st.html(
-            """<div class="vd-poster"> <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:14px">Exemple de sortie</div> <p class="q">« Le canal revendeur recule de 9 % pendant que <em>le direct progresse.</em> »</p> <div style="margin-top:34px"> <div class="row"><span style="opacity:.85">Fichiers acceptés</span><span style="font-weight:800">CSV · XLSX · XLS</span></div> <div class="row"><span style="opacity:.85">Temps moyen d'analyse</span><span style="font-weight:800">&lt; 5 s</span></div> <div class="row"><span style="opacity:.85">Installation</span><span style="font-weight:800">Aucune</span></div> </div> </div>"""
-        )
-    st.stop()
-
-
-require_google_login()
-
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Chargement des données
 # ─────────────────────────────────────────────────────────────────────────────
 @st.cache_data(show_spinner=False)
@@ -440,15 +388,6 @@ with st.sidebar:
         f'<div style="color:{MUTED};font-size:12px">Transformer les données en décisions</div>'
     )
 
-    if AUTH_ENABLED:
-        user_name = getattr(st.user, "name", None) or getattr(st.user, "email", "Compte Google")
-        user_mail = getattr(st.user, "email", "")
-        st.html(
-            f'<div style="padding:10px 0 2px"><b style="font-family:Archivo,sans-serif;font-weight:800">{user_name}</b>'
-            f'<div style="color:{MUTED};font-size:12px">{user_mail}</div></div>'
-        )
-        if st.button("Se déconnecter", use_container_width=True):
-            st.logout()
     st.html('<hr class="vd-rule" style="margin:14px 0">')
 
     uploaded_file = st.file_uploader(
@@ -807,4 +746,4 @@ with tabs[4]:
                 history.append({"role": "assistant", "content": answer})
 
 st.html('<hr class="vd-rule">')
-st.caption("VisualizeData Assistant · build modernist-6 · accès libre · un projet VisualizeData · Transformer les données en décisions")
+st.caption("VisualizeData Assistant · build modernist-7 · accès libre")
