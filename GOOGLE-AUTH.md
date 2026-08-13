@@ -9,7 +9,7 @@
 5. Dans **Authorized redirect URIs**, ajoutez exactement ces deux lignes :
 
 ```
-https://visualizedata-assistant.onrender.com/oauth2callback
+https://visualizedata-assistant-1.onrender.com/oauth2callback
 http://localhost:8501/oauth2callback
 ```
 
@@ -27,7 +27,7 @@ Contenu final (remplacez les trois valeurs) :
 
 ```toml
 [auth]
-redirect_uri = "https://visualizedata-assistant.onrender.com/oauth2callback"
+redirect_uri = "https://visualizedata-assistant-1.onrender.com/oauth2callback"
 cookie_secret = "COLLEZ_ICI_LA_CHAINE_GENEREE"
 
 [auth.google]
